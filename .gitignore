@@ -1,0 +1,99 @@
+# ------------------------------------------------------------
+# Flutter / Dart multi-platform .gitignore
+# Safe defaults for Android, iOS, macOS, Web, Linux, Windows
+# ------------------------------------------------------------
+
+# ---- OS-level / misc ----
+*.log
+*.swp
+*.tmp
+*.pyc
+.DS_Store
+Thumbs.db
+
+# ---- Editors / IDE ----
+*.iml
+*.ipr
+*.iws
+.idea/
+# Keep VS Code project settings in repo only if you want.
+# .vscode/
+
+# ---- Flutter / Dart / Pub ----
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+.buildlog/
+/build/
+**/build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# ---- Test / Coverage ----
+coverage/
+lcov.info
+
+# ---- Android ----
+**/local.properties
+**/.gradle/
+**/.cxx/
+**/captures/
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+# Keystores & properties
+android/key.jks
+android/app/key.jks
+android/key.properties
+android/app/key.properties
+*.keystore
+*.jks
+
+# Google Services (keep out of VCS)
+android/app/google-services.json
+
+# ---- iOS ----
+# CocoaPods
+ios/Pods/
+# Flutter generated
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
+# Xcode user data
+**/xcuserdata/
+**/*.xcuserstate
+**/*.xccheckout
+**/*.xcscmblueprint
+# Google Services
+ios/Runner/GoogleService-Info.plist
+
+# ---- macOS ----
+macos/Pods/
+macos/Flutter/ephemeral/
+# Keep GeneratedPluginRegistrant.swift committed (do NOT ignore)
+
+# ---- Windows ----
+# (Generated build artifacts are already in /build)
+
+# ---- Linux ----
+# (Generated build artifacts are already in /build)
+
+# ---- Web ----
+# Favicons and manifest are source; no ignores needed
+
+# ---- Secrets / Env ----
+.env
+.env.*
+*.pem
+*.p12
+*.p8
+*.cer
+*.der
+
+# ---- App symbol / obfuscation outputs ----
+app.*.symbols
+app.*.map.json
