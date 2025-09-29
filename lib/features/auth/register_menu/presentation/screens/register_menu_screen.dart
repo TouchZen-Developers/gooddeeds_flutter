@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/components/text_link.dart';
@@ -9,6 +10,7 @@ import 'package:gooddeeds/shared/design_system/typography/gd_text.dart' as ds;
 
 import '../../../../../shared/strings/strings.dart';
 import '../../../../splash/presentation/widgets/splash_brand.dart';
+import 'package:gooddeeds/src/config/routes/route_paths.dart';
 
 class RegisterMenuScreen extends StatelessWidget {
   const RegisterMenuScreen({super.key});
@@ -16,7 +18,6 @@ class RegisterMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gaps = context.gaps;
-    final cs = context.colors;
 
     return Scaffold(
       body: Stack(
@@ -49,7 +50,7 @@ class RegisterMenuScreen extends StatelessWidget {
             child: SafeArea(
               bottom: false,
               child: Align(
-                alignment:  Alignment.center,
+                alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: gaps.lg),
                   child: const SplashBrand(size: SplashBrandSize.md),
@@ -98,7 +99,7 @@ class RegisterMenuScreen extends StatelessWidget {
                       fullWidth: true,
                       color: BrandTones.grey100,
                       leading: Assets.icons.email.svg(width: 18, height: 14),
-                      onPressed: () {},
+                      onPressed: () => context.goNamed(RouteNames.registerEmail),
                     ),
                     SizedBox(height: gaps.xxl),
                     Row(

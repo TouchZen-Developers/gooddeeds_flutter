@@ -7,6 +7,7 @@ class S {
   static const register = 'Register';
   static const continueText = 'Continue';
   static const registerChoiceLoginPrefix = 'Already have an account?';
+  static const enterYourPersonalInformation = 'Enter your personal information';
 
 
 // Info
@@ -28,4 +29,6 @@ class S {
   static const signupWithGoogle =  'Sign up with Google';
   static const signupWithEmail =  'Sign up with Email';
   static const signupWithApple =  'Sign up with Apple';
+
+  //Register email
 }

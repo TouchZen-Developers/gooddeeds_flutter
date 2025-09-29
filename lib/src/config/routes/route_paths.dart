@@ -3,6 +3,7 @@ class RoutePaths {
   static const info = '/info';
   static const registerChoice = '/register_choice';
   static const registerMenu = '/register_menu';
+  static const registerEmail = '/register_email';
 
 }
 
@@ -11,5 +12,6 @@ class RouteNames {
   static const info = 'info';
   static const registerChoice = 'registerChoice';
   static const registerMenu = 'registerMenu';
+  static const registerEmail = 'registerEmail';
 
 }

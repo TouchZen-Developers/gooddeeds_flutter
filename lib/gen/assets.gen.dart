@@ -29,11 +29,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
 
+  /// File path: assets/icons/left.svg
+  SvgGenImage get left => const SvgGenImage('assets/icons/left.svg');
+
   /// File path: assets/icons/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [apple, email, goodDeeds, google, logo];
+  List<SvgGenImage> get values => [apple, email, goodDeeds, google, left, logo];
 }
 
 class $AssetsImagesGen {
