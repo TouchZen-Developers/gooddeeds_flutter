@@ -21,14 +21,14 @@ class RegisterChoiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gaps = context.gaps;
-    final cs = context.colors;
 
     return BlocProvider(
       create: (_) => RegisterChoiceBloc(),
       child: BlocListener<RegisterChoiceBloc, RegisterChoiceState>(
-        listenWhen: (p, c) => c.maybeWhen(navigate: (_) => true, orElse: () => false),
+        listenWhen: (p, c) =>
+            c.maybeWhen(navigate: (_) => true, orElse: () => false),
         listener: (ctx, s) => s.maybeWhen(
-          navigate: (route) => ctx.pushNamed(route),
+          navigate: (route) => ctx.push(route),
           orElse: () {},
         ),
         child: Scaffold(
@@ -66,7 +66,10 @@ class RegisterChoiceScreen extends StatelessWidget {
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () => context.read<RegisterChoiceBloc>().add(const RegisterChoiceEvent.needDonationsPressed()),
+                              onPressed: () => context
+                                  .read<RegisterChoiceBloc>()
+                                  .add(const RegisterChoiceEvent
+                                      .needDonationsPressed()),
                             ),
                             SizedBox(height: gaps.md),
                             PrimaryButton(
@@ -74,7 +77,10 @@ class RegisterChoiceScreen extends StatelessWidget {
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () => context.read<RegisterChoiceBloc>().add(const RegisterChoiceEvent.helpFamiliesPressed()),
+                              onPressed: () => context
+                                  .read<RegisterChoiceBloc>()
+                                  .add(const RegisterChoiceEvent
+                                      .helpFamiliesPressed()),
                             ),
                             Spacer(),
                             Row(
@@ -90,10 +96,14 @@ class RegisterChoiceScreen extends StatelessWidget {
                                   label: S.login,
                                   variant: GDTextLinkVariant.normal,
                                   emphasis: GDTextEmphasis.primary,
-                                  style: context.typo.bodyMedium.copyWith(fontWeight: FontWeight.w500),
+                                  style: context.typo.bodyMedium
+                                      .copyWith(fontWeight: FontWeight.w500),
                                   padding: EdgeInsets.zero,
                                   color: BrandTones.secondary,
-                                  onPressed: () => context.read<RegisterChoiceBloc>().add(const RegisterChoiceEvent.loginPressed()),
+                                  onPressed: () => context
+                                      .read<RegisterChoiceBloc>()
+                                      .add(const RegisterChoiceEvent
+                                          .loginPressed()),
                                 ),
                               ],
                             ),

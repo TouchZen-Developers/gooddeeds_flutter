@@ -20,8 +20,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
 
+  /// File path: assets/icons/back.svg
+  SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
+
+  /// File path: assets/icons/book.svg
+  SvgGenImage get book => const SvgGenImage('assets/icons/book.svg');
+
+  /// File path: assets/icons/cart.svg
+  SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
+
+  /// File path: assets/icons/delete.svg
+  SvgGenImage get delete => const SvgGenImage('assets/icons/delete.svg');
+
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
+
+  /// File path: assets/icons/fill_cart.svg
+  SvgGenImage get fillCart => const SvgGenImage('assets/icons/fill_cart.svg');
+
+  /// File path: assets/icons/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/icons/filter.svg');
 
   /// File path: assets/icons/good_deeds.svg
   SvgGenImage get goodDeeds => const SvgGenImage('assets/icons/good_deeds.svg');
@@ -29,11 +47,43 @@ class $AssetsIconsGen {
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
 
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
   /// File path: assets/icons/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
 
+  /// File path: assets/icons/marker.svg
+  SvgGenImage get marker => const SvgGenImage('assets/icons/marker.svg');
+
+  /// File path: assets/icons/orders.svg
+  SvgGenImage get orders => const SvgGenImage('assets/icons/orders.svg');
+
+  /// File path: assets/icons/profile.svg
+  SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
+
+  /// File path: assets/icons/report.svg
+  SvgGenImage get report => const SvgGenImage('assets/icons/report.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [apple, email, goodDeeds, google, logo];
+  List<SvgGenImage> get values => [
+        apple,
+        back,
+        book,
+        cart,
+        delete,
+        email,
+        fillCart,
+        filter,
+        goodDeeds,
+        google,
+        home,
+        logo,
+        marker,
+        orders,
+        profile,
+        report
+      ];
 }
 
 class $AssetsImagesGen {
@@ -52,13 +102,34 @@ class $AssetsImagesGen {
   /// File path: assets/images/info_two.svg
   SvgGenImage get infoTwo => const SvgGenImage('assets/images/info_two.svg');
 
+  /// File path: assets/images/mock1.png
+  AssetGenImage get mock1 => const AssetGenImage('assets/images/mock1.png');
+
+  /// File path: assets/images/mock2.png
+  AssetGenImage get mock2 => const AssetGenImage('assets/images/mock2.png');
+
+  /// File path: assets/images/mock3.png
+  AssetGenImage get mock3 => const AssetGenImage('assets/images/mock3.png');
+
+  /// File path: assets/images/mock4.png
+  AssetGenImage get mock4 => const AssetGenImage('assets/images/mock4.png');
+
   /// File path: assets/images/register_option.svg
   SvgGenImage get registerOption =>
       const SvgGenImage('assets/images/register_option.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [hands, infoOne, infoThree, infoTwo, registerOption];
+  List<dynamic> get values => [
+        hands,
+        infoOne,
+        infoThree,
+        infoTwo,
+        mock1,
+        mock2,
+        mock3,
+        mock4,
+        registerOption
+      ];
 }
 
 class Assets {
