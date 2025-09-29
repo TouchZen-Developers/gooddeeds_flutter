@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,217 +9,46 @@ part of 'info_onboarding_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$InfoOnboardingEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InfoOnboardingEventCopyWith<$Res> {
-  factory $InfoOnboardingEventCopyWith(
-          InfoOnboardingEvent value, $Res Function(InfoOnboardingEvent) then) =
-      _$InfoOnboardingEventCopyWithImpl<$Res, InfoOnboardingEvent>;
-}
-
-/// @nodoc
-class _$InfoOnboardingEventCopyWithImpl<$Res, $Val extends InfoOnboardingEvent>
-    implements $InfoOnboardingEventCopyWith<$Res> {
-  _$InfoOnboardingEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'InfoOnboardingEvent.started()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is InfoOnboardingEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return started();
+  String toString() {
+    return 'InfoOnboardingEvent()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return started?.call();
-  }
+/// @nodoc
+class $InfoOnboardingEventCopyWith<$Res> {
+  $InfoOnboardingEventCopyWith(
+      InfoOnboardingEvent _, $Res Function(InfoOnboardingEvent) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [InfoOnboardingEvent].
+extension InfoOnboardingEventPatterns on InfoOnboardingEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
@@ -231,44 +60,323 @@ class _$StartedImpl implements _Started {
     TResult Function(_Finished value)? finished,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case _PageChanged() when pageChanged != null:
+        return pageChanged(_that);
+      case _NextPressed() when nextPressed != null:
+        return nextPressed(_that);
+      case _SkipPressed() when skipPressed != null:
+        return skipPressed(_that);
+      case _LoginPressed() when loginPressed != null:
+        return loginPressed(_that);
+      case _RegisterPressed() when registerPressed != null:
+        return registerPressed(_that);
+      case _Finished() when finished != null:
+        return finished(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_NextPressed value) nextPressed,
+    required TResult Function(_SkipPressed value) skipPressed,
+    required TResult Function(_LoginPressed value) loginPressed,
+    required TResult Function(_RegisterPressed value) registerPressed,
+    required TResult Function(_Finished value) finished,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started(_that);
+      case _PageChanged():
+        return pageChanged(_that);
+      case _NextPressed():
+        return nextPressed(_that);
+      case _SkipPressed():
+        return skipPressed(_that);
+      case _LoginPressed():
+        return loginPressed(_that);
+      case _RegisterPressed():
+        return registerPressed(_that);
+      case _Finished():
+        return finished(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_NextPressed value)? nextPressed,
+    TResult? Function(_SkipPressed value)? skipPressed,
+    TResult? Function(_LoginPressed value)? loginPressed,
+    TResult? Function(_RegisterPressed value)? registerPressed,
+    TResult? Function(_Finished value)? finished,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case _PageChanged() when pageChanged != null:
+        return pageChanged(_that);
+      case _NextPressed() when nextPressed != null:
+        return nextPressed(_that);
+      case _SkipPressed() when skipPressed != null:
+        return skipPressed(_that);
+      case _LoginPressed() when loginPressed != null:
+        return loginPressed(_that);
+      case _RegisterPressed() when registerPressed != null:
+        return registerPressed(_that);
+      case _Finished() when finished != null:
+        return finished(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index)? pageChanged,
+    TResult Function()? nextPressed,
+    TResult Function()? skipPressed,
+    TResult Function()? loginPressed,
+    TResult Function()? registerPressed,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case _PageChanged() when pageChanged != null:
+        return pageChanged(_that.index);
+      case _NextPressed() when nextPressed != null:
+        return nextPressed();
+      case _SkipPressed() when skipPressed != null:
+        return skipPressed();
+      case _LoginPressed() when loginPressed != null:
+        return loginPressed();
+      case _RegisterPressed() when registerPressed != null:
+        return registerPressed();
+      case _Finished() when finished != null:
+        return finished();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index) pageChanged,
+    required TResult Function() nextPressed,
+    required TResult Function() skipPressed,
+    required TResult Function() loginPressed,
+    required TResult Function() registerPressed,
+    required TResult Function() finished,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started();
+      case _PageChanged():
+        return pageChanged(_that.index);
+      case _NextPressed():
+        return nextPressed();
+      case _SkipPressed():
+        return skipPressed();
+      case _LoginPressed():
+        return loginPressed();
+      case _RegisterPressed():
+        return registerPressed();
+      case _Finished():
+        return finished();
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int index)? pageChanged,
+    TResult? Function()? nextPressed,
+    TResult? Function()? skipPressed,
+    TResult? Function()? loginPressed,
+    TResult? Function()? registerPressed,
+    TResult? Function()? finished,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case _PageChanged() when pageChanged != null:
+        return pageChanged(_that.index);
+      case _NextPressed() when nextPressed != null:
+        return nextPressed();
+      case _SkipPressed() when skipPressed != null:
+        return skipPressed();
+      case _LoginPressed() when loginPressed != null:
+        return loginPressed();
+      case _RegisterPressed() when registerPressed != null:
+        return registerPressed();
+      case _Finished() when finished != null:
+        return finished();
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _Started implements InfoOnboardingEvent {
-  const factory _Started() = _$StartedImpl;
+/// @nodoc
+
+class _Started implements InfoOnboardingEvent {
+  const _Started();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'InfoOnboardingEvent.started()';
+  }
 }
 
 /// @nodoc
-abstract class _$$PageChangedImplCopyWith<$Res> {
-  factory _$$PageChangedImplCopyWith(
-          _$PageChangedImpl value, $Res Function(_$PageChangedImpl) then) =
-      __$$PageChangedImplCopyWithImpl<$Res>;
+
+class _PageChanged implements InfoOnboardingEvent {
+  const _PageChanged(this.index);
+
+  final int index;
+
+  /// Create a copy of InfoOnboardingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PageChangedCopyWith<_PageChanged> get copyWith =>
+      __$PageChangedCopyWithImpl<_PageChanged>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PageChanged &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @override
+  String toString() {
+    return 'InfoOnboardingEvent.pageChanged(index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PageChangedCopyWith<$Res>
+    implements $InfoOnboardingEventCopyWith<$Res> {
+  factory _$PageChangedCopyWith(
+          _PageChanged value, $Res Function(_PageChanged) _then) =
+      __$PageChangedCopyWithImpl;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$PageChangedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$PageChangedImpl>
-    implements _$$PageChangedImplCopyWith<$Res> {
-  __$$PageChangedImplCopyWithImpl(
-      _$PageChangedImpl _value, $Res Function(_$PageChangedImpl) _then)
-      : super(_value, _then);
+class __$PageChangedCopyWithImpl<$Res> implements _$PageChangedCopyWith<$Res> {
+  __$PageChangedCopyWithImpl(this._self, this._then);
+
+  final _PageChanged _self;
+  final $Res Function(_PageChanged) _then;
 
   /// Create a copy of InfoOnboardingEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$PageChangedImpl(
+    return _then(_PageChanged(
       null == index
-          ? _value.index
+          ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -277,948 +385,123 @@ class __$$PageChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PageChangedImpl implements _PageChanged {
-  const _$PageChangedImpl(this.index);
-
-  @override
-  final int index;
-
-  @override
-  String toString() {
-    return 'InfoOnboardingEvent.pageChanged(index: $index)';
-  }
+class _NextPressed implements InfoOnboardingEvent {
+  const _NextPressed();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PageChangedImpl &&
-            (identical(other.index, index) || other.index == index));
+        (other.runtimeType == runtimeType && other is _NextPressed);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
-      __$$PageChangedImplCopyWithImpl<_$PageChangedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return pageChanged(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return pageChanged?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (pageChanged != null) {
-      return pageChanged(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return pageChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return pageChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (pageChanged != null) {
-      return pageChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PageChanged implements InfoOnboardingEvent {
-  const factory _PageChanged(final int index) = _$PageChangedImpl;
-
-  int get index;
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$NextPressedImplCopyWith<$Res> {
-  factory _$$NextPressedImplCopyWith(
-          _$NextPressedImpl value, $Res Function(_$NextPressedImpl) then) =
-      __$$NextPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$NextPressedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$NextPressedImpl>
-    implements _$$NextPressedImplCopyWith<$Res> {
-  __$$NextPressedImplCopyWithImpl(
-      _$NextPressedImpl _value, $Res Function(_$NextPressedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$NextPressedImpl implements _NextPressed {
-  const _$NextPressedImpl();
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'InfoOnboardingEvent.nextPressed()';
   }
+}
+
+/// @nodoc
+
+class _SkipPressed implements InfoOnboardingEvent {
+  const _SkipPressed();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NextPressedImpl);
+        (other.runtimeType == runtimeType && other is _SkipPressed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return nextPressed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return nextPressed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (nextPressed != null) {
-      return nextPressed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return nextPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return nextPressed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (nextPressed != null) {
-      return nextPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NextPressed implements InfoOnboardingEvent {
-  const factory _NextPressed() = _$NextPressedImpl;
-}
-
-/// @nodoc
-abstract class _$$SkipPressedImplCopyWith<$Res> {
-  factory _$$SkipPressedImplCopyWith(
-          _$SkipPressedImpl value, $Res Function(_$SkipPressedImpl) then) =
-      __$$SkipPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SkipPressedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$SkipPressedImpl>
-    implements _$$SkipPressedImplCopyWith<$Res> {
-  __$$SkipPressedImplCopyWithImpl(
-      _$SkipPressedImpl _value, $Res Function(_$SkipPressedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SkipPressedImpl implements _SkipPressed {
-  const _$SkipPressedImpl();
 
   @override
   String toString() {
     return 'InfoOnboardingEvent.skipPressed()';
   }
+}
+
+/// @nodoc
+
+class _LoginPressed implements InfoOnboardingEvent {
+  const _LoginPressed();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SkipPressedImpl);
+        (other.runtimeType == runtimeType && other is _LoginPressed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return skipPressed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return skipPressed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (skipPressed != null) {
-      return skipPressed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return skipPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return skipPressed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (skipPressed != null) {
-      return skipPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SkipPressed implements InfoOnboardingEvent {
-  const factory _SkipPressed() = _$SkipPressedImpl;
-}
-
-/// @nodoc
-abstract class _$$LoginPressedImplCopyWith<$Res> {
-  factory _$$LoginPressedImplCopyWith(
-          _$LoginPressedImpl value, $Res Function(_$LoginPressedImpl) then) =
-      __$$LoginPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoginPressedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$LoginPressedImpl>
-    implements _$$LoginPressedImplCopyWith<$Res> {
-  __$$LoginPressedImplCopyWithImpl(
-      _$LoginPressedImpl _value, $Res Function(_$LoginPressedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoginPressedImpl implements _LoginPressed {
-  const _$LoginPressedImpl();
 
   @override
   String toString() {
     return 'InfoOnboardingEvent.loginPressed()';
   }
+}
+
+/// @nodoc
+
+class _RegisterPressed implements InfoOnboardingEvent {
+  const _RegisterPressed();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginPressedImpl);
+        (other.runtimeType == runtimeType && other is _RegisterPressed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return loginPressed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return loginPressed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (loginPressed != null) {
-      return loginPressed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return loginPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return loginPressed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (loginPressed != null) {
-      return loginPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoginPressed implements InfoOnboardingEvent {
-  const factory _LoginPressed() = _$LoginPressedImpl;
-}
-
-/// @nodoc
-abstract class _$$RegisterPressedImplCopyWith<$Res> {
-  factory _$$RegisterPressedImplCopyWith(_$RegisterPressedImpl value,
-          $Res Function(_$RegisterPressedImpl) then) =
-      __$$RegisterPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$RegisterPressedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$RegisterPressedImpl>
-    implements _$$RegisterPressedImplCopyWith<$Res> {
-  __$$RegisterPressedImplCopyWithImpl(
-      _$RegisterPressedImpl _value, $Res Function(_$RegisterPressedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$RegisterPressedImpl implements _RegisterPressed {
-  const _$RegisterPressedImpl();
 
   @override
   String toString() {
     return 'InfoOnboardingEvent.registerPressed()';
   }
+}
+
+/// @nodoc
+
+class _Finished implements InfoOnboardingEvent {
+  const _Finished();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RegisterPressedImpl);
+        (other.runtimeType == runtimeType && other is _Finished);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return registerPressed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return registerPressed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (registerPressed != null) {
-      return registerPressed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return registerPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return registerPressed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (registerPressed != null) {
-      return registerPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RegisterPressed implements InfoOnboardingEvent {
-  const factory _RegisterPressed() = _$RegisterPressedImpl;
-}
-
-/// @nodoc
-abstract class _$$FinishedImplCopyWith<$Res> {
-  factory _$$FinishedImplCopyWith(
-          _$FinishedImpl value, $Res Function(_$FinishedImpl) then) =
-      __$$FinishedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$FinishedImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingEventCopyWithImpl<$Res, _$FinishedImpl>
-    implements _$$FinishedImplCopyWith<$Res> {
-  __$$FinishedImplCopyWithImpl(
-      _$FinishedImpl _value, $Res Function(_$FinishedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$FinishedImpl implements _Finished {
-  const _$FinishedImpl();
 
   @override
   String toString() {
     return 'InfoOnboardingEvent.finished()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FinishedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) pageChanged,
-    required TResult Function() nextPressed,
-    required TResult Function() skipPressed,
-    required TResult Function() loginPressed,
-    required TResult Function() registerPressed,
-    required TResult Function() finished,
-  }) {
-    return finished();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? pageChanged,
-    TResult? Function()? nextPressed,
-    TResult? Function()? skipPressed,
-    TResult? Function()? loginPressed,
-    TResult? Function()? registerPressed,
-    TResult? Function()? finished,
-  }) {
-    return finished?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? pageChanged,
-    TResult Function()? nextPressed,
-    TResult Function()? skipPressed,
-    TResult Function()? loginPressed,
-    TResult Function()? registerPressed,
-    TResult Function()? finished,
-    required TResult orElse(),
-  }) {
-    if (finished != null) {
-      return finished();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_PageChanged value) pageChanged,
-    required TResult Function(_NextPressed value) nextPressed,
-    required TResult Function(_SkipPressed value) skipPressed,
-    required TResult Function(_LoginPressed value) loginPressed,
-    required TResult Function(_RegisterPressed value) registerPressed,
-    required TResult Function(_Finished value) finished,
-  }) {
-    return finished(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_PageChanged value)? pageChanged,
-    TResult? Function(_NextPressed value)? nextPressed,
-    TResult? Function(_SkipPressed value)? skipPressed,
-    TResult? Function(_LoginPressed value)? loginPressed,
-    TResult? Function(_RegisterPressed value)? registerPressed,
-    TResult? Function(_Finished value)? finished,
-  }) {
-    return finished?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_PageChanged value)? pageChanged,
-    TResult Function(_NextPressed value)? nextPressed,
-    TResult Function(_SkipPressed value)? skipPressed,
-    TResult Function(_LoginPressed value)? loginPressed,
-    TResult Function(_RegisterPressed value)? registerPressed,
-    TResult Function(_Finished value)? finished,
-    required TResult orElse(),
-  }) {
-    if (finished != null) {
-      return finished(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Finished implements InfoOnboardingEvent {
-  const factory _Finished() = _$FinishedImpl;
 }
 
 /// @nodoc
 mixin _$InfoOnboardingBlocState {
-  int get pageIndex => throw _privateConstructorUsedError;
-  int get totalPages => throw _privateConstructorUsedError;
-  String? get navigateTo => throw _privateConstructorUsedError;
+  int get pageIndex;
+  int get totalPages;
+  String? get navigateTo;
 
   /// Create a copy of InfoOnboardingBlocState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $InfoOnboardingBlocStateCopyWith<InfoOnboardingBlocState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InfoOnboardingBlocStateCopyWith<$Res> {
-  factory $InfoOnboardingBlocStateCopyWith(InfoOnboardingBlocState value,
-          $Res Function(InfoOnboardingBlocState) then) =
-      _$InfoOnboardingBlocStateCopyWithImpl<$Res, InfoOnboardingBlocState>;
-  @useResult
-  $Res call({int pageIndex, int totalPages, String? navigateTo});
-}
-
-/// @nodoc
-class _$InfoOnboardingBlocStateCopyWithImpl<$Res,
-        $Val extends InfoOnboardingBlocState>
-    implements $InfoOnboardingBlocStateCopyWith<$Res> {
-  _$InfoOnboardingBlocStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of InfoOnboardingBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageIndex = null,
-    Object? totalPages = null,
-    Object? navigateTo = freezed,
-  }) {
-    return _then(_value.copyWith(
-      pageIndex: null == pageIndex
-          ? _value.pageIndex
-          : pageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      navigateTo: freezed == navigateTo
-          ? _value.navigateTo
-          : navigateTo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$InfoOnboardingBlocStateImplCopyWith<$Res>
-    implements $InfoOnboardingBlocStateCopyWith<$Res> {
-  factory _$$InfoOnboardingBlocStateImplCopyWith(
-          _$InfoOnboardingBlocStateImpl value,
-          $Res Function(_$InfoOnboardingBlocStateImpl) then) =
-      __$$InfoOnboardingBlocStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int pageIndex, int totalPages, String? navigateTo});
-}
-
-/// @nodoc
-class __$$InfoOnboardingBlocStateImplCopyWithImpl<$Res>
-    extends _$InfoOnboardingBlocStateCopyWithImpl<$Res,
-        _$InfoOnboardingBlocStateImpl>
-    implements _$$InfoOnboardingBlocStateImplCopyWith<$Res> {
-  __$$InfoOnboardingBlocStateImplCopyWithImpl(
-      _$InfoOnboardingBlocStateImpl _value,
-      $Res Function(_$InfoOnboardingBlocStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoOnboardingBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageIndex = null,
-    Object? totalPages = null,
-    Object? navigateTo = freezed,
-  }) {
-    return _then(_$InfoOnboardingBlocStateImpl(
-      pageIndex: null == pageIndex
-          ? _value.pageIndex
-          : pageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPages: null == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      navigateTo: freezed == navigateTo
-          ? _value.navigateTo
-          : navigateTo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$InfoOnboardingBlocStateImpl implements _InfoOnboardingBlocState {
-  const _$InfoOnboardingBlocStateImpl(
-      {this.pageIndex = 0, this.totalPages = kTotalPages, this.navigateTo});
-
-  @override
-  @JsonKey()
-  final int pageIndex;
-  @override
-  @JsonKey()
-  final int totalPages;
-  @override
-  final String? navigateTo;
-
-  @override
-  String toString() {
-    return 'InfoOnboardingBlocState(pageIndex: $pageIndex, totalPages: $totalPages, navigateTo: $navigateTo)';
-  }
+      _$InfoOnboardingBlocStateCopyWithImpl<InfoOnboardingBlocState>(
+          this as InfoOnboardingBlocState, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InfoOnboardingBlocStateImpl &&
+            other is InfoOnboardingBlocState &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
             (identical(other.totalPages, totalPages) ||
@@ -1231,33 +514,305 @@ class _$InfoOnboardingBlocStateImpl implements _InfoOnboardingBlocState {
   int get hashCode =>
       Object.hash(runtimeType, pageIndex, totalPages, navigateTo);
 
+  @override
+  String toString() {
+    return 'InfoOnboardingBlocState(pageIndex: $pageIndex, totalPages: $totalPages, navigateTo: $navigateTo)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $InfoOnboardingBlocStateCopyWith<$Res> {
+  factory $InfoOnboardingBlocStateCopyWith(InfoOnboardingBlocState value,
+          $Res Function(InfoOnboardingBlocState) _then) =
+      _$InfoOnboardingBlocStateCopyWithImpl;
+  @useResult
+  $Res call({int pageIndex, int totalPages, String? navigateTo});
+}
+
+/// @nodoc
+class _$InfoOnboardingBlocStateCopyWithImpl<$Res>
+    implements $InfoOnboardingBlocStateCopyWith<$Res> {
+  _$InfoOnboardingBlocStateCopyWithImpl(this._self, this._then);
+
+  final InfoOnboardingBlocState _self;
+  final $Res Function(InfoOnboardingBlocState) _then;
+
   /// Create a copy of InfoOnboardingBlocState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pageIndex = null,
+    Object? totalPages = null,
+    Object? navigateTo = freezed,
+  }) {
+    return _then(_self.copyWith(
+      pageIndex: null == pageIndex
+          ? _self.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _self.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      navigateTo: freezed == navigateTo
+          ? _self.navigateTo
+          : navigateTo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [InfoOnboardingBlocState].
+extension InfoOnboardingBlocStatePatterns on InfoOnboardingBlocState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_InfoOnboardingBlocState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_InfoOnboardingBlocState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_InfoOnboardingBlocState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(int pageIndex, int totalPages, String? navigateTo)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState() when $default != null:
+        return $default(_that.pageIndex, _that.totalPages, _that.navigateTo);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(int pageIndex, int totalPages, String? navigateTo)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState():
+        return $default(_that.pageIndex, _that.totalPages, _that.navigateTo);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(int pageIndex, int totalPages, String? navigateTo)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InfoOnboardingBlocState() when $default != null:
+        return $default(_that.pageIndex, _that.totalPages, _that.navigateTo);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _InfoOnboardingBlocState implements InfoOnboardingBlocState {
+  const _InfoOnboardingBlocState(
+      {this.pageIndex = 0, this.totalPages = kTotalPages, this.navigateTo});
+
+  @override
+  @JsonKey()
+  final int pageIndex;
+  @override
+  @JsonKey()
+  final int totalPages;
+  @override
+  final String? navigateTo;
+
+  /// Create a copy of InfoOnboardingBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$InfoOnboardingBlocStateCopyWith<_InfoOnboardingBlocState> get copyWith =>
+      __$InfoOnboardingBlocStateCopyWithImpl<_InfoOnboardingBlocState>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _InfoOnboardingBlocState &&
+            (identical(other.pageIndex, pageIndex) ||
+                other.pageIndex == pageIndex) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages) &&
+            (identical(other.navigateTo, navigateTo) ||
+                other.navigateTo == navigateTo));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, pageIndex, totalPages, navigateTo);
+
+  @override
+  String toString() {
+    return 'InfoOnboardingBlocState(pageIndex: $pageIndex, totalPages: $totalPages, navigateTo: $navigateTo)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$InfoOnboardingBlocStateCopyWith<$Res>
+    implements $InfoOnboardingBlocStateCopyWith<$Res> {
+  factory _$InfoOnboardingBlocStateCopyWith(_InfoOnboardingBlocState value,
+          $Res Function(_InfoOnboardingBlocState) _then) =
+      __$InfoOnboardingBlocStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int pageIndex, int totalPages, String? navigateTo});
+}
+
+/// @nodoc
+class __$InfoOnboardingBlocStateCopyWithImpl<$Res>
+    implements _$InfoOnboardingBlocStateCopyWith<$Res> {
+  __$InfoOnboardingBlocStateCopyWithImpl(this._self, this._then);
+
+  final _InfoOnboardingBlocState _self;
+  final $Res Function(_InfoOnboardingBlocState) _then;
+
+  /// Create a copy of InfoOnboardingBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$InfoOnboardingBlocStateImplCopyWith<_$InfoOnboardingBlocStateImpl>
-      get copyWith => __$$InfoOnboardingBlocStateImplCopyWithImpl<
-          _$InfoOnboardingBlocStateImpl>(this, _$identity);
+  $Res call({
+    Object? pageIndex = null,
+    Object? totalPages = null,
+    Object? navigateTo = freezed,
+  }) {
+    return _then(_InfoOnboardingBlocState(
+      pageIndex: null == pageIndex
+          ? _self.pageIndex
+          : pageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _self.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      navigateTo: freezed == navigateTo
+          ? _self.navigateTo
+          : navigateTo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
-abstract class _InfoOnboardingBlocState implements InfoOnboardingBlocState {
-  const factory _InfoOnboardingBlocState(
-      {final int pageIndex,
-      final int totalPages,
-      final String? navigateTo}) = _$InfoOnboardingBlocStateImpl;
-
-  @override
-  int get pageIndex;
-  @override
-  int get totalPages;
-  @override
-  String? get navigateTo;
-
-  /// Create a copy of InfoOnboardingBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InfoOnboardingBlocStateImplCopyWith<_$InfoOnboardingBlocStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

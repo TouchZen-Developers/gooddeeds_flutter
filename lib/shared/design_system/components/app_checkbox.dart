@@ -31,9 +31,9 @@ class _AppCheckboxState extends State<AppCheckbox> {
   bool _focused = false;
 
   double get _boxSide => switch (widget.size) {
-    CheckboxSize.small => 18.0,
-    CheckboxSize.medium => 20.0,
-  };
+        CheckboxSize.small => 18.0,
+        CheckboxSize.medium => 20.0,
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -79,14 +79,14 @@ class _AppCheckboxState extends State<AppCheckbox> {
       height: _boxSide,
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(context.radii.md),
+        borderRadius: BorderRadius.circular(context.radii.sm),
         border: Border.all(color: border, width: 1.5),
         boxShadow: [
           BoxShadow(color: ringColor, blurRadius: 0, spreadRadius: 4),
         ],
       ),
       child: widget.value
-          ? Icon(Icons.check, size: _boxSide - 8, color: iconColor)
+          ? Icon(Icons.check, size: _boxSide - 3, color: iconColor)
           : null,
     );
 
@@ -118,9 +118,9 @@ class _AppCheckboxState extends State<AppCheckbox> {
           onTap: isDisabled
               ? null
               : () {
-            final next = !widget.value;
-            widget.onChanged?.call(next);
-          },
+                  final next = !widget.value;
+                  widget.onChanged?.call(next);
+                },
           child: Padding(
             padding: EdgeInsets.all(
               (40 - _boxSide).clamp(0, 40).toDouble() / 2,

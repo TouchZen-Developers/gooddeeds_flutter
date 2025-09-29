@@ -17,8 +17,6 @@ class InfoOnboardingScreen extends StatefulWidget {
     super.key,
   });
 
-
-
   @override
   State<InfoOnboardingScreen> createState() => _InfoOnboardingScreenState();
 }
@@ -26,7 +24,8 @@ class InfoOnboardingScreen extends StatefulWidget {
 class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
   late final PageController _imgCtrl;
   late final PageController _textCtrl;
-  bool _programmatic = false; //to handle skip button and prevent calling _animateBoth twice
+  bool _programmatic =
+      false; //to handle skip button and prevent calling _animateBoth twice
   @override
   void initState() {
     super.initState();
@@ -48,12 +47,13 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
       _textCtrl.animateToPage(index, duration: d, curve: c),
     ]);
   }
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<InfoOnboardingBloc>();
     final total = InfoSlides.all.length;
 
-    return  MultiBlocListener(
+    return MultiBlocListener(
       listeners: [
         BlocListener<InfoOnboardingBloc, InfoOnboardingBlocState>(
           listenWhen: (p, c) => p.pageIndex != c.pageIndex,
@@ -64,18 +64,20 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
             _programmatic = false;
           },
         ),
-
         BlocListener<InfoOnboardingBloc, InfoOnboardingBlocState>(
-          listenWhen: (p, c) => p.navigateTo != c.navigateTo && c.navigateTo != null,
-          listener: (ctx, s) => ctx.pushNamed(s.navigateTo!),
+          listenWhen: (p, c) =>
+              p.navigateTo != c.navigateTo && c.navigateTo != null,
+          listener: (ctx, s) => ctx.push(s.navigateTo!),
         ),
       ],
-      child:Scaffold(
+      child: Scaffold(
         body: Stack(
           children: [
             const SoftCircle(
-              leftFactor: -1 / 3, topFactor: -1 / 25,
-              diameterFactor: 2 / 3, color: BrandTones.accentPeach20,
+              leftFactor: -1 / 3,
+              topFactor: -1 / 25,
+              diameterFactor: 2 / 3,
+              color: BrandTones.accentPeach20,
             ),
             SafeArea(
               child: Column(
@@ -91,7 +93,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height:64),
+                  SizedBox(height: 64),
                   OnboardingDots(controller: _imgCtrl, count: total),
                   const SizedBox(height: 72),
                   SizedBox(
@@ -105,10 +107,14 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                     padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
                     child: BottomActionsBar(
                       total: total,
-                      onNext: () => bloc.add(const InfoOnboardingEvent.nextPressed()),
-                      onLogin:    () => bloc.add(const InfoOnboardingEvent.loginPressed()),
-                      onRegister: () => bloc.add(const InfoOnboardingEvent.registerPressed()),
-                      onFinished: () => bloc.add(const InfoOnboardingEvent.finished()),
+                      onNext: () =>
+                          bloc.add(const InfoOnboardingEvent.nextPressed()),
+                      onLogin: () =>
+                          bloc.add(const InfoOnboardingEvent.loginPressed()),
+                      onRegister: () =>
+                          bloc.add(const InfoOnboardingEvent.registerPressed()),
+                      onFinished: () =>
+                          bloc.add(const InfoOnboardingEvent.finished()),
                     ),
                   ),
                 ],

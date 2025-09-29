@@ -7,6 +7,7 @@ import 'package:gooddeeds/shared/design_system/components/soft_circle.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart' as ds;
+import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../shared/strings/strings.dart';
 import '../../../../splash/presentation/widgets/splash_brand.dart';
@@ -77,7 +78,9 @@ class RegisterMenuScreen extends StatelessWidget {
                       fullWidth: true,
                       color: BrandTones.grey100,
                       leading: Assets.icons.apple.svg(width: 24, height: 24),
-                      onPressed: () {},
+                      onPressed: () {
+                        DonatingHomeRoute().go(context);
+                      },
                     ),
                     SizedBox(height: gaps.md),
                     PrimaryButton(
