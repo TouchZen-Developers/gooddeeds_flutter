@@ -1,15 +1,14 @@
 part of 'info_onboarding_bloc.dart';
 
 @freezed
-class InfoOnboardingBlocState with _$InfoOnboardingBlocState {
+abstract class InfoOnboardingBlocState with _$InfoOnboardingBlocState {
   const factory InfoOnboardingBlocState({
     @Default(0) int pageIndex,
     @Default(kTotalPages) int totalPages,
     String? navigateTo,
   }) = _InfoOnboardingBlocState;
 
-  factory InfoOnboardingBlocState.initial() =>
-      const InfoOnboardingBlocState(pageIndex: 0, totalPages: kTotalPages);
+  factory InfoOnboardingBlocState.initial() => const InfoOnboardingBlocState();
 }
 
 extension InfoOnboardingX on InfoOnboardingBlocState {

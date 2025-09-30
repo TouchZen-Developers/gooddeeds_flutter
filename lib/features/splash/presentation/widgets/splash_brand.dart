@@ -24,10 +24,12 @@ class SplashBrand extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Assets.icons.logo.svg(width: logo, height: logo, semanticsLabel: 'goodDeeds logo'),
+        Assets.icons.logo
+            .svg(width: logo, height: logo, semanticsLabel: 'goodDeeds logo'),
         if (showWordmark) ...[
           SizedBox(height: gap),
-          Assets.icons.goodDeeds.svg(height: wordmarkH, semanticsLabel: 'goodDeeds'),
+          Assets.icons.goodDeeds
+              .svg(height: wordmarkH, semanticsLabel: 'goodDeeds'),
         ],
       ],
     );

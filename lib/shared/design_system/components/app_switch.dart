@@ -5,11 +5,6 @@ import '../theme/context_ext.dart';
 enum SwitchSize { small, medium }
 
 class AppSwitch extends StatefulWidget {
-  final bool value;
-  final ValueChanged<bool>? onChanged;
-  final String? label;
-  final SwitchSize size;
-
   const AppSwitch({
     super.key,
     required this.value,
@@ -17,6 +12,10 @@ class AppSwitch extends StatefulWidget {
     this.label,
     this.size = SwitchSize.medium,
   });
+  final bool value;
+  final ValueChanged<bool>? onChanged;
+  final String? label;
+  final SwitchSize size;
 
   @override
   State<AppSwitch> createState() => _AppSwitchState();
@@ -29,29 +28,30 @@ class _AppSwitchState extends State<AppSwitch> {
   // metrics
   double get _trackH => widget.size == SwitchSize.small ? 22 : 26;
   double get _trackW => widget.size == SwitchSize.small ? 40 : 48;
-  double get _thumb  => widget.size == SwitchSize.small ? 14 : 18;
+  double get _thumb => widget.size == SwitchSize.small ? 14 : 18;
 
   @override
   Widget build(BuildContext context) {
     final cs = context.colors;
     final isDisabled = widget.onChanged == null;
 
-
     final bool on = widget.value;
-    Color trackColor = on ? cs.primary : cs.onSurface.withOpacity(.12);
-    Color thumbColor = on ? cs.onPrimary : cs.onSurface.withOpacity(.60);
-    Color borderColor = on ? cs.primary : cs.onSurface.withOpacity(.24);
+    Color trackColor = on ? cs.primary : cs.onSurface.withValues(alpha: .12);
+    Color thumbColor = on ? cs.onPrimary : cs.onSurface.withValues(alpha: .60);
+    Color borderColor = on ? cs.primary : cs.onSurface.withValues(alpha: .24);
 
     if (isDisabled) {
-      trackColor = cs.onSurface.withOpacity(.08);
-      thumbColor = cs.onSurface.withOpacity(.38);
+      trackColor = cs.onSurface.withValues(alpha: .08);
+      thumbColor = cs.onSurface.withValues(alpha: .38);
       borderColor = Colors.transparent;
     } else if (_hovered) {
-      trackColor = on ? cs.primary.withOpacity(.90) : cs.onSurface.withOpacity(.16);
+      trackColor = on
+          ? cs.primary.withValues(alpha: .90)
+          : cs.onSurface.withValues(alpha: .16);
     }
 
     final focusRing = (_focused && !isDisabled)
-        ? (on ? cs.primary : cs.onSurface).withOpacity(.24)
+        ? (on ? cs.primary : cs.onSurface).withValues(alpha: .24)
         : Colors.transparent;
 
     final track = AnimatedContainer(
@@ -63,7 +63,9 @@ class _AppSwitchState extends State<AppSwitch> {
         color: trackColor,
         borderRadius: BorderRadius.circular(_trackH),
         border: Border.all(color: borderColor, width: on ? 0 : 1),
-        boxShadow: [BoxShadow(color: focusRing, blurRadius: 0, spreadRadius: 4)],
+        boxShadow: [
+          BoxShadow(color: focusRing, spreadRadius: 4),
+        ],
       ),
       child: Align(
         alignment: on ? Alignment.centerRight : Alignment.centerLeft,
@@ -88,7 +90,9 @@ class _AppSwitchState extends State<AppSwitch> {
           Text(
             widget.label!,
             style: context.typo.bodyMedium.copyWith(
-              color: isDisabled ? cs.onSurface.withOpacity(.38) : cs.onSurface,
+              color: isDisabled
+                  ? cs.onSurface.withValues(alpha: .38)
+                  : cs.onSurface,
             ),
           ),
         ],
@@ -104,7 +108,8 @@ class _AppSwitchState extends State<AppSwitch> {
         label: widget.label,
         child: InkWell(
           borderRadius: BorderRadius.circular(_trackH),
-          onTap: isDisabled ? null : () => widget.onChanged?.call(!widget.value),
+          onTap:
+              isDisabled ? null : () => widget.onChanged?.call(!widget.value),
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: ((40 - _trackH) / 2).clamp(0, 12),

@@ -3,6 +3,7 @@ import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
 import '../theme/context_ext.dart';
 
 enum ButtonVariant { filled, outlined, ghost }
+
 enum ButtonSize { small, medium, large }
 
 class PrimaryButton extends StatelessWidget {
@@ -41,7 +42,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? background;
 
   ({EdgeInsets padding, double minHeight, double radius, TextStyle text})
-  _metrics(BuildContext context) {
+      _metrics(BuildContext context) {
     final t = context.typo;
     final textStyle = t.buttonNormal.copyWith(
       fontSize: 16,
@@ -53,24 +54,24 @@ class PrimaryButton extends StatelessWidget {
     switch (size) {
       case ButtonSize.small:
         return (
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        minHeight: 40,
-        radius: 20,
-        text: textStyle.copyWith(fontSize: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          minHeight: 40,
+          radius: 20,
+          text: textStyle.copyWith(fontSize: 14),
         );
       case ButtonSize.medium:
         return (
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        minHeight: 48,
-        radius: 24,
-        text: textStyle,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          minHeight: 48,
+          radius: 24,
+          text: textStyle,
         );
       case ButtonSize.large:
         return (
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        minHeight: 56,
-        radius: 28,
-        text: textStyle,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          minHeight: 56,
+          radius: 28,
+          text: textStyle,
         );
     }
   }
@@ -94,7 +95,7 @@ class PrimaryButton extends StatelessWidget {
       case ButtonVariant.outlined:
         bg = background ?? Colors.transparent;
         fg = base;
-        border = Border.all(color: base, width: 1);
+        border = Border.all(color: base);
         break;
       case ButtonVariant.ghost:
         bg = background ?? Colors.transparent;
@@ -112,7 +113,7 @@ class PrimaryButton extends StatelessWidget {
         bg = Colors.transparent;
         fg = cs.onSurface.withValues(alpha: 0.38);
         if (variant == ButtonVariant.outlined) {
-          border = Border.all(color: cs.onSurface.withValues(alpha: 0.12), width: 1);
+          border = Border.all(color: cs.onSurface.withValues(alpha: 0.12));
         }
       }
     }
@@ -122,7 +123,10 @@ class PrimaryButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (leading != null) ...[
-          IconTheme.merge(data: IconThemeData(color: fg, size: 18), child: leading!),
+          IconTheme.merge(
+            data: IconThemeData(color: fg, size: 18),
+            child: leading!,
+          ),
           SizedBox(width: context.gaps.xs),
         ] else if (leadingIcon != null) ...[
           Icon(leadingIcon, size: 18, color: fg),
@@ -140,7 +144,10 @@ class PrimaryButton extends StatelessWidget {
         ),
         if (trailing != null) ...[
           SizedBox(width: context.gaps.xs),
-          IconTheme.merge(data: IconThemeData(color: fg, size: 18), child: trailing!),
+          IconTheme.merge(
+            data: IconThemeData(color: fg, size: 18),
+            child: trailing!,
+          ),
         ] else if (trailingIcon != null) ...[
           SizedBox(width: context.gaps.xs),
           Icon(trailingIcon, size: 18, color: fg),
@@ -174,13 +181,13 @@ class PrimaryButton extends StatelessWidget {
               padding: m.padding,
               child: loading
                   ? SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(fg),
-                ),
-              )
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(fg),
+                      ),
+                    )
                   : content,
             ),
           ),

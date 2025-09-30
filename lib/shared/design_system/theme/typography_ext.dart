@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../tokens/typography.dart';
 
 class TypographyExt extends ThemeExtension<TypographyExt> {
-  final TypographyTokens tokens;
   const TypographyExt(this.tokens);
+  final TypographyTokens tokens;
 
   @override
   TypographyExt copyWith({TypographyTokens? tokens}) {
@@ -12,11 +12,15 @@ class TypographyExt extends ThemeExtension<TypographyExt> {
   }
 
   @override
-  ThemeExtension<TypographyExt> lerp(covariant ThemeExtension<TypographyExt>? other, double t) {
+  ThemeExtension<TypographyExt> lerp(
+    covariant ThemeExtension<TypographyExt>? other,
+    double t,
+  ) {
     return this;
   }
 }
 
 extension TypographyX on BuildContext {
-  TypographyTokens get typo => Theme.of(this).extension<TypographyExt>()!.tokens;
+  TypographyTokens get typo =>
+      Theme.of(this).extension<TypographyExt>()!.tokens;
 }

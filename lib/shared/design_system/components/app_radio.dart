@@ -5,14 +5,6 @@ import '../theme/context_ext.dart';
 enum RadioSize { small, medium }
 
 class AppRadio<T> extends StatefulWidget {
-  final T value;
-  final T? groupValue;
-  final ValueChanged<T?>? onChanged;
-  final String? label;
-  final RadioSize size;
-  final bool error;
-  final bool showCenterDot;
-
   const AppRadio({
     super.key,
     required this.value,
@@ -23,6 +15,13 @@ class AppRadio<T> extends StatefulWidget {
     this.error = false,
     this.showCenterDot = false,
   });
+  final T value;
+  final T? groupValue;
+  final ValueChanged<T?>? onChanged;
+  final String? label;
+  final RadioSize size;
+  final bool error;
+  final bool showCenterDot;
 
   @override
   State<AppRadio<T>> createState() => _AppRadioState<T>();
@@ -33,11 +32,12 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
   bool _focused = false;
 
   double get _side => switch (widget.size) {
-    RadioSize.small => 18.0,
-    RadioSize.medium => 20.0,
-  };
+        RadioSize.small => 18.0,
+        RadioSize.medium => 20.0,
+      };
 
-  bool get _selected => widget.groupValue != null && widget.value == widget.groupValue;
+  bool get _selected =>
+      widget.groupValue != null && widget.value == widget.groupValue;
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +52,16 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
 
     // Disabled
     if (isDisabled) {
-      ring = cs.onSurface.withOpacity(.12);
-      bg   = cs.surface;
+      ring = cs.onSurface.withValues(alpha: .12);
+      bg = cs.surface;
     } else {
       if (_hovered && !_selected) {
-        bg = cs.primary.withOpacity(.06);
+        bg = cs.primary.withValues(alpha: .06);
       }
     }
 
     final Color focusRing = (_focused && !isDisabled)
-        ? (widget.error ? cs.error : cs.primary).withOpacity(.24)
+        ? (widget.error ? cs.error : cs.primary).withValues(alpha: .24)
         : Colors.transparent;
 
     final radioVisual = AnimatedContainer(
@@ -72,27 +72,28 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
         color: bg,
         shape: BoxShape.circle,
         border: Border.all(color: ring, width: ringWidth),
-        boxShadow: [BoxShadow(color: focusRing, blurRadius: 0, spreadRadius: 4)],
+        boxShadow: [
+          BoxShadow(color: focusRing, spreadRadius: 4),
+        ],
       ),
       child: _selected && widget.showCenterDot
           ? Center(
-        child: Container(
-          width: _side / 2.6,
-          height: _side / 2.6,
-          decoration: BoxDecoration(
-            color: isDisabled
-                ? cs.onSurface.withOpacity(.38)
-                : (widget.error ? cs.error : cs.primary),
-            shape: BoxShape.circle,
-          ),
-        ),
-      )
+              child: Container(
+                width: _side / 2.6,
+                height: _side / 2.6,
+                decoration: BoxDecoration(
+                  color: isDisabled
+                      ? cs.onSurface.withValues(alpha: .38)
+                      : (widget.error ? cs.error : cs.primary),
+                  shape: BoxShape.circle,
+                ),
+              ),
+            )
           : null,
     );
 
-    final textColor = isDisabled
-        ? cs.onSurface.withOpacity(.38)
-        : cs.onSurface;
+    final textColor =
+        isDisabled ? cs.onSurface.withValues(alpha: .38) : cs.onSurface;
 
     final row = Row(
       mainAxisSize: MainAxisSize.min,
@@ -100,8 +101,11 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
         radioVisual,
         if (widget.label != null) ...[
           SizedBox(width: context.gaps.sm),
-          Text(widget.label!, style: context.typo.bodyMedium.copyWith(color: textColor)),
-        ]
+          Text(
+            widget.label!,
+            style: context.typo.bodyMedium.copyWith(color: textColor),
+          ),
+        ],
       ],
     );
 

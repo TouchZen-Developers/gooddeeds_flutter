@@ -5,13 +5,6 @@ import '../theme/context_ext.dart';
 enum CheckboxSize { small, medium }
 
 class AppCheckbox extends StatefulWidget {
-  final bool value;
-  final ValueChanged<bool>? onChanged;
-  final String? label;
-  final CheckboxSize size;
-  final bool error;
-  final bool tristate;
-
   const AppCheckbox({
     super.key,
     required this.value,
@@ -21,6 +14,12 @@ class AppCheckbox extends StatefulWidget {
     this.error = false,
     this.tristate = false,
   });
+  final bool value;
+  final ValueChanged<bool>? onChanged;
+  final String? label;
+  final CheckboxSize size;
+  final bool error;
+  final bool tristate;
 
   @override
   State<AppCheckbox> createState() => _AppCheckboxState();
@@ -31,9 +30,9 @@ class _AppCheckboxState extends State<AppCheckbox> {
   bool _focused = false;
 
   double get _boxSide => switch (widget.size) {
-    CheckboxSize.small => 18.0,
-    CheckboxSize.medium => 20.0,
-  };
+        CheckboxSize.small => 18.0,
+        CheckboxSize.medium => 20.0,
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -56,21 +55,21 @@ class _AppCheckboxState extends State<AppCheckbox> {
 
     // Disabled
     if (isDisabled) {
-      final o12 = cs.onSurface.withOpacity(.12);
-      final o38 = cs.onSurface.withOpacity(.38);
+      final o12 = cs.onSurface.withValues(alpha: .12);
+      final o38 = cs.onSurface.withValues(alpha: .38);
       border = widget.value ? o12 : o12;
       bg = widget.value ? o12 : cs.surface;
       iconColor = o38;
     } else {
       // Hover overlay
       if (_hovered && !widget.value) {
-        bg = cs.primary.withOpacity(.08);
+        bg = cs.primary.withValues(alpha: .08);
       }
     }
 
     // Focus ring (outer shadow)
     final ringColor = (_focused && !isDisabled)
-        ? (widget.error ? cs.error : cs.primary).withOpacity(.24)
+        ? (widget.error ? cs.error : cs.primary).withValues(alpha: .24)
         : Colors.transparent;
 
     final box = AnimatedContainer(
@@ -79,14 +78,14 @@ class _AppCheckboxState extends State<AppCheckbox> {
       height: _boxSide,
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(context.radii.md),
+        borderRadius: BorderRadius.circular(context.radii.sm),
         border: Border.all(color: border, width: 1.5),
         boxShadow: [
-          BoxShadow(color: ringColor, blurRadius: 0, spreadRadius: 4),
+          BoxShadow(color: ringColor, spreadRadius: 4),
         ],
       ),
       child: widget.value
-          ? Icon(Icons.check, size: _boxSide - 8, color: iconColor)
+          ? Icon(Icons.check, size: _boxSide - 3, color: iconColor)
           : null,
     );
 
@@ -99,7 +98,9 @@ class _AppCheckboxState extends State<AppCheckbox> {
           Text(
             widget.label!,
             style: context.typo.bodyMedium.copyWith(
-              color: isDisabled ? cs.onSurface.withOpacity(.38) : cs.onSurface,
+              color: isDisabled
+                  ? cs.onSurface.withValues(alpha: .38)
+                  : cs.onSurface,
             ),
           ),
         ],
@@ -118,9 +119,9 @@ class _AppCheckboxState extends State<AppCheckbox> {
           onTap: isDisabled
               ? null
               : () {
-            final next = !widget.value;
-            widget.onChanged?.call(next);
-          },
+                  final next = !widget.value;
+                  widget.onChanged?.call(next);
+                },
           child: Padding(
             padding: EdgeInsets.all(
               (40 - _boxSide).clamp(0, 40).toDouble() / 2,
