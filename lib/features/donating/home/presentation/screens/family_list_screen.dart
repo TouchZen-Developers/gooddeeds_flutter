@@ -56,10 +56,10 @@ class FamilyListScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -91,7 +91,7 @@ class FamilyListScreen extends StatelessWidget {
                 return const Gap(16);
               },
             ),
-          )
+          ),
         ],
       ),
     );
@@ -143,7 +143,6 @@ class _EmptyFamilyList extends StatelessWidget {
         padding: const EdgeInsets.all(40.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Assets.images.infoTwo.svg(height: 140),
             const Gap(24),

@@ -28,54 +28,55 @@ class FamilyCard extends StatelessWidget {
           ),
           const Gap(16),
           Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Smith Family',
-                style: context.textStyle.bodyLargeSemiBold,
-              ),
-              const Gap(8),
-              Row(
-                children: [
-                  Container(
-                    width: 24,
-                    height: 24,
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: Color(0xff27ae60).withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Smith Family',
+                  style: context.textStyle.bodyLargeSemiBold,
+                ),
+                const Gap(8),
+                Row(
+                  children: [
+                    Container(
+                      width: 24,
+                      height: 24,
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Color(0xff27ae60).withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Assets.icons.book.svg(),
                     ),
-                    child: Assets.icons.book.svg(),
-                  ),
-                  const Gap(8),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: Color(0xff2F80ED).withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
+                    const Gap(8),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Color(0xff2F80ED).withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Assets.icons.fillCart.svg(),
                     ),
-                    child: Assets.icons.fillCart.svg(),
-                  ),
-                ],
-              ),
-              const Gap(8),
-              Row(
-                children: [
-                  Assets.icons.marker.svg(),
-                  const Gap(4),
-                  Text(
-                    'New York, USA',
-                    style: context.textStyle.bodySmallRegular.copyWith(
-                      color: BrandTones.info,
+                  ],
+                ),
+                const Gap(8),
+                Row(
+                  children: [
+                    Assets.icons.marker.svg(),
+                    const Gap(4),
+                    Text(
+                      'New York, USA',
+                      style: context.textStyle.bodySmallRegular.copyWith(
+                        color: BrandTones.info,
+                      ),
                     ),
-                  )
-                ],
-              ),
-            ],
-          ))
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -31,8 +31,6 @@ class BottomActionsBar extends StatelessWidget {
                 child: PrimaryButton(
                   label: S.login,
                   onPressed: onLogin ?? () {},
-                  variant: ButtonVariant.filled,
-                  size: ButtonSize.medium,
                 ),
               ),
               const SizedBox(width: 12),
@@ -41,7 +39,6 @@ class BottomActionsBar extends StatelessWidget {
                   label: S.register,
                   onPressed: onRegister ?? () {},
                   variant: ButtonVariant.outlined,
-                  size: ButtonSize.medium,
                 ),
               ),
             ],
@@ -49,15 +46,12 @@ class BottomActionsBar extends StatelessWidget {
         }
 
         return Align(
-          alignment: Alignment.center,
           child: PrimaryButton(
             label: S.continueText,
             onPressed: () {
               onNext?.call();
               if (state.pageIndex >= total - 1) onFinished?.call();
             },
-            variant: ButtonVariant.filled,
-            size: ButtonSize.medium,
             minWidth: 140,
           ),
         );

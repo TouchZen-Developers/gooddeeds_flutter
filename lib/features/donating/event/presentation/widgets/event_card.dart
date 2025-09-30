@@ -50,7 +50,7 @@ class EventCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -45,7 +45,9 @@ class StatusColors extends ThemeExtension<StatusColors> {
 
   @override
   ThemeExtension<StatusColors> lerp(
-          ThemeExtension<StatusColors>? other, double t) =>
+    ThemeExtension<StatusColors>? other,
+    double t,
+  ) =>
       this;
 
   static const light = StatusColors(

@@ -49,10 +49,9 @@ class RegisterMenuScreen extends StatelessWidget {
             child: SafeArea(
               bottom: false,
               child: Align(
-                alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: gaps.lg),
-                  child: const SplashBrand(size: SplashBrandSize.md),
+                  child: const SplashBrand(),
                 ),
               ),
             ),
@@ -71,7 +70,6 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithApple,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
@@ -84,7 +82,6 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithGoogle,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
@@ -95,7 +92,6 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithEmail,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
@@ -105,17 +101,15 @@ class RegisterMenuScreen extends StatelessWidget {
                     SizedBox(height: gaps.xxl),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ds.GDText(
-                          "${S.registerChoiceLoginPrefix} ",
+                          '${S.registerChoiceLoginPrefix} ',
                           variant: ds.GDTextVariant.bodyMedium,
                           emphasis: ds.GDEmphasis.muted,
                           fontWeight: FontWeight.w500,
                         ),
                         GDTextLink(
                           label: S.login,
-                          variant: GDTextLinkVariant.normal,
                           padding: EdgeInsets.zero,
                           emphasis: GDTextEmphasis.primary,
                           style: const TextStyle(fontWeight: FontWeight.w500),

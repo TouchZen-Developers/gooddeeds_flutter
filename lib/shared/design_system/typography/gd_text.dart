@@ -104,13 +104,15 @@ class GDText extends StatelessWidget {
       resolvedColor = resolvedColor.withValues(alpha: alpha!.clamp(0.0, 1.0));
     }
 
-    final merged = base.merge(TextStyle(
-      color: resolvedColor,
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      height: height,
-      letterSpacing: letterSpacing,
-    ));
+    final merged = base.merge(
+      TextStyle(
+        color: resolvedColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        height: height,
+        letterSpacing: letterSpacing,
+      ),
+    );
 
     final finalStyle = style == null ? merged : merged.merge(style);
 

@@ -21,70 +21,76 @@ class DonatingAppScaffoldWithNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: body,
-      bottomNavigationBar: LayoutBuilder(builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        return Container(
-          width: double.infinity,
-          height: 94,
-          decoration: BoxDecoration(color: Colors.white, boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 14,
+      bottomNavigationBar: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          return Container(
+            width: double.infinity,
+            height: 94,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 14,
+                ),
+              ],
             ),
-          ]),
-          child: Stack(
-            children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeIn,
-                left: (width / 4) * currentIndex + ((width / 4) / 2) - 25,
-                child: Container(
-                  width: 50,
-                  height: 4,
-                  decoration: BoxDecoration(
+            child: Stack(
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeIn,
+                  left: (width / 4) * currentIndex + ((width / 4) / 2) - 25,
+                  child: Container(
+                    width: 50,
+                    height: 4,
+                    decoration: BoxDecoration(
                       color: context.colors.primary,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(4),
                         bottomRight: Radius.circular(4),
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Row(
-                  children: [
-                    _BottomNavigationItem(
-                      icon: Assets.icons.home.path,
-                      label: context.loc.home,
-                      selected: currentIndex == 0,
-                      onTap: () => onDestinationSelected.call(0),
-                    ),
-                    _BottomNavigationItem(
-                      icon: Assets.icons.cart.path,
-                      label: context.loc.myCart,
-                      selected: currentIndex == 1,
-                      onTap: () => onDestinationSelected.call(1),
-                    ),
-                    _BottomNavigationItem(
-                      icon: Assets.icons.orders.path,
-                      label: context.loc.orders,
-                      selected: currentIndex == 2,
-                      onTap: () => onDestinationSelected.call(2),
-                    ),
-                    _BottomNavigationItem(
-                      icon: Assets.icons.profile.path,
-                      label: context.loc.myProfile,
-                      selected: currentIndex == 3,
-                      onTap: () => onDestinationSelected.call(3),
-                    ),
-                  ],
+                SizedBox(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Row(
+                    children: [
+                      _BottomNavigationItem(
+                        icon: Assets.icons.home.path,
+                        label: context.loc.home,
+                        selected: currentIndex == 0,
+                        onTap: () => onDestinationSelected.call(0),
+                      ),
+                      _BottomNavigationItem(
+                        icon: Assets.icons.cart.path,
+                        label: context.loc.myCart,
+                        selected: currentIndex == 1,
+                        onTap: () => onDestinationSelected.call(1),
+                      ),
+                      _BottomNavigationItem(
+                        icon: Assets.icons.orders.path,
+                        label: context.loc.orders,
+                        selected: currentIndex == 2,
+                        onTap: () => onDestinationSelected.call(2),
+                      ),
+                      _BottomNavigationItem(
+                        icon: Assets.icons.profile.path,
+                        label: context.loc.myProfile,
+                        selected: currentIndex == 3,
+                        onTap: () => onDestinationSelected.call(3),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

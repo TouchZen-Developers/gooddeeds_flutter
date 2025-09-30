@@ -48,7 +48,7 @@ class MyCartItem extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: Assets.icons.delete.svg(),
-              )
+              ),
             ],
           ),
           _CartItem(),
@@ -115,7 +115,7 @@ class _CartItem extends StatelessWidget {
               Icons.close,
               size: 20,
             ),
-          )
+          ),
         ],
       ),
     );

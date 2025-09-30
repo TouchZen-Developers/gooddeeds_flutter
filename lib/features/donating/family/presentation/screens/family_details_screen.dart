@@ -36,10 +36,11 @@ class FamilyDetailsScreen extends StatelessWidget {
                 height: 190,
                 width: double.infinity,
                 child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.all(
-                      Radius.circular(12),
-                    ),
-                    child: Assets.images.mock3.image(fit: BoxFit.cover)),
+                  borderRadius: BorderRadiusGeometry.all(
+                    Radius.circular(12),
+                  ),
+                  child: Assets.images.mock3.image(fit: BoxFit.cover),
+                ),
               ),
               const Gap(20),
               Row(
@@ -64,7 +65,7 @@ class FamilyDetailsScreen extends StatelessWidget {
                                   context.textStyle.bodyMediumRegular.copyWith(
                                 color: BrandTones.info,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -75,7 +76,7 @@ class FamilyDetailsScreen extends StatelessWidget {
                     style: context.textStyle.bodyMediumRegular.copyWith(
                       color: context.onSurface.shade50,
                     ),
-                  )
+                  ),
                 ],
               ),
               const Gap(20),
@@ -218,15 +219,16 @@ class FamilyDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                            child: Text(
-                          'Guy Hawkins',
-                          style: context.textStyle.bodyMediumMedium.copyWith(
-                            color: context.onSurface.shade100,
+                          child: Text(
+                            'Guy Hawkins',
+                            style: context.textStyle.bodyMediumMedium.copyWith(
+                              color: context.onSurface.shade100,
+                            ),
+                            textAlign: TextAlign.end,
                           ),
-                          textAlign: TextAlign.end,
-                        ))
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -252,15 +254,16 @@ class FamilyDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                            child: Text(
-                          'Guy Hawkins',
-                          style: context.textStyle.bodyMediumMedium.copyWith(
-                            color: context.onSurface.shade100,
+                          child: Text(
+                            'Guy Hawkins',
+                            style: context.textStyle.bodyMediumMedium.copyWith(
+                              color: context.onSurface.shade100,
+                            ),
+                            textAlign: TextAlign.end,
                           ),
-                          textAlign: TextAlign.end,
-                        ))
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
