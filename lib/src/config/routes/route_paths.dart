@@ -9,4 +9,5 @@ class RoutePaths {
   static const donaitingMyCart = '/donaiting_my_cart';
   static const donaitingOrders = '/donaiting_orders';
   static const donaitingProfile = '/donaiting_profile';
+  static const checkout = '/checkout';
 }

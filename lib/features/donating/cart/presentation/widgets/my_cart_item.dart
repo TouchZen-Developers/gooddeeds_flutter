@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/app_checkbox.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
 class MyCartItem extends StatelessWidget {
   const MyCartItem({super.key});

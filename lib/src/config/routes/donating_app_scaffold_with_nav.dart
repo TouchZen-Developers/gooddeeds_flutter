@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class DonatingAppScaffoldWithNavigationBar extends StatelessWidget {
@@ -113,7 +112,7 @@ class _BottomNavigationItem extends StatelessWidget {
             SvgPicture.asset(
               icon,
               colorFilter: ColorFilter.mode(
-                selected ? context.colors.primary : BrandTones.grey50,
+                selected ? context.colors.primary : context.onSurface.shade50!,
                 BlendMode.srcIn,
               ),
             ),
@@ -126,7 +125,7 @@ class _BottomNavigationItem extends StatelessWidget {
                       color: context.colors.primary,
                     )
                   : context.textStyles.bodySmall?.copyWith(
-                      color: BrandTones.grey50,
+                      color: context.onSurface.shade50,
                     ),
             ),
           ],

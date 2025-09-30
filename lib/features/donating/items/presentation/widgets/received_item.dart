@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
 class ReceivedItem extends StatelessWidget {
   const ReceivedItem({super.key});
@@ -16,7 +15,7 @@ class ReceivedItem extends StatelessWidget {
           Text(
             'x1',
             style: context.textStyle.bodySmallRegular.copyWith(
-              color: BrandTones.grey50,
+              color: context.onSurface.shade50,
             ),
           ),
           const Gap(8),

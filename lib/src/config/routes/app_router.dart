@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gooddeeds/features/donating/cart/presentation/screens/checkout_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/donaiting_my_cart_screen.dart';
 import 'package:gooddeeds/features/donating/family/presentation/screens/family_details_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_home_screen.dart';
@@ -56,6 +57,14 @@ class RegisterMenuRoute extends GoRouteData with $RegisterMenuRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const RegisterMenuScreen();
+  }
+}
+
+@TypedGoRoute<CheckoutRoute>(path: RoutePaths.checkout)
+class CheckoutRoute extends GoRouteData with $CheckoutRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const CheckoutScreen();
   }
 }
 

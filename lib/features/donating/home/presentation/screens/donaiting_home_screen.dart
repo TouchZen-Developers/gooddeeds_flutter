@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gooddeeds/features/donating/home/presentation/widgets/event_card.dart';
+import 'package:gooddeeds/features/donating/family/presentation/screens/family_details_screen.dart';
+import 'package:gooddeeds/features/donating/event/presentation/widgets/event_card.dart';
 import 'package:gooddeeds/features/donating/family/presentation/widgets/family_card.dart';
 import 'package:gooddeeds/features/donating/home/presentation/widgets/filter_modal.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
@@ -126,10 +127,21 @@ class DonaitingHomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) => SizedBox(
                     width: MediaQuery.of(context).size.width / 1.35,
                     child: GestureDetector(
-                        onTap: () {
-                          FamilyDetailsRoute().push(context);
-                        },
-                        child: FamilyCard()),
+                      onTap: () {
+                        // FamilyDetailsRoute().push(context);
+                        showDialog(
+                          fullscreenDialog: true,
+                          context: context,
+                          useSafeArea: false,
+                          builder: (context) => Dialog.fullscreen(
+                            insetAnimationCurve: Curves.bounceIn,
+                            insetAnimationDuration: Duration(milliseconds: 800),
+                            child: FamilyDetailsScreen(),
+                          ),
+                        );
+                      },
+                      child: FamilyCard(),
+                    ),
                   ),
                   itemCount: 5,
                   separatorBuilder: (BuildContext context, int index) =>

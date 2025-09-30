@@ -23,5 +23,12 @@
     "checkout":"Checkout",
     "subTotal":"Sub Total",
     "taxesPlusFees":"Taxes + Fees",
-    "total":"Total"
+    "total":"Total",
+    "sendMessageForTheFamily":"Send a Message for the Family",
+    "paymentMethod":"Payment Method",
+    "creditCard":"Credit Card",
+    "applePay":"Apple Pay",
+    "orderNow":"Order Now",
+    "eventDetails":"Event Details",
+    "affectedFamiles":"Affected Familes"
 }

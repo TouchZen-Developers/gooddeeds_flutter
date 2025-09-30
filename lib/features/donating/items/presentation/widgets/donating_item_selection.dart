@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/app_checkbox.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
 class DonatingItemSelection extends StatelessWidget {
   const DonatingItemSelection({super.key});
@@ -38,7 +37,7 @@ class DonatingItemSelection extends StatelessWidget {
           Text(
             'x1',
             style: context.textStyle.bodySmallRegular.copyWith(
-              color: BrandTones.grey50,
+              color: context.onSurface.shade50,
             ),
           ),
           const Gap(16),

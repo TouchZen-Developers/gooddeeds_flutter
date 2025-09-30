@@ -8,7 +8,6 @@ import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/app_app_bar.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class FamilyListScreen extends StatelessWidget {
@@ -133,6 +132,7 @@ class _FilterItem extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _EmptyFamilyList extends StatelessWidget {
   const _EmptyFamilyList();
 
@@ -153,7 +153,7 @@ class _EmptyFamilyList extends StatelessWidget {
               context.loc.noFamilyFoundDesc,
               textAlign: TextAlign.center,
               style: context.textStyle.bodyLargeRegular.copyWith(
-                color: BrandTones.grey50,
+                color: context.onSurface.shade50,
               ),
             ),
             const Gap(24),

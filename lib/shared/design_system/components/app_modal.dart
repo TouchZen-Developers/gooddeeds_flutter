@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 
 class AppModal extends StatelessWidget {
   const AppModal({super.key, required this.child});
@@ -11,13 +11,10 @@ class AppModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
+          color: context.colors.onPrimary,
+          borderRadius: BorderRadius.all(Radius.circular(24)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -27,7 +24,7 @@ class AppModal extends StatelessWidget {
               width: 32,
               height: 4,
               decoration: BoxDecoration(
-                color: BrandTones.grey5,
+                color: context.onSurface.shade20,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
             ),
@@ -35,7 +32,7 @@ class AppModal extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: child,
-            )
+            ),
           ],
         ),
       ),
