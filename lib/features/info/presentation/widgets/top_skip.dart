@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../shared/strings/strings.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import '../bloc/info_onboarding_bloc.dart';
 import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 
@@ -21,7 +21,7 @@ class TopSkip extends StatelessWidget {
               const Expanded(child: SizedBox()),
               if (show)
                 GDTextLink(
-                  label: S.skip,
+                  label:context.loc.skip,
                   onPressed: () =>
                       bloc.add(const InfoOnboardingEvent.skipPressed()),
                 ),

@@ -49,5 +49,22 @@
       "@verifyCodeSuffix": {
         "description": "Text after the email in verify screen"
       },
-        "continueText": "Continue"
+    "skip": "Skip",
+    "login": "Log In",
+    "continueText": "Continue",
+    "registerChoiceLoginPrefix": "lready have an account?",
+    "enterYourPersonalInformation": "Enter your personal information",
+    "infoWelcomeTitle": "Welcome to goodDeeds",
+    "infoWelcomeSubtitle": "Make an impact today!",
+    "infoFamiliesTitle": "Families In Need",
+    "infoFamiliesSubtitle": "Help real families that need you!",
+    "infoInstantTitle": "Instant Delivery",
+    "infoInstantSubtitle": "Food and supplies delivered directly to families in need.",
+    "registerChoiceTitle": "Are you in need of donations, or are you looking to help families in need?",
+    "registerChoiceNeed": "In Need Of Donations",
+    "registerChoiceHelp": "Are you in need of donations, or are you looking to help families in need?",
+    "registerChoiceTitle": "Looking To Help Families In Need",
+    "signupWithGoogle": "Sign up with Google",
+    "signupWithEmail": "Sign up with Email",
+    "signupWithApple": "Sign up with Apple"
 }

@@ -4,13 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../shared/design_system/components/primary_button.dart';
 import '../../../../../shared/design_system/components/text_link.dart';
 
 import '../../../../../shared/design_system/typography/gd_text.dart' as ds;
-import '../../../../../shared/strings/strings.dart';
 import '../bloc/register_choice_bloc.dart';
 import '../bloc/register_choice_event.dart';
 import '../bloc/register_choice_state.dart';
@@ -53,56 +53,50 @@ class RegisterChoiceScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             ds.GDText(
-                              S.registerChoiceTitle,
+                              context.loc.registerChoiceTitle,
                               variant: ds.GDTextStyle.bodyLargeMedium,
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
                             ),
                             SizedBox(height: gaps.xxl),
                             PrimaryButton(
-                              label: S.registerChoiceNeed,
+                              label: context.loc.registerChoiceNeed,
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () =>
-                                  context.read<RegisterChoiceBloc>().add(
-                                        const RegisterChoiceEvent
-                                            .needDonationsPressed(),
-                                      ),
+                              onPressed: () => context.read<RegisterChoiceBloc>().add(
+                                    const RegisterChoiceEvent.needDonationsPressed(),
+                                  ),
                             ),
                             SizedBox(height: gaps.md),
                             PrimaryButton(
-                              label: S.registerChoiceHelp,
+                              label: context.loc.registerChoiceHelp,
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () =>
-                                  context.read<RegisterChoiceBloc>().add(
-                                        const RegisterChoiceEvent
-                                            .helpFamiliesPressed(),
-                                      ),
+                              onPressed: () => context.read<RegisterChoiceBloc>().add(
+                                    const RegisterChoiceEvent.helpFamiliesPressed(),
+                                  ),
                             ),
                             Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ds.GDText(
-                                  '${S.registerChoiceLoginPrefix} ',
+                                  '${context.loc.registerChoiceLoginPrefix} ',
                                   variant: ds.GDTextStyle.bodyLargeMedium,
                                   emphasis: ds.GDEmphasis.muted,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 GDTextLink(
-                                  label: S.login,
+                                  label: context.loc.login,
                                   emphasis: GDTextEmphasis.primary,
                                   style: context.typo.bodyMedium.copyWith(fontWeight: FontWeight.w500),
                                   padding: EdgeInsets.zero,
                                   color: BrandTones.secondary,
-                                  onPressed: () =>
-                                      context.read<RegisterChoiceBloc>().add(
-                                            const RegisterChoiceEvent
-                                                .loginPressed(),
-                                          ),
+                                  onPressed: () => context.read<RegisterChoiceBloc>().add(
+                                        const RegisterChoiceEvent.loginPressed(),
+                                      ),
                                 ),
                               ],
                             ),

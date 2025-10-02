@@ -352,11 +352,101 @@ abstract class AppLocalizations {
   /// **'to confirm your email.'**
   String get verifyCodeSuffix;
 
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get login;
+
   /// No description provided for @continueText.
   ///
   /// In en, this message translates to:
   /// **'Continue'**
   String get continueText;
+
+  /// No description provided for @registerChoiceLoginPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'lready have an account?'**
+  String get registerChoiceLoginPrefix;
+
+  /// No description provided for @infoWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to goodDeeds'**
+  String get infoWelcomeTitle;
+
+  /// No description provided for @infoWelcomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make an impact today!'**
+  String get infoWelcomeSubtitle;
+
+  /// No description provided for @infoFamiliesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Families In Need'**
+  String get infoFamiliesTitle;
+
+  /// No description provided for @infoFamiliesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help real families that need you!'**
+  String get infoFamiliesSubtitle;
+
+  /// No description provided for @infoInstantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant Delivery'**
+  String get infoInstantTitle;
+
+  /// No description provided for @infoInstantSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Food and supplies delivered directly to families in need.'**
+  String get infoInstantSubtitle;
+
+  /// No description provided for @registerChoiceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking To Help Families In Need'**
+  String get registerChoiceTitle;
+
+  /// No description provided for @registerChoiceNeed.
+  ///
+  /// In en, this message translates to:
+  /// **'In Need Of Donations'**
+  String get registerChoiceNeed;
+
+  /// No description provided for @registerChoiceHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you in need of donations, or are you looking to help families in need?'**
+  String get registerChoiceHelp;
+
+  /// No description provided for @signupWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up with Google'**
+  String get signupWithGoogle;
+
+  /// No description provided for @signupWithEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up with Email'**
+  String get signupWithEmail;
+
+  /// No description provided for @signupWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up with Apple'**
+  String get signupWithApple;
 }
 
 class _AppLocalizationsDelegate

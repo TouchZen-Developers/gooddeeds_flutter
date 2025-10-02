@@ -55,12 +55,12 @@ class EmailField extends StatelessWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.red),
+              borderSide: BorderSide(color: BrandTones.info),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(
-                color: BrandTones.red,
+                color: BrandTones.info,
               ),
             ),
           ),
