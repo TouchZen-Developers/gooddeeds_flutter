@@ -37,7 +37,8 @@ class StepHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: Center(child: Assets.icons.left.svg(width: 14, height: 14)),
+                child:
+                    Center(child: Assets.icons.left.svg(width: 14, height: 14)),
               ),
             ),
             Text.rich(

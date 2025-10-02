@@ -87,7 +87,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                   Expanded(
                     child: ImagePager(
                       controller: _imgCtrl,
-                      slides:slides,
+                      slides: slides,
                       onPageChanged: (i) {
                         if (_programmatic) return;
                         bloc.add(InfoOnboardingEvent.pageChanged(i));

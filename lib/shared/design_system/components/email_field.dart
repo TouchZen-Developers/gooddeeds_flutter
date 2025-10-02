@@ -34,24 +34,29 @@ class EmailField extends StatelessWidget {
         TextFormField(
           controller: controller,
           keyboardType: TextInputType.emailAddress,
-          style: context.textStyle.bodyMediumMedium.copyWith(color: hasError ? BrandTones.red : BrandTones.grey100),
+          style: context.textStyle.bodyMediumMedium
+              .copyWith(color: hasError ? BrandTones.red : BrandTones.grey100),
           decoration: InputDecoration(
             hintText: hint ?? context.loc.emailAddress,
-            hintStyle: context.textStyle.bodyMediumMedium.copyWith(color: hasError ? BrandTones.red : BrandTones.grey50),
+            hintStyle: context.textStyle.bodyMediumMedium
+                .copyWith(color: hasError ? BrandTones.red : BrandTones.grey50),
             filled: !hasError,
             fillColor: BrandTones.grey10,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(color: BrandTones.grey20),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: hasError ? BrandTones.red: BrandTones.grey20),
+              borderSide: BorderSide(
+                  color: hasError ? BrandTones.red : BrandTones.grey20),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color:hasError ? BrandTones.red:  BrandTones.grey20),
+              borderSide: BorderSide(
+                  color: hasError ? BrandTones.red : BrandTones.grey20),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),

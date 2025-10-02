@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gooddeeds/features/register/email/presentation/bloc/register_email_bloc.dart';
-import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
-import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
+import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
+import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
@@ -80,7 +80,7 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
           child: PrimaryButton(
-            label:context.loc.continueText,
+            label: context.loc.continueText,
             size: ButtonSize.large,
             fullWidth: true,
             onPressed: () => _onContinue(context),
@@ -92,16 +92,23 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
           builder: (context, state) {
             final bloc = context.read<RegisterEmailBloc>();
 
-            final emailErr = state.showErrorMessages ? _emailErrorFor(state.email) : null;
-            final passErr = state.showErrorMessages ? _passwordErrorFor(state.password) : null;
-            final confirmErr = state.showErrorMessages ? _confirmErrorFor(state.password, state.confirmPassword) : null;
+            final emailErr =
+                state.showErrorMessages ? _emailErrorFor(state.email) : null;
+            final passErr = state.showErrorMessages
+                ? _passwordErrorFor(state.password)
+                : null;
+            final confirmErr = state.showErrorMessages
+                ? _confirmErrorFor(state.password, state.confirmPassword)
+                : null;
 
             return LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
+                  padding: EdgeInsets.fromLTRB(
+                      gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    constraints:
+                        BoxConstraints(minHeight: constraints.maxHeight),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -111,7 +118,6 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                           onBack: () => Navigator.of(context).pop(),
                         ),
                         SizedBox(height: gaps.xl),
-
                         EmailField(
                           controller: _emailCtrl,
                           errorText: emailErr,
@@ -120,7 +126,6 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                           ),
                         ),
                         SizedBox(height: gaps.lg),
-
                         PasswordField(
                           controller: _passCtrl,
                           label: context.loc.password,
@@ -131,7 +136,6 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                           ),
                         ),
                         SizedBox(height: gaps.lg),
-
                         PasswordField(
                           controller: _confirmCtrl,
                           label: context.loc.confirmPasswordTitle,

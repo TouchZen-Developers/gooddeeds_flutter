@@ -62,7 +62,8 @@ class _PasswordFieldState extends State<PasswordField> {
             // Fill & padding
             filled: !hasError,
             fillColor: BrandTones.grey10,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
 
             // Borders (consistent with EmailField)
             border: OutlineInputBorder(

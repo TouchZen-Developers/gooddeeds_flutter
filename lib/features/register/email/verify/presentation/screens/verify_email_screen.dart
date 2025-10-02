@@ -1,10 +1,10 @@
 // verify_email_screen.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../shared/design_system/components/primary_button.dart';
@@ -54,7 +54,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.grey.shade300),
                   ),
-                  child: Center(child: Assets.icons.left.svg(width: 14, height: 14)),
+                  child: Center(
+                      child: Assets.icons.left.svg(width: 14, height: 14)),
                 ),
               ),
 
@@ -66,10 +67,14 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               const SizedBox(height: 8),
               RichText(
                 text: TextSpan(
-                  style: context.textStyle.bodyLargeRegular.copyWith(color: BrandTones.grey80),
+                  style: context.textStyle.bodyLargeRegular
+                      .copyWith(color: BrandTones.grey80),
                   children: [
                     TextSpan(text: '${context.loc.verifyCodePrefix} \n'),
-                    TextSpan(text: widget.email, style: context.textStyle.bodyMediumMedium.copyWith(color: BrandTones.secondary)),
+                    TextSpan(
+                        text: widget.email,
+                        style: context.textStyle.bodyMediumMedium
+                            .copyWith(color: BrandTones.secondary)),
                     TextSpan(text: ' ${context.loc.verifyCodeSuffix}'),
                   ],
                 ),

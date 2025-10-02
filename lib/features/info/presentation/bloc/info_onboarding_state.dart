@@ -8,8 +8,7 @@ abstract class InfoOnboardingBlocState with _$InfoOnboardingBlocState {
     String? navigateTo,
   }) = _InfoOnboardingBlocState;
 
-  factory InfoOnboardingBlocState.initial() =>
-      const InfoOnboardingBlocState();
+  factory InfoOnboardingBlocState.initial() => const InfoOnboardingBlocState();
 }
 
 extension InfoOnboardingX on InfoOnboardingBlocState {
