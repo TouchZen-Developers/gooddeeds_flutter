@@ -24,14 +24,14 @@ class TextPager extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: GDText(slides[i].title, variant: GDTextVariant.heading3),
+            child: GDText(slides[i].title, variant: GDTextStyle.heading3),
           ),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GDText(
               slides[i].subtitle,
-              variant: GDTextVariant.bodyLarge,
+              variant: GDTextStyle.bodyLargeRegular,
               color: BrandTones.grey80,
               textAlign: TextAlign.center,
             ),

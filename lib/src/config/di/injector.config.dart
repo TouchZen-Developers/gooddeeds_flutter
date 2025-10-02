@@ -15,6 +15,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart'
     as _i330;
+import '../../../features/register/email/presentation/bloc/register_email_bloc.dart'
+    as _i227;
 import 'router_module.dart' as _i393;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -30,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final routerModule = _$RouterModule();
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
+    gh.factory<_i227.RegisterEmailBloc>(() => _i227.RegisterEmailBloc());
     gh.lazySingleton<_i583.GoRouter>(() => routerModule.router());
     return this;
   }

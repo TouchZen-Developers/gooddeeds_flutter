@@ -25,8 +25,7 @@ class RegisterChoiceScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => RegisterChoiceBloc(),
       child: BlocListener<RegisterChoiceBloc, RegisterChoiceState>(
-        listenWhen: (p, c) =>
-            c.maybeWhen(navigate: (_) => true, orElse: () => false),
+        listenWhen: (p, c) => c.maybeWhen(navigate: (_) => true, orElse: () => false),
         listener: (ctx, s) => s.maybeWhen(
           navigate: (route) => ctx.push(route),
           orElse: () {},
@@ -47,7 +46,6 @@ class RegisterChoiceScreen extends StatelessWidget {
                         child: Center(
                           child: Assets.images.registerOption.svg(
                             width: MediaQuery.sizeOf(context).width * 0.75,
-                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
@@ -56,7 +54,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                           children: [
                             ds.GDText(
                               S.registerChoiceTitle,
-                              variant: ds.GDTextVariant.bodyLarge,
+                              variant: ds.GDTextStyle.bodyLargeMedium,
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
                             ),
@@ -66,10 +64,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () => context
-                                  .read<RegisterChoiceBloc>()
-                                  .add(const RegisterChoiceEvent
-                                      .needDonationsPressed()),
+                              onPressed: () => context.read<RegisterChoiceBloc>().add(const RegisterChoiceEvent.needDonationsPressed()),
                             ),
                             SizedBox(height: gaps.md),
                             PrimaryButton(
@@ -77,10 +72,9 @@ class RegisterChoiceScreen extends StatelessWidget {
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
-                              onPressed: () => context
-                                  .read<RegisterChoiceBloc>()
-                                  .add(const RegisterChoiceEvent
-                                      .helpFamiliesPressed()),
+                              onPressed: () => context.read<RegisterChoiceBloc>().add(
+                                    const RegisterChoiceEvent.helpFamiliesPressed(),
+                                  ),
                             ),
                             Spacer(),
                             Row(
@@ -88,22 +82,17 @@ class RegisterChoiceScreen extends StatelessWidget {
                               children: [
                                 ds.GDText(
                                   '${S.registerChoiceLoginPrefix} ',
-                                  variant: ds.GDTextVariant.bodyMedium,
+                                  variant: ds.GDTextStyle.bodyLargeMedium,
                                   emphasis: ds.GDEmphasis.muted,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 GDTextLink(
                                   label: S.login,
-                                  variant: GDTextLinkVariant.normal,
                                   emphasis: GDTextEmphasis.primary,
-                                  style: context.typo.bodyMedium
-                                      .copyWith(fontWeight: FontWeight.w500),
+                                  style: context.typo.bodyMedium.copyWith(fontWeight: FontWeight.w500),
                                   padding: EdgeInsets.zero,
                                   color: BrandTones.secondary,
-                                  onPressed: () => context
-                                      .read<RegisterChoiceBloc>()
-                                      .add(const RegisterChoiceEvent
-                                          .loginPressed()),
+                                  onPressed: () => context.read<RegisterChoiceBloc>().add(const RegisterChoiceEvent.loginPressed()),
                                 ),
                               ],
                             ),

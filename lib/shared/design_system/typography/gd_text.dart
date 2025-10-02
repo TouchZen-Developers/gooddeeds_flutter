@@ -1,29 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
+import 'package:gooddeeds/shared/design_system/theme/context_ext.dart'; // context.textStyle
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import '../tokens/typography.dart'; // AppTextStyle
 
-/// Semantic text variants for the DS.
-enum GDTextVariant {
+enum GDEmphasis { normal, muted, primary, secondary, success, warning, error }
+enum GDTextScale { system, none }
+
+enum GDTextStyle {
+  // Headings
   heading1, heading2, heading3, heading4, heading5,
-  bodyLarge, bodyMedium, bodySmall,
+  // Body XL
+  bodyXLargeSemiBold, bodyXLargeMedium, bodyXLargeRegular, bodyXLargeLight,
+  // Body L
+  bodyLargeSemiBold, bodyLargeMedium, bodyLargeRegular, bodyLargeLight,
+  // Body M
+  bodyMediumSemiBold, bodyMediumMedium, bodyMediumRegular, bodyMediumLight,
+  // Body S
+  bodySmallSemiBold, bodySmallMedium, bodySmallRegular, bodySmallLight,
+  // Body XS
+  bodyXSmallSemiBold, bodyXSmallMedium, bodyXSmallRegular, bodyXSmallLight,
+  // Buttons
   buttonLarge, buttonNormal, buttonSmall,
 }
 
-/// Color emphasis mapped to theme/tokens.
-enum GDEmphasis { normal, muted, primary, secondary, success, warning, error }
+extension _GDTextStyleResolver on GDTextStyle {
+  TextStyle resolve(AppTextStyle t) {
+    switch (this) {
+      case GDTextStyle.heading1: return t.heading1;
+      case GDTextStyle.heading2: return t.heading2;
+      case GDTextStyle.heading3: return t.heading3;
+      case GDTextStyle.heading4: return t.heading4;
+      case GDTextStyle.heading5: return t.heading5;
 
-/// Control text scaling behavior (system = default Flutter, none = pixel-perfect).
-enum GDTextScale { system, none }
+      case GDTextStyle.bodyXLargeSemiBold: return t.bodyXLargeSemiBold;
+      case GDTextStyle.bodyXLargeMedium:   return t.bodyXLargeMedium;
+      case GDTextStyle.bodyXLargeRegular:  return t.bodyXLargeRegular;
+      case GDTextStyle.bodyXLargeLight:    return t.bodyXLargeLight;
 
-/// DS Text widget: choose a variant (e.g., heading3) and override what you need.
+      case GDTextStyle.bodyLargeSemiBold:  return t.bodyLargeSemiBold;
+      case GDTextStyle.bodyLargeMedium:    return t.bodyLargeMedium;
+      case GDTextStyle.bodyLargeRegular:   return t.bodyLargeRegular;
+      case GDTextStyle.bodyLargeLight:     return t.bodyLargeLight;
+
+      case GDTextStyle.bodyMediumSemiBold: return t.bodyMediumSemiBold;
+      case GDTextStyle.bodyMediumMedium:   return t.bodyMediumMedium;
+      case GDTextStyle.bodyMediumRegular:  return t.bodyMediumRegular;
+      case GDTextStyle.bodyMediumLight:    return t.bodyMediumLight;
+
+      case GDTextStyle.bodySmallSemiBold:  return t.bodySmallSemiBold;
+      case GDTextStyle.bodySmallMedium:    return t.bodySmallMedium;
+      case GDTextStyle.bodySmallRegular:   return t.bodySmallRegular;
+      case GDTextStyle.bodySmallLight:     return t.bodySmallLight;
+
+      case GDTextStyle.bodyXSmallSemiBold: return t.bodyXSmallSemiBold;
+      case GDTextStyle.bodyXSmallMedium:   return t.bodyXSmallMedium;
+      case GDTextStyle.bodyXSmallRegular:  return t.bodyXSmallRegular;
+      case GDTextStyle.bodyXSmallLight:    return t.bodyXSmallLight;
+
+      case GDTextStyle.buttonLarge:        return t.buttonLarge;
+      case GDTextStyle.buttonNormal:       return t.buttonNormal;
+      case GDTextStyle.buttonSmall:        return t.buttonSmall;
+    }
+  }
+}
+
 class GDText extends StatelessWidget {
   const GDText(
       this.data, {
         super.key,
         required this.variant,
         this.emphasis = GDEmphasis.normal,
-        this.color,                // direct color override (takes precedence)
-        this.alpha,                // 0..1, applied on resolved color
+        this.color,
+        this.alpha,
         this.fontSize,
         this.fontWeight,
         this.height,
@@ -31,22 +79,20 @@ class GDText extends StatelessWidget {
         this.textAlign,
         this.maxLines,
         this.overflow,
-        this.style,                // final style merge override
+        this.mergeStyle,
         this.semanticsLabel,
-
-        // Advanced controls
         this.scale = GDTextScale.system,
         this.textHeightBehavior,
         this.softWrap,
       });
 
   final String data;
-  final GDTextVariant variant;
-  final GDEmphasis emphasis;
+  final GDTextStyle variant;
 
-  // Optional overrides
+  // Overrides
+  final GDEmphasis emphasis;
   final Color? color;
-  final double? alpha;
+  final double? alpha;            // 0..1
   final double? fontSize;
   final FontWeight? fontWeight;
   final double? height;
@@ -54,7 +100,7 @@ class GDText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final TextOverflow? overflow;
-  final TextStyle? style;
+  final TextStyle? mergeStyle;
   final String? semanticsLabel;
 
   // Advanced
@@ -64,24 +110,14 @@ class GDText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.typo;                 // TypographyTokens
+    final ds = context.textStyle;                 // AppTextStyle
     final scheme = Theme.of(context).colorScheme;
 
-    TextStyle base = switch (variant) {
-      GDTextVariant.heading1 => tokens.heading1,
-      GDTextVariant.heading2 => tokens.heading2,
-      GDTextVariant.heading3 => tokens.heading3,
-      GDTextVariant.heading4 => tokens.heading4,
-      GDTextVariant.heading5 => tokens.heading5,
-      GDTextVariant.bodyLarge => tokens.bodyLarge,
-      GDTextVariant.bodyMedium => tokens.bodyMedium,
-      GDTextVariant.bodySmall => tokens.bodySmall,
-      GDTextVariant.buttonLarge => tokens.buttonLarge,
-      GDTextVariant.buttonNormal => tokens.buttonNormal,
-      GDTextVariant.buttonSmall => tokens.buttonSmall,
-    };
+    // 1) Base from DS
+    TextStyle base = variant.resolve(ds);
 
-    Color resolvedColor = color ??
+    // 2) Color by emphasis
+    Color resolved = color ??
         switch (emphasis) {
           GDEmphasis.primary   => scheme.primary,
           GDEmphasis.secondary => scheme.secondary,
@@ -93,23 +129,27 @@ class GDText extends StatelessWidget {
         };
 
     if (alpha != null) {
-      resolvedColor = resolvedColor.withValues(alpha: alpha!.clamp(0.0, 1.0));
+      final a = alpha!.clamp(0.0, 1.0);
+      resolved = resolved.withOpacity(a);
     }
 
-    final merged = base.merge(TextStyle(
-      color: resolvedColor,
+    // 3) Apply overrides
+    TextStyle out = base.copyWith(
+      color: resolved,
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,
       letterSpacing: letterSpacing,
-    ));
+    );
 
-    final finalStyle = style == null ? merged : merged.merge(style);
+    if (mergeStyle != null) {
+      out = out.merge(mergeStyle);
+    }
 
-    // 5) Text scaling behavior
+    // 4) Scaling
     final textScaler = switch (scale) {
       GDTextScale.system => MediaQuery.textScalerOf(context),
-      GDTextScale.none   =>  TextScaler.noScaling,
+      GDTextScale.none   => TextScaler.noScaling,
     };
 
     return Text(
@@ -118,10 +158,10 @@ class GDText extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: overflow,
-      style: finalStyle,
+      softWrap: softWrap,
       textScaler: textScaler,
       textHeightBehavior: textHeightBehavior,
-      softWrap: softWrap,
+      style: out,
     );
   }
 }

@@ -9,7 +9,7 @@ abstract class InfoOnboardingBlocState with _$InfoOnboardingBlocState {
   }) = _InfoOnboardingBlocState;
 
   factory InfoOnboardingBlocState.initial() =>
-      const InfoOnboardingBlocState(pageIndex: 0, totalPages: kTotalPages);
+      const InfoOnboardingBlocState();
 }
 
 extension InfoOnboardingX on InfoOnboardingBlocState {

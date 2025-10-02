@@ -6,10 +6,13 @@ import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
 
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
+import 'package:gooddeeds/features/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
 import '../../../features/auth/register_menu/presentation/screens/register_menu_screen.dart';
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart';
+import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
+import '../../../features/register/email/verify/presentation/screens/verify_email_screen.dart';
 import '../../../features/splash/presentation/screens/splash_screen.dart';
 import '../di/injector.dart';
 import 'route_paths.dart';
@@ -59,6 +62,35 @@ class RegisterMenuRoute extends GoRouteData with $RegisterMenuRoute {
   }
 }
 
+@TypedGoRoute<RegisterEmailRoute>(
+  path: RoutePaths.registerEmail,
+  routes: [
+    TypedGoRoute<VerifyEmailRoute>(path: 'verify'),
+  ],
+)
+class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
+  const RegisterEmailRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterEmailBloc(),
+      child: const RegisterEmailScreen(),
+    );();
+  }
+}
+
+class VerifyEmailRoute extends GoRouteData with $VerifyEmailRoute {
+  const VerifyEmailRoute({required this.email});
+
+  final String email;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return VerifyEmailScreen(email: email);
+  }
+}
+
 @TypedStatefulShellRoute<AppStatfulShellWithNavigationRouteData>(
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     TypedStatefulShellBranch<DonatingHomeBranch>(
@@ -98,8 +130,7 @@ class RegisterMenuRoute extends GoRouteData with $RegisterMenuRoute {
 class AppStatfulShellWithNavigationRouteData extends StatefulShellRouteData {
   const AppStatfulShellWithNavigationRouteData();
 
-  static final GlobalKey<NavigatorState> $navigatorKey =
-      _shellDonaitingNavigatorKey;
+  static final GlobalKey<NavigatorState> $navigatorKey = _shellDonaitingNavigatorKey;
   static const String $restorationScopeId = 'restorationScopeId';
 
   @override
@@ -122,32 +153,28 @@ class AppStatfulShellWithNavigationRouteData extends StatefulShellRouteData {
 class DonatingHomeBranch extends StatefulShellBranchData {
   const DonatingHomeBranch();
 
-  static final GlobalKey<NavigatorState> $navigatorKey =
-      _shellDonaitingHomeNavigatorKey;
+  static final GlobalKey<NavigatorState> $navigatorKey = _shellDonaitingHomeNavigatorKey;
   static const String $restorationScopeId = 'restorationScopeId';
 }
 
 class MyCartBranch extends StatefulShellBranchData {
   const MyCartBranch();
 
-  static final GlobalKey<NavigatorState> $navigatorKey =
-      _shellMyCartNavigatorKey;
+  static final GlobalKey<NavigatorState> $navigatorKey = _shellMyCartNavigatorKey;
   static const String $restorationScopeId = 'restorationScopeId';
 }
 
 class OrdersBranch extends StatefulShellBranchData {
   const OrdersBranch();
 
-  static final GlobalKey<NavigatorState> $navigatorKey =
-      _shellOrdersNavigatorKey;
+  static final GlobalKey<NavigatorState> $navigatorKey = _shellOrdersNavigatorKey;
   static const String $restorationScopeId = 'restorationScopeId';
 }
 
 class DonaitingMyProfileBranch extends StatefulShellBranchData {
   const DonaitingMyProfileBranch();
 
-  static final GlobalKey<NavigatorState> $navigatorKey =
-      _shellDonaitingMyProfileNavigatorKey;
+  static final GlobalKey<NavigatorState> $navigatorKey = _shellDonaitingMyProfileNavigatorKey;
   static const String $restorationScopeId = 'restorationScopeId';
 }
 
@@ -155,49 +182,42 @@ class DonatingHomeRoute extends GoRouteData with $DonatingHomeRoute {
   const DonatingHomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const DonaitingHomeScreen();
+  Widget build(BuildContext context, GoRouterState state) => const DonaitingHomeScreen();
 }
 
 class FamilyListRoute extends GoRouteData with $FamilyListRoute {
   const FamilyListRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const FamilyListScreen();
+  Widget build(BuildContext context, GoRouterState state) => const FamilyListScreen();
 }
 
 class FamilyDetailsRoute extends GoRouteData with $FamilyDetailsRoute {
   const FamilyDetailsRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const FamilyDetailsScreen();
+  Widget build(BuildContext context, GoRouterState state) => const FamilyDetailsScreen();
 }
 
 class MyCartRoute extends GoRouteData with $MyCartRoute {
   const MyCartRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const DonaitingMyCartScreen();
+  Widget build(BuildContext context, GoRouterState state) => const DonaitingMyCartScreen();
 }
 
 class OrdersRoute extends GoRouteData with $OrdersRoute {
   const OrdersRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const Placeholder();
+  Widget build(BuildContext context, GoRouterState state) => const Placeholder();
 }
 
-class DonaitingMyProfileRoute extends GoRouteData
-    with $DonaitingMyProfileRoute {
+class DonaitingMyProfileRoute extends GoRouteData with $DonaitingMyProfileRoute {
   const DonaitingMyProfileRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const Placeholder();
+  Widget build(BuildContext context, GoRouterState state) => const Placeholder();
 }
 
 GoRouter createRouter() => GoRouter(

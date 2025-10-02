@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gooddeeds/features/register/email/presentation/bloc/register_email_bloc.dart';
-
-// Design system imports
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-
-// Custom fields
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../components/step_header.dart';
 
@@ -51,105 +49,105 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
     return null;
   }
 
+  void _onContinue(BuildContext context) {
+    final bloc = context.read<RegisterEmailBloc>();
+
+    final email = _emailCtrl.text.trim();
+    final pass = _passCtrl.text;
+    final confirm = _confirmCtrl.text;
+
+    bloc
+      ..add(RegisterEmailEvent.emailChanged(email))
+      ..add(RegisterEmailEvent.passwordChanged(pass))
+      ..add(RegisterEmailEvent.confirmPasswordChanged(confirm))
+      ..add(const RegisterEmailEvent.submitted());
+
+    final emailErr = _emailErrorFor(email);
+    final passErr = _passwordErrorFor(pass);
+    final confirmErr = _confirmErrorFor(pass, confirm);
+
+    if (emailErr == null && passErr == null && confirmErr == null) {
+      VerifyEmailRoute(email: email).push(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final gaps = context.gaps;
 
-    return BlocProvider(
-      create: (_) => RegisterEmailBloc(),
-      child: Scaffold(
-        bottomNavigationBar: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
-            child: PrimaryButton(
-              label: "Continue",
-              size: ButtonSize.large,
-              fullWidth: true,
-              onPressed: () => context
-                  .read<RegisterEmailBloc>()
-                  .add(const RegisterEmailEvent.submitted()),
-            ),
+    return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
+          child: PrimaryButton(
+            label:context.loc.continueText,
+            size: ButtonSize.large,
+            fullWidth: true,
+            onPressed: () => _onContinue(context),
           ),
         ),
+      ),
+      body: SafeArea(
+        child: BlocBuilder<RegisterEmailBloc, RegisterEmailState>(
+          builder: (context, state) {
+            final bloc = context.read<RegisterEmailBloc>();
 
-        body: SafeArea(
-          child: BlocBuilder<RegisterEmailBloc, RegisterEmailState>(
-            builder: (context, state) {
-              final bloc = context.read<RegisterEmailBloc>();
+            final emailErr = state.showErrorMessages ? _emailErrorFor(state.email) : null;
+            final passErr = state.showErrorMessages ? _passwordErrorFor(state.password) : null;
+            final confirmErr = state.showErrorMessages ? _confirmErrorFor(state.password, state.confirmPassword) : null;
 
-              final emailErr = state.showErrorMessages
-                  ? _emailErrorFor(state.email)
-                  : null;
-              final passErr = state.showErrorMessages
-                  ? _passwordErrorFor(state.password)
-                  : null;
-              final confirmErr = state.showErrorMessages
-                  ? _confirmErrorFor(state.password, state.confirmPassword)
-                  : null;
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  padding: EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        StepHeader(
+                          currentStep: 1,
+                          totalSteps: 5,
+                          onBack: () => Navigator.of(context).pop(),
+                        ),
+                        SizedBox(height: gaps.xl),
 
-              return LayoutBuilder(
-                builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    padding: EdgeInsets.fromLTRB(
-                      gaps.xl,
-                      gaps.md,
-                      gaps.xl,
-                      gaps.xl * 3,
+                        EmailField(
+                          controller: _emailCtrl,
+                          errorText: emailErr,
+                          onChanged: (v) => bloc.add(
+                            RegisterEmailEvent.emailChanged(v.trim()),
+                          ),
+                        ),
+                        SizedBox(height: gaps.lg),
+
+                        PasswordField(
+                          controller: _passCtrl,
+                          label: context.loc.password,
+                          hint: context.loc.enterPassword,
+                          errorText: passErr,
+                          onChanged: (v) => bloc.add(
+                            RegisterEmailEvent.passwordChanged(v),
+                          ),
+                        ),
+                        SizedBox(height: gaps.lg),
+
+                        PasswordField(
+                          controller: _confirmCtrl,
+                          label: context.loc.confirmPasswordTitle,
+                          hint: context.loc.confirmPasswordSub,
+                          errorText: confirmErr,
+                          onChanged: (v) => bloc.add(
+                            RegisterEmailEvent.confirmPasswordChanged(v),
+                          ),
+                        ),
+                      ],
                     ),
-                    child: ConstrainedBox(
-                      constraints:
-                      BoxConstraints(minHeight: constraints.maxHeight),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Header
-                          StepHeader(
-                            currentStep: 1,
-                            totalSteps: 5,
-                            onBack: () => Navigator.of(context).pop(),
-                          ),
-                          SizedBox(height: gaps.xl),
-
-                          // Email
-                          EmailField(
-                            controller: _emailCtrl,
-                            errorText: emailErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterEmailEvent.emailChanged(v.trim()),
-                            ),
-                          ),
-                          SizedBox(height: gaps.lg),
-
-                          // Password
-                          PasswordField(
-                            controller: _passCtrl,
-                            label: "Password",
-                            hint: "Enter password",
-                            errorText: passErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterEmailEvent.passwordChanged(v),
-                            ),
-                          ),
-                          SizedBox(height: gaps.lg),
-
-                          // Confirm password
-                          PasswordField(
-                            controller: _confirmCtrl,
-                            label: "Confirm Password",
-                            hint: "Confirm password",
-                            errorText: confirmErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterEmailEvent.confirmPasswordChanged(v),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-          ),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );

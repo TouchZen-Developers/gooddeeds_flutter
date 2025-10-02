@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'register_email_event.dart';
 part 'register_email_state.dart';
 part 'register_email_bloc.freezed.dart';
 
+@injectable
 class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
   RegisterEmailBloc() : super(RegisterEmailState.initial()) {
     on<_EmailChanged>((e, emit) {
@@ -20,8 +22,7 @@ class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
     });
 
     on<_Submitted>((e, emit) {
-      final emailValid = state.email.isNotEmpty &&
-          RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$').hasMatch(state.email);
+      final emailValid = state.email.isNotEmpty && RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$').hasMatch(state.email);
       final passwordValid = state.password.isNotEmpty;
       final confirmValid = state.password == state.confirmPassword;
 

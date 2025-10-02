@@ -11,6 +11,7 @@ List<RouteBase> get $appRoutes => [
       $infoOnboardingRoute,
       $registerChoiceRoute,
       $registerMenuRoute,
+      $registerEmailRoute,
       $appStatfulShellWithNavigationRouteData,
     ];
 
@@ -109,6 +110,69 @@ mixin $RegisterMenuRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/register_menu',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $registerEmailRoute => GoRouteData.$route(
+      path: '/register_email',
+      factory: $RegisterEmailRoute._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'verify',
+          factory: $VerifyEmailRoute._fromState,
+        ),
+      ],
+    );
+
+mixin $RegisterEmailRoute on GoRouteData {
+  static RegisterEmailRoute _fromState(GoRouterState state) =>
+      const RegisterEmailRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register_email',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $VerifyEmailRoute on GoRouteData {
+  static VerifyEmailRoute _fromState(GoRouterState state) => VerifyEmailRoute(
+        email: state.uri.queryParameters['email']!,
+      );
+
+  VerifyEmailRoute get _self => this as VerifyEmailRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register_email/verify',
+        queryParams: {
+          'email': _self.email,
+        },
       );
 
   @override

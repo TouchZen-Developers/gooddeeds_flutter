@@ -83,4 +83,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get total => 'Total';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get enterYourPersonalInformation => 'Enter your personal information';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get enterPassword => 'Enter password';
+
+  @override
+  String get confirmPasswordTitle => 'Confirm Password';
+
+  @override
+  String get confirmPasswordSub => 'Confirm password';
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String get confirmation => 'Confirmation';
+
+  @override
+  String get verifyCodePrefix => 'Enter the 4-digit code we sent to';
+
+  @override
+  String get verifyCodeSuffix => 'to confirm your email.';
+
+  @override
+  String get continueText => 'Continue';
 }

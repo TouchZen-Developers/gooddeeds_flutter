@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/components/text_link.dart';
@@ -11,7 +10,6 @@ import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../shared/strings/strings.dart';
 import '../../../../splash/presentation/widgets/splash_brand.dart';
-import 'package:gooddeeds/src/config/routes/route_paths.dart';
 
 class RegisterMenuScreen extends StatelessWidget {
   const RegisterMenuScreen({super.key});
@@ -51,10 +49,9 @@ class RegisterMenuScreen extends StatelessWidget {
             child: SafeArea(
               bottom: false,
               child: Align(
-                alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: gaps.lg),
-                  child: const SplashBrand(size: SplashBrandSize.md),
+                  child: const SplashBrand(),
                 ),
               ),
             ),
@@ -73,7 +70,6 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithApple,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
@@ -86,7 +82,6 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithGoogle,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
@@ -97,30 +92,28 @@ class RegisterMenuScreen extends StatelessWidget {
                     PrimaryButton(
                       label: S.signupWithEmail,
                       variant: ButtonVariant.outlined,
-                      size: ButtonSize.medium,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
                       leading: Assets.icons.email.svg(width: 18, height: 14),
-                      onPressed: () => context.goNamed(RouteNames.registerEmail),
+                      onPressed:(){
+                    RegisterEmailRoute().push(context);
+                      },
                     ),
                     SizedBox(height: gaps.xxl),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ds.GDText(
-                          "${S.registerChoiceLoginPrefix} ",
-                          variant: ds.GDTextVariant.bodyMedium,
+                          '${S.registerChoiceLoginPrefix} ',
+                          variant: ds.GDTextStyle.bodyMediumRegular,
                           emphasis: ds.GDEmphasis.muted,
-                          fontWeight: FontWeight.w500,
                         ),
                         GDTextLink(
                           label: S.login,
-                          variant: GDTextLinkVariant.normal,
                           padding: EdgeInsets.zero,
                           emphasis: GDTextEmphasis.primary,
-                          style: const TextStyle(fontWeight: FontWeight.w500),
+                          style: context.textStyle.bodyMediumRegular,
                           color: BrandTones.secondary,
                           onPressed: () {},
                         ),

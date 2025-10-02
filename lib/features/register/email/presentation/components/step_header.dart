@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
+import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../gen/assets.gen.dart';
-import '../../../../../shared/strings/strings.dart';
+import '../../../../../shared/design_system/typography/gd_text.dart' as ds;
 
 class StepHeader extends StatelessWidget {
-  final int currentStep;
-  final int totalSteps;
-  final VoidCallback? onBack;
-
   const StepHeader({
     super.key,
     required this.currentStep,
     required this.totalSteps,
     this.onBack,
   });
+
+  final int currentStep;
+  final int totalSteps;
+  final VoidCallback? onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +26,10 @@ class StepHeader extends StatelessWidget {
         // Back + Counter
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InkWell(
               onTap: onBack ?? () => Navigator.of(context).pop(),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(50),
               child: Container(
                 width: 44,
                 height: 44,
@@ -35,25 +37,20 @@ class StepHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: Center(child: Assets.icons.left.svg(width: 24, height: 24)),
+                child: Center(child: Assets.icons.left.svg(width: 14, height: 14)),
               ),
             ),
             Text.rich(
               TextSpan(
                 children: [
                   TextSpan(
-                    text: "$currentStep",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      color: Colors.black87,
-                    ),
+                    text: '$currentStep / ',
+                    style: context.textStyle.bodyLargeRegular,
                   ),
                   TextSpan(
-                    text: " / $totalSteps",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade500,
+                    text: '$totalSteps',
+                    style: context.textStyle.bodyLargeRegular.copyWith(
+                      color: BrandTones.grey50,
                     ),
                   ),
                 ],
@@ -64,21 +61,17 @@ class StepHeader extends StatelessWidget {
         const SizedBox(height: 24),
 
         // Title + Subtitle
-        Text(
-          S.register,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            color: Colors.black87,
-          ),
+        ds.GDText(
+          '${context.loc.register} ',
+          variant: ds.GDTextStyle.heading3,
+          fontWeight: FontWeight.w600,
         ),
         const SizedBox(height: 6),
-        Text(
-          S.enterYourPersonalInformation,
-          style: TextStyle(
-            fontSize: 15,
-            color: Colors.grey.shade600,
-          ),
+        ds.GDText(
+          context.loc.enterYourPersonalInformation,
+          variant: ds.GDTextStyle.bodyMediumMedium,
+          color: BrandTones.grey80,
+          fontWeight: FontWeight.w600,
         ),
       ],
     );
