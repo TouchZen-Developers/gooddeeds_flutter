@@ -56,7 +56,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                           children: [
                             ds.GDText(
                               context.loc.registerChoiceTitle,
-                              variant: ds.GDTextStyle.bodyLargeMedium,
+                              style: context.textStyle.bodyLargeMedium,
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
                             ),
@@ -90,9 +90,11 @@ class RegisterChoiceScreen extends StatelessWidget {
                               children: [
                                 ds.GDText(
                                   '${context.loc.registerChoiceLoginPrefix} ',
-                                  variant: ds.GDTextStyle.bodyLargeMedium,
+                                  style: context.textStyle.bodyLargeMedium
+                                      .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                   emphasis: ds.GDEmphasis.muted,
-                                  fontWeight: FontWeight.w500,
                                 ),
                                 GDTextLink(
                                   label: context.loc.login,

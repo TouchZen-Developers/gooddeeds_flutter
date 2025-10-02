@@ -64,15 +64,17 @@ class StepHeader extends StatelessWidget {
         // Title + Subtitle
         ds.GDText(
           '${context.loc.register} ',
-          variant: ds.GDTextStyle.heading3,
-          fontWeight: FontWeight.w600,
+          style: context.textStyle.heading3.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const SizedBox(height: 6),
         ds.GDText(
           context.loc.enterYourPersonalInformation,
-          variant: ds.GDTextStyle.bodyMediumMedium,
+          style: context.textStyle.bodyMediumMedium.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
           color: BrandTones.grey80,
-          fontWeight: FontWeight.w600,
         ),
       ],
     );

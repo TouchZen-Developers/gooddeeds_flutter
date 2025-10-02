@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+
 import '../../../../shared/design_system/typography/gd_text.dart';
 import 'info_slides.dart';
 
@@ -24,14 +26,17 @@ class TextPager extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: GDText(slides[i].title, variant: GDTextStyle.heading3),
+            child: GDText(
+              slides[i].title,
+              style: context.textStyle.heading3,
+            ),
           ),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GDText(
               slides[i].subtitle,
-              variant: GDTextStyle.bodyLargeRegular,
+              style: context.textStyle.bodyLargeRegular,
               color: BrandTones.grey80,
               textAlign: TextAlign.center,
             ),

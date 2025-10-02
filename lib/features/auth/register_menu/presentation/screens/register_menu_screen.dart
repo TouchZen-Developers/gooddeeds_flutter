@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
-import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 import 'package:gooddeeds/shared/design_system/components/soft_circle.dart';
+import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart' as ds;
@@ -106,7 +106,7 @@ class RegisterMenuScreen extends StatelessWidget {
                       children: [
                         ds.GDText(
                           '${context.loc.registerChoiceLoginPrefix} ',
-                          variant: ds.GDTextStyle.bodyMediumRegular,
+                          style: context.textStyle.bodyMediumRegular,
                           emphasis: ds.GDEmphasis.muted,
                         ),
                         GDTextLink(
