@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
+
 import '../theme/context_ext.dart';
 
 enum ButtonVariant { filled, outlined, ghost }
@@ -104,19 +105,6 @@ class PrimaryButton extends StatelessWidget {
     }
 
     final bool disabled = onPressed == null || loading;
-
-    if (disabled) {
-      if (variant == ButtonVariant.filled) {
-        bg = cs.onSurface.withValues(alpha: 0.12);
-        fg = cs.onSurface.withValues(alpha: 0.38);
-      } else {
-        bg = Colors.transparent;
-        fg = cs.onSurface.withValues(alpha: 0.38);
-        if (variant == ButtonVariant.outlined) {
-          border = Border.all(color: cs.onSurface.withValues(alpha: 0.12));
-        }
-      }
-    }
 
     final Widget content = Row(
       mainAxisSize: fullWidth ? MainAxisSize.max : MainAxisSize.min,

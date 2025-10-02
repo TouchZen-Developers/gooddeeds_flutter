@@ -10,23 +10,27 @@ class BrandTones {
   static const primary200 = Color(0xFFF9C7B0);
 
   // Secondary (Purple)
-  static const secondary600 = Color(0xFF6B4DFF);
   static const secondary = Color(0xFF705AFF);
+  static const secondary600 = Color(0xFF6B4DFF);
   static const secondary500 = Color(0xFF8B74FF);
   static const secondary300 = Color(0xFFC2BAFF);
   static const secondary200 = Color(0xFFD7D0FF);
 
   // Greys
+  static const grey5 = Color(0xFFE0E0E0);
   static const grey10 = Color(0xFFF5F5F6);
   static const grey20 = Color(0xFFEEEEF0);
   static const grey30 = Color(0xFFE2E2E5);
-  static const grey40 = Color(0xFFC5C4CA);
   static const grey50 = Color(0xFFA3A2AC);
-  static const grey60 = Color(0xFF7D7B89);
+  static const grey60 = Color(0xFF454545);
+  static const grey40 = Color(0xFFC5C4CA);
   static const grey70 = Color(0xFF6A6777);
   static const grey80 = Color(0xFF484559);
   static const grey90 = Color(0xFF18142D);
   static const grey100 = Color(0xFF0E0A24);
+
+  //others
+  static const red = Color(0xFFEB5757);
 
   // Status
   static const success = Color(0xFF22A06B);

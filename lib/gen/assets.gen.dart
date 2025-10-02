@@ -42,6 +42,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
 
+  /// File path: assets/icons/eye.svg
+  SvgGenImage get eye => const SvgGenImage('assets/icons/eye.svg');
+
   /// File path: assets/icons/fill_cart.svg
   SvgGenImage get fillCart => const SvgGenImage('assets/icons/fill_cart.svg');
 
@@ -56,6 +59,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
+  /// File path: assets/icons/left.svg
+  SvgGenImage get left => const SvgGenImage('assets/icons/left.svg');
 
   /// File path: assets/icons/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
@@ -82,11 +88,13 @@ class $AssetsIconsGen {
         creditCard,
         delete,
         email,
+        eye,
         fillCart,
         filter,
         goodDeeds,
         google,
         home,
+        left,
         logo,
         marker,
         orders,

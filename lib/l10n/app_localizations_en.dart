@@ -104,4 +104,87 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get affectedFamiles => 'Affected Familes';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get enterYourPersonalInformation => 'Enter your personal information';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get enterPassword => 'Enter password';
+
+  @override
+  String get confirmPasswordTitle => 'Confirm Password';
+
+  @override
+  String get confirmPasswordSub => 'Confirm password';
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String get confirmation => 'Confirmation';
+
+  @override
+  String get verifyCodePrefix => 'Enter the 4-digit code we sent to';
+
+  @override
+  String get verifyCodeSuffix => 'to confirm your email.';
+
+  @override
+  String get skip => 'Skip';
+
+  @override
+  String get login => 'Log In';
+
+  @override
+  String get continueText => 'Continue';
+
+  @override
+  String get registerChoiceLoginPrefix => 'lready have an account?';
+
+  @override
+  String get infoWelcomeTitle => 'Welcome to goodDeeds';
+
+  @override
+  String get infoWelcomeSubtitle => 'Make an impact today!';
+
+  @override
+  String get infoFamiliesTitle => 'Families In Need';
+
+  @override
+  String get infoFamiliesSubtitle => 'Help real families that need you!';
+
+  @override
+  String get infoInstantTitle => 'Instant Delivery';
+
+  @override
+  String get infoInstantSubtitle =>
+      'Food and supplies delivered directly to families in need.';
+
+  @override
+  String get registerChoiceTitle => 'Looking To Help Families In Need';
+
+  @override
+  String get registerChoiceNeed => 'In Need Of Donations';
+
+  @override
+  String get registerChoiceHelp =>
+      'Are you in need of donations, or are you looking to help families in need?';
+
+  @override
+  String get signupWithGoogle => 'Sign up with Google';
+
+  @override
+  String get signupWithEmail => 'Sign up with Email';
+
+  @override
+  String get signupWithApple => 'Sign up with Apple';
 }

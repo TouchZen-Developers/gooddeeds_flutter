@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
-import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 import 'package:gooddeeds/shared/design_system/components/soft_circle.dart';
+import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart' as ds;
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
-import '../../../../../shared/strings/strings.dart';
 import '../../../../splash/presentation/widgets/splash_brand.dart';
 
 class RegisterMenuScreen extends StatelessWidget {
@@ -68,7 +68,7 @@ class RegisterMenuScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     PrimaryButton(
-                      label: S.signupWithApple,
+                      label: context.loc.signupWithApple,
                       variant: ButtonVariant.outlined,
                       background: Colors.white,
                       fullWidth: true,
@@ -80,7 +80,7 @@ class RegisterMenuScreen extends StatelessWidget {
                     ),
                     SizedBox(height: gaps.md),
                     PrimaryButton(
-                      label: S.signupWithGoogle,
+                      label: context.loc.signupWithGoogle,
                       variant: ButtonVariant.outlined,
                       background: Colors.white,
                       fullWidth: true,
@@ -90,29 +90,30 @@ class RegisterMenuScreen extends StatelessWidget {
                     ),
                     SizedBox(height: gaps.md),
                     PrimaryButton(
-                      label: S.signupWithEmail,
+                      label: context.loc.signupWithEmail,
                       variant: ButtonVariant.outlined,
                       background: Colors.white,
                       fullWidth: true,
                       color: BrandTones.grey100,
                       leading: Assets.icons.email.svg(width: 18, height: 14),
-                      onPressed: () {},
+                      onPressed: () {
+                        RegisterEmailRoute().push(context);
+                      },
                     ),
                     SizedBox(height: gaps.xxl),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ds.GDText(
-                          '${S.registerChoiceLoginPrefix} ',
-                          variant: ds.GDTextVariant.bodyMedium,
+                          '${context.loc.registerChoiceLoginPrefix} ',
+                          style: context.textStyle.bodyMediumRegular,
                           emphasis: ds.GDEmphasis.muted,
-                          fontWeight: FontWeight.w500,
                         ),
                         GDTextLink(
-                          label: S.login,
+                          label: context.loc.login,
                           padding: EdgeInsets.zero,
                           emphasis: GDTextEmphasis.primary,
-                          style: const TextStyle(fontWeight: FontWeight.w500),
+                          style: context.textStyle.bodyMediumRegular,
                           color: BrandTones.secondary,
                           onPressed: () {},
                         ),

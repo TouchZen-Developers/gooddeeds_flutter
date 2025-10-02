@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import '../../../../shared/design_system/components/primary_button.dart';
-import '../../../../shared/strings/strings.dart';
 import '../bloc/info_onboarding_bloc.dart';
 
 class BottomActionsBar extends StatelessWidget {
@@ -29,14 +29,14 @@ class BottomActionsBar extends StatelessWidget {
             children: [
               Expanded(
                 child: PrimaryButton(
-                  label: S.login,
+                  label: context.loc.login,
                   onPressed: onLogin ?? () {},
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: PrimaryButton(
-                  label: S.register,
+                  label: context.loc.register,
                   onPressed: onRegister ?? () {},
                   variant: ButtonVariant.outlined,
                 ),
@@ -47,7 +47,7 @@ class BottomActionsBar extends StatelessWidget {
 
         return Align(
           child: PrimaryButton(
-            label: S.continueText,
+            label: context.loc.continueText,
             onPressed: () {
               onNext?.call();
               if (state.pageIndex >= total - 1) onFinished?.call();

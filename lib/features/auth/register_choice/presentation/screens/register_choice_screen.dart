@@ -4,13 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../shared/design_system/components/primary_button.dart';
 import '../../../../../shared/design_system/components/text_link.dart';
-
 import '../../../../../shared/design_system/typography/gd_text.dart' as ds;
-import '../../../../../shared/strings/strings.dart';
 import '../bloc/register_choice_bloc.dart';
 import '../bloc/register_choice_event.dart';
 import '../bloc/register_choice_state.dart';
@@ -29,8 +28,9 @@ class RegisterChoiceScreen extends StatelessWidget {
             c.maybeWhen(navigate: (_) => true, orElse: () => false),
         listener: (ctx, s) => s.maybeWhen(
           navigate: (route) => ctx.push(route),
-          // ignore: body_might_complete_normally_nullable
-          orElse: () {},
+          orElse: () {
+            return null;
+          },
         ),
         child: Scaffold(
           body: SafeArea(
@@ -55,14 +55,14 @@ class RegisterChoiceScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             ds.GDText(
-                              S.registerChoiceTitle,
-                              variant: ds.GDTextVariant.bodyLarge,
+                              context.loc.registerChoiceTitle,
+                              style: context.textStyle.bodyLargeMedium,
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
                             ),
                             SizedBox(height: gaps.xxl),
                             PrimaryButton(
-                              label: S.registerChoiceNeed,
+                              label: context.loc.registerChoiceNeed,
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
@@ -74,7 +74,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                             ),
                             SizedBox(height: gaps.md),
                             PrimaryButton(
-                              label: S.registerChoiceHelp,
+                              label: context.loc.registerChoiceHelp,
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
@@ -89,13 +89,15 @@ class RegisterChoiceScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ds.GDText(
-                                  '${S.registerChoiceLoginPrefix} ',
-                                  variant: ds.GDTextVariant.bodyMedium,
+                                  '${context.loc.registerChoiceLoginPrefix} ',
+                                  style: context.textStyle.bodyLargeMedium
+                                      .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                   emphasis: ds.GDEmphasis.muted,
-                                  fontWeight: FontWeight.w500,
                                 ),
                                 GDTextLink(
-                                  label: S.login,
+                                  label: context.loc.login,
                                   emphasis: GDTextEmphasis.primary,
                                   style: context.typo.bodyMedium
                                       .copyWith(fontWeight: FontWeight.w500),

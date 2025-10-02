@@ -51,7 +51,8 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<InfoOnboardingBloc>();
-    final total = InfoSlides.all.length;
+    final slides = InfoSlides.of(context);
+    final total = slides.length;
 
     return MultiBlocListener(
       listeners: [
@@ -86,7 +87,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                   Expanded(
                     child: ImagePager(
                       controller: _imgCtrl,
-                      slides: InfoSlides.all,
+                      slides: slides,
                       onPageChanged: (i) {
                         if (_programmatic) return;
                         bloc.add(InfoOnboardingEvent.pageChanged(i));
@@ -100,7 +101,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                     height: 140,
                     child: TextPager(
                       controller: _textCtrl,
-                      slides: InfoSlides.all,
+                      slides: slides,
                     ),
                   ),
                   Padding(

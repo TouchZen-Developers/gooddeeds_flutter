@@ -7,10 +7,13 @@ import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
 
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
+import 'package:gooddeeds/features/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
 import '../../../features/auth/register_menu/presentation/screens/register_menu_screen.dart';
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart';
+import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
+import '../../../features/register/email/verify/presentation/screens/verify_email_screen.dart';
 import '../../../features/splash/presentation/screens/splash_screen.dart';
 import '../di/injector.dart';
 import 'route_paths.dart';
@@ -65,6 +68,35 @@ class CheckoutRoute extends GoRouteData with $CheckoutRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const CheckoutScreen();
+  }
+}
+
+@TypedGoRoute<RegisterEmailRoute>(
+  path: RoutePaths.registerEmail,
+  routes: [
+    TypedGoRoute<VerifyEmailRoute>(path: 'verify'),
+  ],
+)
+class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
+  const RegisterEmailRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterEmailBloc(),
+      child: const RegisterEmailScreen(),
+    );
+  }
+}
+
+class VerifyEmailRoute extends GoRouteData with $VerifyEmailRoute {
+  const VerifyEmailRoute({required this.email});
+
+  final String email;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return VerifyEmailScreen(email: email);
   }
 }
 
