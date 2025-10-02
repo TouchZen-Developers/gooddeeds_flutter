@@ -112,7 +112,9 @@ class PrimaryButton extends StatelessWidget {
       children: [
         if (leading != null) ...[
           IconTheme.merge(
-              data: IconThemeData(color: fg, size: 18), child: leading!),
+            data: IconThemeData(color: fg, size: 18),
+            child: leading!,
+          ),
           SizedBox(width: context.gaps.xs),
         ] else if (leadingIcon != null) ...[
           Icon(leadingIcon, size: 18, color: fg),
@@ -131,7 +133,9 @@ class PrimaryButton extends StatelessWidget {
         if (trailing != null) ...[
           SizedBox(width: context.gaps.xs),
           IconTheme.merge(
-              data: IconThemeData(color: fg, size: 18), child: trailing!),
+            data: IconThemeData(color: fg, size: 18),
+            child: trailing!,
+          ),
         ] else if (trailingIcon != null) ...[
           SizedBox(width: context.gaps.xs),
           Icon(trailingIcon, size: 18, color: fg),

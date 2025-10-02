@@ -105,7 +105,11 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
               builder: (context, constraints) {
                 return SingleChildScrollView(
                   padding: EdgeInsets.fromLTRB(
-                      gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
+                    gaps.xl,
+                    gaps.md,
+                    gaps.xl,
+                    gaps.xl * 3,
+                  ),
                   child: ConstrainedBox(
                     constraints:
                         BoxConstraints(minHeight: constraints.maxHeight),

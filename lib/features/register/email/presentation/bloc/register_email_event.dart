@@ -8,7 +8,8 @@ class RegisterEmailEvent with _$RegisterEmailEvent {
       _PasswordChanged;
 
   const factory RegisterEmailEvent.confirmPasswordChanged(
-      String confirmPassword) = _ConfirmPasswordChanged;
+    String confirmPassword,
+  ) = _ConfirmPasswordChanged;
 
   const factory RegisterEmailEvent.submitted() = _Submitted;
 }

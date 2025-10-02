@@ -55,7 +55,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     border: Border.all(color: Colors.grey.shade300),
                   ),
                   child: Center(
-                      child: Assets.icons.left.svg(width: 14, height: 14)),
+                    child: Assets.icons.left.svg(width: 14, height: 14),
+                  ),
                 ),
               ),
 
@@ -72,9 +73,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   children: [
                     TextSpan(text: '${context.loc.verifyCodePrefix} \n'),
                     TextSpan(
-                        text: widget.email,
-                        style: context.textStyle.bodyMediumMedium
-                            .copyWith(color: BrandTones.secondary)),
+                      text: widget.email,
+                      style: context.textStyle.bodyMediumMedium
+                          .copyWith(color: BrandTones.secondary),
+                    ),
                     TextSpan(text: ' ${context.loc.verifyCodeSuffix}'),
                   ],
                 ),

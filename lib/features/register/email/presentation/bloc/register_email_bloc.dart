@@ -18,8 +18,12 @@ class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
     });
 
     on<_ConfirmPasswordChanged>((e, emit) {
-      emit(state.copyWith(
-          confirmPassword: e.confirmPassword, showErrorMessages: false));
+      emit(
+        state.copyWith(
+          confirmPassword: e.confirmPassword,
+          showErrorMessages: false,
+        ),
+      );
     });
 
     on<_Submitted>((e, emit) {

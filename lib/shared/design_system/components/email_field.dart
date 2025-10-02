@@ -51,12 +51,14 @@ class EmailField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(
-                  color: hasError ? BrandTones.red : BrandTones.grey20),
+                color: hasError ? BrandTones.red : BrandTones.grey20,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(
-                  color: hasError ? BrandTones.red : BrandTones.grey20),
+                color: hasError ? BrandTones.red : BrandTones.grey20,
+              ),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
