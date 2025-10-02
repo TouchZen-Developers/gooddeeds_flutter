@@ -31,21 +31,21 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
   }
 
   String? _emailErrorFor(String email) {
-    if (email.isEmpty) return "Email is required";
+    if (email.isEmpty) return 'Email is required';
     final re = RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$');
-    if (!re.hasMatch(email)) return "Enter a valid email";
+    if (!re.hasMatch(email)) return 'Enter a valid email';
     return null;
   }
 
   String? _passwordErrorFor(String password) {
-    if (password.isEmpty) return "Password is required";
-    if (password.length < 6) return "Use at least 6 characters";
+    if (password.isEmpty) return 'Password is required';
+    if (password.length < 6) return 'Use at least 6 characters';
     return null;
   }
 
   String? _confirmErrorFor(String pass, String confirm) {
-    if (confirm.isEmpty) return "Please re-enter password";
-    if (pass != confirm) return "Passwords do not match";
+    if (confirm.isEmpty) return 'Please re-enter password';
+    if (pass != confirm) return 'Passwords do not match';
     return null;
   }
 

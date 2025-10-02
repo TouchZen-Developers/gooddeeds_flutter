@@ -130,7 +130,7 @@ class GDText extends StatelessWidget {
 
     if (alpha != null) {
       final a = alpha!.clamp(0.0, 1.0);
-      resolved = resolved.withOpacity(a);
+      resolved = resolved.withValues(alpha: a);
     }
 
     // 3) Apply overrides

@@ -31,9 +31,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final text = context.textStyle;
-    final gaps = context.gaps;
 
     final canContinue = _code.length == 4;
 

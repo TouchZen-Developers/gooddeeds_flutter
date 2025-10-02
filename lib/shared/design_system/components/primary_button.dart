@@ -94,7 +94,7 @@ class PrimaryButton extends StatelessWidget {
       case ButtonVariant.outlined:
         bg = background ?? Colors.transparent;
         fg = base;
-        border = Border.all(color: base, width: 1);
+        border = Border.all(color: base);
         break;
       case ButtonVariant.ghost:
         bg = background ?? Colors.transparent;

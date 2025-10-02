@@ -85,7 +85,7 @@ class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
     return BlocProvider(
       create: (_) => RegisterEmailBloc(),
       child: const RegisterEmailScreen(),
-    );();
+    );
   }
 }
 

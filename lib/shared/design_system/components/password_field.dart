@@ -101,7 +101,7 @@ class _PasswordFieldState extends State<PasswordField> {
             ),
 
             // Let the external error text be handled below with AnimatedSwitcher
-            errorText: null,
+            // errorText: null,
           ),
           onChanged: widget.onChanged,
         ),

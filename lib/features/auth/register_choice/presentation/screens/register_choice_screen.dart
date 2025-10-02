@@ -28,7 +28,9 @@ class RegisterChoiceScreen extends StatelessWidget {
         listenWhen: (p, c) => c.maybeWhen(navigate: (_) => true, orElse: () => false),
         listener: (ctx, s) => s.maybeWhen(
           navigate: (route) => ctx.push(route),
-          orElse: () {},
+          orElse: () {
+            return null;
+          },
         ),
         child: Scaffold(
           body: SafeArea(
