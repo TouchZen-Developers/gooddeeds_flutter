@@ -244,6 +244,48 @@ abstract class AppLocalizations {
   /// **'Total'**
   String get total;
 
+  /// No description provided for @sendMessageForTheFamily.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a Message for the Family'**
+  String get sendMessageForTheFamily;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @creditCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit Card'**
+  String get creditCard;
+
+  /// No description provided for @applePay.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Pay'**
+  String get applePay;
+
+  /// No description provided for @orderNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Now'**
+  String get orderNow;
+
+  /// No description provided for @eventDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Details'**
+  String get eventDetails;
+
+  /// No description provided for @affectedFamiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Affected Familes'**
+  String get affectedFamiles;
+
   /// No description provided for @register.
   ///
   /// In en, this message translates to:

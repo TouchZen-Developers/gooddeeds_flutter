@@ -6,7 +6,7 @@ import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 enum GDTextEmphasis { muted, primary }
 
 /// Text link size variant
-enum GDTextLinkVariant { small, normal , large }
+enum GDTextLinkVariant { small, normal, large }
 
 /// A small, link-like text button that uses DS typography and colors.
 /// - `muted` uses a brand grey by default (BrandTones.grey60).
@@ -40,14 +40,16 @@ class GDTextLink extends StatelessWidget {
 
     // Choose default style based on variant
     final defaultTextStyle = switch (variant) {
-      GDTextLinkVariant.small  => context.typo.bodySmall,   // 12px
-      GDTextLinkVariant.normal => context.typo.bodyMedium,  // 14px
-      GDTextLinkVariant.large  => context.typo.bodyLarge,   // 16px
+      GDTextLinkVariant.small => context.typo.bodySmall, // 12px
+      GDTextLinkVariant.normal => context.typo.bodyMedium, // 14px
+      GDTextLinkVariant.large => context.typo.bodyLarge, // 16px
     };
 
     // Resolve base color from props/emphasis.
     final baseColor = color ??
-        (emphasis == GDTextEmphasis.primary ? scheme.primary : BrandTones.grey60);
+        (emphasis == GDTextEmphasis.primary
+            ? scheme.primary
+            : BrandTones.grey60);
 
     return TextButton(
       onPressed: onPressed,

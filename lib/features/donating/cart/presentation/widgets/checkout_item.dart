@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
-import 'package:gooddeeds/shared/design_system/components/app_checkbox.dart';
+import 'package:gooddeeds/shared/design_system/components/app_text_field.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
-class MyCartItem extends StatelessWidget {
-  const MyCartItem({super.key});
+class CheckoutItem extends StatelessWidget {
+  const CheckoutItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,6 @@ class MyCartItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              AppCheckbox(value: true, onChanged: (value) {}),
-              const Gap(16),
               ClipRRect(
                 borderRadius: BorderRadiusGeometry.all(Radius.circular(8)),
                 child: SizedBox(
@@ -54,6 +53,10 @@ class MyCartItem extends StatelessWidget {
           _CartItem(),
           _CartItem(),
           _CartItem(),
+          const Gap(20),
+          AppTextField(
+            hint: context.loc.sendMessageForTheFamily,
+          ),
         ],
       ),
     );
@@ -86,35 +89,21 @@ class _CartItem extends StatelessWidget {
           ),
           const Gap(8),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '6 Pack Canned Tuna - Packed Fresh. Sustainable Caught.',
-                  style: context.textStyle.bodySmallRegular,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const Gap(4),
-                Text(
-                  '\$100.00',
-                  style: context.textStyle.bodySmallMedium.copyWith(
-                    color: context.colors.secondary,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+            child: Text(
+              '6 Pack Canned Tuna - Packed Fresh. Sustainable Caught.',
+              style: context.textStyle.bodySmallRegular,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           const Gap(16),
-          IconButton(
-            visualDensity: VisualDensity.compact,
-            onPressed: () {},
-            icon: Icon(
-              Icons.close,
-              size: 20,
+          Text(
+            '\$100.00',
+            style: context.textStyle.bodySmallMedium.copyWith(
+              color: context.colors.secondary,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

@@ -39,7 +39,6 @@ class ImagePager extends StatelessWidget {
               maxHeight: maxHeight,
             ),
             child: slides[i].svg.svg(
-                  fit: BoxFit.contain,
                   semanticsLabel: slides[i].title,
                 ),
           ),

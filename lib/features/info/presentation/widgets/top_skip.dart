@@ -7,7 +7,6 @@ import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 class TopSkip extends StatelessWidget {
   const TopSkip({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<InfoOnboardingBloc>();
@@ -23,7 +22,8 @@ class TopSkip extends StatelessWidget {
               if (show)
                 GDTextLink(
                   label: S.skip,
-                  onPressed: () => bloc.add(const InfoOnboardingEvent.skipPressed()),
+                  onPressed: () =>
+                      bloc.add(const InfoOnboardingEvent.skipPressed()),
                 ),
             ],
           );

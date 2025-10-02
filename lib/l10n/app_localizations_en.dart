@@ -85,6 +85,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get total => 'Total';
 
   @override
+  String get sendMessageForTheFamily => 'Send a Message for the Family';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get creditCard => 'Credit Card';
+
+  @override
+  String get applePay => 'Apple Pay';
+
+  @override
+  String get orderNow => 'Order Now';
+
+  @override
+  String get eventDetails => 'Event Details';
+
+  @override
+  String get affectedFamiles => 'Affected Familes';
+
+  @override
   String get register => 'Register';
 
   @override

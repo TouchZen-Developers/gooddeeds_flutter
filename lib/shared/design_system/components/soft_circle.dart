@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gooddeeds/shared/design_system/utils/layout_ext.dart';
 
-
 class SoftCircle extends StatelessWidget {
   const SoftCircle({
     super.key,

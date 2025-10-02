@@ -26,7 +26,6 @@ class OnboardingSlide extends StatelessWidget {
             child: svg.svg(
               width: MediaQuery.sizeOf(context).width * 0.75,
               height: 250,
-              fit: BoxFit.contain,
               semanticsLabel: title,
             ),
           ),

@@ -25,12 +25,16 @@ class InfoOnboardingBloc
   void _onStarted(_Started event, Emitter<InfoOnboardingBlocState> emit) {}
 
   void _onPageChanged(
-      _PageChanged event, Emitter<InfoOnboardingBlocState> emit) {
+    _PageChanged event,
+    Emitter<InfoOnboardingBlocState> emit,
+  ) {
     emit(state.copyWith(pageIndex: event.index.clamp(0, kTotalPages - 1)));
   }
 
   void _onNextPressed(
-      _NextPressed event, Emitter<InfoOnboardingBlocState> emit) {
+    _NextPressed event,
+    Emitter<InfoOnboardingBlocState> emit,
+  ) {
     if (!state.isLast) {
       emit(state.copyWith(pageIndex: state.pageIndex + 1));
     } else {
@@ -40,7 +44,9 @@ class InfoOnboardingBloc
   }
 
   void _onSkipPressed(
-      _SkipPressed event, Emitter<InfoOnboardingBlocState> emit) {
+    _SkipPressed event,
+    Emitter<InfoOnboardingBlocState> emit,
+  ) {
     emit(state.copyWith(pageIndex: kTotalPages - 1));
   }
 
@@ -50,7 +56,9 @@ class InfoOnboardingBloc
   }
 
   void _onRegisterPressed(
-      _RegisterPressed e, Emitter<InfoOnboardingBlocState> emit) {
+    _RegisterPressed e,
+    Emitter<InfoOnboardingBlocState> emit,
+  ) {
     emit(state.copyWith(navigateTo: RegisterChoiceRoute().location));
     emit(state.copyWith(navigateTo: null));
   }

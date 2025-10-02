@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/app_modal.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class FilterModal extends StatelessWidget {
@@ -144,13 +143,13 @@ class _FilterItem extends StatelessWidget {
           if (states.contains(WidgetState.selected)) {
             return context.colors.primary;
           }
-          return Colors.white;
+          return context.colors.onPrimary;
         },
       ),
       shadowColor: Colors.transparent,
       selectedShadowColor: Colors.transparent,
       labelStyle: context.textStyle.bodyMediumMedium.copyWith(
-        color: selected ? Colors.white : BrandTones.grey50,
+        color: selected ? context.colors.onPrimary : context.onSurface.shade50,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.all(
@@ -159,7 +158,7 @@ class _FilterItem extends StatelessWidget {
         side: selected
             ? BorderSide.none
             : BorderSide(
-                color: BrandTones.grey30,
+                color: context.onSurface.shade30!,
               ),
       ),
       onSelected: onSelected,

@@ -20,6 +20,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
 
+  /// File path: assets/icons/apple_pay.svg
+  SvgGenImage get applePay => const SvgGenImage('assets/icons/apple_pay.svg');
+
   /// File path: assets/icons/back.svg
   SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
 
@@ -28,6 +31,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
+
+  /// File path: assets/icons/credit_card.svg
+  SvgGenImage get creditCard =>
+      const SvgGenImage('assets/icons/credit_card.svg');
 
   /// File path: assets/icons/delete.svg
   SvgGenImage get delete => const SvgGenImage('assets/icons/delete.svg');
@@ -74,9 +81,11 @@ class $AssetsIconsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         apple,
+        applePay,
         back,
         book,
         cart,
+        creditCard,
         delete,
         email,
         eye,

@@ -36,10 +36,11 @@ class FamilyDetailsScreen extends StatelessWidget {
                 height: 190,
                 width: double.infinity,
                 child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.all(
-                      Radius.circular(12),
-                    ),
-                    child: Assets.images.mock3.image(fit: BoxFit.cover)),
+                  borderRadius: BorderRadiusGeometry.all(
+                    Radius.circular(12),
+                  ),
+                  child: Assets.images.mock3.image(fit: BoxFit.cover),
+                ),
               ),
               const Gap(20),
               Row(
@@ -64,7 +65,7 @@ class FamilyDetailsScreen extends StatelessWidget {
                                   context.textStyle.bodyMediumRegular.copyWith(
                                 color: BrandTones.info,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -73,9 +74,9 @@ class FamilyDetailsScreen extends StatelessWidget {
                   Text(
                     '6 ${context.loc.peoples}',
                     style: context.textStyle.bodyMediumRegular.copyWith(
-                      color: BrandTones.grey50,
+                      color: context.onSurface.shade50,
                     ),
-                  )
+                  ),
                 ],
               ),
               const Gap(20),
@@ -93,7 +94,7 @@ class FamilyDetailsScreen extends StatelessWidget {
                 child: ExpansionTile(
                   tilePadding: EdgeInsets.zero,
                   childrenPadding: EdgeInsets.zero,
-                  iconColor: BrandTones.grey100,
+                  iconColor: context.onSurface.shade100,
                   minTileHeight: 50,
                   visualDensity: VisualDensity.compact,
                   title: Row(
@@ -140,7 +141,7 @@ class FamilyDetailsScreen extends StatelessWidget {
                 child: ExpansionTile(
                   tilePadding: EdgeInsets.zero,
                   childrenPadding: EdgeInsets.zero,
-                  iconColor: BrandTones.grey100,
+                  iconColor: context.onSurface.shade100,
                   minTileHeight: 50,
                   visualDensity: VisualDensity.compact,
                   title: Row(
@@ -186,7 +187,7 @@ class FamilyDetailsScreen extends StatelessWidget {
               Text(
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 style: context.textStyle.bodyMediumRegular.copyWith(
-                  color: BrandTones.grey80,
+                  color: context.onSurface.shade80,
                 ),
               ),
               const Gap(20),
@@ -214,19 +215,20 @@ class FamilyDetailsScreen extends StatelessWidget {
                         Text(
                           '${context.loc.donatedBy} :',
                           style: context.textStyle.bodyMediumRegular.copyWith(
-                            color: BrandTones.grey80,
+                            color: context.onSurface.shade80,
                           ),
                         ),
                         Expanded(
-                            child: Text(
-                          'Guy Hawkins',
-                          style: context.textStyle.bodyMediumMedium.copyWith(
-                            color: BrandTones.grey100,
+                          child: Text(
+                            'Guy Hawkins',
+                            style: context.textStyle.bodyMediumMedium.copyWith(
+                              color: context.onSurface.shade100,
+                            ),
+                            textAlign: TextAlign.end,
                           ),
-                          textAlign: TextAlign.end,
-                        ))
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -248,19 +250,20 @@ class FamilyDetailsScreen extends StatelessWidget {
                         Text(
                           '${context.loc.donatedBy} :',
                           style: context.textStyle.bodyMediumRegular.copyWith(
-                            color: BrandTones.grey80,
+                            color: context.onSurface.shade80,
                           ),
                         ),
                         Expanded(
-                            child: Text(
-                          'Guy Hawkins',
-                          style: context.textStyle.bodyMediumMedium.copyWith(
-                            color: BrandTones.grey100,
+                          child: Text(
+                            'Guy Hawkins',
+                            style: context.textStyle.bodyMediumMedium.copyWith(
+                              color: context.onSurface.shade100,
+                            ),
+                            textAlign: TextAlign.end,
                           ),
-                          textAlign: TextAlign.end,
-                        ))
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -23,8 +23,12 @@ class BrandTones {
   static const grey30 = Color(0xFFE2E2E5);
   static const grey50 = Color(0xFFA3A2AC);
   static const grey60 = Color(0xFF454545);
+  static const grey40 = Color(0xFFC5C4CA);
+  static const grey50 = Color(0xFFA3A2AC);
+  static const grey60 = Color(0xFF7D7B89);
+  static const grey70 = Color(0xFF6A6777);
   static const grey80 = Color(0xFF484559);
-  static const grey90 = Color(0xFFF4F5F7);
+  static const grey90 = Color(0xFF18142D);
   static const grey100 = Color(0xFF0E0A24);
 
   //others

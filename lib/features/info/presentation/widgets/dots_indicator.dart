@@ -14,7 +14,6 @@ class OnboardingDots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SmoothPageIndicator(
       controller: controller,
       count: count,
@@ -23,7 +22,7 @@ class OnboardingDots extends StatelessWidget {
         dotWidth: 6,
         spacing: 6,
         activeDotColor: BrandTones.secondary,
-        dotColor: BrandTones.grey30
+        dotColor: BrandTones.grey30,
       ),
     );
   }

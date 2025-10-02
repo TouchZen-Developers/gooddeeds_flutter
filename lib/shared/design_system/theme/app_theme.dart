@@ -19,9 +19,8 @@ ColorScheme _buildScheme(Brightness b) {
     onSecondary: sec.onSecondary,
     secondaryContainer: sec.secondaryContainer,
     onSecondaryContainer: sec.onSecondaryContainer,
-    surface: b == Brightness.light ? BrandTones.grey90 : BrandTones.grey10,
+    surface: b == Brightness.light ? Colors.white : BrandTones.grey10,
     onSurface: BrandTones.grey100,
-    background: b == Brightness.light ? Colors.white : BrandTones.grey10,
     outline: BrandTones.grey20,
   );
 }

@@ -11,4 +11,5 @@ class RoutePaths {
   static const donaitingOrders = '/donaiting_orders';
   static const donaitingProfile = '/donaiting_profile';
   static const verifyEmail = '/verify_email';
+  static const checkout = '/checkout';
 }

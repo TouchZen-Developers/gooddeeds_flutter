@@ -8,7 +8,6 @@ import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/app_app_bar.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
-import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class FamilyListScreen extends StatelessWidget {
@@ -57,10 +56,10 @@ class FamilyListScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -92,7 +91,7 @@ class FamilyListScreen extends StatelessWidget {
                 return const Gap(16);
               },
             ),
-          )
+          ),
         ],
       ),
     );
@@ -133,6 +132,7 @@ class _FilterItem extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _EmptyFamilyList extends StatelessWidget {
   const _EmptyFamilyList();
 
@@ -143,7 +143,6 @@ class _EmptyFamilyList extends StatelessWidget {
         padding: const EdgeInsets.all(40.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Assets.images.infoTwo.svg(height: 140),
             const Gap(24),
@@ -153,7 +152,7 @@ class _EmptyFamilyList extends StatelessWidget {
               context.loc.noFamilyFoundDesc,
               textAlign: TextAlign.center,
               style: context.textStyle.bodyLargeRegular.copyWith(
-                color: BrandTones.grey50,
+                color: context.onSurface.shade50,
               ),
             ),
             const Gap(24),
