@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/src/config/routes/app_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../../gen/assets.gen.dart';
@@ -99,6 +100,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 enableActiveFill: true,
                 backgroundColor: Colors.transparent,
                 textStyle: context.textStyle.bodyMediumRegular,
+                autoDisposeControllers: false,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(10),
@@ -134,8 +136,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 fullWidth: true,
                 onPressed: canContinue
                     ? () {
-                        // TODO: verify _code
-                        // const DonatingHomeRoute().go(context);
+                        const RegisterPersonalInfoRoute().go(context);
                       }
                     : null,
               ),

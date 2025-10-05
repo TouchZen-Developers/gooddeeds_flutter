@@ -68,7 +68,7 @@ class StepHeader extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 16),
         ds.GDText(
           context.loc.enterYourPersonalInformation,
           style: context.textStyle.bodyMediumMedium.copyWith(
