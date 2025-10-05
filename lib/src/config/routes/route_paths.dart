@@ -12,4 +12,7 @@ class RoutePaths {
   static const donaitingProfile = '/donaiting_profile';
   static const verifyEmail = '/verify_email';
   static const checkout = '/checkout';
+  static const registerPersonalInfo = '/register_personal_info';
+  static const registerContactInfo = '/register_contact_info';
+  static const registerImpact = '/register_impact';
 }

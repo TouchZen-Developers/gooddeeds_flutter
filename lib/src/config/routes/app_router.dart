@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/checkout_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/donaiting_my_cart_screen.dart';
 import 'package:gooddeeds/features/donating/family/presentation/screens/family_details_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_home_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
-
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
 import 'package:gooddeeds/features/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
+
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
 import '../../../features/auth/register_menu/presentation/screens/register_menu_screen.dart';
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart';
+import '../../../features/register/contact_info/presentation/bloc/register_contact_info_bloc.dart';
+import '../../../features/register/contact_info/presentation/screens/register_contact_info_screen.dart';
 import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
 import '../../../features/register/email/verify/presentation/screens/verify_email_screen.dart';
+import '../../../features/register/personal_info/presentation/bloc/register_personal_info_bloc.dart';
+import '../../../features/register/personal_info/presentation/screens/register_personal_info_screen.dart';
+import '../../../features/register/register_impact/presentation/bloc/register_impact_bloc.dart';
+import '../../../features/register/register_impact/presentation/screens/register_impact_screen.dart';
 import '../../../features/splash/presentation/screens/splash_screen.dart';
 import '../di/injector.dart';
 import 'route_paths.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'app_router.g.dart';
 
@@ -97,6 +103,47 @@ class VerifyEmailRoute extends GoRouteData with $VerifyEmailRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return VerifyEmailScreen(email: email);
+  }
+}
+
+@TypedGoRoute<RegisterPersonalInfoRoute>(path: RoutePaths.registerPersonalInfo)
+class RegisterPersonalInfoRoute extends GoRouteData
+    with $RegisterPersonalInfoRoute {
+  const RegisterPersonalInfoRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterPersonalInfoBloc(),
+      child: const RegisterPersonalInfoScreen(),
+    );
+  }
+}
+
+@TypedGoRoute<RegisterContactInfoRoute>(path: RoutePaths.registerContactInfo)
+class RegisterContactInfoRoute extends GoRouteData
+    with $RegisterContactInfoRoute {
+  const RegisterContactInfoRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterContactInfoBloc(),
+      child: const RegisterContactInfoScreen(),
+    );
+  }
+}
+
+@TypedGoRoute<RegisterImpactRoute>(path: RoutePaths.registerImpact)
+class RegisterImpactRoute extends GoRouteData with $RegisterImpactRoute {
+  const RegisterImpactRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterImpactBloc(),
+      child: const RegisterImpactScreen(),
+    );
   }
 }
 

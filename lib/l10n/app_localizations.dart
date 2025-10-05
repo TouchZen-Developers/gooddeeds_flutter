@@ -373,7 +373,7 @@ abstract class AppLocalizations {
   /// No description provided for @registerChoiceLoginPrefix.
   ///
   /// In en, this message translates to:
-  /// **'lready have an account?'**
+  /// **'Already have an account?'**
   String get registerChoiceLoginPrefix;
 
   /// No description provided for @infoWelcomeTitle.
@@ -447,6 +447,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign up with Apple'**
   String get signupWithApple;
+
+  /// No description provided for @firstNameIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'First name is required'**
+  String get firstNameIsRequired;
+
+  /// No description provided for @lastNameIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name is required'**
+  String get lastNameIsRequired;
+
+  /// No description provided for @enterFamilyMembersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter family members count'**
+  String get enterFamilyMembersCount;
+
+  /// No description provided for @enterValidNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number'**
+  String get enterValidNumber;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @enterYourFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your first name'**
+  String get enterYourFirstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
+
+  /// No description provided for @enterYourLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your last name'**
+  String get enterYourLastName;
+
+  /// No description provided for @howManyAreInYourFamily.
+  ///
+  /// In en, this message translates to:
+  /// **'How many are in your family?'**
+  String get howManyAreInYourFamily;
+
+  /// No description provided for @enterAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter amount'**
+  String get enterAmount;
+
+  /// No description provided for @addressIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Address is required'**
+  String get addressIsRequired;
+
+  /// No description provided for @enterPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter phone number'**
+  String get enterPhoneNumber;
+
+  /// No description provided for @enterCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter city'**
+  String get enterCity;
+
+  /// No description provided for @enterState.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter state'**
+  String get enterState;
+
+  /// No description provided for @enterZipCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter zip code'**
+  String get enterZipCode;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @enterAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Address'**
+  String get enterAddress;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phoneNumber;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @state.
+  ///
+  /// In en, this message translates to:
+  /// **'State'**
+  String get state;
+
+  /// No description provided for @zipCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Zip code'**
+  String get zipCode;
+
+  /// No description provided for @affectedEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Affected Events'**
+  String get affectedEvents;
+
+  /// No description provided for @haveYouBeenAffectedQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Have you been affected by any of the following events?'**
+  String get haveYouBeenAffectedQuestion;
+
+  /// No description provided for @chooseEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Event'**
+  String get chooseEvent;
+
+  /// No description provided for @statement.
+  ///
+  /// In en, this message translates to:
+  /// **'Statement'**
+  String get statement;
+
+  /// No description provided for @explainStatementHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Explain in a few sentences your family story and why you need help...'**
+  String get explainStatementHint;
+
+  /// No description provided for @pleaseChooseAnEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose an event'**
+  String get pleaseChooseAnEvent;
+
+  /// No description provided for @pleaseWriteAtLeast10Characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write at least 10 characters'**
+  String get pleaseWriteAtLeast10Characters;
+
+  /// No description provided for @eventCaliforniaWildfires.
+  ///
+  /// In en, this message translates to:
+  /// **'California Wildfires'**
+  String get eventCaliforniaWildfires;
+
+  /// No description provided for @eventKentuckyFloods.
+  ///
+  /// In en, this message translates to:
+  /// **'Kentucky Floods'**
+  String get eventKentuckyFloods;
+
+  /// No description provided for @eventHurricaneFiona.
+  ///
+  /// In en, this message translates to:
+  /// **'Hurricane Fiona'**
+  String get eventHurricaneFiona;
+
+  /// No description provided for @eventInflation.
+  ///
+  /// In en, this message translates to:
+  /// **'Inflation'**
+  String get eventInflation;
+
+  /// No description provided for @eventCovid19.
+  ///
+  /// In en, this message translates to:
+  /// **'Covid-19'**
+  String get eventCovid19;
+
+  /// No description provided for @eventUnemployment.
+  ///
+  /// In en, this message translates to:
+  /// **'Unemployment'**
+  String get eventUnemployment;
+
+  /// No description provided for @none.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get none;
 }
 
 class _AppLocalizationsDelegate

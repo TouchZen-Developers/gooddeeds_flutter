@@ -13,6 +13,9 @@ List<RouteBase> get $appRoutes => [
       $registerMenuRoute,
       $checkoutRoute,
       $registerEmailRoute,
+      $registerPersonalInfoRoute,
+      $registerContactInfoRoute,
+      $registerImpactRoute,
       $appStatfulShellWithNavigationRouteData,
     ];
 
@@ -201,6 +204,90 @@ mixin $VerifyEmailRoute on GoRouteData {
         queryParams: {
           'email': _self.email,
         },
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $registerPersonalInfoRoute => GoRouteData.$route(
+      path: '/register_personal_info',
+      factory: $RegisterPersonalInfoRoute._fromState,
+    );
+
+mixin $RegisterPersonalInfoRoute on GoRouteData {
+  static RegisterPersonalInfoRoute _fromState(GoRouterState state) =>
+      const RegisterPersonalInfoRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register_personal_info',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $registerContactInfoRoute => GoRouteData.$route(
+      path: '/register_contact_info',
+      factory: $RegisterContactInfoRoute._fromState,
+    );
+
+mixin $RegisterContactInfoRoute on GoRouteData {
+  static RegisterContactInfoRoute _fromState(GoRouterState state) =>
+      const RegisterContactInfoRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register_contact_info',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $registerImpactRoute => GoRouteData.$route(
+      path: '/register_impact',
+      factory: $RegisterImpactRoute._fromState,
+    );
+
+mixin $RegisterImpactRoute on GoRouteData {
+  static RegisterImpactRoute _fromState(GoRouterState state) =>
+      const RegisterImpactRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register_impact',
       );
 
   @override

@@ -148,7 +148,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueText => 'Continue';
 
   @override
-  String get registerChoiceLoginPrefix => 'lready have an account?';
+  String get registerChoiceLoginPrefix => 'Already have an account?';
 
   @override
   String get infoWelcomeTitle => 'Welcome to goodDeeds';
@@ -187,4 +187,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signupWithApple => 'Sign up with Apple';
+
+  @override
+  String get firstNameIsRequired => 'First name is required';
+
+  @override
+  String get lastNameIsRequired => 'Last name is required';
+
+  @override
+  String get enterFamilyMembersCount => 'Enter family members count';
+
+  @override
+  String get enterValidNumber => 'Enter a valid number';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get enterYourFirstName => 'Enter your first name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get enterYourLastName => 'Enter your last name';
+
+  @override
+  String get howManyAreInYourFamily => 'How many are in your family?';
+
+  @override
+  String get enterAmount => 'Enter amount';
+
+  @override
+  String get addressIsRequired => 'Address is required';
+
+  @override
+  String get enterPhoneNumber => 'Enter phone number';
+
+  @override
+  String get enterCity => 'Enter city';
+
+  @override
+  String get enterState => 'Enter state';
+
+  @override
+  String get enterZipCode => 'Enter zip code';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get enterAddress => 'Enter Address';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get state => 'State';
+
+  @override
+  String get zipCode => 'Zip code';
+
+  @override
+  String get affectedEvents => 'Affected Events';
+
+  @override
+  String get haveYouBeenAffectedQuestion =>
+      'Have you been affected by any of the following events?';
+
+  @override
+  String get chooseEvent => 'Choose Event';
+
+  @override
+  String get statement => 'Statement';
+
+  @override
+  String get explainStatementHint =>
+      'Explain in a few sentences your family story and why you need help...';
+
+  @override
+  String get pleaseChooseAnEvent => 'Please choose an event';
+
+  @override
+  String get pleaseWriteAtLeast10Characters =>
+      'Please write at least 10 characters';
+
+  @override
+  String get eventCaliforniaWildfires => 'California Wildfires';
+
+  @override
+  String get eventKentuckyFloods => 'Kentucky Floods';
+
+  @override
+  String get eventHurricaneFiona => 'Hurricane Fiona';
+
+  @override
+  String get eventInflation => 'Inflation';
+
+  @override
+  String get eventCovid19 => 'Covid-19';
+
+  @override
+  String get eventUnemployment => 'Unemployment';
+
+  @override
+  String get none => 'None';
 }

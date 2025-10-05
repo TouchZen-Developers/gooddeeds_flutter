@@ -55,7 +55,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             ds.GDText(
-                              context.loc.registerChoiceTitle,
+                              context.loc.registerChoiceHelp,
                               style: context.textStyle.bodyLargeMedium,
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
@@ -74,7 +74,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                             ),
                             SizedBox(height: gaps.md),
                             PrimaryButton(
-                              label: context.loc.registerChoiceHelp,
+                              label: context.loc.registerChoiceTitle,
                               variant: ButtonVariant.outlined,
                               size: ButtonSize.large,
                               fullWidth: true,
