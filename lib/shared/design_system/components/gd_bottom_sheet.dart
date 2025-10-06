@@ -32,88 +32,135 @@ class GDBottomSheet {
 
   static Future<T?> showList<T>(
     BuildContext context, {
-    required String title,
+    String? title,
     required List<T> items,
     required String Function(T) labelOf,
     T? selected,
+    Color Function(T item)? iconColorOf,
+    Color Function(T item)? textColorOf,
+    Widget Function(T item, Color iconColor)? leadingSvgBuilder,
   }) {
     return show<T>(
       context,
       builder: (ctx) {
         final gaps = ctx.gaps;
         final text = ctx.textStyle;
-        List<T> filtered = List.of(items);
-        return StatefulBuilder(
-          builder: (ctx, setState) => Padding(
-            padding: EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // drag handle
-                Container(
-                  width: 32,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: BrandTones.grey5,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
+        final hasTitle = title?.trim().isNotEmpty ?? false;
+        final data = List<T>.of(items);
+
+        return Padding(
+          padding: EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // drag handle
+              Container(
+                width: 44,
+                height: 5,
+                decoration: BoxDecoration(
+                  color: BrandTones.grey10,
+                  borderRadius: BorderRadius.circular(3),
                 ),
+              ),
+
+              if (hasTitle) ...[
                 SizedBox(height: gaps.xl),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(title, style: text.heading3),
+                  child: Text(title!, style: text.heading3),
                 ),
                 SizedBox(height: gaps.lg),
-                Flexible(
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: filtered.length,
-                    separatorBuilder: (_, __) => SizedBox(height: gaps.sm),
-                    itemBuilder: (_, i) {
-                      final item = filtered[i];
-                      final isSelected = selected != null && item == selected;
-                      return InkWell(
-                        borderRadius: BorderRadius.circular(12),
-                        onTap: () => Navigator.of(ctx).pop<T>(item),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: isSelected
-                                  ? BrandTones.primary
-                                  : BrandTones.grey20,
+              ] else
+                SizedBox(height: gaps.lg),
+
+              Flexible(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: data.length,
+                  separatorBuilder: (_, __) => SizedBox(height: gaps.md),
+                  itemBuilder: (_, i) {
+                    final item = data[i];
+                    final isSelected = selected != null && item == selected;
+
+                    final hasLeading = leadingSvgBuilder != null;
+                    final Color iconColor =
+                        iconColorOf?.call(item) ?? BrandTones.primary;
+                    final Widget? leadingSvg =
+                        hasLeading ? leadingSvgBuilder(item, iconColor) : null;
+
+                    final Color titleColor =
+                        textColorOf?.call(item) ?? BrandTones.grey100;
+
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () => Navigator.of(ctx).pop<T>(item),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: BrandTones.grey20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.02),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
                             ),
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  labelOf(item),
-                                  style: ctx.textStyle.bodyLargeMedium,
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            if (hasLeading)
+                              _CircleSvg(color: iconColor, child: leadingSvg!),
+                            if (hasLeading) const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                labelOf(item),
+                                style: ctx.textStyle.bodyLargeMedium.copyWith(
+                                  color: titleColor,
                                 ),
                               ),
-                              if (isSelected)
-                                Icon(
-                                  Icons.check_rounded,
-                                  color: BrandTones.primary,
-                                ),
-                            ],
-                          ),
+                            ),
+                            if (isSelected)
+                              Icon(
+                                Icons.check_rounded,
+                                color: BrandTones.primary,
+                              ),
+                          ],
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
+    );
+  }
+}
+
+class _CircleSvg extends StatelessWidget {
+  const _CircleSvg({required this.child, required this.color});
+
+  final Widget child;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 44,
+      height: 44,
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(22),
+      ),
+      alignment: Alignment.center,
+      child: child,
     );
   }
 }

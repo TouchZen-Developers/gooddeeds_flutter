@@ -295,4 +295,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get none => 'None';
+
+  @override
+  String get familyPhoto => 'Family Photo';
+
+  @override
+  String get uploadPhoto => 'Upload Photo';
+
+  @override
+  String get uploadingPhotos => 'Uploading photos..';
+
+  @override
+  String get deleting => 'Deleting...';
+
+  @override
+  String get fromGallery => 'From gallery';
+
+  @override
+  String get openCamera => 'Open camera';
+
+  @override
+  String get replacePhoto => 'Replace photo';
+
+  @override
+  String get deletePhoto => 'Delete photo';
+
+  @override
+  String get editPhoto => 'Edit photo';
 }
