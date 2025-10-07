@@ -322,4 +322,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editPhoto => 'Edit photo';
+
+  @override
+  String get submittingApplication => 'Submitting Application';
+
+  @override
+  String get applicationPending => 'Application Pending';
+
+  @override
+  String get applicationPendingDesc =>
+      'Approval by the admin takes 1-2 days, and you\'ll get an email once accepted.';
+
+  @override
+  String get continueToHome => 'Continue to Home';
 }

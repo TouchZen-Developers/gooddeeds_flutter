@@ -17,6 +17,7 @@ List<RouteBase> get $appRoutes => [
       $registerContactInfoRoute,
       $registerImpactRoute,
       $registerFamilyPhotoRoute,
+      $applicationPendingRoute,
       $appStatfulShellWithNavigationRouteData,
     ];
 
@@ -317,6 +318,34 @@ mixin $RegisterFamilyPhotoRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/register/family-photo',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $applicationPendingRoute => GoRouteData.$route(
+      path: '/register/pending',
+      factory: $ApplicationPendingRoute._fromState,
+    );
+
+mixin $ApplicationPendingRoute on GoRouteData {
+  static ApplicationPendingRoute _fromState(GoRouterState state) =>
+      const ApplicationPendingRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/register/pending',
       );
 
   @override

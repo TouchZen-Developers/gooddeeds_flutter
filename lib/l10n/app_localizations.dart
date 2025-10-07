@@ -711,6 +711,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit photo'**
   String get editPhoto;
+
+  /// No description provided for @submittingApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitting Application'**
+  String get submittingApplication;
+
+  /// No description provided for @applicationPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Application Pending'**
+  String get applicationPending;
+
+  /// No description provided for @applicationPendingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Approval by the admin takes 1-2 days, and you\'ll get an email once accepted.'**
+  String get applicationPendingDesc;
+
+  /// No description provided for @continueToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Home'**
+  String get continueToHome;
 }
 
 class _AppLocalizationsDelegate

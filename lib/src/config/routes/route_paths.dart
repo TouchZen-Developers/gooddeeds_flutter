@@ -16,4 +16,5 @@ class RoutePaths {
   static const registerContactInfo = '/register_contact_info';
   static const registerImpact = '/register_impact';
   static const registerFamilyPhoto = '/register/family-photo';
+  static const registerPending = '/register/pending';
 }
