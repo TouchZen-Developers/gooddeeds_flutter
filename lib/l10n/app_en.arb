@@ -118,7 +118,21 @@
     "passwordRequired": "Password is required",
     "passwordMinChars": "Use at least 6 characters",
     "confirmPasswordRequired": "Please re-enter password",
-    "passwordsDoNotMatch": "Passwords do not match"
+    "passwordsDoNotMatch": "Passwords do not match",
+    "none": "None",
+     "familyPhoto": "Family Photo",
+     "uploadPhoto": "Upload Photo",
+     "uploadingPhotos": "Uploading photos..",
+     "deleting": "Deleting...",
+     "fromGallery": "From gallery",
+     "openCamera": "Open camera",
+     "replacePhoto": "Replace photo",
+     "deletePhoto": "Delete photo",
+     "editPhoto": "Edit photo",
+     "submittingApplication": "Submitting Application",
+     "applicationPending": "Application Pending",
+     "applicationPendingDesc": "Approval by the admin takes 1-2 days, and you'll get an email once accepted.",
+     "continueToHome": "Continue to Home"
 
 
 

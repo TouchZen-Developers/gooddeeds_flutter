@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -322,4 +323,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get familyPhoto => 'Family Photo';
+
+  @override
+  String get uploadPhoto => 'Upload Photo';
+
+  @override
+  String get uploadingPhotos => 'Uploading photos..';
+
+  @override
+  String get deleting => 'Deleting...';
+
+  @override
+  String get fromGallery => 'From gallery';
+
+  @override
+  String get openCamera => 'Open camera';
+
+  @override
+  String get replacePhoto => 'Replace photo';
+
+  @override
+  String get deletePhoto => 'Delete photo';
+
+  @override
+  String get editPhoto => 'Edit photo';
+
+  @override
+  String get submittingApplication => 'Submitting Application';
+
+  @override
+  String get applicationPending => 'Application Pending';
+
+  @override
+  String get applicationPendingDesc =>
+      'Approval by the admin takes 1-2 days, and you\'ll get an email once accepted.';
+
+  @override
+  String get continueToHome => 'Continue to Home';
 }

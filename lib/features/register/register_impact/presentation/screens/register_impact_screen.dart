@@ -5,6 +5,7 @@ import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart'; // 👈 loc
+import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../shared/design_system/components/gd_bottom_sheet.dart';
 import '../../../email/presentation/components/step_header.dart';
@@ -71,7 +72,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
     return BlocListener<RegisterImpactBloc, RegisterImpactState>(
       listenWhen: (p, c) => p.completed != c.completed && c.completed,
       listener: (_, __) {
-        // context.pop();
+        RegisterFamilyPhotoRoute().push(context);
       },
       child: Scaffold(
         bottomNavigationBar: SafeArea(
