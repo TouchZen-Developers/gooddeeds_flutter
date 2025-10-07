@@ -105,7 +105,20 @@
     "eventInflation": "Inflation",
     "eventCovid19": "Covid-19",
     "eventUnemployment": "Unemployment",
-    "none": "None"
+    "none": "None",
+    "loginSubtitle": "Login to continue using the app",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAccount": "Don’t have an account?",
+    "enterValidEmail": "Enter a valid email",
+    "loginSubtitle": "Login to continue using the app",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAccount": "Don’t have an account?",
+    "enterValidEmail": "Enter a valid email",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "passwordMinChars": "Use at least 6 characters",
+    "confirmPasswordRequired": "Please re-enter password",
+    "passwordsDoNotMatch": "Passwords do not match"
 
 
 

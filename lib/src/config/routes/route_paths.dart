@@ -15,4 +15,5 @@ class RoutePaths {
   static const registerPersonalInfo = '/register_personal_info';
   static const registerContactInfo = '/register_contact_info';
   static const registerImpact = '/register_impact';
+  static const login = '/login';
 }

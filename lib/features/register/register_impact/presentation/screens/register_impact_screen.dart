@@ -46,7 +46,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
     final bloc = context.read<RegisterImpactBloc>();
     final selected = await GDBottomSheet.showList<String>(
       context,
-      title: context.loc.affectedEvents, // 👈 loc
+      title: context.loc.affectedEvents,
       items: _events,
       labelOf: (e) => e,
       selected: bloc.state.affectedEvent,
@@ -80,7 +80,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
             child: BlocBuilder<RegisterImpactBloc, RegisterImpactState>(
               builder: (context, state) {
                 return PrimaryButton(
-                  label: context.loc.continueText, // 👈 loc
+                  label: context.loc.continueText,
                   size: ButtonSize.large,
                   fullWidth: true,
                   onPressed:

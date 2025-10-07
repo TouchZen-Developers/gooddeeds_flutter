@@ -3,9 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 import 'package:injectable/injectable.dart';
 
+part 'info_onboarding_bloc.freezed.dart';
 part 'info_onboarding_event.dart';
 part 'info_onboarding_state.dart';
-part 'info_onboarding_bloc.freezed.dart';
 
 const kTotalPages = 3;
 
@@ -51,8 +51,8 @@ class InfoOnboardingBloc
   }
 
   void _onLoginPressed(_LoginPressed e, Emitter<InfoOnboardingBlocState> emit) {
-    // emit(state.copyWith(navigateTo: RouteNames.login));
-    // emit(state.copyWith(navigateTo: null));
+    emit(state.copyWith(navigateTo: LoginRoute().location));
+    emit(state.copyWith(navigateTo: null));
   }
 
   void _onRegisterPressed(

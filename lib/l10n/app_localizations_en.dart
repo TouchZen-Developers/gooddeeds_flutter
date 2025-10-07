@@ -295,4 +295,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get none => 'None';
+
+  @override
+  String get loginSubtitle => 'Login to continue using the app';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get dontHaveAccount => 'Don’t have an account?';
+
+  @override
+  String get enterValidEmail => 'Enter a valid email';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get passwordMinChars => 'Use at least 6 characters';
+
+  @override
+  String get confirmPasswordRequired => 'Please re-enter password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
 }
