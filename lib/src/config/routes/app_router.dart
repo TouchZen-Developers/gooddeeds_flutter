@@ -8,6 +8,8 @@ import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
 import 'package:gooddeeds/features/register/email/presentation/screens/register_email_screen.dart';
+import 'package:gooddeeds/features/register/pending/presentation/screens/application_pending_screen.dart';
+import 'package:gooddeeds/features/splash/presentation/screens/splash_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
 
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
@@ -17,11 +19,12 @@ import '../../../features/register/contact_info/presentation/bloc/register_conta
 import '../../../features/register/contact_info/presentation/screens/register_contact_info_screen.dart';
 import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
 import '../../../features/register/email/verify/presentation/screens/verify_email_screen.dart';
+import '../../../features/register/family_photo/presentation/bloc/register_family_photo_bloc.dart';
+import '../../../features/register/family_photo/presentation/screen/family_photo_screen.dart';
 import '../../../features/register/personal_info/presentation/bloc/register_personal_info_bloc.dart';
 import '../../../features/register/personal_info/presentation/screens/register_personal_info_screen.dart';
 import '../../../features/register/register_impact/presentation/bloc/register_impact_bloc.dart';
 import '../../../features/register/register_impact/presentation/screens/register_impact_screen.dart';
-import '../../../features/splash/presentation/screens/splash_screen.dart';
 import '../di/injector.dart';
 import 'route_paths.dart';
 
@@ -79,9 +82,7 @@ class CheckoutRoute extends GoRouteData with $CheckoutRoute {
 
 @TypedGoRoute<RegisterEmailRoute>(
   path: RoutePaths.registerEmail,
-  routes: [
-    TypedGoRoute<VerifyEmailRoute>(path: 'verify'),
-  ],
+  routes: [TypedGoRoute<VerifyEmailRoute>(path: 'verify')],
 )
 class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
   const RegisterEmailRoute();
@@ -147,6 +148,31 @@ class RegisterImpactRoute extends GoRouteData with $RegisterImpactRoute {
   }
 }
 
+@TypedGoRoute<RegisterFamilyPhotoRoute>(path: RoutePaths.registerFamilyPhoto)
+class RegisterFamilyPhotoRoute extends GoRouteData
+    with $RegisterFamilyPhotoRoute {
+  const RegisterFamilyPhotoRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => RegisterFamilyPhotoBloc(),
+      child: const RegisterFamilyPhotoScreen(),
+    );
+  }
+}
+
+@TypedGoRoute<ApplicationPendingRoute>(path: RoutePaths.registerPending)
+class ApplicationPendingRoute extends GoRouteData
+    with $ApplicationPendingRoute {
+  const ApplicationPendingRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ApplicationPendingScreen();
+  }
+}
+
 @TypedStatefulShellRoute<AppStatfulShellWithNavigationRouteData>(
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     TypedStatefulShellBranch<DonatingHomeBranch>(
@@ -162,16 +188,12 @@ class RegisterImpactRoute extends GoRouteData with $RegisterImpactRoute {
     ),
     TypedStatefulShellBranch<MyCartBranch>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<MyCartRoute>(
-          path: RoutePaths.donaitingMyCart,
-        ),
+        TypedGoRoute<MyCartRoute>(path: RoutePaths.donaitingMyCart),
       ],
     ),
     TypedStatefulShellBranch<OrdersBranch>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<OrdersRoute>(
-          path: RoutePaths.donaitingOrders,
-        ),
+        TypedGoRoute<OrdersRoute>(path: RoutePaths.donaitingOrders),
       ],
     ),
     TypedStatefulShellBranch<DonaitingMyProfileBranch>(

@@ -23,11 +23,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple_pay.svg
   SvgGenImage get applePay => const SvgGenImage('assets/icons/apple_pay.svg');
 
+  /// File path: assets/icons/application_pending.svg
+  SvgGenImage get applicationPending =>
+      const SvgGenImage('assets/icons/application_pending.svg');
+
   /// File path: assets/icons/back.svg
   SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
 
   /// File path: assets/icons/book.svg
   SvgGenImage get book => const SvgGenImage('assets/icons/book.svg');
+
+  /// File path: assets/icons/camera.svg
+  SvgGenImage get camera => const SvgGenImage('assets/icons/camera.svg');
+
+  /// File path: assets/icons/card.svg
+  SvgGenImage get card => const SvgGenImage('assets/icons/card.svg');
 
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
@@ -51,6 +61,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/filter.svg
   SvgGenImage get filter => const SvgGenImage('assets/icons/filter.svg');
 
+  /// File path: assets/icons/gallery.svg
+  SvgGenImage get gallery => const SvgGenImage('assets/icons/gallery.svg');
+
   /// File path: assets/icons/good_deeds.svg
   SvgGenImage get goodDeeds => const SvgGenImage('assets/icons/good_deeds.svg');
 
@@ -72,6 +85,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/orders.svg
   SvgGenImage get orders => const SvgGenImage('assets/icons/orders.svg');
 
+  /// File path: assets/icons/pencil.svg
+  SvgGenImage get pencil => const SvgGenImage('assets/icons/pencil.svg');
+
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
@@ -82,8 +98,11 @@ class $AssetsIconsGen {
   List<SvgGenImage> get values => [
         apple,
         applePay,
+        applicationPending,
         back,
         book,
+        camera,
+        card,
         cart,
         creditCard,
         delete,
@@ -91,6 +110,7 @@ class $AssetsIconsGen {
         eye,
         fillCart,
         filter,
+        gallery,
         goodDeeds,
         google,
         home,
@@ -98,6 +118,7 @@ class $AssetsIconsGen {
         logo,
         marker,
         orders,
+        pencil,
         profile,
         report
       ];
