@@ -15,6 +15,8 @@ import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart'
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
 import '../../../features/auth/register_menu/presentation/screens/register_menu_screen.dart';
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart';
+import '../../../features/login/presentation/bloc/login_bloc.dart';
+import '../../../features/login/presentation/screens/login_screen.dart';
 import '../../../features/register/contact_info/presentation/bloc/register_contact_info_bloc.dart';
 import '../../../features/register/contact_info/presentation/screens/register_contact_info_screen.dart';
 import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
@@ -170,6 +172,19 @@ class ApplicationPendingRoute extends GoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const ApplicationPendingScreen();
+  }
+}
+
+@TypedGoRoute<LoginRoute>(path: RoutePaths.login)
+class LoginRoute extends GoRouteData with $LoginRoute {
+  const LoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => LoginBloc(),
+      child: const LoginScreen(),
+    );
   }
 }
 

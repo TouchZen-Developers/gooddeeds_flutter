@@ -6,6 +6,7 @@ import 'package:gooddeeds/shared/design_system/components/password_field.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/shared/design_system/utils/validators.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../components/step_header.dart';
@@ -31,21 +32,21 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
   }
 
   String? _emailErrorFor(String email) {
-    if (email.isEmpty) return 'Email is required';
-    final re = RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$');
-    if (!re.hasMatch(email)) return 'Enter a valid email';
+    final v = email.trim();
+    if (v.isEmpty) return context.loc.emailRequired;
+    if (!v.isValidEmail) return context.loc.enterValidEmail;
     return null;
   }
 
   String? _passwordErrorFor(String password) {
-    if (password.isEmpty) return 'Password is required';
-    if (password.length < 6) return 'Use at least 6 characters';
+    if (password.isEmpty) return context.loc.passwordRequired;
+    if (password.length < 6) return context.loc.passwordMinChars;
     return null;
   }
 
   String? _confirmErrorFor(String pass, String confirm) {
-    if (confirm.isEmpty) return 'Please re-enter password';
-    if (pass != confirm) return 'Passwords do not match';
+    if (confirm.isEmpty) return context.loc.confirmPasswordRequired;
+    if (pass != confirm) return context.loc.passwordsDoNotMatch;
     return null;
   }
 

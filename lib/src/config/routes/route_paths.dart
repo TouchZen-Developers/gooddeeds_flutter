@@ -17,4 +17,5 @@ class RoutePaths {
   static const registerImpact = '/register_impact';
   static const registerFamilyPhoto = '/register/family-photo';
   static const registerPending = '/register/pending';
+  static const login = '/login';
 }
