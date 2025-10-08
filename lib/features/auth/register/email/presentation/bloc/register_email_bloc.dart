@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gooddeeds/shared/design_system/utils/validators.dart';
 import 'package:injectable/injectable.dart';
 
 part 'register_email_bloc.freezed.dart';
@@ -26,17 +27,30 @@ class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
       );
     });
 
-    on<_Submitted>((e, emit) {
-      final emailValid = state.email.isNotEmpty &&
-          RegExp(r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,}$').hasMatch(state.email);
-      final passwordValid = state.password.isNotEmpty;
-      final confirmValid = state.password == state.confirmPassword;
+    on<_Submitted>((e, emit) async {
+      final email = state.email.trim();
+      final password = state.password;
+      final confirm = state.confirmPassword;
 
-      if (emailValid && passwordValid && confirmValid) {
-        emit(state.copyWith(isSubmitting: true));
-        // TODO: call API then emit(isSubmitting: false) + success/failure state if needed
-      } else {
+      final emailValid = email.isValidEmail;
+      final passwordValid = password.trim().length >= 6;
+      final confirmValid = confirm == password && confirm.isNotEmpty;
+
+      if (!emailValid || !passwordValid || !confirmValid) {
         emit(state.copyWith(showErrorMessages: true));
+        return;
+      }
+
+      emit(state.copyWith(isSubmitting: true));
+      try {
+        // call API here with (email, password)
+        // await authRepo.register(email: email, password: password);
+
+        // emit(state.copyWith(isSubmitting: false, success: true));
+      } catch (err) {
+        // emit(state.copyWith(isSubmitting: false, apiError: err.toString()));
+      } finally {
+        emit(state.copyWith(isSubmitting: false));
       }
     });
   }

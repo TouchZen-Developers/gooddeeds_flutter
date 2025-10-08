@@ -9,4 +9,9 @@ class RegisterFamilyPhotoEvent with _$RegisterFamilyPhotoEvent {
   const factory RegisterFamilyPhotoEvent.startUpload(File file) = _StartUpload;
 
   const factory RegisterFamilyPhotoEvent.delete() = _Delete;
+
+  const factory RegisterFamilyPhotoEvent.needPhotoError(String message) =
+      _NeedPhotoError;
+
+  const factory RegisterFamilyPhotoEvent.clearError() = _ClearError;
 }

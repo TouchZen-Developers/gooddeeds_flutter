@@ -419,4 +419,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resetPasswordFailed => 'Failed to reset password';
+
+  @override
+  String get uploadPhotoRequired => 'Please upload a family photo to continue.';
 }

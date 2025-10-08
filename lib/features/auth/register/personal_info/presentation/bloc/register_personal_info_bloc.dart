@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gooddeeds/shared/design_system/utils/validators.dart';
+import 'package:injectable/injectable.dart';
 
 part 'register_personal_info_bloc.freezed.dart';
 part 'register_personal_info_event.dart';
 part 'register_personal_info_state.dart';
 
+@Injectable()
 class RegisterPersonalInfoBloc
     extends Bloc<RegisterPersonalInfoEvent, RegisterPersonalInfoState> {
   RegisterPersonalInfoBloc() : super(RegisterPersonalInfoState.initial()) {
@@ -15,9 +18,8 @@ class RegisterPersonalInfoBloc
       emit(state.copyWith(lastName: e.value));
     });
     on<_FamilyCountChanged>((e, emit) {
-      final v = e.value;
-      final digitsOnly = v.replaceAll(RegExp(r'[^0-9]'), '');
-      emit(state.copyWith(familyCount: digitsOnly));
+      final cleaned = e.value.digitsOnly;
+      emit(state.copyWith(familyCount: cleaned));
     });
     on<_Submitted>((e, emit) async {
       final valid = _isValid(state);

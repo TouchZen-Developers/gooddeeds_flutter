@@ -42,6 +42,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
 
+  /// File path: assets/icons/checkbox.svg
+  SvgGenImage get checkbox => const SvgGenImage('assets/icons/checkbox.svg');
+
   /// File path: assets/icons/credit_card.svg
   SvgGenImage get creditCard =>
       const SvgGenImage('assets/icons/credit_card.svg');
@@ -91,6 +94,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
+  /// File path: assets/icons/reject.svg
+  SvgGenImage get reject => const SvgGenImage('assets/icons/reject.svg');
+
   /// File path: assets/icons/report.svg
   SvgGenImage get report => const SvgGenImage('assets/icons/report.svg');
 
@@ -104,6 +110,7 @@ class $AssetsIconsGen {
         camera,
         card,
         cart,
+        checkbox,
         creditCard,
         delete,
         email,
@@ -120,6 +127,7 @@ class $AssetsIconsGen {
         orders,
         pencil,
         profile,
+        reject,
         report
       ];
 }

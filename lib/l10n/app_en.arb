@@ -152,7 +152,10 @@
      "newPasswordLabel": "New Password",
      "resetPasswordCta": "Reset Password",
      "resetPasswordSuccess": "Password reset successfully.",
-     "resetPasswordFailed": "Failed to reset password"
+     "resetPasswordFailed": "Failed to reset password",
+     "continueToHome": "Continue to Home",
+     "uploadPhotoRequired": "Please upload a family photo to continue."
+
 
 
 

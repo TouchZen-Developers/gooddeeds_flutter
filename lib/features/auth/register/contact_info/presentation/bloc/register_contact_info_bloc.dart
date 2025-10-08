@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gooddeeds/shared/design_system/utils/validators.dart';
+import 'package:injectable/injectable.dart';
 
 part 'register_contact_info_bloc.freezed.dart';
 part 'register_contact_info_event.dart';
 part 'register_contact_info_state.dart';
 
+@Injectable()
 class RegisterContactInfoBloc
     extends Bloc<RegisterContactInfoEvent, RegisterContactInfoState> {
   RegisterContactInfoBloc() : super(RegisterContactInfoState.initial()) {
@@ -15,23 +18,32 @@ class RegisterContactInfoBloc
     on<_ZipChanged>((e, emit) => emit(state.copyWith(zip: e.value)));
 
     on<_Submitted>((e, emit) async {
-      if (!_isValid(state)) {
+      if (!state.isFormValid) {
         emit(state.copyWith(showErrors: true));
         return;
       }
       emit(state.copyWith(isSubmitting: true));
-      await Future<void>.delayed(const Duration(milliseconds: 300)); // mock
+      // ... API
       emit(state.copyWith(isSubmitting: false, completed: true));
     });
   }
+}
 
-  bool _isValid(RegisterContactInfoState s) {
-    final phoneDigits = s.phone.replaceAll(RegExp(r'[^0-9]'), '');
-    final zipDigits = s.zip.replaceAll(RegExp(r'[^0-9]'), '');
-    return s.address.trim().isNotEmpty &&
-        s.city.trim().isNotEmpty &&
-        s.stateName.trim().isNotEmpty &&
-        phoneDigits.length >= 10 &&
-        zipDigits.length >= 4;
-  }
+extension RegisterContactInfoStateX on RegisterContactInfoState {
+  bool get isAddressValid => address.trim().isNotEmpty;
+
+  bool get isCityValid => city.trim().isNotEmpty;
+
+  bool get isStateValid => stateName.trim().isNotEmpty;
+
+  bool get isPhoneValid => phone.trim().isValidUSPhone;
+
+  bool get isZipValid => zip.trim().isValidUSZip;
+
+  bool get isFormValid =>
+      isAddressValid &&
+      isCityValid &&
+      isStateValid &&
+      isPhoneValid &&
+      isZipValid;
 }

@@ -98,7 +98,7 @@ class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => RegisterEmailBloc(),
+      create: (_) => getIt<RegisterEmailBloc>(),
       child: const RegisterEmailScreen(),
     );
   }
@@ -123,7 +123,7 @@ class RegisterPersonalInfoRoute extends GoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => RegisterPersonalInfoBloc(),
+      create: (_) => getIt<RegisterPersonalInfoBloc>(),
       child: const RegisterPersonalInfoScreen(),
     );
   }
@@ -137,7 +137,7 @@ class RegisterContactInfoRoute extends GoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => RegisterContactInfoBloc(),
+      create: (_) => getIt<RegisterContactInfoBloc>(),
       child: const RegisterContactInfoScreen(),
     );
   }
@@ -150,7 +150,7 @@ class RegisterImpactRoute extends GoRouteData with $RegisterImpactRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => RegisterImpactBloc(),
+      create: (_) => getIt<RegisterImpactBloc>(),
       child: const RegisterImpactScreen(),
     );
   }
@@ -164,7 +164,7 @@ class RegisterFamilyPhotoRoute extends GoRouteData
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => RegisterFamilyPhotoBloc(),
+      create: (_) => getIt<RegisterFamilyPhotoBloc>(),
       child: const RegisterFamilyPhotoScreen(),
     );
   }
@@ -188,7 +188,7 @@ class LoginRoute extends GoRouteData with $LoginRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => LoginBloc(),
+      create: (_) => getIt<LoginBloc>(),
       child: const LoginScreen(),
     );
   }

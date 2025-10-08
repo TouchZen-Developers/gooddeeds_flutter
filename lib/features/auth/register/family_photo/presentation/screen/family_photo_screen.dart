@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
+import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../../src/config/routes/app_router.dart';
@@ -22,7 +23,11 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
         bloc.state.maybeWhen(ready: (_) => true, orElse: () => false);
 
     if (!hasPhoto) {
-      navigator.pop();
+      bloc.add(
+        RegisterFamilyPhotoEvent.needPhotoError(
+          context.loc.uploadPhotoRequired,
+        ),
+      );
       return;
     }
 
@@ -38,7 +43,7 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
     if (navigator.canPop()) navigator.pop();
     if (!context.mounted) return;
 
-    ApplicationPendingRoute().push(context);
+    const ApplicationPendingRoute().push(context);
   }
 
   @override
@@ -76,6 +81,24 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               const FamilyPhotoCard(),
+              const SizedBox(height: 8),
+              BlocBuilder<RegisterFamilyPhotoBloc, RegisterFamilyPhotoState>(
+                buildWhen: (p, c) => p != c,
+                builder: (context, state) {
+                  final errorText =
+                      state.maybeWhen(error: (m) => m, orElse: () => null);
+                  return AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 200),
+                    child: errorText != null
+                        ? Text(
+                            errorText,
+                            style: text.bodySmallMedium
+                                .copyWith(color: BrandTones.error),
+                          )
+                        : const SizedBox.shrink(),
+                  );
+                },
+              ),
               const Spacer(),
             ],
           ),

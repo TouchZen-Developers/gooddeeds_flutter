@@ -55,6 +55,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     TResult Function(_PickFromCamera value)? pickFromCamera,
     TResult Function(_StartUpload value)? startUpload,
     TResult Function(_Delete value)? delete,
+    TResult Function(_NeedPhotoError value)? needPhotoError,
+    TResult Function(_ClearError value)? clearError,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -67,6 +69,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that);
       case _Delete() when delete != null:
         return delete(_that);
+      case _NeedPhotoError() when needPhotoError != null:
+        return needPhotoError(_that);
+      case _ClearError() when clearError != null:
+        return clearError(_that);
       case _:
         return orElse();
     }
@@ -91,6 +97,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     required TResult Function(_PickFromCamera value) pickFromCamera,
     required TResult Function(_StartUpload value) startUpload,
     required TResult Function(_Delete value) delete,
+    required TResult Function(_NeedPhotoError value) needPhotoError,
+    required TResult Function(_ClearError value) clearError,
   }) {
     final _that = this;
     switch (_that) {
@@ -102,6 +110,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that);
       case _Delete():
         return delete(_that);
+      case _NeedPhotoError():
+        return needPhotoError(_that);
+      case _ClearError():
+        return clearError(_that);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -125,6 +137,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     TResult? Function(_PickFromCamera value)? pickFromCamera,
     TResult? Function(_StartUpload value)? startUpload,
     TResult? Function(_Delete value)? delete,
+    TResult? Function(_NeedPhotoError value)? needPhotoError,
+    TResult? Function(_ClearError value)? clearError,
   }) {
     final _that = this;
     switch (_that) {
@@ -136,6 +150,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that);
       case _Delete() when delete != null:
         return delete(_that);
+      case _NeedPhotoError() when needPhotoError != null:
+        return needPhotoError(_that);
+      case _ClearError() when clearError != null:
+        return clearError(_that);
       case _:
         return null;
     }
@@ -159,6 +177,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     TResult Function()? pickFromCamera,
     TResult Function(File file)? startUpload,
     TResult Function()? delete,
+    TResult Function(String message)? needPhotoError,
+    TResult Function()? clearError,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -171,6 +191,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that.file);
       case _Delete() when delete != null:
         return delete();
+      case _NeedPhotoError() when needPhotoError != null:
+        return needPhotoError(_that.message);
+      case _ClearError() when clearError != null:
+        return clearError();
       case _:
         return orElse();
     }
@@ -195,6 +219,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     required TResult Function() pickFromCamera,
     required TResult Function(File file) startUpload,
     required TResult Function() delete,
+    required TResult Function(String message) needPhotoError,
+    required TResult Function() clearError,
   }) {
     final _that = this;
     switch (_that) {
@@ -206,6 +232,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that.file);
       case _Delete():
         return delete();
+      case _NeedPhotoError():
+        return needPhotoError(_that.message);
+      case _ClearError():
+        return clearError();
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -229,6 +259,8 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
     TResult? Function()? pickFromCamera,
     TResult? Function(File file)? startUpload,
     TResult? Function()? delete,
+    TResult? Function(String message)? needPhotoError,
+    TResult? Function()? clearError,
   }) {
     final _that = this;
     switch (_that) {
@@ -240,6 +272,10 @@ extension RegisterFamilyPhotoEventPatterns on RegisterFamilyPhotoEvent {
         return startUpload(_that.file);
       case _Delete() when delete != null:
         return delete();
+      case _NeedPhotoError() when needPhotoError != null:
+        return needPhotoError(_that.message);
+      case _ClearError() when clearError != null:
+        return clearError();
       case _:
         return null;
     }
@@ -366,6 +402,90 @@ class _Delete implements RegisterFamilyPhotoEvent {
   @override
   String toString() {
     return 'RegisterFamilyPhotoEvent.delete()';
+  }
+}
+
+/// @nodoc
+
+class _NeedPhotoError implements RegisterFamilyPhotoEvent {
+  const _NeedPhotoError(this.message);
+
+  final String message;
+
+  /// Create a copy of RegisterFamilyPhotoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$NeedPhotoErrorCopyWith<_NeedPhotoError> get copyWith =>
+      __$NeedPhotoErrorCopyWithImpl<_NeedPhotoError>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _NeedPhotoError &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  String toString() {
+    return 'RegisterFamilyPhotoEvent.needPhotoError(message: $message)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$NeedPhotoErrorCopyWith<$Res>
+    implements $RegisterFamilyPhotoEventCopyWith<$Res> {
+  factory _$NeedPhotoErrorCopyWith(
+          _NeedPhotoError value, $Res Function(_NeedPhotoError) _then) =
+      __$NeedPhotoErrorCopyWithImpl;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$NeedPhotoErrorCopyWithImpl<$Res>
+    implements _$NeedPhotoErrorCopyWith<$Res> {
+  __$NeedPhotoErrorCopyWithImpl(this._self, this._then);
+
+  final _NeedPhotoError _self;
+  final $Res Function(_NeedPhotoError) _then;
+
+  /// Create a copy of RegisterFamilyPhotoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_NeedPhotoError(
+      null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _ClearError implements RegisterFamilyPhotoEvent {
+  const _ClearError();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ClearError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'RegisterFamilyPhotoEvent.clearError()';
   }
 }
 
