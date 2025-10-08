@@ -15,6 +15,16 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../features/auth/register_choice/presentation/bloc/register_choice_bloc.dart'
     as _i515;
+import '../../../features/auth/forget_password/presentation/bloc/forgot_password_bloc.dart'
+    as _i828;
+import '../../../features/auth/login/presentation/bloc/login_bloc.dart'
+    as _i1072;
+import '../../../features/auth/register/email/presentation/bloc/register_email_bloc.dart'
+    as _i196;
+import '../../../features/auth/reset_password/presentation/bloc/reset_password_bloc.dart'
+    as _i989;
+import '../../../features/auth/verify_reset_code/presentation/bloc/verify_reset_code_bloc.dart'
+    as _i934;
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart'
     as _i330;
 import '../../../features/login/presentation/bloc/login_bloc.dart' as _i267;
@@ -43,8 +53,13 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final routerModule = _$RouterModule();
+    gh.factory<_i828.ForgotPasswordBloc>(() => _i828.ForgotPasswordBloc());
+    gh.factory<_i1072.LoginBloc>(() => _i1072.LoginBloc());
+    gh.factory<_i196.RegisterEmailBloc>(() => _i196.RegisterEmailBloc());
+    gh.factory<_i934.VerifyResetCodeBloc>(() => _i934.VerifyResetCodeBloc());
     gh.factory<_i515.RegisterChoiceBloc>(() => _i515.RegisterChoiceBloc());
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
+    gh.factory<_i989.ResetPasswordBloc>(() => _i989.ResetPasswordBloc());
     gh.factory<_i267.LoginBloc>(() => _i267.LoginBloc());
     gh.factory<_i124.RegisterContactInfoBloc>(
         () => _i124.RegisterContactInfoBloc());

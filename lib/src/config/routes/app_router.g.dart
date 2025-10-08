@@ -19,6 +19,9 @@ List<RouteBase> get $appRoutes => [
       $registerFamilyPhotoRoute,
       $applicationPendingRoute,
       $loginRoute,
+      $forgotPasswordRoute,
+      $forgotVerifyCodeRoute,
+      $resetPasswordRoute,
       $appStatfulShellWithNavigationRouteData,
     ];
 
@@ -374,6 +377,97 @@ mixin $LoginRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/login',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $forgotPasswordRoute => GoRouteData.$route(
+      path: '/forgot-password',
+      factory: $ForgotPasswordRoute._fromState,
+    );
+
+mixin $ForgotPasswordRoute on GoRouteData {
+  static ForgotPasswordRoute _fromState(GoRouterState state) =>
+      const ForgotPasswordRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/forgot-password',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $forgotVerifyCodeRoute => GoRouteData.$route(
+      path: '/forgot-password/verify',
+      factory: $ForgotVerifyCodeRoute._fromState,
+    );
+
+mixin $ForgotVerifyCodeRoute on GoRouteData {
+  static ForgotVerifyCodeRoute _fromState(GoRouterState state) =>
+      ForgotVerifyCodeRoute(
+        email: state.uri.queryParameters['email']!,
+      );
+
+  ForgotVerifyCodeRoute get _self => this as ForgotVerifyCodeRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/forgot-password/verify',
+        queryParams: {
+          'email': _self.email,
+        },
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $resetPasswordRoute => GoRouteData.$route(
+      path: '/forgot-password/reset',
+      factory: $ResetPasswordRoute._fromState,
+    );
+
+mixin $ResetPasswordRoute on GoRouteData {
+  static ResetPasswordRoute _fromState(GoRouterState state) =>
+      const ResetPasswordRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/forgot-password/reset',
       );
 
   @override

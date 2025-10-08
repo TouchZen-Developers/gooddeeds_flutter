@@ -18,4 +18,7 @@ class RoutePaths {
   static const registerFamilyPhoto = '/register/family-photo';
   static const registerPending = '/register/pending';
   static const login = '/login';
+  static const String forgotPassword = '/forgot-password';
+  static const String forgotVerify = '/forgot-password/verify';
+  static const String resetPassword = '/forgot-password/reset';
 }

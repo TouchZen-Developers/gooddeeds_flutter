@@ -364,5 +364,62 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueToHome => 'Continue to Home';
 
   @override
+  String get forgotPasswordTitle => 'Forgot Password?';
+
+  @override
+  String get forgotPasswordDesc =>
+      'Don\'t worry! It happens. Please enter the email address linked with your account.';
+
+  @override
+  String get sendCode => 'Send Code';
+
+  @override
+  String get resetCodeSent => 'Reset code sent to your email.';
+
+  @override
+  String get failedToSendCode => 'Failed to send code';
+
+  @override
+  String get enterYourEmail => 'Enter your email';
+
+  @override
+  String get otpVerificationTitle => 'OTP Verification';
+
+  @override
+  String get otpVerificationDesc =>
+      'Enter the verification code we just sent on your email address.';
+
+  @override
+  String get verify => 'Verify';
+
+  @override
+  String get didntReceiveCode => 'Don’t received code?';
+
+  @override
+  String get invalidCode => 'Please enter a 4-digit code';
+
+  @override
+  String get resend => 'Resend';
+
+  @override
+  String get createNewPasswordTitle => 'Create new password';
+
+  @override
+  String get createNewPasswordDesc =>
+      'Your new password must be unique from those previously used.';
+
+  @override
+  String get newPasswordLabel => 'New Password';
+
+  @override
+  String get resetPasswordCta => 'Reset Password';
+
+  @override
+  String get resetPasswordSuccess => 'Password reset successfully.';
+
+  @override
+  String get resetPasswordFailed => 'Failed to reset password';
+
+  @override
   String get uploadPhotoRequired => 'Please upload a family photo to continue.';
 }
