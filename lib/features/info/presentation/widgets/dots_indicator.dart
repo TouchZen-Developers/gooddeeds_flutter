@@ -17,11 +17,11 @@ class OnboardingDots extends StatelessWidget {
     return SmoothPageIndicator(
       controller: controller,
       count: count,
-      effect: ExpandingDotsEffect(
+      effect: const ExpandingDotsEffect(
         dotHeight: 6,
         dotWidth: 6,
         spacing: 6,
-        activeDotColor: BrandTones.secondary,
+        activeDotColor: BrandTones.secondary600,
         dotColor: BrandTones.grey30,
       ),
     );

@@ -70,7 +70,7 @@ class _RegisterPersonalInfoScreenState
     return BlocListener<RegisterPersonalInfoBloc, RegisterPersonalInfoState>(
       listenWhen: (p, c) => p.completed != c.completed && c.completed,
       listener: (_, __) {
-        RegisterContactInfoRoute().push(context);
+        const RegisterContactInfoRoute().push(context);
       },
       child: Scaffold(
         bottomNavigationBar: SafeArea(

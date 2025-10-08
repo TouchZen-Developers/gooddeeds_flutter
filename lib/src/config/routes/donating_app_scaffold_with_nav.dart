@@ -27,7 +27,7 @@ class DonatingAppScaffoldWithNavigationBar extends StatelessWidget {
           return Container(
             width: double.infinity,
             height: 94,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -47,7 +47,7 @@ class DonatingAppScaffoldWithNavigationBar extends StatelessWidget {
                     height: 4,
                     decoration: BoxDecoration(
                       color: context.colors.primary,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(4),
                         bottomRight: Radius.circular(4),
                       ),
@@ -126,11 +126,11 @@ class _BottomNavigationItem extends StatelessWidget {
             Text(
               label,
               style: selected
-                  ? context.textStyles.bodySmall?.copyWith(
+                  ? context.textStyle.bodySmallMedium.copyWith(
                       fontWeight: FontWeight.w500,
                       color: context.colors.primary,
                     )
-                  : context.textStyles.bodySmall?.copyWith(
+                  : context.textStyle.bodySmallRegular.copyWith(
                       color: context.onSurface.shade50,
                     ),
             ),

@@ -67,7 +67,7 @@ class FamilyListScreen extends StatelessWidget {
           SizedBox(
             height: 80,
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               scrollDirection: Axis.horizontal,
               children: [
                 _FilterItem(text: 'Wildfires', onDelete: () {}),
@@ -79,10 +79,10 @@ class FamilyListScreen extends StatelessWidget {
           const Divider(height: 1),
           Expanded(
             child: ListView.separated(
-              padding: EdgeInsets.symmetric(vertical: 24),
+              padding: const EdgeInsets.symmetric(vertical: 24),
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: FamilyCard(),
                 );
               },
@@ -109,17 +109,17 @@ class _FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      padding: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
       visualDensity: VisualDensity.compact,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       label: Text(text),
-      color: WidgetStatePropertyAll(Colors.white),
+      color: const WidgetStatePropertyAll(Colors.white),
       shadowColor: Colors.transparent,
       labelStyle: context.textStyle.bodyMediumRegular.copyWith(
         color: context.colors.primary,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.all(
+        borderRadius: const BorderRadiusGeometry.all(
           Radius.circular(100),
         ),
         side: BorderSide(

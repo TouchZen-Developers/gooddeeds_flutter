@@ -11,7 +11,6 @@ extension BuildContextX on BuildContext {
   SpacingTokens get gaps => Theme.of(this).extension<SpacingTokens>()!;
   RadiusTokens get radii => Theme.of(this).extension<RadiusTokens>()!;
   OnSurfaceExt get onSurface => Theme.of(this).extension<OnSurfaceExt>()!;
-  TextTheme get textStyles => Theme.of(this).textTheme;
   AppTextStyle get textStyle {
     return DefaultTextStyles();
   }

@@ -54,7 +54,7 @@ class LoginBottomBar extends StatelessWidget {
                     child: Text(
                       context.loc.register,
                       style: text.bodySmallMedium.copyWith(
-                        color: BrandTones.secondary,
+                        color: context.colors.secondary,
                       ),
                     ),
                   ),

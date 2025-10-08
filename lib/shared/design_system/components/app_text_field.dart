@@ -66,7 +66,6 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     final cs = context.colors;
-    final textTheme = context.textStyles;
     final isDisabled = !widget.enabled;
     final hasError = widget.errorText != null && widget.errorText!.isNotEmpty;
 
@@ -92,7 +91,8 @@ class _AppTextFieldState extends State<AppTextField> {
       decoration: InputDecoration(
         isDense: true,
         labelText: widget.label,
-        labelStyle: textTheme.bodyMedium!.copyWith(color: labelColor),
+        labelStyle:
+            context.textStyle.bodyMediumMedium.copyWith(color: labelColor),
         hintText: widget.hint,
         hintStyle: context.textStyle.bodyMediumRegular.copyWith(
           color: context.onSurface.shade50,
@@ -127,7 +127,8 @@ class _AppTextFieldState extends State<AppTextField> {
         filled: isFilledVariant ? (!_focusNode.hasFocus) : false,
         fillColor: context.onSurface.shade10,
         errorText: widget.errorText,
-        errorStyle: textTheme.bodySmall!.copyWith(color: outlineError),
+        errorStyle:
+            context.textStyle.bodyMediumRegular.copyWith(color: outlineError),
       ),
     );
   }

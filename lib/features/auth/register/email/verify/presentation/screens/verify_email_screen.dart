@@ -1,5 +1,6 @@
 // verify_email_screen.dart
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -61,9 +62,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 ),
               ),
 
-              SizedBox(
-                height: 24,
-              ),
+              const Gap(24),
               Text(context.loc.confirmation, style: text.heading3),
 
               const SizedBox(height: 8),
@@ -76,17 +75,13 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     TextSpan(
                       text: widget.email,
                       style: context.textStyle.bodyMediumMedium
-                          .copyWith(color: BrandTones.secondary),
+                          .copyWith(color: BrandTones.secondary600),
                     ),
                     TextSpan(text: ' ${context.loc.verifyCodeSuffix}'),
                   ],
                 ),
               ),
-
-              SizedBox(
-                height: 32,
-              ),
-
+              const Gap(32),
               // PIN fields
               PinCodeTextField(
                 appContext: context,
@@ -125,11 +120,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   style: text.bodyLargeRegular,
                 ),
               ),
-
-              SizedBox(
-                height: 32,
-              ),
-
+              const Gap(32),
               PrimaryButton(
                 label: context.loc.continueText,
                 size: ButtonSize.large,

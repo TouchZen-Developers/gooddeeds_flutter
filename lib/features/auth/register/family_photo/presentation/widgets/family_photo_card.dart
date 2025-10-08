@@ -79,7 +79,7 @@ class FamilyPhotoCard extends StatelessWidget {
       labelOf: (s) => s == _PickSource.gallery
           ? context.loc.fromGallery
           : context.loc.openCamera,
-      iconColorOf: (_) => BrandTones.secondary,
+      iconColorOf: (_) => context.colors.secondary,
       leadingSvgBuilder: (s, color) {
         final icon = s == _PickSource.gallery
             ? Assets.icons.gallery
@@ -101,8 +101,9 @@ class FamilyPhotoCard extends StatelessWidget {
       labelOf: (s) => s == _EditAction.replace
           ? context.loc.replacePhoto
           : context.loc.deletePhoto,
-      iconColorOf: (s) =>
-          s == _EditAction.replace ? BrandTones.secondary : BrandTones.primary,
+      iconColorOf: (s) => s == _EditAction.replace
+          ? context.colors.secondary
+          : context.colors.primary,
       textColorOf: (s) =>
           s == _EditAction.delete ? BrandTones.primary : BrandTones.grey100,
       leadingSvgBuilder: (s, color) {
@@ -189,7 +190,10 @@ class _Uploading extends StatelessWidget {
           const SizedBox(height: 8),
           Text(label ?? context.loc.uploadingPhotos),
           const SizedBox(height: 14),
-          LinearProgressIndicator(value: progress, color: BrandTones.secondary),
+          LinearProgressIndicator(
+            value: progress,
+            color: context.colors.secondary,
+          ),
         ],
       ),
     );

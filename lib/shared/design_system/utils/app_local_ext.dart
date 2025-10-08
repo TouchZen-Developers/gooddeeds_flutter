@@ -5,6 +5,6 @@ extension AppLocalExt on BuildContext {
   AppLocalizations get loc =>
       AppLocalizations.of(this) ??
       lookupAppLocalizations(
-        Locale('en'),
+        const Locale('en'),
       );
 }

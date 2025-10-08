@@ -125,7 +125,7 @@ class GDBottomSheet {
                               ),
                             ),
                             if (isSelected)
-                              Icon(
+                              const Icon(
                                 Icons.check_rounded,
                                 color: BrandTones.primary,
                               ),

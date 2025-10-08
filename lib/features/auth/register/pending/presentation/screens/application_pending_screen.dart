@@ -45,7 +45,7 @@ class ApplicationPendingScreen extends StatelessWidget {
                 size: ButtonSize.large,
                 fullWidth: true,
                 onPressed: () {
-                  DonatingHomeRoute().go(context);
+                  const DonatingHomeRoute().go(context);
                 },
               ),
             ],

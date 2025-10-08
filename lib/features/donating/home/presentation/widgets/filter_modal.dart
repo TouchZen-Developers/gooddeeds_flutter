@@ -26,7 +26,7 @@ class FilterModal extends StatelessWidget {
               ),
               TextButton(
                 style: TextButton.styleFrom(
-                  visualDensity: VisualDensity(
+                  visualDensity: const VisualDensity(
                     vertical: VisualDensity.minimumDensity,
                     horizontal: VisualDensity.minimumDensity,
                   ),
@@ -152,7 +152,7 @@ class _FilterItem extends StatelessWidget {
         color: selected ? context.colors.onPrimary : context.onSurface.shade50,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.all(
+        borderRadius: const BorderRadiusGeometry.all(
           Radius.circular(100),
         ),
         side: selected

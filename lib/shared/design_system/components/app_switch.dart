@@ -84,18 +84,20 @@ class _AppSwitchState extends State<AppSwitch> {
     final row = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        track,
         if (widget.label != null) ...[
-          SizedBox(width: context.gaps.sm),
-          Text(
-            widget.label!,
-            style: context.typo.bodyMedium.copyWith(
-              color: isDisabled
-                  ? cs.onSurface.withValues(alpha: .38)
-                  : cs.onSurface,
+          Expanded(
+            child: Text(
+              widget.label!,
+              style: context.typo.bodyMedium.copyWith(
+                color: isDisabled
+                    ? cs.onSurface.withValues(alpha: .38)
+                    : cs.onSurface,
+              ),
             ),
           ),
+          SizedBox(width: context.gaps.sm),
         ],
+        track,
       ],
     );
 

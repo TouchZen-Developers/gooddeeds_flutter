@@ -5,7 +5,8 @@ import 'package:gooddeeds/shared/design_system/components/app_checkbox.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 
 class DonatingItemSelection extends StatelessWidget {
-  const DonatingItemSelection({super.key});
+  const DonatingItemSelection({super.key, required this.selected});
+  final bool selected;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class DonatingItemSelection extends StatelessWidget {
       child: Row(
         children: [
           AppCheckbox(
-            value: true,
+            value: selected,
             onChanged: (value) {},
           ),
           const Gap(8),

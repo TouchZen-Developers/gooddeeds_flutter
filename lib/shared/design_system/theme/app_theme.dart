@@ -37,7 +37,7 @@ ThemeData buildLightTheme() {
           displayColor: scheme.onSurface,
         ),
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
     ),
     fontFamily: 'Poppins',
