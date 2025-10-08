@@ -790,12 +790,6 @@ abstract class AppLocalizations {
   /// **'Continue to Home'**
   String get continueToHome;
 
-  /// No description provided for @uploadPhotoRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Please upload a family photo to continue.'**
-  String get uploadPhotoRequired;
-
   /// No description provided for @forgotPasswordTitle.
   ///
   /// In en, this message translates to:
@@ -903,6 +897,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to reset password'**
   String get resetPasswordFailed;
+
+  /// No description provided for @uploadPhotoRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please upload a family photo to continue.'**
+  String get uploadPhotoRequired;
 }
 
 class _AppLocalizationsDelegate
