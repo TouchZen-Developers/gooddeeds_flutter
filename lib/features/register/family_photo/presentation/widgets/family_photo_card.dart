@@ -152,7 +152,6 @@ class _Empty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     return InkWell(
       onTap: onTap,
       child: Center(
@@ -166,10 +165,6 @@ class _Empty extends StatelessWidget {
               style: context.textStyle.bodyMediumRegular
                   .copyWith(color: BrandTones.grey50),
             ),
-            if (error != null) ...[
-              const SizedBox(height: 8),
-              Text(error!, style: TextStyle(color: cs.error, fontSize: 12)),
-            ],
           ],
         ),
       ),

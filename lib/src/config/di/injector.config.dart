@@ -13,10 +13,22 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:go_router/go_router.dart' as _i583;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../../features/auth/register_choice/presentation/bloc/register_choice_bloc.dart'
+    as _i515;
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart'
     as _i330;
+import '../../../features/login/presentation/bloc/login_bloc.dart' as _i267;
+import '../../../features/register/contact_info/presentation/bloc/register_contact_info_bloc.dart'
+    as _i124;
 import '../../../features/register/email/presentation/bloc/register_email_bloc.dart'
     as _i227;
+import '../../../features/register/family_photo/presentation/bloc/register_family_photo_bloc.dart'
+    as _i217;
+import '../../../features/register/personal_info/presentation/bloc/register_personal_info_bloc.dart'
+    as _i796;
+import '../../../features/register/register_impact/presentation/bloc/register_impact_bloc.dart'
+    as _i77;
+import '../../../features/splash/presentation/bloc/splash_bloc.dart' as _i976;
 import 'router_module.dart' as _i393;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -31,8 +43,18 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final routerModule = _$RouterModule();
+    gh.factory<_i515.RegisterChoiceBloc>(() => _i515.RegisterChoiceBloc());
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
+    gh.factory<_i267.LoginBloc>(() => _i267.LoginBloc());
+    gh.factory<_i124.RegisterContactInfoBloc>(
+        () => _i124.RegisterContactInfoBloc());
     gh.factory<_i227.RegisterEmailBloc>(() => _i227.RegisterEmailBloc());
+    gh.factory<_i217.RegisterFamilyPhotoBloc>(
+        () => _i217.RegisterFamilyPhotoBloc.create());
+    gh.factory<_i796.RegisterPersonalInfoBloc>(
+        () => _i796.RegisterPersonalInfoBloc());
+    gh.factory<_i77.RegisterImpactBloc>(() => _i77.RegisterImpactBloc());
+    gh.factory<_i976.SplashBloc>(() => _i976.SplashBloc());
     gh.lazySingleton<_i583.GoRouter>(() => routerModule.router());
     return this;
   }

@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'register_impact_bloc.freezed.dart';
 part 'register_impact_event.dart';
 part 'register_impact_state.dart';
 
+@Injectable()
 class RegisterImpactBloc
     extends Bloc<RegisterImpactEvent, RegisterImpactState> {
   RegisterImpactBloc() : super(RegisterImpactState.initial()) {

@@ -789,6 +789,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue to Home'**
   String get continueToHome;
+
+  /// No description provided for @uploadPhotoRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please upload a family photo to continue.'**
+  String get uploadPhotoRequired;
 }
 
 class _AppLocalizationsDelegate

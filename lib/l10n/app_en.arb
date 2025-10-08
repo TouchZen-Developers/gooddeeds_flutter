@@ -132,7 +132,9 @@
      "submittingApplication": "Submitting Application",
      "applicationPending": "Application Pending",
      "applicationPendingDesc": "Approval by the admin takes 1-2 days, and you'll get an email once accepted.",
-     "continueToHome": "Continue to Home"
+     "continueToHome": "Continue to Home",
+     "uploadPhotoRequired": "Please upload a family photo to continue."
+
 
 
 

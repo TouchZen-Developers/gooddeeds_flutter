@@ -362,4 +362,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueToHome => 'Continue to Home';
+
+  @override
+  String get uploadPhotoRequired => 'Please upload a family photo to continue.';
 }

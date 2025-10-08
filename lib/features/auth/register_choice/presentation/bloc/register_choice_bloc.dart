@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
+import 'package:injectable/injectable.dart';
+
 import 'register_choice_event.dart';
 import 'register_choice_state.dart';
 
+@Injectable()
 class RegisterChoiceBloc
     extends Bloc<RegisterChoiceEvent, RegisterChoiceState> {
   RegisterChoiceBloc() : super(const RegisterChoiceState.idle()) {

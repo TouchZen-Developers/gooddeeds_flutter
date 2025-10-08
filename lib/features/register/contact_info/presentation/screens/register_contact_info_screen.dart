@@ -36,39 +36,6 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
     super.dispose();
   }
 
-  String? _addressErr(String v) =>
-      v.trim().isEmpty ? context.loc.addressIsRequired : null;
-
-  String? _phoneErr(String v) {
-    final digits = v.replaceAll(RegExp(r'[^0-9]'), '');
-    if (digits.isEmpty) return context.loc.enterPhoneNumber;
-    if (digits.length < 10) return context.loc.enterValidNumber;
-    return null;
-  }
-
-  String? _cityErr(String v) => v.trim().isEmpty ? context.loc.enterCity : null;
-
-  String? _stateErr(String v) =>
-      v.trim().isEmpty ? context.loc.enterState : null;
-
-  String? _zipErr(String v) {
-    final digits = v.replaceAll(RegExp(r'[^0-9]'), '');
-    if (digits.isEmpty) return context.loc.enterZipCode;
-    if (digits.length < 4) return context.loc.enterValidNumber;
-    return null;
-  }
-
-  void _onContinue(BuildContext context) {
-    final bloc = context.read<RegisterContactInfoBloc>();
-    bloc
-      ..add(RegisterContactInfoEvent.addressChanged(_addressCtrl.text))
-      ..add(RegisterContactInfoEvent.phoneChanged(_phoneCtrl.text))
-      ..add(RegisterContactInfoEvent.cityChanged(_cityCtrl.text))
-      ..add(RegisterContactInfoEvent.stateChanged(_stateCtrl.text))
-      ..add(RegisterContactInfoEvent.zipChanged(_zipCtrl.text))
-      ..add(const RegisterContactInfoEvent.submitted());
-  }
-
   @override
   Widget build(BuildContext context) {
     final gaps = context.gaps;
@@ -89,8 +56,37 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                   label: context.loc.continueText,
                   size: ButtonSize.large,
                   fullWidth: true,
-                  onPressed:
-                      state.isSubmitting ? null : () => _onContinue(context),
+                  onPressed: state.isSubmitting
+                      ? null
+                      : () {
+                          context.read<RegisterContactInfoBloc>()
+                            ..add(
+                              RegisterContactInfoEvent.addressChanged(
+                                _addressCtrl.text,
+                              ),
+                            )
+                            ..add(
+                              RegisterContactInfoEvent.phoneChanged(
+                                _phoneCtrl.text,
+                              ),
+                            )
+                            ..add(
+                              RegisterContactInfoEvent.cityChanged(
+                                _cityCtrl.text,
+                              ),
+                            )
+                            ..add(
+                              RegisterContactInfoEvent.stateChanged(
+                                _stateCtrl.text,
+                              ),
+                            )
+                            ..add(
+                              RegisterContactInfoEvent.zipChanged(
+                                _zipCtrl.text,
+                              ),
+                            )
+                            ..add(const RegisterContactInfoEvent.submitted());
+                        },
                   // loading: state.isSubmitting,
                 );
               },
@@ -102,13 +98,24 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
             builder: (context, state) {
               final bloc = context.read<RegisterContactInfoBloc>();
 
-              final addrErr =
-                  state.showErrors ? _addressErr(state.address) : null;
-              final phoneErr = state.showErrors ? _phoneErr(state.phone) : null;
-              final cityErr = state.showErrors ? _cityErr(state.city) : null;
-              final stErr =
-                  state.showErrors ? _stateErr(state.stateName) : null;
-              final zipErr = state.showErrors ? _zipErr(state.zip) : null;
+              final addrErr = state.showErrors && !state.isAddressValid
+                  ? context.loc.addressIsRequired
+                  : null;
+              final phoneErr = state.showErrors && !state.isPhoneValid
+                  ? context.loc.enterValidNumber
+                  : null;
+
+              final cityErr = state.showErrors && !state.isCityValid
+                  ? context.loc.enterCity
+                  : null;
+
+              final stErr = state.showErrors && !state.isStateValid
+                  ? context.loc.enterState
+                  : null;
+
+              final zipErr = state.showErrors && !state.isZipValid
+                  ? context.loc.enterValidNumber
+                  : null;
 
               return LayoutBuilder(
                 builder: (context, constraints) {

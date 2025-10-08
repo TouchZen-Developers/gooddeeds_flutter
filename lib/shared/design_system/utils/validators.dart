@@ -1,19 +1,57 @@
-/// Global validators & extensions used across the app.
+/// Global validators & extensions used across the app (US-only phone & ZIP).
+/// Drop-in: import this file anywhere you need validation.
+/// - Email: RFC-ish, allows plus-aliasing, blocks double dots
+/// - Phone (US): accepts "+1", separators, parentheses; normalizes to +1XXXXXXXXXX
+/// - ZIP (US): 5 or ZIP+4
 library;
 
+typedef Validator = String? Function(String value);
+
+/// ----------------------
+/// Core regex patterns
+/// ----------------------
+
+/// Basic but strict-ish email:
+///  - Case-insensitive
+///  - Allows `+` aliasing
+///  - Disallows consecutive dots
+///  - TLD 2..63 chars
 final RegExp _emailRegex = RegExp(
   r'^(?!.*\.\.)[A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,63}$',
   caseSensitive: false,
 );
 
+/// US phone:
+///  - Optional "+1"
+///  - Optional parentheses for area code
+///  - Dots/spaces/hyphens as separators
+///  - Area/central office cannot start with 0/1
+final RegExp _usPhoneRegex = RegExp(
+  r'^(\+1\s?)?(\([2-9]\d{2}\)|[2-9]\d{2})[-.\s]?[2-9]\d{2}[-.\s]?\d{4}$',
+);
+
+/// US ZIP: 5 digits or ZIP+4
+final RegExp _usZipRegex = RegExp(r'^\d{5}(?:-\d{4})?$');
+
+/// String extensions
+/// ----------------------
+
 extension EmailValidationX on String {
-  /// Returns `true` if this string looks like a valid email address.
-  /// - Trims whitespace
-  /// - Case-insensitive
-  /// - Allows `+` aliasing (e.g., john+test@gmail.com)
-  /// - Disallows consecutive dots
+  /// Returns `true` if the string looks like a valid email.
   bool get isValidEmail => _emailRegex.hasMatch(trim());
 }
 
-/// If you prefer a function call style:
-bool isValidEmail(String value) => value.isValidEmail;
+extension USPhoneValidationX on String {
+  /// Returns `true` for valid US phone formats (e.g., 2125550123, (212) 555-0123, +1 212-555-0123).
+  bool get isValidUSPhone => _usPhoneRegex.hasMatch(trim());
+}
+
+extension ZipValidationX on String {
+  /// Returns `true` for US ZIP (##### or #####-####).
+  bool get isValidUSZip => _usZipRegex.hasMatch(trim());
+}
+
+extension StringSanitizersX on String {
+  /// Keeps only digits: e.g. "2a-3 " -> "23"
+  String get digitsOnly => replaceAll(RegExp(r'\D'), '');
+}
