@@ -789,6 +789,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue to Home'**
   String get continueToHome;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @forgotPasswordDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t worry! It happens. Please enter the email address linked with your account.'**
+  String get forgotPasswordDesc;
+
+  /// No description provided for @sendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Code'**
+  String get sendCode;
+
+  /// No description provided for @resetCodeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset code sent to your email.'**
+  String get resetCodeSent;
+
+  /// No description provided for @failedToSendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send code'**
+  String get failedToSendCode;
+
+  /// No description provided for @enterYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterYourEmail;
+
+  /// No description provided for @otpVerificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP Verification'**
+  String get otpVerificationTitle;
+
+  /// No description provided for @otpVerificationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the verification code we just sent on your email address.'**
+  String get otpVerificationDesc;
+
+  /// No description provided for @verify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verify;
+
+  /// No description provided for @didntReceiveCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t received code?'**
+  String get didntReceiveCode;
+
+  /// No description provided for @invalidCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a 4-digit code'**
+  String get invalidCode;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resend;
+
+  /// No description provided for @createNewPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create new password'**
+  String get createNewPasswordTitle;
+
+  /// No description provided for @createNewPasswordDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your new password must be unique from those previously used.'**
+  String get createNewPasswordDesc;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPasswordLabel;
+
+  /// No description provided for @resetPasswordCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPasswordCta;
+
+  /// No description provided for @resetPasswordSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset successfully.'**
+  String get resetPasswordSuccess;
+
+  /// No description provided for @resetPasswordFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to reset password'**
+  String get resetPasswordFailed;
 }
 
 class _AppLocalizationsDelegate
