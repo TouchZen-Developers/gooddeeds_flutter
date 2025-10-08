@@ -1,32 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gooddeeds/features/auth/register/email/presentation/screens/register_email_screen.dart';
+import 'package:gooddeeds/features/auth/register/pending/presentation/screens/application_pending_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/checkout_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/donaiting_my_cart_screen.dart';
 import 'package:gooddeeds/features/donating/family/presentation/screens/family_details_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_home_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
-import 'package:gooddeeds/features/register/email/presentation/screens/register_email_screen.dart';
-import 'package:gooddeeds/features/register/pending/presentation/screens/application_pending_screen.dart';
 import 'package:gooddeeds/features/splash/presentation/screens/splash_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
 
+import '../../../features/auth/forget_password/presentation/bloc/forgot_password_bloc.dart';
+import '../../../features/auth/forget_password/presentation/screens/forgot_password_screen.dart';
+import '../../../features/auth/login/presentation/bloc/login_bloc.dart';
+import '../../../features/auth/login/presentation/screens/login_screen.dart';
+import '../../../features/auth/register/contact_info/presentation/bloc/register_contact_info_bloc.dart';
+import '../../../features/auth/register/contact_info/presentation/screens/register_contact_info_screen.dart';
+import '../../../features/auth/register/email/presentation/bloc/register_email_bloc.dart';
+import '../../../features/auth/register/email/verify/presentation/screens/verify_email_screen.dart';
+import '../../../features/auth/register/family_photo/presentation/bloc/register_family_photo_bloc.dart';
+import '../../../features/auth/register/family_photo/presentation/screen/family_photo_screen.dart';
+import '../../../features/auth/register/personal_info/presentation/bloc/register_personal_info_bloc.dart';
+import '../../../features/auth/register/personal_info/presentation/screens/register_personal_info_screen.dart';
+import '../../../features/auth/register/register_impact/presentation/bloc/register_impact_bloc.dart';
+import '../../../features/auth/register/register_impact/presentation/screens/register_impact_screen.dart';
 import '../../../features/auth/register_choice/presentation/screens/register_choice_screen.dart';
 import '../../../features/auth/register_menu/presentation/screens/register_menu_screen.dart';
+import '../../../features/auth/reset_password/presentation/bloc/reset_password_bloc.dart';
+import '../../../features/auth/reset_password/presentation/screens/reset_password_screen.dart';
+import '../../../features/auth/verify_reset_code/presentation/bloc/verify_reset_code_bloc.dart';
+import '../../../features/auth/verify_reset_code/presentation/screen/verify_reset_code_screen.dart';
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart';
-import '../../../features/login/presentation/bloc/login_bloc.dart';
-import '../../../features/login/presentation/screens/login_screen.dart';
-import '../../../features/register/contact_info/presentation/bloc/register_contact_info_bloc.dart';
-import '../../../features/register/contact_info/presentation/screens/register_contact_info_screen.dart';
-import '../../../features/register/email/presentation/bloc/register_email_bloc.dart';
-import '../../../features/register/email/verify/presentation/screens/verify_email_screen.dart';
-import '../../../features/register/family_photo/presentation/bloc/register_family_photo_bloc.dart';
-import '../../../features/register/family_photo/presentation/screen/family_photo_screen.dart';
-import '../../../features/register/personal_info/presentation/bloc/register_personal_info_bloc.dart';
-import '../../../features/register/personal_info/presentation/screens/register_personal_info_screen.dart';
-import '../../../features/register/register_impact/presentation/bloc/register_impact_bloc.dart';
-import '../../../features/register/register_impact/presentation/screens/register_impact_screen.dart';
 import '../di/injector.dart';
 import 'route_paths.dart';
 
@@ -184,6 +190,48 @@ class LoginRoute extends GoRouteData with $LoginRoute {
     return BlocProvider(
       create: (_) => LoginBloc(),
       child: const LoginScreen(),
+    );
+  }
+}
+
+@TypedGoRoute<ForgotPasswordRoute>(path: RoutePaths.forgotPassword)
+class ForgotPasswordRoute extends GoRouteData with $ForgotPasswordRoute {
+  const ForgotPasswordRoute();
+
+  @override
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => getIt<ForgotPasswordBloc>(),
+      child: const ForgotPasswordScreen(),
+    );
+  }
+}
+
+@TypedGoRoute<ForgotVerifyCodeRoute>(path: RoutePaths.forgotVerify)
+class ForgotVerifyCodeRoute extends GoRouteData with $ForgotVerifyCodeRoute {
+  const ForgotVerifyCodeRoute({required this.email});
+
+  final String email;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => getIt<VerifyResetCodeBloc>(),
+      child: VerifyResetCodeScreen(email: email),
+    );
+  }
+}
+
+@TypedGoRoute<ResetPasswordRoute>(path: RoutePaths.resetPassword)
+class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
+  const ResetPasswordRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) => getIt<ResetPasswordBloc>(),
+      child: const ResetPasswordScreen(),
     );
   }
 }

@@ -127,6 +127,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/forget_password.svg
+  SvgGenImage get forgetPassword =>
+      const SvgGenImage('assets/images/forget_password.svg');
+
   /// File path: assets/images/hands.png
   AssetGenImage get hands => const AssetGenImage('assets/images/hands.png');
 
@@ -152,12 +156,17 @@ class $AssetsImagesGen {
   /// File path: assets/images/mock4.png
   AssetGenImage get mock4 => const AssetGenImage('assets/images/mock4.png');
 
+  /// File path: assets/images/otp_verify.svg
+  SvgGenImage get otpVerify =>
+      const SvgGenImage('assets/images/otp_verify.svg');
+
   /// File path: assets/images/register_option.svg
   SvgGenImage get registerOption =>
       const SvgGenImage('assets/images/register_option.svg');
 
   /// List of all assets
   List<dynamic> get values => [
+        forgetPassword,
         hands,
         infoOne,
         infoThree,
@@ -166,6 +175,7 @@ class $AssetsImagesGen {
         mock2,
         mock3,
         mock4,
+        otpVerify,
         registerOption
       ];
 }
