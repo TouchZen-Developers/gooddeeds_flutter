@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../../shared/data/user_role.dart';
 import '../../../../../../shared/design_system/components/gd_textfield.dart';
+import '../../../../../../shared/design_system/tokens/colors.dart';
 import '../../../../../../src/config/di/injector.dart';
 import '../../../email/presentation/components/step_header.dart';
 import '../bloc/register_personal_info_bloc.dart';
@@ -185,9 +186,6 @@ class _RegisterPersonalInfoScreenState
                             ),
                           ),
                           SizedBox(height: gaps.lg),
-
-                          // Family Count (digits only)
-
                           if (_isDonor)
                             // Phone for Donor
                             GDTextField(
@@ -197,7 +195,8 @@ class _RegisterPersonalInfoScreenState
                               errorText: phoneErr,
                               keyboardType: TextInputType.phone,
                               onChanged: (v) => bloc.add(
-                                  RegisterPersonalInfoEvent.phoneChanged(v)),
+                                RegisterPersonalInfoEvent.phoneChanged(v),
+                              ),
                               prefixInline: Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: Row(
@@ -209,7 +208,7 @@ class _RegisterPersonalInfoScreenState
                                           .copyWith(color: BrandTones.grey80),
                                     ),
                                     const SizedBox(width: 10),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                       child: VerticalDivider(
                                         width: 1,

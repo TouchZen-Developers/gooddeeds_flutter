@@ -53,20 +53,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final prefsModule = _$PrefsModule();
     final routerModule = _$RouterModule();
-    gh.factory<_i976.SplashBloc>(() => _i976.SplashBloc());
-    gh.factory<_i989.ResetPasswordBloc>(() => _i989.ResetPasswordBloc());
     gh.factory<_i828.ForgotPasswordBloc>(() => _i828.ForgotPasswordBloc());
-    gh.factory<_i934.VerifyResetCodeBloc>(() => _i934.VerifyResetCodeBloc());
-    gh.factory<_i515.RegisterChoiceBloc>(() => _i515.RegisterChoiceBloc());
+    gh.factory<_i1072.LoginBloc>(() => _i1072.LoginBloc());
     gh.factory<_i563.RegisterContactInfoBloc>(
         () => _i563.RegisterContactInfoBloc());
-    gh.factory<_i925.RegisterPersonalInfoBloc>(
-        () => _i925.RegisterPersonalInfoBloc());
-    gh.factory<_i242.RegisterImpactBloc>(() => _i242.RegisterImpactBloc());
     gh.factory<_i196.RegisterEmailBloc>(() => _i196.RegisterEmailBloc());
     gh.factory<_i543.RegisterFamilyPhotoBloc>(
         () => _i543.RegisterFamilyPhotoBloc.create());
-    gh.factory<_i1072.LoginBloc>(() => _i1072.LoginBloc());
+    gh.factory<_i925.RegisterPersonalInfoBloc>(
+        () => _i925.RegisterPersonalInfoBloc());
+    gh.factory<_i242.RegisterImpactBloc>(() => _i242.RegisterImpactBloc());
     gh.factory<_i989.ResetPasswordBloc>(() => _i989.ResetPasswordBloc());
     gh.factory<_i934.VerifyResetCodeBloc>(() => _i934.VerifyResetCodeBloc());
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
