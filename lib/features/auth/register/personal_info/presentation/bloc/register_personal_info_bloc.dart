@@ -21,6 +21,17 @@ class RegisterPersonalInfoBloc
       final cleaned = e.value.digitsOnly;
       emit(state.copyWith(familyCount: cleaned));
     });
+    on<_ModeChanged>((e, emit) {
+      emit(
+        state.copyWith(
+          isDonorFlow: e.isDonor,
+          showErrors: false,
+          completed: false,
+        ),
+      );
+    });
+
+    on<_PhoneChanged>((e, emit) => emit(state.copyWith(phone: e.value)));
     on<_Submitted>((e, emit) async {
       final valid = _isValid(state);
       if (!valid) {
@@ -34,9 +45,14 @@ class RegisterPersonalInfoBloc
   }
 
   bool _isValid(RegisterPersonalInfoState s) {
-    final fam = int.tryParse(s.familyCount ?? '') ?? 0;
-    return s.firstName.trim().isNotEmpty &&
-        s.lastName.trim().isNotEmpty &&
-        fam > 0;
+    final hasNames =
+        s.firstName.trim().isNotEmpty && s.lastName.trim().isNotEmpty;
+
+    if (s.isDonorFlow) {
+      return hasNames && s.phone.trim().isValidUSPhone;
+    } else {
+      final fam = int.tryParse(s.familyCount ?? '') ?? 0;
+      return hasNames && fam > 0;
+    }
   }
 }

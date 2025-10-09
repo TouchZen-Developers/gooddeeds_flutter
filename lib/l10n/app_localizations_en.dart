@@ -422,4 +422,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get uploadPhotoRequired => 'Please upload a family photo to continue.';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get nowYouCanLogin => 'Now you can login using the new password';
+
+  @override
+  String get signInNow => 'Sign In Now';
 }

@@ -10,6 +10,7 @@ import '../../../../../gen/assets.gen.dart';
 import '../../../../../shared/design_system/components/primary_button.dart';
 import '../../../../../shared/design_system/components/text_link.dart';
 import '../../../../../shared/design_system/typography/gd_text.dart' as ds;
+import '../../../../../src/config/di/injector.dart';
 import '../bloc/register_choice_bloc.dart';
 import '../bloc/register_choice_event.dart';
 import '../bloc/register_choice_state.dart';
@@ -22,7 +23,7 @@ class RegisterChoiceScreen extends StatelessWidget {
     final gaps = context.gaps;
 
     return BlocProvider(
-      create: (_) => RegisterChoiceBloc(),
+      create: (_) => getIt<RegisterChoiceBloc>(),
       child: BlocListener<RegisterChoiceBloc, RegisterChoiceState>(
         listenWhen: (p, c) =>
             c.maybeWhen(navigate: (_) => true, orElse: () => false),

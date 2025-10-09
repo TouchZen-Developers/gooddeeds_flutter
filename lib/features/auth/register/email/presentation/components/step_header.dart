@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gooddeeds/shared/data/user_role.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/src/config/di/injector.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../shared/design_system/typography/gd_text.dart' as ds;
@@ -20,10 +23,16 @@ class StepHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = context.textStyle;
+
+    final prefs = getIt<SharedPreferences>();
+    final role = UserRoleX.fromString(prefs.getString(kPrefUserRole));
+
+    final showSteps = role != UserRole.helpFamilies;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Back + Counter
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -41,39 +50,36 @@ class StepHeader extends StatelessWidget {
                     Center(child: Assets.icons.left.svg(width: 14, height: 14)),
               ),
             ),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: '$currentStep / ',
-                    style: context.textStyle.bodyLargeRegular,
-                  ),
-                  TextSpan(
-                    text: '$totalSteps',
-                    style: context.textStyle.bodyLargeRegular.copyWith(
-                      color: BrandTones.grey50,
+            if (showSteps)
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '$currentStep / ',
+                      style: text.bodyLargeRegular,
                     ),
-                  ),
-                ],
-              ),
-            ),
+                    TextSpan(
+                      text: '$totalSteps',
+                      style: text.bodyLargeRegular.copyWith(
+                        color: BrandTones.grey50,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            else
+              const SizedBox(width: 44),
           ],
         ),
         const SizedBox(height: 24),
-
-        // Title + Subtitle
         ds.GDText(
-          '${context.loc.register} ',
-          style: context.textStyle.heading3.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          context.loc.register,
+          style: context.textStyle.heading3,
         ),
         const SizedBox(height: 16),
         ds.GDText(
           context.loc.enterYourPersonalInformation,
-          style: context.textStyle.bodyMediumMedium.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: text.bodyMediumMedium.copyWith(fontWeight: FontWeight.w600),
           color: BrandTones.grey80,
         ),
       ],

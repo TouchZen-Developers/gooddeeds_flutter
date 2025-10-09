@@ -12,6 +12,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:go_router/go_router.dart' as _i583;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../../features/auth/forget_password/presentation/bloc/forgot_password_bloc.dart'
     as _i828;
@@ -36,19 +37,21 @@ import '../../../features/auth/verify_reset_code/presentation/bloc/verify_reset_
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart'
     as _i330;
 import '../../../features/splash/presentation/bloc/splash_bloc.dart' as _i976;
-import 'router_module.dart' as _i393;
+import 'modules/prefs_module.dart' as _i12;
+import 'modules/router_module.dart' as _i322;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i526.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
+    final prefsModule = _$PrefsModule();
     final routerModule = _$RouterModule();
     gh.factory<_i828.ForgotPasswordBloc>(() => _i828.ForgotPasswordBloc());
     gh.factory<_i1072.LoginBloc>(() => _i1072.LoginBloc());
@@ -60,14 +63,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i925.RegisterPersonalInfoBloc>(
         () => _i925.RegisterPersonalInfoBloc());
     gh.factory<_i242.RegisterImpactBloc>(() => _i242.RegisterImpactBloc());
-    gh.factory<_i515.RegisterChoiceBloc>(() => _i515.RegisterChoiceBloc());
     gh.factory<_i989.ResetPasswordBloc>(() => _i989.ResetPasswordBloc());
     gh.factory<_i934.VerifyResetCodeBloc>(() => _i934.VerifyResetCodeBloc());
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
     gh.factory<_i976.SplashBloc>(() => _i976.SplashBloc());
+    await gh.factoryAsync<_i460.SharedPreferences>(
+      () => prefsModule.prefs,
+      preResolve: true,
+    );
     gh.lazySingleton<_i583.GoRouter>(() => routerModule.router());
+    gh.factory<_i515.RegisterChoiceBloc>(
+        () => _i515.RegisterChoiceBloc(gh<_i460.SharedPreferences>()));
     return this;
   }
 }
 
-class _$RouterModule extends _i393.RouterModule {}
+class _$PrefsModule extends _i12.PrefsModule {}
+
+class _$RouterModule extends _i322.RouterModule {}
