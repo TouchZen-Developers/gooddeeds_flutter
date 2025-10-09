@@ -13,7 +13,7 @@ class MyCartItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: context.colors.outline),
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
       child: Column(
         children: [
@@ -22,7 +22,8 @@ class MyCartItem extends StatelessWidget {
               AppCheckbox(value: true, onChanged: (value) {}),
               const Gap(16),
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.all(Radius.circular(8)),
+                borderRadius:
+                    const BorderRadiusGeometry.all(Radius.circular(8)),
                 child: SizedBox(
                   width: 60,
                   height: 60,
@@ -40,7 +41,9 @@ class MyCartItem extends StatelessWidget {
                     ),
                     Text(
                       '\$200.00',
-                      style: context.textStyle.bodyLargeSemiBold,
+                      style: context.textStyle.bodyLargeSemiBold.copyWith(
+                        color: context.colors.secondary,
+                      ),
                     ),
                   ],
                 ),
@@ -51,9 +54,9 @@ class MyCartItem extends StatelessWidget {
               ),
             ],
           ),
-          _CartItem(),
-          _CartItem(),
-          _CartItem(),
+          const _CartItem(),
+          const _CartItem(),
+          const _CartItem(),
         ],
       ),
     );
@@ -111,7 +114,7 @@ class _CartItem extends StatelessWidget {
           IconButton(
             visualDensity: VisualDensity.compact,
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.close,
               size: 20,
             ),

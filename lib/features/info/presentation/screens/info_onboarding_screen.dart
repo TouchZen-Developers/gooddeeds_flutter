@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/soft_circle.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -83,7 +84,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
             SafeArea(
               child: Column(
                 children: [
-                  TopSkip(),
+                  const TopSkip(),
                   Expanded(
                     child: ImagePager(
                       controller: _imgCtrl,
@@ -94,7 +95,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: 64),
+                  const Gap(64),
                   OnboardingDots(controller: _imgCtrl, count: total),
                   const SizedBox(height: 72),
                   SizedBox(

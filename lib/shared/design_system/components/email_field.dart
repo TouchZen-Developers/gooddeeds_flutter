@@ -46,7 +46,7 @@ class EmailField extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.grey20),
+              borderSide: const BorderSide(color: BrandTones.grey20),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
@@ -62,11 +62,11 @@ class EmailField extends StatelessWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.info),
+              borderSide: const BorderSide(color: BrandTones.info),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: BrandTones.info,
               ),
             ),

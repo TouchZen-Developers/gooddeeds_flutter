@@ -51,7 +51,7 @@ class InfoOnboardingBloc
   }
 
   void _onLoginPressed(_LoginPressed e, Emitter<InfoOnboardingBlocState> emit) {
-    emit(state.copyWith(navigateTo: LoginRoute().location));
+    emit(state.copyWith(navigateTo: const LoginRoute().location));
     emit(state.copyWith(navigateTo: null));
   }
 

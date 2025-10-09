@@ -14,14 +14,15 @@ class CheckoutItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: context.colors.outline),
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
       child: Column(
         children: [
           Row(
             children: [
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.all(Radius.circular(8)),
+                borderRadius:
+                    const BorderRadiusGeometry.all(Radius.circular(8)),
                 child: SizedBox(
                   width: 60,
                   height: 60,
@@ -50,12 +51,13 @@ class CheckoutItem extends StatelessWidget {
               ),
             ],
           ),
-          _CartItem(),
-          _CartItem(),
-          _CartItem(),
+          const _CartItem(),
+          const _CartItem(),
+          const _CartItem(),
           const Gap(20),
           AppTextField(
             hint: context.loc.sendMessageForTheFamily,
+            variant: FieldVariant.filled,
           ),
         ],
       ),

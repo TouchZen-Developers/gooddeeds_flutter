@@ -16,7 +16,7 @@ class EventCard extends StatelessWidget {
             width: double.infinity,
             height: 130,
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
               ),
@@ -32,7 +32,7 @@ class EventCard extends StatelessWidget {
             ),
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 bottomRight: Radius.circular(12),
               ),
@@ -46,9 +46,7 @@ class EventCard extends StatelessWidget {
               'Impacted by Hawaii Wildfires',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: context.textStyles.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
+              style: context.textStyle.bodyMediumMedium,
             ),
           ),
         ],

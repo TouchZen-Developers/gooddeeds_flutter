@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
 import 'package:gooddeeds/shared/design_system/components/gd_back_button_icon.dart';
@@ -79,18 +80,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     width: 200,
                   ),
                 ),
-                const SizedBox(height: 72),
+                const Gap(72),
                 Text(
                   loc.forgotPasswordTitle,
                   style: text.heading3.copyWith(color: BrandTones.grey100),
                 ),
-                SizedBox(height: 16),
+                const Gap(16),
                 Text(
                   loc.forgotPasswordDesc,
                   style:
                       text.bodyMediumRegular.copyWith(color: BrandTones.grey80),
                 ),
-                SizedBox(height: gaps.xl),
+                Gap(gaps.xl),
                 BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
                   buildWhen: (p, c) =>
                       p.email != c.email || p.showErrors != c.showErrors,
@@ -108,7 +109,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     );
                   },
                 ),
-                SizedBox(height: gaps.xxl * 2),
+                Gap(gaps.xxl * 2),
               ],
             ),
           ),

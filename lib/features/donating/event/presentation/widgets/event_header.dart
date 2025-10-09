@@ -12,7 +12,7 @@ class EventHeader extends StatelessWidget {
       children: [
         SizedBox(
           width: double.infinity,
-          height: 350,
+          height: 190,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(context.radii.md),
@@ -39,9 +39,7 @@ class EventHeader extends StatelessWidget {
             'Impacted by Hawaii Wildfires',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: context.textStyles.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
+            style: context.textStyle.bodyXLargeMedium,
           ),
         ),
       ],

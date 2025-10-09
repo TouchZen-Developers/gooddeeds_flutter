@@ -23,7 +23,7 @@ class DonaitingMyCartScreen extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
               child: ListView.separated(
                 itemBuilder: (context, index) {
-                  return MyCartItem();
+                  return const MyCartItem();
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return const Gap(16);
@@ -35,12 +35,24 @@ class DonaitingMyCartScreen extends StatelessWidget {
           Container(
             padding:
                 const EdgeInsets.only(right: 20, left: 20, top: 16, bottom: 32),
+            decoration: BoxDecoration(
+              color: context.colors.onPrimary,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                ),
+              ],
+            ),
             child: Column(
               children: [
-                SubTotalWidget(),
+                const SubTotalWidget(),
                 const Gap(8),
-                TaxesFeesWidget(),
-                const Divider(height: 32),
+                const TaxesFeesWidget(),
+                Divider(
+                  height: 32,
+                  color: context.colors.outline,
+                ),
                 Row(
                   children: [
                     Column(

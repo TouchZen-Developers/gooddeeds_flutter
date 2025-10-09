@@ -92,7 +92,7 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
                           child: Text(
                             loc.resendCode,
                             style: text.bodySmallMedium.copyWith(
-                              color: BrandTones.secondary,
+                              color: context.colors.secondary,
                             ),
                           ),
                         ),

@@ -3,11 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/features/auth/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/features/auth/register/pending/presentation/screens/application_pending_screen.dart';
+import 'package:gooddeeds/features/donating/cart/presentation/screens/add_new_card_checkout_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/checkout_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/donaiting_my_cart_screen.dart';
+import 'package:gooddeeds/features/donating/event/presentation/screens/event_details_screen.dart';
 import 'package:gooddeeds/features/donating/family/presentation/screens/family_details_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_home_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
+import 'package:gooddeeds/features/donating/home/presentation/screens/help_family_near_screen.dart';
+import 'package:gooddeeds/features/donating/home/presentation/screens/recently_affected_screen.dart';
+import 'package:gooddeeds/features/donating/orders/presentation/screens/order_details_screen.dart';
+import 'package:gooddeeds/features/donating/orders/presentation/screens/orders_screen.dart';
+import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_my_account_screen.dart';
+import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_my_profile_screen.dart';
+import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_payment_screen.dart';
 import 'package:gooddeeds/features/info/presentation/screens/info_onboarding_screen.dart';
 import 'package:gooddeeds/features/splash/presentation/screens/splash_screen.dart';
 import 'package:gooddeeds/src/config/routes/donating_app_scaffold_with_nav.dart';
@@ -85,6 +94,15 @@ class CheckoutRoute extends GoRouteData with $CheckoutRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const CheckoutScreen();
+  }
+}
+
+@TypedGoRoute<AddNewCardCheckoutRoute>(path: RoutePaths.addNewCardCheckout)
+class AddNewCardCheckoutRoute extends GoRouteData
+    with $AddNewCardCheckoutRoute {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const AddNewCardCheckoutScreen();
   }
 }
 
@@ -244,7 +262,10 @@ class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
           path: RoutePaths.donaitingHome,
           routes: <TypedRoute<RouteData>>[
             TypedGoRoute<FamilyListRoute>(path: RoutePaths.familyList),
-            TypedGoRoute<FamilyDetailsRoute>(path: RoutePaths.familyDetails),
+            TypedGoRoute<FamilyListNearRoute>(path: RoutePaths.familyListNear),
+            TypedGoRoute<RecentlyAffectedRoute>(
+              path: RoutePaths.recentlyAffected,
+            ),
           ],
         ),
       ],
@@ -256,13 +277,26 @@ class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
     ),
     TypedStatefulShellBranch<OrdersBranch>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<OrdersRoute>(path: RoutePaths.donaitingOrders),
+        TypedGoRoute<OrdersRoute>(
+          path: RoutePaths.donaitingOrders,
+          routes: [
+            TypedGoRoute<OrderDetailsRoute>(path: RoutePaths.orderDetails),
+          ],
+        ),
       ],
     ),
     TypedStatefulShellBranch<DonaitingMyProfileBranch>(
       routes: <TypedRoute<RouteData>>[
         TypedGoRoute<DonaitingMyProfileRoute>(
           path: RoutePaths.donaitingProfile,
+          routes: [
+            TypedGoRoute<DonatingMyAccountRoute>(
+              path: RoutePaths.donaitingMyAccount,
+            ),
+            TypedGoRoute<DonatingPaymentRoute>(
+              path: RoutePaths.donaitingPayment,
+            ),
+          ],
         ),
       ],
     ),
@@ -340,12 +374,59 @@ class FamilyListRoute extends GoRouteData with $FamilyListRoute {
       const FamilyListScreen();
 }
 
+class FamilyListNearRoute extends GoRouteData with $FamilyListNearRoute {
+  const FamilyListNearRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const HelpFamilyNearScreen();
+}
+
+class RecentlyAffectedRoute extends GoRouteData with $RecentlyAffectedRoute {
+  const RecentlyAffectedRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const RecentlyAffectedScreen();
+}
+
+@TypedGoRoute<FamilyDetailsRoute>(path: RoutePaths.familyDetails)
 class FamilyDetailsRoute extends GoRouteData with $FamilyDetailsRoute {
   const FamilyDetailsRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const FamilyDetailsScreen();
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: FamilyDetailsScreen(),
+      fullscreenDialog: true,
+    );
+  }
+}
+
+@TypedGoRoute<EventDetailsRoute>(path: RoutePaths.eventDetails)
+class EventDetailsRoute extends GoRouteData with $EventDetailsRoute {
+  const EventDetailsRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: EventDetailsScreen(),
+      fullscreenDialog: true,
+    );
+  }
+}
+
+@TypedGoRoute<OrderDetailsRoute>(path: RoutePaths.orderDetails)
+class OrderDetailsRoute extends GoRouteData with $OrderDetailsRoute {
+  const OrderDetailsRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(
+      child: OrderDetailsScreen(),
+      fullscreenDialog: true,
+    );
+  }
 }
 
 class MyCartRoute extends GoRouteData with $MyCartRoute {
@@ -361,7 +442,7 @@ class OrdersRoute extends GoRouteData with $OrdersRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const Placeholder();
+      const OrdersScreen();
 }
 
 class DonaitingMyProfileRoute extends GoRouteData
@@ -370,7 +451,23 @@ class DonaitingMyProfileRoute extends GoRouteData
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const Placeholder();
+      const DonatingMyProfileScreen();
+}
+
+class DonatingMyAccountRoute extends GoRouteData with $DonatingMyAccountRoute {
+  const DonatingMyAccountRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DonatingMyAccountScreen();
+}
+
+class DonatingPaymentRoute extends GoRouteData with $DonatingPaymentRoute {
+  const DonatingPaymentRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DonatingPaymentScreen();
 }
 
 GoRouter createRouter() => GoRouter(

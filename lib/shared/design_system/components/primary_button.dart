@@ -23,6 +23,7 @@ class PrimaryButton extends StatelessWidget {
     this.minWidth,
     this.color,
     this.background, // manual background
+    this.textStyle,
   });
 
   final String label;
@@ -41,6 +42,8 @@ class PrimaryButton extends StatelessWidget {
   final Color? color;
 
   final Color? background;
+
+  final TextStyle? textStyle;
 
   ({EdgeInsets padding, double minHeight, double radius, TextStyle text})
       _metrics(BuildContext context) {
@@ -127,7 +130,7 @@ class PrimaryButton extends StatelessWidget {
             softWrap: false,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: m.text.copyWith(color: fg),
+            style: textStyle ?? m.text.copyWith(color: fg),
           ),
         ),
         if (trailing != null) ...[

@@ -75,7 +75,7 @@ class RegisterMenuScreen extends StatelessWidget {
                       color: BrandTones.grey100,
                       leading: Assets.icons.apple.svg(width: 24, height: 24),
                       onPressed: () {
-                        DonatingHomeRoute().go(context);
+                        const DonatingHomeRoute().go(context);
                       },
                     ),
                     SizedBox(height: gaps.md),
@@ -97,7 +97,7 @@ class RegisterMenuScreen extends StatelessWidget {
                       color: BrandTones.grey100,
                       leading: Assets.icons.email.svg(width: 18, height: 14),
                       onPressed: () {
-                        RegisterEmailRoute().push(context);
+                        const RegisterEmailRoute().push(context);
                       },
                     ),
                     SizedBox(height: gaps.xxl),
@@ -114,7 +114,7 @@ class RegisterMenuScreen extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           emphasis: GDTextEmphasis.primary,
                           style: context.textStyle.bodyMediumRegular,
-                          color: BrandTones.secondary,
+                          color: BrandTones.secondary600,
                           onPressed: () {},
                         ),
                       ],

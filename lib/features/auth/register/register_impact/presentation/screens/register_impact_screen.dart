@@ -72,7 +72,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
     return BlocListener<RegisterImpactBloc, RegisterImpactState>(
       listenWhen: (p, c) => p.completed != c.completed && c.completed,
       listener: (_, __) {
-        RegisterFamilyPhotoRoute().push(context);
+        const RegisterFamilyPhotoRoute().push(context);
       },
       child: Scaffold(
         bottomNavigationBar: SafeArea(
@@ -210,15 +210,18 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide: BorderSide(color: BrandTones.grey20),
+                              borderSide:
+                                  const BorderSide(color: BrandTones.grey20),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide: BorderSide(color: BrandTones.grey20),
+                              borderSide:
+                                  const BorderSide(color: BrandTones.grey20),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide: BorderSide(color: BrandTones.grey20),
+                              borderSide:
+                                  const BorderSide(color: BrandTones.grey20),
                             ),
                           ),
                           onChanged: (v) => context

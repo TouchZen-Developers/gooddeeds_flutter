@@ -17,6 +17,9 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/about.svg
+  SvgGenImage get about => const SvgGenImage('assets/icons/about.svg');
+
   /// File path: assets/icons/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
 
@@ -44,6 +47,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/checkbox.svg
   SvgGenImage get checkbox => const SvgGenImage('assets/icons/checkbox.svg');
+
+  /// File path: assets/icons/contact.svg
+  SvgGenImage get contact => const SvgGenImage('assets/icons/contact.svg');
 
   /// File path: assets/icons/credit_card.svg
   SvgGenImage get creditCard =>
@@ -85,11 +91,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/marker.svg
   SvgGenImage get marker => const SvgGenImage('assets/icons/marker.svg');
 
+  /// File path: assets/icons/notification.svg
+  SvgGenImage get notification =>
+      const SvgGenImage('assets/icons/notification.svg');
+
   /// File path: assets/icons/orders.svg
   SvgGenImage get orders => const SvgGenImage('assets/icons/orders.svg');
 
   /// File path: assets/icons/pencil.svg
   SvgGenImage get pencil => const SvgGenImage('assets/icons/pencil.svg');
+
+  /// File path: assets/icons/privacy.svg
+  SvgGenImage get privacy => const SvgGenImage('assets/icons/privacy.svg');
 
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
@@ -100,8 +113,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/report.svg
   SvgGenImage get report => const SvgGenImage('assets/icons/report.svg');
 
+  /// File path: assets/icons/sign_out.svg
+  SvgGenImage get signOut => const SvgGenImage('assets/icons/sign_out.svg');
+
+  /// File path: assets/icons/support.svg
+  SvgGenImage get support => const SvgGenImage('assets/icons/support.svg');
+
+  /// File path: assets/icons/terms.svg
+  SvgGenImage get terms => const SvgGenImage('assets/icons/terms.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
+        about,
         apple,
         applePay,
         applicationPending,
@@ -111,6 +134,7 @@ class $AssetsIconsGen {
         card,
         cart,
         checkbox,
+        contact,
         creditCard,
         delete,
         email,
@@ -124,11 +148,16 @@ class $AssetsIconsGen {
         left,
         logo,
         marker,
+        notification,
         orders,
         pencil,
+        privacy,
         profile,
         reject,
-        report
+        report,
+        signOut,
+        support,
+        terms
       ];
 }
 
