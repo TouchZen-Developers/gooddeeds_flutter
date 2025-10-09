@@ -178,5 +178,8 @@
   "privacyPolicy": "Privacy Policy",
   "signOut": "Sign out",
   "general": "General",
-  "helpAndInformation": "Help & Information"
+  "helpAndInformation": "Help & Information",
+   "success": "Success",
+   "nowYouCanLogin": "Now you can login using the new password",
+   "signInNow": "Sign In Now"
 }

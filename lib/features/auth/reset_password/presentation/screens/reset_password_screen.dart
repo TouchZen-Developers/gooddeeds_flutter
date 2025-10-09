@@ -9,6 +9,7 @@ import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
+import '../../../../../shared/design_system/components/gd_simple_action_dialog.dart';
 import '../bloc/reset_password_bloc.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -59,10 +60,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       listenWhen: (p, c) => p.success != c.success,
       listener: (context, state) {
         if (state.success == true) {
-          const LoginRoute().go(context);
+          showDialog<void>(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) => GDSimpleActionDialog(
+              title: '${context.loc.success}!',
+              message: context.loc.nowYouCanLogin,
+              actionLabel: context.loc.signInNow,
+              onAction: () {
+                Navigator.of(context).pop();
+                const LoginRoute().go(context);
+              },
+            ),
+          );
         } else if (state.success == false) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(loc.resetPasswordFailed)),
+            SnackBar(content: Text(context.loc.resetPasswordFailed)),
           );
         }
       },

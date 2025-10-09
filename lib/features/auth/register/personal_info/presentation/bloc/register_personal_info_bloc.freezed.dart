@@ -55,6 +55,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_FamilyCountChanged value)? familyCountChanged,
+    TResult Function(_PhoneChanged value)? phoneChanged,
+    TResult Function(_ModeChanged value)? modeChanged,
     TResult Function(_Submitted value)? submitted,
     required TResult orElse(),
   }) {
@@ -66,6 +68,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that);
       case _FamilyCountChanged() when familyCountChanged != null:
         return familyCountChanged(_that);
+      case _PhoneChanged() when phoneChanged != null:
+        return phoneChanged(_that);
+      case _ModeChanged() when modeChanged != null:
+        return modeChanged(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -91,6 +97,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_FamilyCountChanged value) familyCountChanged,
+    required TResult Function(_PhoneChanged value) phoneChanged,
+    required TResult Function(_ModeChanged value) modeChanged,
     required TResult Function(_Submitted value) submitted,
   }) {
     final _that = this;
@@ -101,6 +109,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that);
       case _FamilyCountChanged():
         return familyCountChanged(_that);
+      case _PhoneChanged():
+        return phoneChanged(_that);
+      case _ModeChanged():
+        return modeChanged(_that);
       case _Submitted():
         return submitted(_that);
       case _:
@@ -125,6 +137,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_FamilyCountChanged value)? familyCountChanged,
+    TResult? Function(_PhoneChanged value)? phoneChanged,
+    TResult? Function(_ModeChanged value)? modeChanged,
     TResult? Function(_Submitted value)? submitted,
   }) {
     final _that = this;
@@ -135,6 +149,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that);
       case _FamilyCountChanged() when familyCountChanged != null:
         return familyCountChanged(_that);
+      case _PhoneChanged() when phoneChanged != null:
+        return phoneChanged(_that);
+      case _ModeChanged() when modeChanged != null:
+        return modeChanged(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -159,6 +177,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult Function(String value)? firstNameChanged,
     TResult Function(String value)? lastNameChanged,
     TResult Function(String value)? familyCountChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(bool isDonor)? modeChanged,
     TResult Function()? submitted,
     required TResult orElse(),
   }) {
@@ -170,6 +190,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that.value);
       case _FamilyCountChanged() when familyCountChanged != null:
         return familyCountChanged(_that.value);
+      case _PhoneChanged() when phoneChanged != null:
+        return phoneChanged(_that.value);
+      case _ModeChanged() when modeChanged != null:
+        return modeChanged(_that.isDonor);
       case _Submitted() when submitted != null:
         return submitted();
       case _:
@@ -195,6 +219,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     required TResult Function(String value) firstNameChanged,
     required TResult Function(String value) lastNameChanged,
     required TResult Function(String value) familyCountChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(bool isDonor) modeChanged,
     required TResult Function() submitted,
   }) {
     final _that = this;
@@ -205,6 +231,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that.value);
       case _FamilyCountChanged():
         return familyCountChanged(_that.value);
+      case _PhoneChanged():
+        return phoneChanged(_that.value);
+      case _ModeChanged():
+        return modeChanged(_that.isDonor);
       case _Submitted():
         return submitted();
       case _:
@@ -229,6 +259,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult? Function(String value)? firstNameChanged,
     TResult? Function(String value)? lastNameChanged,
     TResult? Function(String value)? familyCountChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(bool isDonor)? modeChanged,
     TResult? Function()? submitted,
   }) {
     final _that = this;
@@ -239,6 +271,10 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return lastNameChanged(_that.value);
       case _FamilyCountChanged() when familyCountChanged != null:
         return familyCountChanged(_that.value);
+      case _PhoneChanged() when phoneChanged != null:
+        return phoneChanged(_that.value);
+      case _ModeChanged() when modeChanged != null:
+        return modeChanged(_that.isDonor);
       case _Submitted() when submitted != null:
         return submitted();
       case _:
@@ -441,6 +477,133 @@ class __$FamilyCountChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
+class _PhoneChanged implements RegisterPersonalInfoEvent {
+  const _PhoneChanged(this.value);
+
+  final String value;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PhoneChangedCopyWith<_PhoneChanged> get copyWith =>
+      __$PhoneChangedCopyWithImpl<_PhoneChanged>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PhoneChanged &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  String toString() {
+    return 'RegisterPersonalInfoEvent.phoneChanged(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PhoneChangedCopyWith<$Res>
+    implements $RegisterPersonalInfoEventCopyWith<$Res> {
+  factory _$PhoneChangedCopyWith(
+          _PhoneChanged value, $Res Function(_PhoneChanged) _then) =
+      __$PhoneChangedCopyWithImpl;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$PhoneChangedCopyWithImpl<$Res>
+    implements _$PhoneChangedCopyWith<$Res> {
+  __$PhoneChangedCopyWithImpl(this._self, this._then);
+
+  final _PhoneChanged _self;
+  final $Res Function(_PhoneChanged) _then;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_PhoneChanged(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _ModeChanged implements RegisterPersonalInfoEvent {
+  const _ModeChanged(this.isDonor);
+
+  final bool isDonor;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ModeChangedCopyWith<_ModeChanged> get copyWith =>
+      __$ModeChangedCopyWithImpl<_ModeChanged>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ModeChanged &&
+            (identical(other.isDonor, isDonor) || other.isDonor == isDonor));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isDonor);
+
+  @override
+  String toString() {
+    return 'RegisterPersonalInfoEvent.modeChanged(isDonor: $isDonor)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ModeChangedCopyWith<$Res>
+    implements $RegisterPersonalInfoEventCopyWith<$Res> {
+  factory _$ModeChangedCopyWith(
+          _ModeChanged value, $Res Function(_ModeChanged) _then) =
+      __$ModeChangedCopyWithImpl;
+  @useResult
+  $Res call({bool isDonor});
+}
+
+/// @nodoc
+class __$ModeChangedCopyWithImpl<$Res> implements _$ModeChangedCopyWith<$Res> {
+  __$ModeChangedCopyWithImpl(this._self, this._then);
+
+  final _ModeChanged _self;
+  final $Res Function(_ModeChanged) _then;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? isDonor = null,
+  }) {
+    return _then(_ModeChanged(
+      null == isDonor
+          ? _self.isDonor
+          : isDonor // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _Submitted implements RegisterPersonalInfoEvent {
   const _Submitted();
 
@@ -464,6 +627,8 @@ mixin _$RegisterPersonalInfoState {
   String get firstName;
   String get lastName;
   String? get familyCount;
+  String get phone;
+  bool get isDonorFlow;
   bool get isSubmitting;
   bool get showErrors;
   bool get completed;
@@ -487,6 +652,9 @@ mixin _$RegisterPersonalInfoState {
                 other.lastName == lastName) &&
             (identical(other.familyCount, familyCount) ||
                 other.familyCount == familyCount) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.isDonorFlow, isDonorFlow) ||
+                other.isDonorFlow == isDonorFlow) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showErrors, showErrors) ||
@@ -497,11 +665,11 @@ mixin _$RegisterPersonalInfoState {
 
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, familyCount,
-      isSubmitting, showErrors, completed);
+      phone, isDonorFlow, isSubmitting, showErrors, completed);
 
   @override
   String toString() {
-    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
+    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
   }
 }
 
@@ -515,6 +683,8 @@ abstract mixin class $RegisterPersonalInfoStateCopyWith<$Res> {
       {String firstName,
       String lastName,
       String? familyCount,
+      String phone,
+      bool isDonorFlow,
       bool isSubmitting,
       bool showErrors,
       bool completed});
@@ -536,6 +706,8 @@ class _$RegisterPersonalInfoStateCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? familyCount = freezed,
+    Object? phone = null,
+    Object? isDonorFlow = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? completed = null,
@@ -553,6 +725,14 @@ class _$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.familyCount
           : familyCount // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: null == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDonorFlow: null == isDonorFlow
+          ? _self.isDonorFlow
+          : isDonorFlow // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -662,16 +842,30 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String firstName, String lastName, String? familyCount,
-            bool isSubmitting, bool showErrors, bool completed)?
+    TResult Function(
+            String firstName,
+            String lastName,
+            String? familyCount,
+            String phone,
+            bool isDonorFlow,
+            bool isSubmitting,
+            bool showErrors,
+            bool completed)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _RegisterPersonalInfoState() when $default != null:
-        return $default(_that.firstName, _that.lastName, _that.familyCount,
-            _that.isSubmitting, _that.showErrors, _that.completed);
+        return $default(
+            _that.firstName,
+            _that.lastName,
+            _that.familyCount,
+            _that.phone,
+            _that.isDonorFlow,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.completed);
       case _:
         return orElse();
     }
@@ -692,15 +886,29 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String firstName, String lastName, String? familyCount,
-            bool isSubmitting, bool showErrors, bool completed)
+    TResult Function(
+            String firstName,
+            String lastName,
+            String? familyCount,
+            String phone,
+            bool isDonorFlow,
+            bool isSubmitting,
+            bool showErrors,
+            bool completed)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _RegisterPersonalInfoState():
-        return $default(_that.firstName, _that.lastName, _that.familyCount,
-            _that.isSubmitting, _that.showErrors, _that.completed);
+        return $default(
+            _that.firstName,
+            _that.lastName,
+            _that.familyCount,
+            _that.phone,
+            _that.isDonorFlow,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.completed);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -720,15 +928,29 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String firstName, String lastName, String? familyCount,
-            bool isSubmitting, bool showErrors, bool completed)?
+    TResult? Function(
+            String firstName,
+            String lastName,
+            String? familyCount,
+            String phone,
+            bool isDonorFlow,
+            bool isSubmitting,
+            bool showErrors,
+            bool completed)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _RegisterPersonalInfoState() when $default != null:
-        return $default(_that.firstName, _that.lastName, _that.familyCount,
-            _that.isSubmitting, _that.showErrors, _that.completed);
+        return $default(
+            _that.firstName,
+            _that.lastName,
+            _that.familyCount,
+            _that.phone,
+            _that.isDonorFlow,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.completed);
       case _:
         return null;
     }
@@ -742,6 +964,8 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
       {this.firstName = '',
       this.lastName = '',
       this.familyCount,
+      this.phone = '',
+      this.isDonorFlow = false,
       this.isSubmitting = false,
       this.showErrors = false,
       this.completed = false});
@@ -754,6 +978,12 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
   final String lastName;
   @override
   final String? familyCount;
+  @override
+  @JsonKey()
+  final String phone;
+  @override
+  @JsonKey()
+  final bool isDonorFlow;
   @override
   @JsonKey()
   final bool isSubmitting;
@@ -785,6 +1015,9 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
                 other.lastName == lastName) &&
             (identical(other.familyCount, familyCount) ||
                 other.familyCount == familyCount) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.isDonorFlow, isDonorFlow) ||
+                other.isDonorFlow == isDonorFlow) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showErrors, showErrors) ||
@@ -795,11 +1028,11 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
 
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, familyCount,
-      isSubmitting, showErrors, completed);
+      phone, isDonorFlow, isSubmitting, showErrors, completed);
 
   @override
   String toString() {
-    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
+    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
   }
 }
 
@@ -815,6 +1048,8 @@ abstract mixin class _$RegisterPersonalInfoStateCopyWith<$Res>
       {String firstName,
       String lastName,
       String? familyCount,
+      String phone,
+      bool isDonorFlow,
       bool isSubmitting,
       bool showErrors,
       bool completed});
@@ -836,6 +1071,8 @@ class __$RegisterPersonalInfoStateCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? familyCount = freezed,
+    Object? phone = null,
+    Object? isDonorFlow = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? completed = null,
@@ -853,6 +1090,14 @@ class __$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.familyCount
           : familyCount // ignore: cast_nullable_to_non_nullable
               as String?,
+      phone: null == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDonorFlow: null == isDonorFlow
+          ? _self.isDonorFlow
+          : isDonorFlow // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable

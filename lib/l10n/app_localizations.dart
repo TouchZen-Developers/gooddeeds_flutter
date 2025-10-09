@@ -1095,6 +1095,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Help & Information'**
   String get helpAndInformation;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @nowYouCanLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Now you can login using the new password'**
+  String get nowYouCanLogin;
+
+  /// No description provided for @signInNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In Now'**
+  String get signInNow;
 }
 
 class _AppLocalizationsDelegate

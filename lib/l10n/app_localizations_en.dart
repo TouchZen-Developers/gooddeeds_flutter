@@ -520,4 +520,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helpAndInformation => 'Help & Information';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get nowYouCanLogin => 'Now you can login using the new password';
+
+  @override
+  String get signInNow => 'Sign In Now';
 }
