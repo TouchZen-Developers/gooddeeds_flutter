@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       context.loc.forgotPassword,
                       style: text.bodySmallMedium.copyWith(
-                        color: BrandTones.secondary,
+                        color: context.colors.secondary,
                       ),
                     ),
                   ),

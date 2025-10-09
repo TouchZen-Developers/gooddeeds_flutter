@@ -2,71 +2,71 @@ import 'package:flutter/material.dart';
 
 class TypographyTokens {
   factory TypographyTokens.poppins() {
-    return TypographyTokens(
-      heading1: const TextStyle(
+    return const TypographyTokens(
+      heading1: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 40,
         fontWeight: FontWeight.w600,
         height: 1.0,
       ),
-      heading2: const TextStyle(
+      heading2: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 32,
         fontWeight: FontWeight.w600,
         height: 1.1,
       ),
-      heading3: const TextStyle(
+      heading3: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 24,
         fontWeight: FontWeight.w600,
         height: 1.2,
       ),
-      heading4: const TextStyle(
+      heading4: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 20,
         fontWeight: FontWeight.w600,
         height: 1.25,
       ),
-      heading5: const TextStyle(
+      heading5: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 18,
         fontWeight: FontWeight.w600,
         height: 1.25,
       ),
-      bodyLarge: const TextStyle(
+      bodyLarge: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
         fontWeight: FontWeight.w400,
         height: 1.5,
         letterSpacing: 0.0,
       ),
-      bodyMedium: const TextStyle(
+      bodyMedium: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 14,
         fontWeight: FontWeight.w400,
         height: 1.5,
       ),
-      bodySmall: const TextStyle(
+      bodySmall: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 12,
         fontWeight: FontWeight.w400,
         height: 1.4,
       ),
-      buttonLarge: const TextStyle(
+      buttonLarge: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
         fontWeight: FontWeight.w600,
         height: 1.2,
         letterSpacing: .2,
       ),
-      buttonNormal: const TextStyle(
+      buttonNormal: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 14,
         fontWeight: FontWeight.w600,
         height: 1.2,
         letterSpacing: .2,
       ),
-      buttonSmall: const TextStyle(
+      buttonSmall: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 12,
         fontWeight: FontWeight.w600,
@@ -138,7 +138,7 @@ class DefaultTextStyles extends AppTextStyle {
   TextStyle get heading5 => heading1.copyWith(fontSize: 18);
 
   @override
-  TextStyle get bodyXLargeSemiBold => TextStyle(
+  TextStyle get bodyXLargeSemiBold => const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 18,
         fontWeight: FontWeight.w600,
@@ -161,7 +161,7 @@ class DefaultTextStyles extends AppTextStyle {
       );
 
   @override
-  TextStyle get bodyLargeSemiBold => TextStyle(
+  TextStyle get bodyLargeSemiBold => const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
         fontWeight: FontWeight.w600,
@@ -184,7 +184,7 @@ class DefaultTextStyles extends AppTextStyle {
       );
 
   @override
-  TextStyle get bodyMediumSemiBold => TextStyle(
+  TextStyle get bodyMediumSemiBold => const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 14,
         fontWeight: FontWeight.w600,
@@ -207,7 +207,7 @@ class DefaultTextStyles extends AppTextStyle {
       );
 
   @override
-  TextStyle get bodySmallSemiBold => TextStyle(
+  TextStyle get bodySmallSemiBold => const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 12,
         fontWeight: FontWeight.w600,
@@ -230,7 +230,7 @@ class DefaultTextStyles extends AppTextStyle {
       );
 
   @override
-  TextStyle get bodyXSmallSemiBold => TextStyle(
+  TextStyle get bodyXSmallSemiBold => const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 10,
         fontWeight: FontWeight.w600,

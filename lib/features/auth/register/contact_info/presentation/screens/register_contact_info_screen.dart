@@ -172,7 +172,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                                         .copyWith(color: BrandTones.grey80),
                                   ),
                                   const SizedBox(width: 10),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                     child: VerticalDivider(
                                       width: 1,

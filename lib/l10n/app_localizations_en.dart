@@ -170,14 +170,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'Food and supplies delivered directly to families in need.';
 
   @override
-  String get registerChoiceTitle => 'Looking To Help Families In Need';
-
-  @override
   String get registerChoiceNeed => 'In Need Of Donations';
 
   @override
   String get registerChoiceHelp =>
       'Are you in need of donations, or are you looking to help families in need?';
+
+  @override
+  String get registerChoiceTitle => 'Looking To Help Families In Need';
 
   @override
   String get signupWithGoogle => 'Sign up with Google';
@@ -225,13 +225,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterPhoneNumber => 'Enter phone number';
 
   @override
-  String get enterCity => 'Enter city';
+  String get enterCity => 'Enter City';
 
   @override
-  String get enterState => 'Enter state';
+  String get enterState => 'Enter State';
 
   @override
-  String get enterZipCode => 'Enter zip code';
+  String get enterZipCode => 'Enter Zip code';
 
   @override
   String get address => 'Address';
@@ -294,25 +294,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventUnemployment => 'Unemployment';
 
   @override
-  String get none => 'None';
+  String get emailRequired => 'Email is required';
 
   @override
-  String get loginSubtitle => 'Login to continue using the app';
+  String get passwordRequired => 'Password is required';
 
   @override
   String get forgotPassword => 'Forgot Password?';
 
   @override
-  String get dontHaveAccount => 'Don’t have an account?';
-
-  @override
   String get enterValidEmail => 'Enter a valid email';
 
   @override
-  String get emailRequired => 'Email is required';
+  String get loginSubtitle => 'Login to continue using the app';
 
   @override
-  String get passwordRequired => 'Password is required';
+  String get dontHaveAccount => 'Don’t have an account?';
 
   @override
   String get passwordMinChars => 'Use at least 6 characters';
@@ -322,6 +319,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get none => 'None';
 
   @override
   String get familyPhoto => 'Family Photo';
@@ -359,9 +359,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get applicationPendingDesc =>
       'Approval by the admin takes 1-2 days, and you\'ll get an email once accepted.';
-
-  @override
-  String get continueToHome => 'Continue to Home';
 
   @override
   String get forgotPasswordTitle => 'Forgot Password?';
@@ -421,7 +418,108 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPasswordFailed => 'Failed to reset password';
 
   @override
+  String get continueToHome => 'Continue to Home';
+
+  @override
   String get uploadPhotoRequired => 'Please upload a family photo to continue.';
+
+  @override
+  String get addToCard => 'Add to Cart';
+
+  @override
+  String get payWith => 'Pay With';
+
+  @override
+  String get addNewCard => 'Add New Card';
+
+  @override
+  String get orderDetails => 'Order Details';
+
+  @override
+  String get suppliesNeeded => 'Supplies Needed';
+
+  @override
+  String get donatedItems => 'Donated Items';
+
+  @override
+  String noteSentFor(String family) {
+    return 'Note sent for $family';
+  }
+
+  @override
+  String get noteReceived => 'Note Received';
+
+  @override
+  String get transaction => 'Transaction';
+
+  @override
+  String get orderID => 'Order ID';
+
+  @override
+  String get totalPayment => 'Total Payment';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get cardNumber => 'Card Number';
+
+  @override
+  String get expireDate => 'Expire Date';
+
+  @override
+  String get securityCode => 'Security Code';
+
+  @override
+  String get cardHolder => 'Card Holder';
+
+  @override
+  String get saveCardAsDefault => 'Save card as default';
+
+  @override
+  String get cardNumberHint => '1234 5678 9212';
+
+  @override
+  String get expireDateHint => 'MM/YY';
+
+  @override
+  String get securityCodeHint => '000';
+
+  @override
+  String get cardHolderHint => 'Enter card holder';
+
+  @override
+  String get myAccount => 'My Account';
+
+  @override
+  String get payment => 'Payment';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get customerSupport => 'Customer Support';
+
+  @override
+  String get contactUs => 'Contact us';
+
+  @override
+  String get aboutUnitedDeeds => 'About United Deeds';
+
+  @override
+  String get termsAndConditions => 'Terms & Conditions';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get helpAndInformation => 'Help & Information';
 
   @override
   String get success => 'Success';

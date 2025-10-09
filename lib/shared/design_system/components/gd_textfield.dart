@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
 class GDTextField extends StatelessWidget {
   const GDTextField({
     super.key,
-    required this.controller,
+    this.controller,
     this.label,
     this.hint,
     this.errorText,
@@ -18,13 +19,15 @@ class GDTextField extends StatelessWidget {
     this.obscureText = false,
     this.enabled = true,
     this.autofillHints,
+    this.fomatter,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? label;
   final String? hint;
   final String? errorText;
   final ValueChanged<String>? onChanged;
+  final List<TextInputFormatter>? fomatter;
 
   final Widget? prefix;
   final Widget? suffix;
@@ -56,6 +59,7 @@ class GDTextField extends StatelessWidget {
           textInputAction: textInputAction,
           obscureText: obscureText,
           autofillHints: autofillHints,
+          inputFormatters: fomatter,
           style: context.textStyle.bodyMediumMedium
               .copyWith(color: hasError ? BrandTones.red : BrandTones.grey100),
           decoration: InputDecoration(
@@ -71,7 +75,7 @@ class GDTextField extends StatelessWidget {
             suffixIcon: suffix,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.grey20),
+              borderSide: const BorderSide(color: BrandTones.grey20),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
@@ -87,11 +91,11 @@ class GDTextField extends StatelessWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.red),
+              borderSide: const BorderSide(color: BrandTones.red),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.red),
+              borderSide: const BorderSide(color: BrandTones.red),
             ),
           ),
           onChanged: onChanged,

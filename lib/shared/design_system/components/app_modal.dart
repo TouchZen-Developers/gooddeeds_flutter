@@ -14,7 +14,7 @@ class AppModal extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: context.colors.onPrimary,
-          borderRadius: BorderRadius.all(Radius.circular(24)),
+          borderRadius: const BorderRadius.all(Radius.circular(24)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -25,7 +25,7 @@ class AppModal extends StatelessWidget {
               height: 4,
               decoration: BoxDecoration(
                 color: context.onSurface.shade20,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
             ),
             const Gap(12),

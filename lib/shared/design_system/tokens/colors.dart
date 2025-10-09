@@ -10,11 +10,11 @@ class BrandTones {
   static const primary200 = Color(0xFFF9C7B0);
 
   // Secondary (Purple)
-  static const secondary = Color(0xFF705AFF);
-  static const secondary600 = Color(0xFF6B4DFF);
-  static const secondary500 = Color(0xFF8B74FF);
-  static const secondary300 = Color(0xFFC2BAFF);
-  static const secondary200 = Color(0xFFD7D0FF);
+  static const secondary600 = Color(0xFF705AFF);
+  static const secondary500 = Color(0xFFA091FF);
+  static const secondary400 = Color(0xFFB7ADFF);
+  static const secondary300 = Color(0xFFCFC8FF);
+  static const secondary200 = Color(0xFFE7E3FF);
 
   // Greys
   static const grey5 = Color(0xFFE0E0E0);

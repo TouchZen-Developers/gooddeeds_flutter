@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../../shared/data/user_role.dart';
 import '../../../../../../shared/design_system/components/gd_textfield.dart';
-import '../../../../../../shared/design_system/tokens/colors.dart';
 import '../../../../../../src/config/di/injector.dart';
 import '../../../email/presentation/components/step_header.dart';
 import '../bloc/register_personal_info_bloc.dart';

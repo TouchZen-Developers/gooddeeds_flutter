@@ -22,22 +22,26 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Container(
                 width: 44,
                 height: 44,
-                margin: EdgeInsetsDirectional.only(start: 20),
+                margin: const EdgeInsetsDirectional.only(start: 20),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: context.colors.outline),
                 ),
-                child: Assets.icons.back.svg(),
+                child:
+                    GoRouter.of(context).state.fullPath?.endsWith('dialog') ==
+                            true
+                        ? const Icon(Icons.close)
+                        : Assets.icons.back.svg(),
               ),
             )
           : null,
       bottom: bottom,
       actions: actions,
-      actionsPadding: EdgeInsetsDirectional.only(end: 20),
+      actionsPadding: const EdgeInsetsDirectional.only(end: 20),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(44);
+  Size get preferredSize => const Size.fromHeight(44);
 }

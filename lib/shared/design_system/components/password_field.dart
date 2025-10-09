@@ -68,23 +68,23 @@ class _PasswordFieldState extends State<PasswordField> {
             // Borders (consistent with EmailField)
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.grey20),
+              borderSide: const BorderSide(color: BrandTones.grey20),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.grey20),
+              borderSide: const BorderSide(color: BrandTones.grey20),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.grey20),
+              borderSide: const BorderSide(color: BrandTones.grey20),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.red),
+              borderSide: const BorderSide(color: BrandTones.red),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: BrandTones.red),
+              borderSide: const BorderSide(color: BrandTones.red),
             ),
 
             // Toggle visibility

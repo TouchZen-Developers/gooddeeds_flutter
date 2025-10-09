@@ -78,7 +78,7 @@ class _AppCheckboxState extends State<AppCheckbox> {
       height: _boxSide,
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(context.radii.sm),
+        borderRadius: BorderRadius.circular(context.radii.xs),
         border: Border.all(color: border, width: 1.5),
         boxShadow: [
           BoxShadow(color: ringColor, spreadRadius: 4),
@@ -124,7 +124,7 @@ class _AppCheckboxState extends State<AppCheckbox> {
                 },
           child: Padding(
             padding: EdgeInsets.all(
-              (40 - _boxSide).clamp(0, 40).toDouble() / 2,
+              (30 - _boxSide).clamp(0, 30).toDouble() / 2,
             ),
             child: content,
           ),

@@ -15,12 +15,12 @@ class FamilyCard extends StatelessWidget {
       height: 122,
       decoration: BoxDecoration(
         border: BoxBorder.all(color: context.colors.outline),
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             child: AspectRatio(
               aspectRatio: 1,
               child: Assets.images.mock3.image(),
@@ -43,7 +43,7 @@ class FamilyCard extends StatelessWidget {
                       height: 24,
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: Color(0xff27ae60).withValues(alpha: 0.1),
+                        color: const Color(0xff27ae60).withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
                       child: Assets.icons.book.svg(),
@@ -54,7 +54,7 @@ class FamilyCard extends StatelessWidget {
                       height: 24,
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: Color(0xff2F80ED).withValues(alpha: 0.1),
+                        color: const Color(0xff2F80ED).withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
                       child: Assets.icons.fillCart.svg(),

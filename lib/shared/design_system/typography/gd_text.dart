@@ -63,7 +63,7 @@ class GDText extends StatelessWidget {
 
     final textScaler = switch (scale) {
       GDTextScale.system => MediaQuery.textScalerOf(context),
-      GDTextScale.none => TextScaler.linear(1.0),
+      GDTextScale.none => const TextScaler.linear(1.0),
     };
 
     return Text(

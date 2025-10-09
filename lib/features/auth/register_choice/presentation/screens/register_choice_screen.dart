@@ -85,7 +85,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                                             .helpFamiliesPressed(),
                                       ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -103,7 +103,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                                   style: context.typo.bodyMedium
                                       .copyWith(fontWeight: FontWeight.w500),
                                   padding: EdgeInsets.zero,
-                                  color: BrandTones.secondary,
+                                  color: BrandTones.secondary600,
                                   onPressed: () =>
                                       context.read<RegisterChoiceBloc>().add(
                                             const RegisterChoiceEvent

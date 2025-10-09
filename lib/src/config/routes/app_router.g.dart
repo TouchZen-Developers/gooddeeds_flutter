@@ -12,6 +12,7 @@ List<RouteBase> get $appRoutes => [
       $registerChoiceRoute,
       $registerMenuRoute,
       $checkoutRoute,
+      $addNewCardCheckoutRoute,
       $registerEmailRoute,
       $registerPersonalInfoRoute,
       $registerContactInfoRoute,
@@ -23,6 +24,9 @@ List<RouteBase> get $appRoutes => [
       $forgotVerifyCodeRoute,
       $resetPasswordRoute,
       $appStatfulShellWithNavigationRouteData,
+      $familyDetailsRoute,
+      $eventDetailsRoute,
+      $orderDetailsRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -147,6 +151,34 @@ mixin $CheckoutRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/checkout',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $addNewCardCheckoutRoute => GoRouteData.$route(
+      path: '/checkout_add_new_card',
+      factory: $AddNewCardCheckoutRoute._fromState,
+    );
+
+mixin $AddNewCardCheckoutRoute on GoRouteData {
+  static AddNewCardCheckoutRoute _fromState(GoRouterState state) =>
+      AddNewCardCheckoutRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/checkout_add_new_card',
       );
 
   @override
@@ -503,8 +535,12 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
                   factory: $FamilyListRoute._fromState,
                 ),
                 GoRouteData.$route(
-                  path: 'family_details',
-                  factory: $FamilyDetailsRoute._fromState,
+                  path: 'family_list_near',
+                  factory: $FamilyListNearRoute._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'recently_affected',
+                  factory: $RecentlyAffectedRoute._fromState,
                 ),
               ],
             ),
@@ -527,6 +563,12 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
             GoRouteData.$route(
               path: '/donaiting_orders',
               factory: $OrdersRoute._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: '/order_details_dialog',
+                  factory: $OrderDetailsRoute._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -537,6 +579,16 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
             GoRouteData.$route(
               path: '/donaiting_profile',
               factory: $DonaitingMyProfileRoute._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'donaiting_my_account',
+                  factory: $DonatingMyAccountRoute._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'donaiting_payment',
+                  factory: $DonatingPaymentRoute._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -596,13 +648,36 @@ mixin $FamilyListRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin $FamilyDetailsRoute on GoRouteData {
-  static FamilyDetailsRoute _fromState(GoRouterState state) =>
-      const FamilyDetailsRoute();
+mixin $FamilyListNearRoute on GoRouteData {
+  static FamilyListNearRoute _fromState(GoRouterState state) =>
+      const FamilyListNearRoute();
 
   @override
   String get location => GoRouteData.$location(
-        '/donaiting_home/family_details',
+        '/donaiting_home/family_list_near',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $RecentlyAffectedRoute on GoRouteData {
+  static RecentlyAffectedRoute _fromState(GoRouterState state) =>
+      const RecentlyAffectedRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/donaiting_home/recently_affected',
       );
 
   @override
@@ -663,6 +738,29 @@ mixin $OrdersRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
+mixin $OrderDetailsRoute on GoRouteData {
+  static OrderDetailsRoute _fromState(GoRouterState state) =>
+      const OrderDetailsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/order_details_dialog',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
 mixin $DonaitingMyProfileRoute on GoRouteData {
   static DonaitingMyProfileRoute _fromState(GoRouterState state) =>
       const DonaitingMyProfileRoute();
@@ -685,3 +783,110 @@ mixin $DonaitingMyProfileRoute on GoRouteData {
   @override
   void replace(BuildContext context) => context.replace(location);
 }
+
+mixin $DonatingMyAccountRoute on GoRouteData {
+  static DonatingMyAccountRoute _fromState(GoRouterState state) =>
+      const DonatingMyAccountRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/donaiting_profile/donaiting_my_account',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $DonatingPaymentRoute on GoRouteData {
+  static DonatingPaymentRoute _fromState(GoRouterState state) =>
+      const DonatingPaymentRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/donaiting_profile/donaiting_payment',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $familyDetailsRoute => GoRouteData.$route(
+      path: '/family_details_dialog',
+      factory: $FamilyDetailsRoute._fromState,
+    );
+
+mixin $FamilyDetailsRoute on GoRouteData {
+  static FamilyDetailsRoute _fromState(GoRouterState state) =>
+      const FamilyDetailsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/family_details_dialog',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $eventDetailsRoute => GoRouteData.$route(
+      path: '/event_details_dialog',
+      factory: $EventDetailsRoute._fromState,
+    );
+
+mixin $EventDetailsRoute on GoRouteData {
+  static EventDetailsRoute _fromState(GoRouterState state) =>
+      const EventDetailsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/event_details_dialog',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $orderDetailsRoute => GoRouteData.$route(
+      path: '/order_details_dialog',
+      factory: $OrderDetailsRoute._fromState,
+    );
