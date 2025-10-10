@@ -15,11 +15,11 @@ class RegisterPersonalInfoBloc
       emit(state.copyWith(firstName: e.value));
     });
     on<_LastNameChanged>((e, emit) {
-      emit(state.copyWith(lastName: e.value));
+      emit(state.copyWith(lastName: e.value, completed: false));
     });
     on<_FamilyCountChanged>((e, emit) {
       final cleaned = e.value.digitsOnly;
-      emit(state.copyWith(familyCount: cleaned));
+      emit(state.copyWith(familyCount: cleaned, completed: false));
     });
     on<_ModeChanged>((e, emit) {
       emit(
@@ -31,15 +31,17 @@ class RegisterPersonalInfoBloc
       );
     });
 
-    on<_PhoneChanged>((e, emit) => emit(state.copyWith(phone: e.value)));
+    on<_PhoneChanged>(
+      (e, emit) => emit(state.copyWith(phone: e.value, completed: false)),
+    );
     on<_Submitted>((e, emit) async {
       final valid = _isValid(state);
       if (!valid) {
+        emit(state.copyWith(isSubmitting: false));
         emit(state.copyWith(showErrors: true));
         return;
       }
       emit(state.copyWith(isSubmitting: true));
-      await Future<void>.delayed(const Duration(milliseconds: 400)); // mock
       emit(state.copyWith(isSubmitting: false, completed: true));
     });
   }
