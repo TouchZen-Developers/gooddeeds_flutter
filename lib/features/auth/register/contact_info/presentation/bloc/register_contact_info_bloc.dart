@@ -11,11 +11,21 @@ part 'register_contact_info_state.dart';
 class RegisterContactInfoBloc
     extends Bloc<RegisterContactInfoEvent, RegisterContactInfoState> {
   RegisterContactInfoBloc() : super(RegisterContactInfoState.initial()) {
-    on<_AddressChanged>((e, emit) => emit(state.copyWith(address: e.value)));
-    on<_PhoneChanged>((e, emit) => emit(state.copyWith(phone: e.value)));
-    on<_CityChanged>((e, emit) => emit(state.copyWith(city: e.value)));
-    on<_StateChanged>((e, emit) => emit(state.copyWith(stateName: e.value)));
-    on<_ZipChanged>((e, emit) => emit(state.copyWith(zip: e.value)));
+    on<_AddressChanged>(
+      (e, emit) => emit(state.copyWith(address: e.value, completed: false)),
+    );
+    on<_PhoneChanged>(
+      (e, emit) => emit(state.copyWith(phone: e.value, completed: false)),
+    );
+    on<_CityChanged>(
+      (e, emit) => emit(state.copyWith(city: e.value, completed: false)),
+    );
+    on<_StateChanged>(
+      (e, emit) => emit(state.copyWith(stateName: e.value, completed: false)),
+    );
+    on<_ZipChanged>(
+      (e, emit) => emit(state.copyWith(zip: e.value, completed: false)),
+    );
 
     on<_Submitted>((e, emit) async {
       if (!state.isFormValid) {
