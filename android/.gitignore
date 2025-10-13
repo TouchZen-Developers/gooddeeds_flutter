@@ -11,3 +11,7 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Google Services configuration files (contains API keys)
+google-services.json
+app/google-services.json
