@@ -11,10 +11,11 @@ class RegisterImpactBloc
     extends Bloc<RegisterImpactEvent, RegisterImpactState> {
   RegisterImpactBloc() : super(RegisterImpactState.initial()) {
     on<_EventChanged>(
-      (e, emit) => emit(state.copyWith(affectedEvent: e.value)),
+      (e, emit) =>
+          emit(state.copyWith(affectedEvent: e.value, completed: false)),
     );
     on<_StatementChanged>(
-      (e, emit) => emit(state.copyWith(statement: e.value)),
+      (e, emit) => emit(state.copyWith(statement: e.value, completed: false)),
     );
     on<_Submitted>((e, emit) async {
       if (!_isValid(state)) {

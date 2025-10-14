@@ -43,7 +43,7 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
     if (navigator.canPop()) navigator.pop();
     if (!context.mounted) return;
 
-    const ApplicationPendingRoute().push(context);
+    const ApplicationPendingRoute().go(context);
   }
 
   @override

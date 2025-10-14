@@ -127,7 +127,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 fullWidth: true,
                 onPressed: canContinue
                     ? () {
-                        const RegisterPersonalInfoRoute().push(context);
+                        const RegisterPersonalInfoRoute().replace(context);
                       }
                     : null,
               ),
