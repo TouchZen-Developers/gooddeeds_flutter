@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
@@ -73,23 +75,25 @@ class RegisterMenuScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      PrimaryButton(
-                        label: context.loc.signupWithApple,
-                        variant: ButtonVariant.outlined,
-                        background: Colors.white,
-                        fullWidth: true,
-                        color: BrandTones.grey100,
-                        leading: Assets.icons.apple.svg(width: 24, height: 24),
-                        onPressed: () {
-                          const DonatingHomeRoute().go(context);
-                        },
-                      ),
-                      SizedBox(height: gaps.md),
+                      if (Platform.isIOS) ...[
+                        PrimaryButton(
+                          label: context.loc.signupWithApple,
+                          variant: ButtonVariant.outlined,
+                          background: Colors.white,
+                          fullWidth: true,
+                          color: BrandTones.grey100,
+                          leading:
+                              Assets.icons.apple.svg(width: 24, height: 24),
+                          onPressed: () {
+                            const DonatingHomeRoute().go(context);
+                          },
+                        ),
+                        SizedBox(height: gaps.md),
+                      ],
                       BlocConsumer<GoogleSignInBloc, GoogleSignInState>(
                         listener: (context, state) {
                           if (state.isSignedIn && state.user != null) {
-                            // Navigate to donating home after successful sign in
-                            const DonatingHomeRoute().go(context);
+                            const RegisterPersonalInfoRoute().go(context);
                           } else if (state.error != null) {
                             // Show error message
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
@@ -158,7 +159,13 @@ class _RegisterPersonalInfoScreenState
                           StepHeader(
                             currentStep: 2,
                             totalSteps: 5,
-                            onBack: () => context.pop(),
+                            onBack: () {
+                              if (context.canPop()) {
+                                context.pop();
+                              } else {
+                                SystemNavigator.pop();
+                              }
+                            },
                           ),
 
                           SizedBox(height: gaps.lg),
