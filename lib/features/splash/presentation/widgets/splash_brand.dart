@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 
 enum SplashBrandSize { sm, md, lg }
@@ -27,7 +28,7 @@ class SplashBrand extends StatelessWidget {
         Assets.icons.logo
             .svg(width: logo, height: logo, semanticsLabel: 'goodDeeds logo'),
         if (showWordmark) ...[
-          SizedBox(height: gap),
+          Gap(gap),
           Assets.icons.goodDeeds
               .svg(height: wordmarkH, semanticsLabel: 'goodDeeds'),
         ],

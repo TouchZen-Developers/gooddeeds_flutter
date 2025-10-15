@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/components/soft_circle.dart';
@@ -88,7 +89,7 @@ class RegisterMenuScreen extends StatelessWidget {
                             const DonatingHomeRoute().go(context);
                           },
                         ),
-                        SizedBox(height: gaps.md),
+                        Gap(gaps.md),
                       ],
                       BlocConsumer<GoogleSignInBloc, GoogleSignInState>(
                         listener: (context, state) {
@@ -125,7 +126,7 @@ class RegisterMenuScreen extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(height: gaps.md),
+                      Gap(gaps.md),
                       PrimaryButton(
                         label: context.loc.signupWithEmail,
                         variant: ButtonVariant.outlined,
@@ -137,7 +138,7 @@ class RegisterMenuScreen extends StatelessWidget {
                           const RegisterEmailRoute().push(context);
                         },
                       ),
-                      SizedBox(height: gaps.xxl),
+                      Gap(gaps.xxl),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

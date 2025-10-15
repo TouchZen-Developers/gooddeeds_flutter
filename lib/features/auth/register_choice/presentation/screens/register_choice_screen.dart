@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/theme/typography_ext.dart';
@@ -43,7 +44,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: gaps.xl),
                   child: Column(
                     children: [
-                      const SizedBox(height: 48),
+                      const Gap(48),
                       SizedBox(
                         height: h * 0.5,
                         child: Center(
@@ -61,7 +62,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                               textAlign: TextAlign.center,
                               emphasis: ds.GDEmphasis.muted,
                             ),
-                            SizedBox(height: gaps.xxl),
+                            Gap(gaps.xxl),
                             PrimaryButton(
                               label: context.loc.registerChoiceNeed,
                               variant: ButtonVariant.outlined,
@@ -73,7 +74,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                                             .needDonationsPressed(),
                                       ),
                             ),
-                            SizedBox(height: gaps.md),
+                            Gap(gaps.md),
                             PrimaryButton(
                               label: context.loc.registerChoiceTitle,
                               variant: ButtonVariant.outlined,
@@ -112,7 +113,7 @@ class RegisterChoiceScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: gaps.xl),
+                            Gap(gaps.xl),
                           ],
                         ),
                       ),

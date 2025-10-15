@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -37,7 +38,7 @@ class LoginBottomBar extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: gaps.md),
+            Gap(gaps.md),
             Center(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,

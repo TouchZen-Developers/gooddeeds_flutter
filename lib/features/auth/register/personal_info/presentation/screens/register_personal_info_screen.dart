@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -168,7 +169,7 @@ class _RegisterPersonalInfoScreenState
                             },
                           ),
 
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // First Name
                           GDTextField(
@@ -180,7 +181,7 @@ class _RegisterPersonalInfoScreenState
                               RegisterPersonalInfoEvent.firstNameChanged(v),
                             ),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // Last Name
                           GDTextField(
@@ -192,7 +193,7 @@ class _RegisterPersonalInfoScreenState
                               RegisterPersonalInfoEvent.lastNameChanged(v),
                             ),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
                           if (_isDonor)
                             // Phone for Donor
                             GDTextField(
@@ -214,7 +215,7 @@ class _RegisterPersonalInfoScreenState
                                       style: context.textStyle.bodyMediumMedium
                                           .copyWith(color: BrandTones.grey80),
                                     ),
-                                    const SizedBox(width: 10),
+                                    const Gap(10),
                                     const SizedBox(
                                       height: 20,
                                       child: VerticalDivider(
@@ -223,7 +224,7 @@ class _RegisterPersonalInfoScreenState
                                         color: BrandTones.grey50,
                                       ),
                                     ),
-                                    const SizedBox(width: 10),
+                                    const Gap(10),
                                   ],
                                 ),
                               ),

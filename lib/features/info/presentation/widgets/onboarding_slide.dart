@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
@@ -20,7 +21,7 @@ class OnboardingSlide extends StatelessWidget {
 
     return Column(
       children: [
-        const SizedBox(height: 8),
+        const Gap(8),
         Expanded(
           child: Center(
             child: svg.svg(
@@ -30,7 +31,7 @@ class OnboardingSlide extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 24),
+        const Gap(24),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
@@ -41,7 +42,7 @@ class OnboardingSlide extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8),
+        const Gap(8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
@@ -52,7 +53,7 @@ class OnboardingSlide extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 24),
+        const Gap(24),
       ],
     );
   }

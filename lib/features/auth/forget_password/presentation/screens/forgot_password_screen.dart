@@ -73,7 +73,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 GDBackButtonIcon(
                   onBack: () => context.pop(),
                 ),
-                SizedBox(height: gaps.xxl),
+                Gap(gaps.xxl),
                 Center(
                   child: Assets.images.forgetPassword.svg(
                     height: 140,

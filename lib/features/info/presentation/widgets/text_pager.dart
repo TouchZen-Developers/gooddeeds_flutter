@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 
@@ -31,7 +32,7 @@ class TextPager extends StatelessWidget {
               style: context.textStyle.heading3,
             ),
           ),
-          const SizedBox(height: 16),
+          const Gap(16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GDText(
