@@ -529,4 +529,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signInNow => 'Sign In Now';
+
+  @override
+  String get changeEmail => 'Change Email';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get confirmationCode => 'Confirmation Code';
+
+  @override
+  String get confirmationCodeDesc => 'Enter the confirmation code we sent to';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get enterConfimCode => 'Enter confirmation code';
+
+  @override
+  String get deliveryConfirmation => 'Delivery Confirmation';
+
+  @override
+  String get deliveryConfirmationDesc =>
+      'Receive updates when your orders are delivered.';
+
+  @override
+  String get emailUpdates => 'Email Updates';
+
+  @override
+  String get pushNotification => 'Push Notification';
+
+  @override
+  String get familiesNearYou => 'Families Near You';
+
+  @override
+  String get familiesNearYouDesc =>
+      'Receive updates when families in your area are requesting help.';
+
+  @override
+  String get recentEmergencies => 'Recent Emergencies';
+
+  @override
+  String get recentEmergenciesDesc =>
+      'Receive updates when urgent events happen.';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get cardOption => 'Card Option';
+
+  @override
+  String get setCardAsDefault => 'Set card as default';
+
+  @override
+  String get editCard => 'Edit card';
+
+  @override
+  String get deleteCard => 'Delete card';
 }
