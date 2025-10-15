@@ -4,6 +4,7 @@ import 'package:gooddeeds/shared/design_system/components/app_app_bar.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 class DonatingMyAccountScreen extends StatelessWidget {
   const DonatingMyAccountScreen({super.key});
@@ -23,10 +24,12 @@ class DonatingMyAccountScreen extends StatelessWidget {
             children: [
               _MyAccountItem(
                 title: context.loc.emailAddress,
+                onTap: () => const ChangeEmailRoute().push(context),
               ),
               const Gap(16),
               _MyAccountItem(
                 title: context.loc.password,
+                onTap: () => const ChangeEmailRoute().push(context),
               ),
             ],
           ),
@@ -37,24 +40,28 @@ class DonatingMyAccountScreen extends StatelessWidget {
 }
 
 class _MyAccountItem extends StatelessWidget {
-  const _MyAccountItem({required this.title});
+  const _MyAccountItem({required this.title, required this.onTap});
   final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: context.colors.outline),
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: GDText(title, style: context.textStyle.bodyMediumMedium),
-          ),
-          const Icon(Icons.chevron_right_rounded),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.all(color: context.colors.outline),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: GDText(title, style: context.textStyle.bodyMediumMedium),
+            ),
+            const Icon(Icons.chevron_right_rounded),
+          ],
+        ),
       ),
     );
   }

@@ -4,9 +4,14 @@ import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 
 class CreditCardItem extends StatelessWidget {
-  const CreditCardItem({super.key, required this.selected});
+  const CreditCardItem({
+    super.key,
+    required this.selected,
+    required this.onMore,
+  });
 
   final bool selected;
+  final VoidCallback onMore;
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +47,19 @@ class CreditCardItem extends StatelessWidget {
           Positioned(
             right: 16,
             top: 16,
-            child: Container(
-              width: 36,
-              height: 20,
-              decoration: BoxDecoration(
-                color: context.colors.onPrimary.withValues(alpha: .2),
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-              ),
-              child: Icon(
-                Icons.more_horiz_rounded,
-                color: context.colors.onPrimary,
+            child: GestureDetector(
+              onTap: onMore,
+              child: Container(
+                width: 36,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: context.colors.onPrimary.withValues(alpha: .2),
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                ),
+                child: Icon(
+                  Icons.more_horiz_rounded,
+                  color: context.colors.onPrimary,
+                ),
               ),
             ),
           ),

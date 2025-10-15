@@ -55,8 +55,15 @@ class $AssetsIconsGen {
   SvgGenImage get creditCard =>
       const SvgGenImage('assets/icons/credit_card.svg');
 
+  /// File path: assets/icons/delete copy.svg
+  SvgGenImage get deleteCopy =>
+      const SvgGenImage('assets/icons/delete copy.svg');
+
   /// File path: assets/icons/delete.svg
   SvgGenImage get delete => const SvgGenImage('assets/icons/delete.svg');
+
+  /// File path: assets/icons/edit.svg
+  SvgGenImage get edit => const SvgGenImage('assets/icons/edit.svg');
 
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
@@ -136,7 +143,9 @@ class $AssetsIconsGen {
         checkbox,
         contact,
         creditCard,
+        deleteCopy,
         delete,
+        edit,
         email,
         eye,
         fillCart,

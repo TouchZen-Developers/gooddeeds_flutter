@@ -27,6 +27,8 @@ List<RouteBase> get $appRoutes => [
       $familyDetailsRoute,
       $eventDetailsRoute,
       $orderDetailsRoute,
+      $changeEmailRoute,
+      $confirmEmailRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -588,6 +590,14 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
                   path: 'donaiting_payment',
                   factory: $DonatingPaymentRoute._fromState,
                 ),
+                GoRouteData.$route(
+                  path: 'donaiting_payment_add_new_card',
+                  factory: $DonatingPaymentAddNewCardRoute._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'donaiting_notification_settings',
+                  factory: $DonatingNotificationSettingsRoute._fromState,
+                ),
               ],
             ),
           ],
@@ -830,6 +840,52 @@ mixin $DonatingPaymentRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
+mixin $DonatingPaymentAddNewCardRoute on GoRouteData {
+  static DonatingPaymentAddNewCardRoute _fromState(GoRouterState state) =>
+      const DonatingPaymentAddNewCardRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/donaiting_profile/donaiting_payment_add_new_card',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $DonatingNotificationSettingsRoute on GoRouteData {
+  static DonatingNotificationSettingsRoute _fromState(GoRouterState state) =>
+      const DonatingNotificationSettingsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/donaiting_profile/donaiting_notification_settings',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
 RouteBase get $familyDetailsRoute => GoRouteData.$route(
       path: '/family_details_dialog',
       factory: $FamilyDetailsRoute._fromState,
@@ -890,3 +946,59 @@ RouteBase get $orderDetailsRoute => GoRouteData.$route(
       path: '/order_details_dialog',
       factory: $OrderDetailsRoute._fromState,
     );
+
+RouteBase get $changeEmailRoute => GoRouteData.$route(
+      path: '/change_email',
+      factory: $ChangeEmailRoute._fromState,
+    );
+
+mixin $ChangeEmailRoute on GoRouteData {
+  static ChangeEmailRoute _fromState(GoRouterState state) =>
+      const ChangeEmailRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/change_email',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $confirmEmailRoute => GoRouteData.$route(
+      path: '/confirm_email',
+      factory: $ConfirmEmailRoute._fromState,
+    );
+
+mixin $ConfirmEmailRoute on GoRouteData {
+  static ConfirmEmailRoute _fromState(GoRouterState state) =>
+      const ConfirmEmailRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/confirm_email',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}

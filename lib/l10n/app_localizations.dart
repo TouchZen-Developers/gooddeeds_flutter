@@ -1113,6 +1113,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign In Now'**
   String get signInNow;
+
+  /// No description provided for @changeEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Email'**
+  String get changeEmail;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @confirmationCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation Code'**
+  String get confirmationCode;
+
+  /// No description provided for @confirmationCodeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the confirmation code we sent to'**
+  String get confirmationCodeDesc;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @enterConfimCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter confirmation code'**
+  String get enterConfimCode;
+
+  /// No description provided for @deliveryConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Confirmation'**
+  String get deliveryConfirmation;
+
+  /// No description provided for @deliveryConfirmationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive updates when your orders are delivered.'**
+  String get deliveryConfirmationDesc;
+
+  /// No description provided for @emailUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Updates'**
+  String get emailUpdates;
+
+  /// No description provided for @pushNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Push Notification'**
+  String get pushNotification;
+
+  /// No description provided for @familiesNearYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Families Near You'**
+  String get familiesNearYou;
+
+  /// No description provided for @familiesNearYouDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive updates when families in your area are requesting help.'**
+  String get familiesNearYouDesc;
+
+  /// No description provided for @recentEmergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Emergencies'**
+  String get recentEmergencies;
+
+  /// No description provided for @recentEmergenciesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive updates when urgent events happen.'**
+  String get recentEmergenciesDesc;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @cardOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Option'**
+  String get cardOption;
+
+  /// No description provided for @setCardAsDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Set card as default'**
+  String get setCardAsDefault;
+
+  /// No description provided for @editCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit card'**
+  String get editCard;
+
+  /// No description provided for @deleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete card'**
+  String get deleteCard;
 }
 
 class _AppLocalizationsDelegate

@@ -7,6 +7,7 @@ import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DonatingMyProfileScreen extends StatelessWidget {
   const DonatingMyProfileScreen({super.key});
@@ -45,6 +46,8 @@ class DonatingMyProfileScreen extends StatelessWidget {
               _MyProfileItem(
                 icon: Assets.icons.notification.path,
                 title: context.loc.notification,
+                onTap: () =>
+                    const DonatingNotificationSettingsRoute().push(context),
               ),
               const Gap(24),
               GDText(
@@ -56,26 +59,47 @@ class DonatingMyProfileScreen extends StatelessWidget {
               _MyProfileItem(
                 icon: Assets.icons.support.path,
                 title: context.loc.customerSupport,
+                onTap: () => launchUrl(
+                  Uri(
+                    scheme: 'mailto',
+                    path: 'support@touchzenmedia.com',
+                    query: encodeQueryParameters(<String, String>{
+                      'subject': 'Customer Support',
+                    }),
+                  ),
+                ),
               ),
               const Gap(12),
               _MyProfileItem(
                 icon: Assets.icons.contact.path,
                 title: context.loc.contactUs,
+                onTap: () => launchUrl(
+                  Uri(
+                    scheme: 'mailto',
+                    path: 'support@touchzenmedia.com',
+                    query: encodeQueryParameters(<String, String>{
+                      'subject': 'Contact us',
+                    }),
+                  ),
+                ),
               ),
               const Gap(12),
               _MyProfileItem(
                 icon: Assets.icons.about.path,
                 title: context.loc.aboutUnitedDeeds,
+                onTap: () => launchUrl(Uri.parse('https://gooddeeds.co')),
               ),
               const Gap(12),
               _MyProfileItem(
                 icon: Assets.icons.terms.path,
                 title: context.loc.termsAndConditions,
+                onTap: () => launchUrl(Uri.parse('https://gooddeeds.co')),
               ),
               const Gap(12),
               _MyProfileItem(
                 icon: Assets.icons.privacy.path,
                 title: context.loc.privacyPolicy,
+                onTap: () => launchUrl(Uri.parse('https://gooddeeds.co')),
               ),
               const Gap(24),
               _MyProfileItem(
@@ -87,6 +111,15 @@ class DonatingMyProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String? encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map(
+          (MapEntry<String, String> e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}',
+        )
+        .join('&');
   }
 }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gooddeeds/features/auth/change_email/presentation/screens/change_email_screen.dart';
+import 'package:gooddeeds/features/auth/change_email/presentation/screens/confirm_email_screen.dart';
 import 'package:gooddeeds/features/auth/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/features/auth/register/pending/presentation/screens/application_pending_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/add_new_card_checkout_screen.dart';
@@ -12,8 +14,10 @@ import 'package:gooddeeds/features/donating/home/presentation/screens/donaiting_
 import 'package:gooddeeds/features/donating/home/presentation/screens/family_list_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/help_family_near_screen.dart';
 import 'package:gooddeeds/features/donating/home/presentation/screens/recently_affected_screen.dart';
+import 'package:gooddeeds/features/donating/notification/presentation/screens/donaiting_notification_settings_screen.dart';
 import 'package:gooddeeds/features/donating/orders/presentation/screens/order_details_screen.dart';
 import 'package:gooddeeds/features/donating/orders/presentation/screens/orders_screen.dart';
+import 'package:gooddeeds/features/donating/payment/presentation/screens/add_new_card_screen.dart';
 import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_my_account_screen.dart';
 import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_my_profile_screen.dart';
 import 'package:gooddeeds/features/donating/profile/presentation/screens/donating_payment_screen.dart';
@@ -296,6 +300,12 @@ class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
             TypedGoRoute<DonatingPaymentRoute>(
               path: RoutePaths.donaitingPayment,
             ),
+            TypedGoRoute<DonatingPaymentAddNewCardRoute>(
+              path: RoutePaths.donaitingPaymentAddNewCard,
+            ),
+            TypedGoRoute<DonatingNotificationSettingsRoute>(
+              path: RoutePaths.donaitingNotificationSettings,
+            ),
           ],
         ),
       ],
@@ -462,12 +472,50 @@ class DonatingMyAccountRoute extends GoRouteData with $DonatingMyAccountRoute {
       const DonatingMyAccountScreen();
 }
 
+class DonatingPaymentAddNewCardRoute extends GoRouteData
+    with $DonatingPaymentAddNewCardRoute {
+  const DonatingPaymentAddNewCardRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const AddNewCardScreen();
+}
+
+class DonatingNotificationSettingsRoute extends GoRouteData
+    with $DonatingNotificationSettingsRoute {
+  const DonatingNotificationSettingsRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DonaitingNotificationSettingsScreen();
+}
+
 class DonatingPaymentRoute extends GoRouteData with $DonatingPaymentRoute {
   const DonatingPaymentRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const DonatingPaymentScreen();
+}
+
+@TypedGoRoute<ChangeEmailRoute>(path: RoutePaths.changeEmail)
+class ChangeEmailRoute extends GoRouteData with $ChangeEmailRoute {
+  const ChangeEmailRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ChangeEmailScreen();
+  }
+}
+
+@TypedGoRoute<ConfirmEmailRoute>(path: RoutePaths.confirmEmail)
+class ConfirmEmailRoute extends GoRouteData with $ConfirmEmailRoute {
+  const ConfirmEmailRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ConfirmEmailScreen();
+  }
 }
 
 GoRouter createRouter() => GoRouter(
