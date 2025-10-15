@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/gd_back_button_icon.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
@@ -126,20 +127,20 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       GDBackButtonIcon(
                         onBack: () => context.pop(),
                       ),
-                      SizedBox(height: gaps.xxl),
+                      Gap(gaps.xxl),
                       Text(
                         loc.createNewPasswordTitle,
                         style:
                             text.heading3.copyWith(color: BrandTones.grey100),
                       ),
-                      const SizedBox(height: 8),
+                      const Gap(8),
                       Text(
                         loc.createNewPasswordDesc,
                         style: text.bodyMediumRegular.copyWith(
                           color: BrandTones.grey70,
                         ),
                       ),
-                      SizedBox(height: gaps.xxl),
+                      Gap(gaps.xxl),
                       BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
                         buildWhen: (p, c) =>
                             p.newPassword != c.newPassword ||
@@ -159,7 +160,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: gaps.lg),
+                      Gap(gaps.lg),
                       BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
                         buildWhen: (p, c) =>
                             p.confirmPassword != c.confirmPassword ||

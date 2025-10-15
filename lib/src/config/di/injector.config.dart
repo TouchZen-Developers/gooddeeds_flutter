@@ -16,6 +16,8 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../../features/auth/forget_password/presentation/bloc/forgot_password_bloc.dart'
     as _i828;
+import '../../../features/auth/google_signin/presentation/bloc/google_signin_bloc.dart'
+    as _i834;
 import '../../../features/auth/login/presentation/bloc/login_bloc.dart'
     as _i1072;
 import '../../../features/auth/register/contact_info/presentation/bloc/register_contact_info_bloc.dart'
@@ -37,6 +39,7 @@ import '../../../features/auth/verify_reset_code/presentation/bloc/verify_reset_
 import '../../../features/info/presentation/bloc/info_onboarding_bloc.dart'
     as _i330;
 import '../../../features/splash/presentation/bloc/splash_bloc.dart' as _i976;
+import '../../../shared/services/google_signin_service.dart' as _i255;
 import 'modules/prefs_module.dart' as _i12;
 import 'modules/router_module.dart' as _i322;
 
@@ -71,9 +74,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => prefsModule.prefs,
       preResolve: true,
     );
+    gh.singleton<_i255.GoogleSignInService>(() => _i255.GoogleSignInService());
     gh.lazySingleton<_i583.GoRouter>(() => routerModule.router());
     gh.factory<_i515.RegisterChoiceBloc>(
         () => _i515.RegisterChoiceBloc(gh<_i460.SharedPreferences>()));
+    gh.factory<_i834.GoogleSignInBloc>(
+        () => _i834.GoogleSignInBloc(gh<_i255.GoogleSignInService>()));
     return this;
   }
 }

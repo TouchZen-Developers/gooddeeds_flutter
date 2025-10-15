@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
@@ -27,7 +28,7 @@ class SubmittingDialog extends StatelessWidget {
                   valueColor: AlwaysStoppedAnimation(BrandTones.primary),
                 ),
               ),
-              const SizedBox(height: 14),
+              const Gap(14),
               Text(
                 context.loc.submittingApplication,
                 style:

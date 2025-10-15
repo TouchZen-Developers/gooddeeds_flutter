@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -48,22 +49,22 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: gaps.xxl),
+                Gap(gaps.xxl),
                 const Center(child: SplashBrand()),
-                SizedBox(height: gaps.xl * 1.2),
+                Gap(gaps.xl * 1.2),
 
                 Text(
                   context.loc.login,
                   style: text.heading3.copyWith(color: BrandTones.grey100),
                 ),
-                const SizedBox(height: 8),
+                const Gap(8),
                 Text(
                   context.loc.loginSubtitle,
                   style: text.bodyMediumRegular.copyWith(
                     color: BrandTones.grey70,
                   ),
                 ),
-                SizedBox(height: gaps.xl),
+                Gap(gaps.xl),
 
                 // Email
                 BlocBuilder<LoginBloc, LoginState>(
@@ -86,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
 
-                SizedBox(height: gaps.md),
+                Gap(gaps.md),
 
                 // Password
                 BlocBuilder<LoginBloc, LoginState>(
@@ -109,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
 
-                SizedBox(height: gaps.lg),
+                Gap(gaps.lg),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(

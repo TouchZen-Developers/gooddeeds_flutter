@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/gd_bottom_sheet.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -160,7 +161,7 @@ class _Empty extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Assets.icons.gallery.svg(),
-            const SizedBox(height: 8),
+            const Gap(8),
             Text(
               context.loc.uploadPhoto,
               style: context.textStyle.bodyMediumRegular
@@ -187,9 +188,9 @@ class _Uploading extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Assets.icons.gallery.svg(),
-          const SizedBox(height: 8),
+          const Gap(8),
           Text(label ?? context.loc.uploadingPhotos),
-          const SizedBox(height: 14),
+          const Gap(14),
           LinearProgressIndicator(
             value: progress,
             color: context.colors.secondary,

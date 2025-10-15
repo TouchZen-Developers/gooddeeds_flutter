@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -119,14 +120,14 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                           totalSteps: 5,
                           onBack: () => context.pop(),
                         ),
-                        SizedBox(height: gaps.xxl),
+                        Gap(gaps.xxl),
 
                         // Question label
                         Text(
                           context.loc.haveYouBeenAffectedQuestion,
                           style: text.bodyMediumMedium,
                         ),
-                        const SizedBox(height: 10),
+                        const Gap(10),
 
                         // Field-like opener
                         InkWell(
@@ -184,14 +185,14 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                                   key: ValueKey('event-ok'),
                                 ),
                         ),
-                        SizedBox(height: gaps.lg),
+                        Gap(gaps.lg),
 
                         // Statement
                         Text(
                           context.loc.statement, // 👈 loc
                           style: text.bodyMediumMedium,
                         ),
-                        const SizedBox(height: 10),
+                        const Gap(10),
                         TextFormField(
                           controller: _statementCtrl,
                           minLines: 4,

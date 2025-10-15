@@ -171,12 +171,14 @@ class PrimaryButton extends StatelessWidget {
             child: Padding(
               padding: m.padding,
               child: loading
-                  ? SizedBox(
-                      width: 18,
-                      height: 18,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(fg),
+                  ? Center(
+                      child: SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(fg),
+                        ),
                       ),
                     )
                   : content,

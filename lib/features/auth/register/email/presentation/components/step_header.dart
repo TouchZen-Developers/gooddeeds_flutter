@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/data/user_role.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -68,15 +69,15 @@ class StepHeader extends StatelessWidget {
                 ),
               )
             else
-              const SizedBox(width: 44),
+              const Gap(44),
           ],
         ),
-        const SizedBox(height: 24),
+        const Gap(24),
         ds.GDText(
           context.loc.register,
           style: context.textStyle.heading3,
         ),
-        const SizedBox(height: 16),
+        const Gap(16),
         ds.GDText(
           context.loc.enterYourPersonalInformation,
           style: text.bodyMediumMedium.copyWith(fontWeight: FontWeight.w600),

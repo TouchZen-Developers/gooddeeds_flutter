@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/gd_back_button_icon.dart';
@@ -73,7 +74,7 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
                         : null,
                     // loading: state.isSubmitting,
                   ),
-                  SizedBox(height: gaps.md),
+                  Gap(gaps.md),
                   Center(
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
@@ -99,7 +100,7 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: gaps.xl),
+                  Gap(gaps.xl),
                 ],
               ),
             );
@@ -121,20 +122,20 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
                       GDBackButtonIcon(
                         onBack: () => context.pop(),
                       ),
-                      SizedBox(height: gaps.xxl),
+                      Gap(gaps.xxl),
                       Center(
                         child: Assets.images.otpVerify
                             .svg(height: 140, width: 200),
                       ),
-                      const SizedBox(height: 72),
+                      const Gap(72),
                       Text(loc.otpVerificationTitle, style: text.heading3),
-                      const SizedBox(height: 16),
+                      const Gap(16),
                       GDText(
                         loc.otpVerificationDesc,
                         style: text.bodyMediumRegular,
                         color: BrandTones.grey80,
                       ),
-                      SizedBox(height: gaps.xxl),
+                      Gap(gaps.xxl),
                       BlocBuilder<VerifyResetCodeBloc, VerifyResetCodeState>(
                         buildWhen: (p, c) => p.code != c.code,
                         builder: (context, state) {

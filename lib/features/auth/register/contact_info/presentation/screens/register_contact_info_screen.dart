@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -137,7 +138,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                             totalSteps: 5,
                             onBack: () => context.pop(),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // Address
                           GDTextField(
@@ -149,7 +150,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                               RegisterContactInfoEvent.addressChanged(v),
                             ),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           GDTextField(
                             controller: _phoneCtrl,
@@ -171,7 +172,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                                     style: context.textStyle.bodyMediumMedium
                                         .copyWith(color: BrandTones.grey80),
                                   ),
-                                  const SizedBox(width: 10),
+                                  const Gap(10),
                                   const SizedBox(
                                     height: 20,
                                     child: VerticalDivider(
@@ -180,13 +181,13 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                                       color: BrandTones.grey50,
                                     ),
                                   ),
-                                  const SizedBox(width: 10),
+                                  const Gap(10),
                                 ],
                               ),
                             ),
                           ),
 
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // City
                           GDTextField(
@@ -197,7 +198,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                             onChanged: (v) => bloc
                                 .add(RegisterContactInfoEvent.cityChanged(v)),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // State
                           GDTextField(
@@ -209,7 +210,7 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                               RegisterContactInfoEvent.stateChanged(v),
                             ),
                           ),
-                          SizedBox(height: gaps.lg),
+                          Gap(gaps.lg),
 
                           // Zip
                           GDTextField(

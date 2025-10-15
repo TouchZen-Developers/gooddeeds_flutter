@@ -97,7 +97,7 @@ class _InfoOnboardingScreenState extends State<InfoOnboardingScreen> {
                   ),
                   const Gap(64),
                   OnboardingDots(controller: _imgCtrl, count: total),
-                  const SizedBox(height: 72),
+                  const Gap(72),
                   SizedBox(
                     height: 140,
                     child: TextPager(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -27,13 +28,13 @@ class ApplicationPendingScreen extends StatelessWidget {
               Center(
                 child: Assets.icons.applicationPending.svg(),
               ),
-              SizedBox(height: gaps.xl),
+              Gap(gaps.xl),
               Text(
                 context.loc.applicationPending,
                 style: text.heading4.copyWith(color: BrandTones.grey100),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: gaps.sm),
+              Gap(gaps.sm),
               Text(
                 context.loc.applicationPendingDesc,
                 style: text.bodyLargeRegular.copyWith(color: BrandTones.grey80),

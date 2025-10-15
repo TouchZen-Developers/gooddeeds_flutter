@@ -27,6 +27,10 @@ Flutter/flutter_export_environment.sh
 ServiceDefinitions.json
 Runner/GeneratedPluginRegistrant.*
 
+# Google Services configuration files (contains API keys)
+GoogleService-Info.plist
+Runner/GoogleService-Info.plist
+
 # Exceptions to above rules.
 !default.mode1v3
 !default.mode2v3

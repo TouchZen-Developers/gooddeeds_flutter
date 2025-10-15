@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -74,14 +75,14 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
                 totalSteps: 5,
                 onBack: () => context.pop(),
               ),
-              SizedBox(height: gaps.xxl),
+              Gap(gaps.xxl),
               Text(
                 context.loc.familyPhoto,
                 style: text.bodyMediumMedium,
               ),
-              const SizedBox(height: 12),
+              const Gap(12),
               const FamilyPhotoCard(),
-              const SizedBox(height: 8),
+              const Gap(8),
               BlocBuilder<RegisterFamilyPhotoBloc, RegisterFamilyPhotoState>(
                 buildWhen: (p, c) => p != c,
                 builder: (context, state) {

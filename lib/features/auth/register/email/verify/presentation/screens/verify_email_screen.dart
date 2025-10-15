@@ -45,7 +45,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back
-              const SizedBox(height: 8),
+              const Gap(8),
               InkWell(
                 onTap: () => Navigator.of(context).pop(),
                 borderRadius: BorderRadius.circular(50),
@@ -65,7 +65,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               const Gap(24),
               Text(context.loc.confirmation, style: text.heading3),
 
-              const SizedBox(height: 8),
+              const Gap(8),
               RichText(
                 text: TextSpan(
                   style: context.textStyle.bodyLargeRegular
@@ -111,7 +111,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 ),
               ),
 
-              const SizedBox(height: 24),
+              const Gap(24),
               Center(
                 child: GDTextLink(
                   label: context.loc.resendCode,

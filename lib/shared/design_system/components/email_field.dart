@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
@@ -30,7 +31,7 @@ class EmailField extends StatelessWidget {
           label ?? context.loc.emailAddress,
           style: context.textStyle.bodyMediumMedium,
         ),
-        const SizedBox(height: 10),
+        const Gap(10),
         TextFormField(
           controller: controller,
           keyboardType: TextInputType.emailAddress,

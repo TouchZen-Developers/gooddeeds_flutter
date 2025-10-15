@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:gooddeeds/features/auth/register/email/presentation/bloc/register_email_bloc.dart';
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
@@ -122,7 +123,7 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                           totalSteps: 5,
                           onBack: () => Navigator.of(context).pop(),
                         ),
-                        SizedBox(height: gaps.xl),
+                        Gap(gaps.xl),
                         EmailField(
                           controller: _emailCtrl,
                           errorText: emailErr,
@@ -130,7 +131,7 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                             RegisterEmailEvent.emailChanged(v.trim()),
                           ),
                         ),
-                        SizedBox(height: gaps.lg),
+                        Gap(gaps.lg),
                         PasswordField(
                           controller: _passCtrl,
                           label: context.loc.password,
@@ -140,7 +141,7 @@ class _RegisterEmailScreenState extends State<RegisterEmailScreen> {
                             RegisterEmailEvent.passwordChanged(v),
                           ),
                         ),
-                        SizedBox(height: gaps.lg),
+                        Gap(gaps.lg),
                         PasswordField(
                           controller: _confirmCtrl,
                           label: context.loc.confirmPasswordTitle,
