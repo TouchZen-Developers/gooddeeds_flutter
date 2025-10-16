@@ -34,6 +34,8 @@ class FamilyCard extends StatelessWidget {
                 Text(
                   'Smith Family',
                   style: context.textStyle.bodyLargeSemiBold,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const Gap(8),
                 Row(

@@ -27,6 +27,9 @@ class DonatingAppScaffoldWithNavigationBar extends StatelessWidget {
           return Container(
             width: double.infinity,
             height: 94,
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).padding.bottom,
+            ),
             decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -133,6 +136,7 @@ class _BottomNavigationItem extends StatelessWidget {
                   : context.textStyle.bodySmallRegular.copyWith(
                       color: context.onSurface.shade50,
                     ),
+              textScaler: const TextScaler.linear(1),
             ),
           ],
         ),

@@ -4,7 +4,6 @@ import 'package:gooddeeds/shared/design_system/components/text_link.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
-import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class GDSimpleActionDialog extends StatelessWidget {
   const GDSimpleActionDialog({
@@ -48,7 +47,7 @@ class GDSimpleActionDialog extends StatelessWidget {
             ),
             Gap(gaps.md),
             GDTextLink(
-              label: context.loc.signInNow,
+              label: actionLabel,
               color: context.colors.primary,
               onPressed: onAction,
               style: text.bodyLargeMedium,

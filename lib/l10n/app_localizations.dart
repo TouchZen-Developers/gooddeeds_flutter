@@ -1227,6 +1227,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete card'**
   String get deleteCard;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get changePassword;
+
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @passwordRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password should have at least 8 characters.'**
+  String get passwordRule;
+
+  /// No description provided for @passwordChangedSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been successfully changed'**
+  String get passwordChangedSuccessMessage;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
 }
 
 class _AppLocalizationsDelegate

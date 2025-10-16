@@ -589,4 +589,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteCard => 'Delete card';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get passwordRule => 'Your password should have at least 8 characters.';
+
+  @override
+  String get passwordChangedSuccessMessage =>
+      'Your password has been successfully changed';
+
+  @override
+  String get done => 'Done';
 }
