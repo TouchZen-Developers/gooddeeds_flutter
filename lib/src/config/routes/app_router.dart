@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/features/auth/change_email/presentation/screens/change_email_screen.dart';
 import 'package:gooddeeds/features/auth/change_email/presentation/screens/confirm_email_screen.dart';
+import 'package:gooddeeds/features/auth/change_password/presentation/screens/change_password_screen.dart';
 import 'package:gooddeeds/features/auth/register/email/presentation/screens/register_email_screen.dart';
 import 'package:gooddeeds/features/auth/register/pending/presentation/screens/application_pending_screen.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/screens/add_new_card_checkout_screen.dart';
@@ -505,6 +506,16 @@ class ChangeEmailRoute extends GoRouteData with $ChangeEmailRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const ChangeEmailScreen();
+  }
+}
+
+@TypedGoRoute<ChangePasswordRoute>(path: RoutePaths.changePassword)
+class ChangePasswordRoute extends GoRouteData with $ChangePasswordRoute {
+  const ChangePasswordRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ChangePasswordScreen();
   }
 }
 

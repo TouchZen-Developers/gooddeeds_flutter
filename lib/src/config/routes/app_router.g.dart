@@ -28,6 +28,7 @@ List<RouteBase> get $appRoutes => [
       $eventDetailsRoute,
       $orderDetailsRoute,
       $changeEmailRoute,
+      $changePasswordRoute,
       $confirmEmailRoute,
     ];
 
@@ -959,6 +960,34 @@ mixin $ChangeEmailRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/change_email',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $changePasswordRoute => GoRouteData.$route(
+      path: '/change_password',
+      factory: $ChangePasswordRoute._fromState,
+    );
+
+mixin $ChangePasswordRoute on GoRouteData {
+  static ChangePasswordRoute _fromState(GoRouterState state) =>
+      const ChangePasswordRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/change_password',
       );
 
   @override

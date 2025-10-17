@@ -29,7 +29,7 @@ class DonatingMyAccountScreen extends StatelessWidget {
               const Gap(16),
               _MyAccountItem(
                 title: context.loc.password,
-                onTap: () => const ChangeEmailRoute().push(context),
+                onTap: () => const ChangePasswordRoute().push(context),
               ),
             ],
           ),

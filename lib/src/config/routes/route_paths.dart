@@ -11,6 +11,7 @@ class RoutePaths {
   static const familyDetails = '/family_details_dialog';
   static const eventDetails = '/event_details_dialog';
   static const changeEmail = '/change_email';
+  static const changePassword = '/change_password';
   static const confirmEmail = '/confirm_email';
   static const orderDetails = '/order_details_dialog';
   static const donaitingMyCart = '/donaiting_my_cart';

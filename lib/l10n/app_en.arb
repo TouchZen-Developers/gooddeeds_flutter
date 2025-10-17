@@ -200,5 +200,12 @@
    "cardOption":"Card Option",
    "setCardAsDefault":"Set card as default",
    "editCard":"Edit card",
-   "deleteCard":"Delete card"
+   "deleteCard":"Delete card",
+   "changePassword":"Change Password",
+   "currentPassword":"Current Password",
+   "newPassword":"New Password",
+   "confirmPassword":"Confirm Password",
+   "passwordRule":"Your password should have at least 8 characters.",
+   "passwordChangedSuccessMessage":"Your password has been successfully changed",
+   "done":"Done"
 }

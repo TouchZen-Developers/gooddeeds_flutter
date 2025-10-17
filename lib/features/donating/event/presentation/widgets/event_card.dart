@@ -23,30 +23,32 @@ class EventCard extends StatelessWidget {
               child: Assets.images.mock2.image(fit: BoxFit.cover),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(
-              right: 16,
-              left: 16,
-              top: 8,
-              bottom: 16,
-            ),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(
+                right: 16,
+                left: 16,
+                top: 8,
+                bottom: 16,
               ),
-              border: Border(
-                bottom: BorderSide(color: context.colors.outline),
-                right: BorderSide(color: context.colors.outline),
-                left: BorderSide(color: context.colors.outline),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+                border: Border(
+                  bottom: BorderSide(color: context.colors.outline),
+                  right: BorderSide(color: context.colors.outline),
+                  left: BorderSide(color: context.colors.outline),
+                ),
               ),
-            ),
-            child: Text(
-              'Impacted by Hawaii Wildfires',
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: context.textStyle.bodyMediumMedium,
+              child: Text(
+                'Impacted by Hawaii Wildfires',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: context.textStyle.bodyMediumMedium,
+              ),
             ),
           ),
         ],

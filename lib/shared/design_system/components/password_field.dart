@@ -8,14 +8,14 @@ import '../../../gen/assets.gen.dart';
 class PasswordField extends StatefulWidget {
   const PasswordField({
     super.key,
-    required this.controller,
+    this.controller,
     this.label,
     this.hint,
     this.errorText,
     this.onChanged,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? label;
   final String? hint;
   final String? errorText;
