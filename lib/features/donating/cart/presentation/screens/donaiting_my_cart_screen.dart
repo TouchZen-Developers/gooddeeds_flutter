@@ -108,8 +108,10 @@ class _EmptyCart extends StatelessWidget {
           children: [
             Assets.images.emptyCart.svg(height: 140),
             const Gap(24),
-            Text(context.loc.yourCartIsEmpty,
-                style: context.textStyle.heading4),
+            Text(
+              context.loc.yourCartIsEmpty,
+              style: context.textStyle.heading4,
+            ),
             const Gap(6),
             Text(
               context.loc.yourCartIsEmptyDesc,
