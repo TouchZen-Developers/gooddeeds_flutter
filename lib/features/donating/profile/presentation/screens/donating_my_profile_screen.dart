@@ -7,6 +7,7 @@ import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
+import 'package:gooddeeds/src/config/routes/route_paths.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DonatingMyProfileScreen extends StatelessWidget {
@@ -28,7 +29,8 @@ class DonatingMyProfileScreen extends StatelessWidget {
               _MyProfileItem(
                 icon: Assets.icons.profile.path,
                 title: context.loc.myAccount,
-                onTap: () => const DonatingMyAccountRoute().push(context),
+                onTap: () => const MyAccountRoute(RoutePaths.donaitingProfile)
+                    .push(context),
               ),
               const Gap(24),
               GDText(

@@ -5,23 +5,35 @@ class RoutePaths {
   static const registerMenu = '/register_menu';
   static const registerEmail = '/register_email';
   static const donaitingHome = '/donaiting_home';
+  static const receivingItems = '/receiving_items';
+  static const receivingOrders = '/receiving_orders';
+  static const receivingNotifications = '/receiving_notifications';
+  static const receivingMyProfile = '/receiving_my_profile';
   static const familyList = 'family_list';
   static const familyListNear = 'family_list_near';
   static const recentlyAffected = 'recently_affected';
   static const familyDetails = '/family_details_dialog';
+  static const requestItems = '/request_items';
   static const eventDetails = '/event_details_dialog';
   static const changeEmail = '/change_email';
   static const changePassword = '/change_password';
+  static const notificationPermission = '/notification_permission';
+  static const locationPermission = '/location_permission';
+  static const itemDetails = '/item_details';
   static const confirmEmail = '/confirm_email';
   static const orderDetails = '/order_details_dialog';
+  static const receivingOrderDetails = '/receiving_order_details_dialog';
   static const donaitingMyCart = '/donaiting_my_cart';
   static const donaitingOrders = '/donaiting_orders';
   static const donaitingProfile = '/donaiting_profile';
-  static const donaitingMyAccount = 'donaiting_my_account';
+  static const myAccount = '/my_account';
   static const donaitingPayment = 'donaiting_payment';
   static const donaitingPaymentAddNewCard = 'donaiting_payment_add_new_card';
   static const donaitingNotificationSettings =
       'donaiting_notification_settings';
+  static const receivingNotificationSettings =
+      'receiving_notification_settings';
+  static const familyInformation = 'family_information';
   static const verifyEmail = '/verify_email';
   static const checkout = '/checkout';
   static const addNewCardCheckout = '/checkout_add_new_card';

@@ -20,6 +20,7 @@ class GDTextField extends StatelessWidget {
     this.enabled = true,
     this.autofillHints,
     this.fomatter,
+    this.lines,
   });
 
   final TextEditingController? controller;
@@ -38,6 +39,7 @@ class GDTextField extends StatelessWidget {
   final bool obscureText;
   final bool enabled;
   final Iterable<String>? autofillHints;
+  final int? lines;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class GDTextField extends StatelessWidget {
           obscureText: obscureText,
           autofillHints: autofillHints,
           inputFormatters: fomatter,
+          maxLines: lines,
           style: context.textStyle.bodyMediumMedium
               .copyWith(color: hasError ? BrandTones.red : BrandTones.grey100),
           decoration: InputDecoration(

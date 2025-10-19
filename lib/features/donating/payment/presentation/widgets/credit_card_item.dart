@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class CreditCardItem extends StatelessWidget {
   const CreditCardItem({
@@ -85,10 +86,21 @@ class CreditCardItem extends StatelessWidget {
                   color: context.colors.onPrimary.withValues(alpha: .2),
                 ),
                 const Spacer(),
-                GDText(
-                  'John William',
-                  style: context.textStyle.bodyMediumRegular,
-                  color: context.colors.onPrimary,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GDText(
+                      'John William',
+                      style: context.textStyle.bodyMediumRegular,
+                      color: context.colors.onPrimary,
+                    ),
+                    if (selected)
+                      GDText(
+                        context.loc.defaultText,
+                        style: context.textStyle.bodyMediumRegular,
+                        color: context.colors.onPrimary,
+                      ),
+                  ],
                 ),
               ],
             ),

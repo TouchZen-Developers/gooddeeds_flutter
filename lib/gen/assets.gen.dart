@@ -68,8 +68,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
 
+  /// File path: assets/icons/emergency.svg
+  SvgGenImage get emergency => const SvgGenImage('assets/icons/emergency.svg');
+
   /// File path: assets/icons/eye.svg
   SvgGenImage get eye => const SvgGenImage('assets/icons/eye.svg');
+
+  /// File path: assets/icons/family.svg
+  SvgGenImage get family => const SvgGenImage('assets/icons/family.svg');
 
   /// File path: assets/icons/fill_cart.svg
   SvgGenImage get fillCart => const SvgGenImage('assets/icons/fill_cart.svg');
@@ -89,6 +95,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
+  /// File path: assets/icons/items.svg
+  SvgGenImage get items => const SvgGenImage('assets/icons/items.svg');
+
   /// File path: assets/icons/left.svg
   SvgGenImage get left => const SvgGenImage('assets/icons/left.svg');
 
@@ -97,6 +106,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/marker.svg
   SvgGenImage get marker => const SvgGenImage('assets/icons/marker.svg');
+
+  /// File path: assets/icons/medical.svg
+  SvgGenImage get medical => const SvgGenImage('assets/icons/medical.svg');
 
   /// File path: assets/icons/notification.svg
   SvgGenImage get notification =>
@@ -147,16 +159,20 @@ class $AssetsIconsGen {
         delete,
         edit,
         email,
+        emergency,
         eye,
+        family,
         fillCart,
         filter,
         gallery,
         goodDeeds,
         google,
         home,
+        items,
         left,
         logo,
         marker,
+        medical,
         notification,
         orders,
         pencil,
@@ -172,6 +188,29 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/allow_location.svg
+  SvgGenImage get allowLocation =>
+      const SvgGenImage('assets/images/allow_location.svg');
+
+  /// File path: assets/images/approve.svg
+  SvgGenImage get approve => const SvgGenImage('assets/images/approve.svg');
+
+  /// File path: assets/images/empty_card.svg
+  SvgGenImage get emptyCard =>
+      const SvgGenImage('assets/images/empty_card.svg');
+
+  /// File path: assets/images/empty_cart.svg
+  SvgGenImage get emptyCart =>
+      const SvgGenImage('assets/images/empty_cart.svg');
+
+  /// File path: assets/images/empty_items.svg
+  SvgGenImage get emptyItems =>
+      const SvgGenImage('assets/images/empty_items.svg');
+
+  /// File path: assets/images/empty_orders.svg
+  SvgGenImage get emptyOrders =>
+      const SvgGenImage('assets/images/empty_orders.svg');
 
   /// File path: assets/images/forget_password.svg
   SvgGenImage get forgetPassword =>
@@ -206,12 +245,29 @@ class $AssetsImagesGen {
   SvgGenImage get otpVerify =>
       const SvgGenImage('assets/images/otp_verify.svg');
 
+  /// File path: assets/images/push_notifications.svg
+  SvgGenImage get pushNotifications =>
+      const SvgGenImage('assets/images/push_notifications.svg');
+
   /// File path: assets/images/register_option.svg
   SvgGenImage get registerOption =>
       const SvgGenImage('assets/images/register_option.svg');
 
+  /// File path: assets/images/reject.svg
+  SvgGenImage get reject => const SvgGenImage('assets/images/reject.svg');
+
+  /// File path: assets/images/success_order.svg
+  SvgGenImage get successOrder =>
+      const SvgGenImage('assets/images/success_order.svg');
+
   /// List of all assets
   List<dynamic> get values => [
+        allowLocation,
+        approve,
+        emptyCard,
+        emptyCart,
+        emptyItems,
+        emptyOrders,
         forgetPassword,
         hands,
         infoOne,
@@ -222,7 +278,10 @@ class $AssetsImagesGen {
         mock3,
         mock4,
         otpVerify,
-        registerOption
+        pushNotifications,
+        registerOption,
+        reject,
+        successOrder
       ];
 }
 

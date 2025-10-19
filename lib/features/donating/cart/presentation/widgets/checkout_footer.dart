@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:gooddeeds/shared/utils/loading_dialog.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/widgets/sub_total_widget.dart';
 import 'package:gooddeeds/features/donating/cart/presentation/widgets/taxes_fees_widget.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
@@ -45,7 +46,13 @@ class CheckoutFooter extends StatelessWidget {
         PrimaryButton(
           fullWidth: true,
           label: context.loc.orderNow,
-          onPressed: () {},
+          onPressed: () {
+            LoadingDialog.show(
+              context,
+              text: context.loc.processingOrdersWaiting,
+              dismissible: true,
+            );
+          },
         ),
         Gap(MediaQuery.of(context).padding.bottom),
       ],

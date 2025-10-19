@@ -48,7 +48,7 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
     Color bg = cs.surface;
     Color ring = _selected ? (widget.error ? cs.error : cs.primary) : border;
 
-    final double ringWidth = _selected ? 3.0 : 1.5;
+    final double ringWidth = _selected ? 5.0 : 1.5;
 
     // Disabled
     if (isDisabled) {
@@ -98,14 +98,16 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
     final row = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        radioVisual,
         if (widget.label != null) ...[
-          SizedBox(width: context.gaps.sm),
-          Text(
-            widget.label!,
-            style: context.typo.bodyMedium.copyWith(color: textColor),
+          Expanded(
+            child: Text(
+              widget.label!,
+              style: context.typo.bodyMedium.copyWith(color: textColor),
+            ),
           ),
+          SizedBox(width: context.gaps.sm),
         ],
+        radioVisual,
       ],
     );
 
@@ -121,7 +123,7 @@ class _AppRadioState<T> extends State<AppRadio<T>> {
           customBorder: const CircleBorder(),
           onTap: isDisabled ? null : () => widget.onChanged?.call(widget.value),
           child: Padding(
-            padding: EdgeInsets.all(((40 - _side) / 2).clamp(0, 20)),
+            padding: EdgeInsets.all(((8 - _side) / 2).clamp(0, 20)),
             child: row,
           ),
         ),

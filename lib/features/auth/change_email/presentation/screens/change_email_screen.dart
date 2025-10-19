@@ -6,7 +6,8 @@ import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 class ChangeEmailScreen extends StatelessWidget {
-  const ChangeEmailScreen({super.key});
+  const ChangeEmailScreen({super.key, required this.redirectPath});
+  final String redirectPath;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class ChangeEmailScreen extends StatelessWidget {
               fullWidth: true,
               label: context.loc.save,
               onPressed: () {
-                const ConfirmEmailRoute().push(context);
+                ConfirmEmailRoute(redirectPath).push(context);
               },
             ),
           ],
