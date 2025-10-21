@@ -338,6 +338,7 @@ mixin _$ForgotPasswordState {
   bool get isSubmitting;
   bool get showErrors;
   String? get emailError;
+  String? get apiError;
   bool? get success;
 
   /// Create a copy of ForgotPasswordState
@@ -360,16 +361,18 @@ mixin _$ForgotPasswordState {
                 other.showErrors == showErrors) &&
             (identical(other.emailError, emailError) ||
                 other.emailError == emailError) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, isSubmitting, showErrors, emailError, success);
+  int get hashCode => Object.hash(runtimeType, email, isSubmitting, showErrors,
+      emailError, apiError, success);
 
   @override
   String toString() {
-    return 'ForgotPasswordState(email: $email, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, success: $success)';
+    return 'ForgotPasswordState(email: $email, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, apiError: $apiError, success: $success)';
   }
 }
 
@@ -384,6 +387,7 @@ abstract mixin class $ForgotPasswordStateCopyWith<$Res> {
       bool isSubmitting,
       bool showErrors,
       String? emailError,
+      String? apiError,
       bool? success});
 }
 
@@ -404,6 +408,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? emailError = freezed,
+    Object? apiError = freezed,
     Object? success = freezed,
   }) {
     return _then(_self.copyWith(
@@ -422,6 +427,10 @@ class _$ForgotPasswordStateCopyWithImpl<$Res>
       emailError: freezed == emailError
           ? _self.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
               as String?,
       success: freezed == success
           ? _self.success
@@ -525,7 +534,7 @@ extension ForgotPasswordStatePatterns on ForgotPasswordState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String email, bool isSubmitting, bool showErrors,
-            String? emailError, bool? success)?
+            String? emailError, String? apiError, bool? success)?
         $default, {
     required TResult orElse(),
   }) {
@@ -533,7 +542,7 @@ extension ForgotPasswordStatePatterns on ForgotPasswordState {
     switch (_that) {
       case _ForgotPasswordState() when $default != null:
         return $default(_that.email, _that.isSubmitting, _that.showErrors,
-            _that.emailError, _that.success);
+            _that.emailError, _that.apiError, _that.success);
       case _:
         return orElse();
     }
@@ -555,14 +564,14 @@ extension ForgotPasswordStatePatterns on ForgotPasswordState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String email, bool isSubmitting, bool showErrors,
-            String? emailError, bool? success)
+            String? emailError, String? apiError, bool? success)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ForgotPasswordState():
         return $default(_that.email, _that.isSubmitting, _that.showErrors,
-            _that.emailError, _that.success);
+            _that.emailError, _that.apiError, _that.success);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -583,14 +592,14 @@ extension ForgotPasswordStatePatterns on ForgotPasswordState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(String email, bool isSubmitting, bool showErrors,
-            String? emailError, bool? success)?
+            String? emailError, String? apiError, bool? success)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ForgotPasswordState() when $default != null:
         return $default(_that.email, _that.isSubmitting, _that.showErrors,
-            _that.emailError, _that.success);
+            _that.emailError, _that.apiError, _that.success);
       case _:
         return null;
     }
@@ -605,6 +614,7 @@ class _ForgotPasswordState implements ForgotPasswordState {
       required this.isSubmitting,
       required this.showErrors,
       this.emailError,
+      this.apiError,
       this.success});
 
   @override
@@ -615,6 +625,8 @@ class _ForgotPasswordState implements ForgotPasswordState {
   final bool showErrors;
   @override
   final String? emailError;
+  @override
+  final String? apiError;
   @override
   final bool? success;
 
@@ -639,16 +651,18 @@ class _ForgotPasswordState implements ForgotPasswordState {
                 other.showErrors == showErrors) &&
             (identical(other.emailError, emailError) ||
                 other.emailError == emailError) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, isSubmitting, showErrors, emailError, success);
+  int get hashCode => Object.hash(runtimeType, email, isSubmitting, showErrors,
+      emailError, apiError, success);
 
   @override
   String toString() {
-    return 'ForgotPasswordState(email: $email, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, success: $success)';
+    return 'ForgotPasswordState(email: $email, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, apiError: $apiError, success: $success)';
   }
 }
 
@@ -665,6 +679,7 @@ abstract mixin class _$ForgotPasswordStateCopyWith<$Res>
       bool isSubmitting,
       bool showErrors,
       String? emailError,
+      String? apiError,
       bool? success});
 }
 
@@ -685,6 +700,7 @@ class __$ForgotPasswordStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? emailError = freezed,
+    Object? apiError = freezed,
     Object? success = freezed,
   }) {
     return _then(_ForgotPasswordState(
@@ -703,6 +719,10 @@ class __$ForgotPasswordStateCopyWithImpl<$Res>
       emailError: freezed == emailError
           ? _self.emailError
           : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
               as String?,
       success: freezed == success
           ? _self.success

@@ -33,6 +33,12 @@ final RegExp _usPhoneRegex = RegExp(
 /// US ZIP: 5 digits or ZIP+4
 final RegExp _usZipRegex = RegExp(r'^\d{5}(?:-\d{4})?$');
 
+/// Password validation patterns
+final RegExp _passwordUppercaseRegex = RegExp(r'[A-Z]');
+final RegExp _passwordLowercaseRegex = RegExp(r'[a-z]');
+final RegExp _passwordNumberRegex = RegExp(r'[0-9]');
+final RegExp _passwordSymbolRegex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
+
 /// String extensions
 /// ----------------------
 
@@ -49,6 +55,40 @@ extension USPhoneValidationX on String {
 extension ZipValidationX on String {
   /// Returns `true` for US ZIP (##### or #####-####).
   bool get isValidUSZip => _usZipRegex.hasMatch(trim());
+}
+
+extension PasswordValidationX on String {
+  /// Returns `true` if password meets all requirements:
+  /// - At least 8 characters
+  /// - Contains uppercase letter
+  /// - Contains lowercase letter
+  /// - Contains number
+  /// - Contains symbol
+  bool get isValidPassword {
+    final password = trim();
+    if (password.length < 8) return false;
+    if (!_passwordUppercaseRegex.hasMatch(password)) return false;
+    if (!_passwordLowercaseRegex.hasMatch(password)) return false;
+    if (!_passwordNumberRegex.hasMatch(password)) return false;
+    if (!_passwordSymbolRegex.hasMatch(password)) return false;
+    return true;
+  }
+
+  /// Returns specific password validation error message or null if valid
+  String? get passwordValidationError {
+    final password = trim();
+    if (password.isEmpty) return 'Password is required';
+    if (password.length < 8) return 'Password must be at least 8 characters';
+    if (!_passwordUppercaseRegex.hasMatch(password))
+      return 'Password must contain uppercase letter';
+    if (!_passwordLowercaseRegex.hasMatch(password))
+      return 'Password must contain lowercase letter';
+    if (!_passwordNumberRegex.hasMatch(password))
+      return 'Password must contain at least one number';
+    if (!_passwordSymbolRegex.hasMatch(password))
+      return 'Password must contain a symbol';
+    return null;
+  }
 }
 
 extension StringSanitizersX on String {

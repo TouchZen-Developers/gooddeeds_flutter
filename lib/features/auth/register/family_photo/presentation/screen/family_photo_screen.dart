@@ -9,42 +9,56 @@ import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../../src/config/routes/app_router.dart';
 import '../../../email/presentation/components/step_header.dart';
-import '../../../pending/presentation/screens/submiting_dialog.dart';
+import '../../../parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../bloc/register_family_photo_bloc.dart';
 import '../widgets/family_photo_card.dart';
 
-class RegisterFamilyPhotoScreen extends StatelessWidget {
+class RegisterFamilyPhotoScreen extends StatefulWidget {
   const RegisterFamilyPhotoScreen({super.key});
 
+  @override
+  State<RegisterFamilyPhotoScreen> createState() =>
+      _RegisterFamilyPhotoScreenState();
+}
+
+class _RegisterFamilyPhotoScreenState extends State<RegisterFamilyPhotoScreen> {
   Future<void> _onContinue(BuildContext context) async {
-    final navigator = Navigator.of(context);
-    final bloc = context.read<RegisterFamilyPhotoBloc>();
+    final photoBloc = context.read<RegisterFamilyPhotoBloc>();
+    final parentBloc = context.read<ParentRegistrationBloc>();
 
     final hasPhoto =
-        bloc.state.maybeWhen(ready: (_) => true, orElse: () => false);
+        photoBloc.state.maybeWhen(ready: (_) => true, orElse: () => false);
 
     if (!hasPhoto) {
-      bloc.add(
-        RegisterFamilyPhotoEvent.needPhotoError(
-          context.loc.uploadPhotoRequired,
-        ),
-      );
+      // Check if bloc is still open before adding events
+      if (!photoBloc.isClosed) {
+        photoBloc.add(
+          RegisterFamilyPhotoEvent.needPhotoError(
+            context.loc.uploadPhotoRequired,
+          ),
+        );
+      }
       return;
     }
 
-    showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black.withValues(alpha: 0.45),
-      builder: (_) => const SubmittingDialog(),
+    // Get photo path from photo bloc state
+    String? photoPath;
+    photoBloc.state.maybeWhen(
+      ready: (file) => photoPath = file.path,
+      orElse: () {},
     );
 
-    await Future<void>.delayed(const Duration(seconds: 2));
+    // Save photo path to parent bloc
+    if (photoPath != null && !parentBloc.isClosed) {
+      parentBloc.add(
+        ParentRegistrationEvent.setFamilyPhoto(photoPath: photoPath!),
+      );
+    }
 
-    if (navigator.canPop()) navigator.pop();
-    if (!context.mounted) return;
-
-    const ApplicationPendingRoute().go(context);
+    // Submit registration now (final step)
+    if (!parentBloc.isClosed) {
+      parentBloc.add(const ParentRegistrationEvent.submitRegistration());
+    }
   }
 
   @override
@@ -52,56 +66,82 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
     final gaps = context.gaps;
     final text = context.textStyle;
 
-    return Scaffold(
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
-          child: PrimaryButton(
-            label: context.loc.continueText,
-            size: ButtonSize.large,
-            fullWidth: true,
-            onPressed: () => _onContinue(context),
+    return BlocListener<ParentRegistrationBloc, ParentRegistrationState>(
+      listenWhen: (p, c) => p.success != c.success || p.apiError != c.apiError,
+      listener: (context, state) {
+        // Check if the widget is still mounted before navigating
+        if (!mounted) return;
+
+        if (state.success == true) {
+          VerifyEmailRoute(email: state.email).push(context);
+          return;
+        }
+        if (state.apiError != null && state.apiError!.isNotEmpty) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(content: Text(state.apiError!)),
+            );
+        }
+      },
+      child: Scaffold(
+        bottomNavigationBar: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
+            child: BlocBuilder<ParentRegistrationBloc, ParentRegistrationState>(
+              builder: (context, state) {
+                return PrimaryButton(
+                  label: context.loc.continueText,
+                  size: ButtonSize.large,
+                  fullWidth: true,
+                  loading: state.isSubmitting,
+                  onPressed:
+                      state.isSubmitting ? null : () => _onContinue(context),
+                );
+              },
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              StepHeader(
-                currentStep: 5,
-                totalSteps: 5,
-                onBack: () => context.pop(),
-              ),
-              Gap(gaps.xxl),
-              Text(
-                context.loc.familyPhoto,
-                style: text.bodyMediumMedium,
-              ),
-              const Gap(12),
-              const FamilyPhotoCard(),
-              const Gap(8),
-              BlocBuilder<RegisterFamilyPhotoBloc, RegisterFamilyPhotoState>(
-                buildWhen: (p, c) => p != c,
-                builder: (context, state) {
-                  final errorText =
-                      state.maybeWhen(error: (m) => m, orElse: () => null);
-                  return AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: errorText != null
-                        ? Text(
-                            errorText,
-                            style: text.bodySmallMedium
-                                .copyWith(color: BrandTones.error),
-                          )
-                        : const SizedBox.shrink(),
-                  );
-                },
-              ),
-              const Spacer(),
-            ],
+        body: SafeArea(
+          child: Padding(
+            padding:
+                EdgeInsets.fromLTRB(gaps.xl, gaps.md, gaps.xl, gaps.xl * 3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                StepHeader(
+                  currentStep: 5,
+                  totalSteps: 5,
+                  onBack: () => context.pop(),
+                ),
+                Gap(gaps.xxl),
+                Text(
+                  context.loc.familyPhoto,
+                  style: text.bodyMediumMedium,
+                ),
+                const Gap(12),
+                const FamilyPhotoCard(),
+                const Gap(8),
+                BlocBuilder<RegisterFamilyPhotoBloc, RegisterFamilyPhotoState>(
+                  buildWhen: (p, c) => p != c,
+                  builder: (context, state) {
+                    final errorText =
+                        state.maybeWhen(error: (m) => m, orElse: () => null);
+                    return AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: errorText != null
+                          ? Text(
+                              errorText,
+                              style: text.bodySmallMedium
+                                  .copyWith(color: BrandTones.error),
+                            )
+                          : const SizedBox.shrink(),
+                    );
+                  },
+                ),
+                const Spacer(),
+              ],
+            ),
           ),
         ),
       ),

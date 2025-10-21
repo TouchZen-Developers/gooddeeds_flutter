@@ -7,6 +7,7 @@ abstract class ForgotPasswordState with _$ForgotPasswordState {
     required bool isSubmitting,
     required bool showErrors,
     String? emailError,
+    String? apiError,
     bool? success,
   }) = _ForgotPasswordState;
 

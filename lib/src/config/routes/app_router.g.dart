@@ -267,11 +267,24 @@ RouteBase get $registerPersonalInfoRoute => GoRouteData.$route(
 
 mixin $RegisterPersonalInfoRoute on GoRouteData {
   static RegisterPersonalInfoRoute _fromState(GoRouterState state) =>
-      const RegisterPersonalInfoRoute();
+      RegisterPersonalInfoRoute(
+        email: state.uri.queryParameters['email'],
+        password: state.uri.queryParameters['password'],
+        passwordConfirmation:
+            state.uri.queryParameters['password-confirmation'],
+      );
+
+  RegisterPersonalInfoRoute get _self => this as RegisterPersonalInfoRoute;
 
   @override
   String get location => GoRouteData.$location(
         '/register_personal_info',
+        queryParams: {
+          if (_self.email != null) 'email': _self.email,
+          if (_self.password != null) 'password': _self.password,
+          if (_self.passwordConfirmation != null)
+            'password-confirmation': _self.passwordConfirmation,
+        },
       );
 
   @override

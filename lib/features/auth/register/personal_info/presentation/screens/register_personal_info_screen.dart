@@ -15,10 +15,20 @@ import '../../../../../../shared/design_system/components/gd_textfield.dart';
 import '../../../../../../shared/design_system/tokens/colors.dart';
 import '../../../../../../src/config/di/injector.dart';
 import '../../../email/presentation/components/step_header.dart';
+import '../../../parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../bloc/register_personal_info_bloc.dart';
 
 class RegisterPersonalInfoScreen extends StatefulWidget {
-  const RegisterPersonalInfoScreen({super.key});
+  const RegisterPersonalInfoScreen({
+    super.key,
+    this.email = '',
+    this.password = '',
+    this.passwordConfirmation = '',
+  });
+
+  final String email;
+  final String password;
+  final String passwordConfirmation;
 
   @override
   State<RegisterPersonalInfoScreen> createState() =>
@@ -49,9 +59,43 @@ class _RegisterPersonalInfoScreenState
     final prefs = getIt<SharedPreferences>();
     final role = UserRoleX.fromString(prefs.getString(kPrefUserRole));
     _isDonor = role == UserRole.helpFamilies;
-    context
-        .read<RegisterPersonalInfoBloc>()
-        .add(RegisterPersonalInfoEvent.modeChanged(_isDonor));
+
+    final personalInfoBloc = context.read<RegisterPersonalInfoBloc>();
+
+    // Check if bloc is still open before adding events
+    if (!personalInfoBloc.isClosed) {
+      personalInfoBloc.add(RegisterPersonalInfoEvent.modeChanged(_isDonor));
+
+      // Get email/password from widget parameters and pass to RegisterPersonalInfoBloc
+      personalInfoBloc.add(
+        RegisterPersonalInfoEvent.emailDataSet(
+          email: widget.email,
+          password: widget.password,
+          passwordConfirmation: widget.passwordConfirmation,
+        ),
+      );
+    }
+
+    // Sync controllers with bloc state
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _syncControllersWithBloc();
+    });
+  }
+
+  void _syncControllersWithBloc() {
+    final bloc = context.read<RegisterPersonalInfoBloc>();
+    if (_firstCtrl.text != bloc.state.firstName) {
+      _firstCtrl.text = bloc.state.firstName;
+    }
+    if (_lastCtrl.text != bloc.state.lastName) {
+      _lastCtrl.text = bloc.state.lastName;
+    }
+    if (_famCtrl.text != bloc.state.familyCount) {
+      _famCtrl.text = bloc.state.familyCount ?? '';
+    }
+    if (_phoneCtrl.text != bloc.state.phone) {
+      _phoneCtrl.text = bloc.state.phone;
+    }
   }
 
   String? _firstErrorFor(String v) {
@@ -79,18 +123,41 @@ class _RegisterPersonalInfoScreenState
 
   void _onContinue(BuildContext context) {
     final bloc = context.read<RegisterPersonalInfoBloc>();
+    final parentBloc = context.read<ParentRegistrationBloc>();
 
-    bloc
-      ..add(RegisterPersonalInfoEvent.firstNameChanged(_firstCtrl.text))
-      ..add(RegisterPersonalInfoEvent.lastNameChanged(_lastCtrl.text));
+    // Check if bloc is still open before adding events
+    if (!bloc.isClosed) {
+      bloc
+        ..add(RegisterPersonalInfoEvent.firstNameChanged(_firstCtrl.text))
+        ..add(RegisterPersonalInfoEvent.lastNameChanged(_lastCtrl.text));
 
-    if (_isDonor) {
-      bloc.add(RegisterPersonalInfoEvent.phoneChanged(_phoneCtrl.text));
+      if (_isDonor) {
+        bloc.add(RegisterPersonalInfoEvent.phoneChanged(_phoneCtrl.text));
+      } else {
+        bloc.add(RegisterPersonalInfoEvent.familyCountChanged(_famCtrl.text));
+        // Save personal info to parent bloc for beneficiary flow
+        if (!parentBloc.isClosed) {
+          parentBloc.add(
+            ParentRegistrationEvent.setPersonalInfo(
+              firstName: _firstCtrl.text,
+              lastName: _lastCtrl.text,
+              familySize: _famCtrl.text,
+            ),
+          );
+        }
+      }
+
+      bloc.add(const RegisterPersonalInfoEvent.submitted());
     } else {
-      bloc.add(RegisterPersonalInfoEvent.familyCountChanged(_famCtrl.text));
+      // If bloc is closed, navigate directly
+      if (_isDonor) {
+        // Navigate to OTP verification screen after successful signup
+        VerifyEmailRoute(email: widget.email).push(context);
+      } else {
+        // Navigate to contact info screen for beneficiary flow
+        const RegisterContactInfoRoute().push(context);
+      }
     }
-
-    bloc.add(const RegisterPersonalInfoEvent.submitted());
   }
 
   @override
@@ -100,9 +167,14 @@ class _RegisterPersonalInfoScreenState
     return BlocListener<RegisterPersonalInfoBloc, RegisterPersonalInfoState>(
       listenWhen: (p, c) => p.completed != c.completed && c.completed,
       listener: (context, state) {
+        // Check if the widget is still mounted before navigating
+        if (!mounted) return;
+
         if (state.isDonorFlow) {
-          const DonatingHomeRoute().go(context);
+          // Navigate to OTP verification screen after successful signup
+          VerifyEmailRoute(email: state.email).push(context);
         } else {
+          // Navigate to contact info screen for beneficiary flow
           const RegisterContactInfoRoute().push(context);
         }
       },
@@ -113,13 +185,13 @@ class _RegisterPersonalInfoScreenState
             child: BlocBuilder<RegisterPersonalInfoBloc,
                 RegisterPersonalInfoState>(
               builder: (context, state) {
-                final canPress = !state.isSubmitting;
                 return PrimaryButton(
                   label: context.loc.continueText,
                   size: ButtonSize.large,
                   fullWidth: true,
-                  onPressed: canPress ? () => _onContinue(context) : null,
-                  // loading: state.isSubmitting,
+                  loading: state.isSubmitting,
+                  onPressed:
+                      state.isSubmitting ? null : () => _onContinue(context),
                 );
               },
             ),
@@ -130,6 +202,11 @@ class _RegisterPersonalInfoScreenState
               BlocBuilder<RegisterPersonalInfoBloc, RegisterPersonalInfoState>(
             builder: (context, state) {
               final bloc = context.read<RegisterPersonalInfoBloc>();
+
+              // Sync controllers with bloc state on every build
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _syncControllersWithBloc();
+              });
 
               final firstErr =
                   state.showErrors ? _firstErrorFor(state.firstName) : null;
@@ -177,9 +254,13 @@ class _RegisterPersonalInfoScreenState
                             label: context.loc.firstName,
                             hint: context.loc.enterYourFirstName,
                             errorText: firstErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterPersonalInfoEvent.firstNameChanged(v),
-                            ),
+                            onChanged: (v) {
+                              if (!bloc.isClosed) {
+                                bloc.add(
+                                  RegisterPersonalInfoEvent.firstNameChanged(v),
+                                );
+                              }
+                            },
                           ),
                           Gap(gaps.lg),
 
@@ -189,9 +270,13 @@ class _RegisterPersonalInfoScreenState
                             label: context.loc.lastName,
                             hint: context.loc.enterYourLastName,
                             errorText: lastErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterPersonalInfoEvent.lastNameChanged(v),
-                            ),
+                            onChanged: (v) {
+                              if (!bloc.isClosed) {
+                                bloc.add(
+                                  RegisterPersonalInfoEvent.lastNameChanged(v),
+                                );
+                              }
+                            },
                           ),
                           Gap(gaps.lg),
                           if (_isDonor)
@@ -202,9 +287,13 @@ class _RegisterPersonalInfoScreenState
                               hint: context.loc.enterPhoneNumber,
                               errorText: phoneErr,
                               keyboardType: TextInputType.phone,
-                              onChanged: (v) => bloc.add(
-                                RegisterPersonalInfoEvent.phoneChanged(v),
-                              ),
+                              onChanged: (v) {
+                                if (!bloc.isClosed) {
+                                  bloc.add(
+                                    RegisterPersonalInfoEvent.phoneChanged(v),
+                                  );
+                                }
+                              },
                               prefixInline: Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: Row(
@@ -236,11 +325,16 @@ class _RegisterPersonalInfoScreenState
                               label: context.loc.howManyAreInYourFamily,
                               hint: context.loc.enterAmount,
                               errorText: famErr,
-                              onChanged: (v) => bloc.add(
-                                RegisterPersonalInfoEvent.familyCountChanged(
-                                  v,
-                                ),
-                              ),
+                              onChanged: (v) {
+                                if (!bloc.isClosed) {
+                                  bloc.add(
+                                    RegisterPersonalInfoEvent
+                                        .familyCountChanged(
+                                      v,
+                                    ),
+                                  );
+                                }
+                              },
                               keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.done,
                             ),

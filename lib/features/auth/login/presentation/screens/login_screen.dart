@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:gooddeeds/shared/design_system/components/email_field.dart';
+import 'package:gooddeeds/shared/design_system/components/gd_back_button_icon.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -39,17 +40,20 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginBloc, LoginState>(
       listenWhen: (p, c) => p.success != c.success && c.success == true,
       listener: (context, state) {
-        const DonatingHomeRoute().go(context);
+        if (state.success == true) {
+          const DonatingHomeRoute().go(context);
+        }
+        // Error snackbar is shown automatically by ErrorInterceptor
       },
       child: Scaffold(
-        bottomNavigationBar: const LoginBottomBar(),
         body: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(gaps.xl, gaps.lg, gaps.xl, gaps.xl),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Gap(gaps.xxl),
+                const GDBackButtonIcon(),
+                Gap(gaps.md),
                 const Center(child: SplashBrand()),
                 Gap(gaps.xl * 1.2),
 
@@ -110,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
 
-                Gap(gaps.lg),
+                Gap(gaps.xs),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -125,6 +129,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+
+                Gap(gaps.xl),
+
+                // Login button and social login - now part of scroll
+                const LoginBottomBar(),
               ],
             ),
           ),

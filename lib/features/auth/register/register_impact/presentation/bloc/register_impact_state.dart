@@ -8,6 +8,11 @@ abstract class RegisterImpactState with _$RegisterImpactState {
     @Default(false) bool showErrors,
     @Default(false) bool isSubmitting,
     @Default(false) bool completed,
+    @Default(<String>[]) List<String> events,
+    @Default(false) bool isLoadingEvents,
+    String? eventsError,
+    bool? success,
+    String? apiError,
   }) = _RegisterImpactState;
 
   factory RegisterImpactState.initial() => const RegisterImpactState();

@@ -334,6 +334,12 @@ abstract class AppLocalizations {
   /// **'Resend code'**
   String get resendCode;
 
+  /// No description provided for @sendingCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending code...'**
+  String get sendingCode;
+
   /// No description provided for @confirmation.
   ///
   /// In en, this message translates to:
@@ -447,6 +453,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign up with Apple'**
   String get signupWithApple;
+
+  /// No description provided for @signinWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get signinWithGoogle;
+
+  /// No description provided for @signinWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get signinWithApple;
+
+  /// No description provided for @orWith.
+  ///
+  /// In en, this message translates to:
+  /// **'OR WITH'**
+  String get orWith;
 
   /// No description provided for @firstNameIsRequired.
   ///
@@ -691,8 +715,38 @@ abstract class AppLocalizations {
   /// No description provided for @passwordMinChars.
   ///
   /// In en, this message translates to:
-  /// **'Use at least 6 characters'**
+  /// **'Password must be at least 8 characters'**
   String get passwordMinChars;
+
+  /// No description provided for @passwordUppercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one uppercase letter'**
+  String get passwordUppercase;
+
+  /// No description provided for @passwordLowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one lowercase letter'**
+  String get passwordLowercase;
+
+  /// No description provided for @passwordNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one number'**
+  String get passwordNumber;
+
+  /// No description provided for @passwordSymbol.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one symbol'**
+  String get passwordSymbol;
+
+  /// No description provided for @passwordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 8 characters, uppercase, lowercase, number, and symbol'**
+  String get passwordHint;
 
   /// No description provided for @confirmPasswordRequired.
   ///

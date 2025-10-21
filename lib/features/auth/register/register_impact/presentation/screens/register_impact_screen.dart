@@ -5,11 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
-import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart'; // 👈 loc
+import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../../shared/design_system/components/gd_bottom_sheet.dart';
 import '../../../email/presentation/components/step_header.dart';
+import '../../../parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../bloc/register_impact_bloc.dart';
 
 class RegisterImpactScreen extends StatefulWidget {
@@ -23,20 +24,46 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
   final _statementCtrl = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final bloc = context.read<RegisterImpactBloc>();
+
+      // Check if bloc is still open before adding events
+      if (!bloc.isClosed) {
+        bloc.add(const RegisterImpactEvent.loadEvents());
+      }
+
+      // Sync controller with bloc state
+      _syncControllerWithBloc();
+    });
+  }
+
+  void _syncControllerWithBloc() {
+    final bloc = context.read<RegisterImpactBloc>();
+    if (_statementCtrl.text != bloc.state.statement) {
+      _statementCtrl.text = bloc.state.statement;
+    }
+  }
+
+  @override
   void dispose() {
     _statementCtrl.dispose();
     super.dispose();
   }
 
-  List<String> get _events => <String>[
-        context.loc.eventCaliforniaWildfires,
-        context.loc.eventKentuckyFloods,
-        context.loc.eventHurricaneFiona,
-        context.loc.eventInflation,
-        context.loc.eventCovid19,
-        context.loc.eventUnemployment,
-        context.loc.none,
-      ];
+  List<String> get _events =>
+      context.read<RegisterImpactBloc>().state.events.isNotEmpty
+          ? context.read<RegisterImpactBloc>().state.events
+          : <String>[
+              'static title',
+              context.loc.eventKentuckyFloods,
+              context.loc.eventHurricaneFiona,
+              context.loc.eventInflation,
+              context.loc.eventCovid19,
+              context.loc.eventUnemployment,
+              context.loc.none,
+            ];
 
   String? _eventErr(String? v) =>
       (v == null || v.isEmpty) ? context.loc.pleaseChooseAnEvent : null;
@@ -59,10 +86,44 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
   }
 
   void _onContinue(BuildContext context) {
-    final bloc = context.read<RegisterImpactBloc>();
-    bloc
-      ..add(RegisterImpactEvent.statementChanged(_statementCtrl.text))
-      ..add(const RegisterImpactEvent.submitted());
+    final impactBloc = context.read<RegisterImpactBloc>();
+    final parentBloc = context.read<ParentRegistrationBloc>();
+
+    // Check if form is valid
+    final affectedOk = impactBloc.state.affectedEvent?.isNotEmpty ?? false;
+    final statementOk = impactBloc.state.statement.trim().length >= 10;
+
+    if (!affectedOk || !statementOk) {
+      // Show specific validation errors
+      String errorMessage = '';
+      if (!affectedOk) {
+        errorMessage += '• ${context.loc.pleaseChooseAnEvent}\n';
+      }
+      if (!statementOk) {
+        errorMessage += '• ${context.loc.pleaseWriteAtLeast10Characters}';
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage.trim()),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      return;
+    }
+
+    // Persist impact info to parent and go to step 5 (family photo)
+    if (!parentBloc.isClosed) {
+      parentBloc.add(
+        ParentRegistrationEvent.setImpactInfo(
+          affectedEvent: impactBloc.state.affectedEvent ?? '',
+          statement: impactBloc.state.statement,
+        ),
+      );
+    }
+
+    const RegisterFamilyPhotoRoute().push(context);
   }
 
   @override
@@ -70,24 +131,34 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
     final gaps = context.gaps;
     final text = context.textStyle;
 
-    return BlocListener<RegisterImpactBloc, RegisterImpactState>(
-      listenWhen: (p, c) => p.completed != c.completed && c.completed,
-      listener: (_, __) {
-        const RegisterFamilyPhotoRoute().push(context);
+    return BlocListener<ParentRegistrationBloc, ParentRegistrationState>(
+      listenWhen: (p, c) => p.success != c.success && c.success == true,
+      listener: (context, state) {
+        // Check if the widget is still mounted before navigating
+        if (!mounted) return;
+
+        // Navigate to verify OTP screen after successful signup
+        VerifyEmailRoute(email: state.email).push(context);
       },
       child: Scaffold(
         bottomNavigationBar: SafeArea(
           child: Padding(
             padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
             child: BlocBuilder<RegisterImpactBloc, RegisterImpactState>(
-              builder: (context, state) {
-                return PrimaryButton(
-                  label: context.loc.continueText,
-                  size: ButtonSize.large,
-                  fullWidth: true,
-                  onPressed:
-                      state.isSubmitting ? null : () => _onContinue(context),
-                  // loading: state.isSubmitting,
+              builder: (context, impactState) {
+                return BlocBuilder<ParentRegistrationBloc,
+                    ParentRegistrationState>(
+                  builder: (context, parentState) {
+                    return PrimaryButton(
+                      label: context.loc.continueText,
+                      size: ButtonSize.large,
+                      fullWidth: true,
+                      loading: parentState.isSubmitting,
+                      onPressed: parentState.isSubmitting
+                          ? null
+                          : () => _onContinue(context),
+                    );
+                  },
                 );
               },
             ),
@@ -96,6 +167,12 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
         body: SafeArea(
           child: BlocBuilder<RegisterImpactBloc, RegisterImpactState>(
             builder: (context, state) {
+              // Sync controller with bloc state on every build
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _syncControllerWithBloc();
+              });
+
+              // Show validation errors only after user interaction
               final eventErr =
                   state.showErrors ? _eventErr(state.affectedEvent) : null;
               final stmtErr =
@@ -152,7 +229,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                                 Expanded(
                                   child: Text(
                                     state.affectedEvent ??
-                                        context.loc.chooseEvent, // 👈 loc
+                                        context.loc.chooseEvent,
                                     style: (state.affectedEvent == null
                                             ? text.bodyMediumMedium.copyWith(
                                                 color: BrandTones.grey50,
@@ -211,40 +288,78 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide:
-                                  const BorderSide(color: BrandTones.grey20),
+                              borderSide: BorderSide(
+                                color: stmtErr != null
+                                    ? BrandTones.red
+                                    : BrandTones.grey20,
+                              ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide:
-                                  const BorderSide(color: BrandTones.grey20),
+                              borderSide: BorderSide(
+                                color: stmtErr != null
+                                    ? BrandTones.red
+                                    : BrandTones.grey20,
+                              ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
-                              borderSide:
-                                  const BorderSide(color: BrandTones.grey20),
+                              borderSide: BorderSide(
+                                color: stmtErr != null
+                                    ? BrandTones.red
+                                    : BrandTones.grey20,
+                              ),
                             ),
                           ),
                           onChanged: (v) => context
                               .read<RegisterImpactBloc>()
                               .add(RegisterImpactEvent.statementChanged(v)),
                         ),
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 160),
-                          child: stmtErr != null
-                              ? Padding(
-                                  key: const ValueKey('stmt-err'),
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Text(
-                                    stmtErr,
-                                    style: TextStyle(
-                                      color: Colors.red.shade400,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox.shrink(key: ValueKey('stmt-ok')),
+                        // Character counter and error message
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 160),
+                                  child: stmtErr != null
+                                      ? Text(
+                                          stmtErr,
+                                          key: const ValueKey('stmt-err'),
+                                          style: TextStyle(
+                                            color: Colors.red.shade400,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        )
+                                      : const SizedBox.shrink(
+                                          key: ValueKey('stmt-ok'),
+                                        ),
+                                ),
+                              ),
+                              // Row(
+                              //   children: [
+                              //     if (state.statement.trim().length >= 10)
+                              //       Icon(
+                              //         Icons.check_circle,
+                              //         color: BrandTones.green,
+                              //         size: 16,
+                              //       ),
+                              //     const SizedBox(width: 4),
+                              //     Text(
+                              //       '${state.statement.trim().length}/10',
+                              //       style: text.bodySmallMedium.copyWith(
+                              //         color: state.statement.trim().length >= 10
+                              //             ? BrandTones.green
+                              //             : BrandTones.grey50,
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

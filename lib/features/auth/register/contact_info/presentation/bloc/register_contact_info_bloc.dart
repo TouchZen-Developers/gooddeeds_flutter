@@ -7,7 +7,7 @@ part 'register_contact_info_bloc.freezed.dart';
 part 'register_contact_info_event.dart';
 part 'register_contact_info_state.dart';
 
-@Injectable()
+@Singleton()
 class RegisterContactInfoBloc
     extends Bloc<RegisterContactInfoEvent, RegisterContactInfoState> {
   RegisterContactInfoBloc() : super(RegisterContactInfoState.initial()) {

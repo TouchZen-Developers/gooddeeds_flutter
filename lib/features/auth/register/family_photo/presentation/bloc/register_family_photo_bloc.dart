@@ -9,7 +9,7 @@ part 'register_family_photo_bloc.freezed.dart';
 part 'register_family_photo_event.dart';
 part 'register_family_photo_state.dart';
 
-@Injectable()
+@Singleton()
 class RegisterFamilyPhotoBloc
     extends Bloc<RegisterFamilyPhotoEvent, RegisterFamilyPhotoState> {
   RegisterFamilyPhotoBloc({ImagePicker? picker})
