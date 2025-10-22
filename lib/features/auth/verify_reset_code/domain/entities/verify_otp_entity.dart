@@ -6,6 +6,7 @@ part 'verify_otp_entity.g.dart';
 @freezed
 abstract class VerifyOtpEntity with _$VerifyOtpEntity {
   const factory VerifyOtpEntity({
+    required bool success,
     required String message,
     required String verificationToken,
   }) = _VerifyOtpEntity;

@@ -8,6 +8,7 @@ part 'verify_otp_dto.g.dart';
 @freezed
 abstract class VerifyOtpDto with _$VerifyOtpDto {
   const factory VerifyOtpDto({
+    required bool success,
     required String message,
     @JsonKey(name: 'verification_token') required String verificationToken,
   }) = _VerifyOtpDto;

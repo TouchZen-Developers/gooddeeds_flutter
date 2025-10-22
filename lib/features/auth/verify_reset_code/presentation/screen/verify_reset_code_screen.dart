@@ -51,8 +51,9 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
       listenWhen: (p, c) => p.success != c.success && c.success != null,
       listener: (context, state) {
         if (state.success == true && state.verificationToken != null) {
-          // TODO: Pass verification token to ResetPasswordRoute
-          const ResetPasswordRoute().go(context);
+          // Pass verification token to ResetPasswordRoute
+          ResetPasswordRoute(verificationToken: state.verificationToken!)
+              .go(context);
         }
         // Error snackbar is shown automatically by ErrorInterceptor
       },

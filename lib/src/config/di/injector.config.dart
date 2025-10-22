@@ -96,6 +96,14 @@ import '../../../features/auth/register/signup/domain/usecases/signup_usecase.da
     as _i918;
 import '../../../features/auth/register_choice/presentation/bloc/register_choice_bloc.dart'
     as _i515;
+import '../../../features/auth/reset_password/data/datasources/reset_password_remote_datasource.dart'
+    as _i685;
+import '../../../features/auth/reset_password/data/repositories/reset_password_repository_impl.dart'
+    as _i123;
+import '../../../features/auth/reset_password/domain/repositories/reset_password_repository.dart'
+    as _i325;
+import '../../../features/auth/reset_password/domain/usecases/reset_password_usecase.dart'
+    as _i76;
 import '../../../features/auth/reset_password/presentation/bloc/reset_password_bloc.dart'
     as _i989;
 import '../../../features/auth/verify_reset_code/data/datasources/verify_reset_code_remote_datasource.dart'
@@ -137,7 +145,6 @@ extension GetItInjectableX on _i174.GetIt {
     final storageModule = _$StorageModule();
     final networkModule = _$NetworkModule();
     gh.factory<_i196.RegisterEmailBloc>(() => _i196.RegisterEmailBloc());
-    gh.factory<_i989.ResetPasswordBloc>(() => _i989.ResetPasswordBloc());
     gh.factory<_i330.InfoOnboardingBloc>(() => _i330.InfoOnboardingBloc());
     gh.factory<_i976.SplashBloc>(() => _i976.SplashBloc());
     gh.factory<_i776.LoggingInterceptor>(() => _i776.LoggingInterceptor());
@@ -188,6 +195,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i56.BeneficiarySignupRemoteDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i366.ForgotPasswordRemoteDataSource>(
         () => _i366.ForgotPasswordRemoteDataSourceImpl(gh<_i361.Dio>()));
+    gh.factory<_i685.ResetPasswordRemoteDataSource>(
+        () => _i685.ResetPasswordRemoteDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i259.VerifyBeneficiaryOtpRemoteDataSource>(
         () => _i259.VerifyBeneficiaryOtpRemoteDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i319.VerifyResetCodeRepository>(() =>
@@ -209,6 +218,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i404.VerifyBeneficiaryOtpUseCase>(() =>
         _i404.VerifyBeneficiaryOtpUseCase(
             gh<_i218.VerifyBeneficiaryOtpRepository>()));
+    gh.factory<_i325.ResetPasswordRepository>(() =>
+        _i123.ResetPasswordRepositoryImpl(
+            gh<_i685.ResetPasswordRemoteDataSource>()));
     gh.factory<_i169.SignupRemoteDataSource>(
         () => _i169.SignupRemoteDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i319.VerifySignupOtpRemoteDataSource>(
@@ -227,6 +239,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1020.VerifyOtpUseCase(gh<_i319.VerifyResetCodeRepository>()));
     gh.factory<_i201.SignupRepository>(
         () => _i116.SignupRepositoryImpl(gh<_i169.SignupRemoteDataSource>()));
+    gh.factory<_i76.ResetPasswordUseCase>(
+        () => _i76.ResetPasswordUseCase(gh<_i325.ResetPasswordRepository>()));
     gh.singleton<_i1055.ParentRegistrationBloc>(() =>
         _i1055.ParentRegistrationBloc(gh<_i1030.BeneficiarySignupUseCase>()));
     gh.factory<_i325.LoginRepository>(() => _i897.LoginRepositoryImpl(
@@ -254,6 +268,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1072.LoginBloc>(
         () => _i1072.LoginBloc(gh<_i178.LoginUseCase>()));
+    gh.factory<_i989.ResetPasswordBloc>(
+        () => _i989.ResetPasswordBloc(gh<_i76.ResetPasswordUseCase>()));
     gh.factory<_i51.VerifyEmailBloc>(() => _i51.VerifyEmailBloc(
           gh<_i201.VerifySignupOtpUseCase>(),
           gh<_i605.ResendSignupOtpUseCase>(),

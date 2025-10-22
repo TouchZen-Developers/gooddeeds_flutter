@@ -1,21 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'verify_otp_entity.dart';
+part of 'reset_password_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_VerifyOtpEntity _$VerifyOtpEntityFromJson(Map<String, dynamic> json) =>
-    _VerifyOtpEntity(
+_ResetPasswordEntity _$ResetPasswordEntityFromJson(Map<String, dynamic> json) =>
+    _ResetPasswordEntity(
       success: json['success'] as bool,
       message: json['message'] as String,
-      verificationToken: json['verificationToken'] as String,
     );
 
-Map<String, dynamic> _$VerifyOtpEntityToJson(_VerifyOtpEntity instance) =>
+Map<String, dynamic> _$ResetPasswordEntityToJson(
+        _ResetPasswordEntity instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,
-      'verificationToken': instance.verificationToken,
     };

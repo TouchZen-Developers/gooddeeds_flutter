@@ -510,11 +510,18 @@ RouteBase get $resetPasswordRoute => GoRouteData.$route(
 
 mixin $ResetPasswordRoute on GoRouteData {
   static ResetPasswordRoute _fromState(GoRouterState state) =>
-      const ResetPasswordRoute();
+      ResetPasswordRoute(
+        verificationToken: state.uri.queryParameters['verification-token']!,
+      );
+
+  ResetPasswordRoute get _self => this as ResetPasswordRoute;
 
   @override
   String get location => GoRouteData.$location(
         '/forgot-password/reset',
+        queryParams: {
+          'verification-token': _self.verificationToken,
+        },
       );
 
   @override

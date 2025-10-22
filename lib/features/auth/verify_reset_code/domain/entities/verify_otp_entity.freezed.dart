@@ -14,6 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$VerifyOtpEntity {
+  bool get success;
   String get message;
   String get verificationToken;
 
@@ -33,6 +34,7 @@ mixin _$VerifyOtpEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is VerifyOtpEntity &&
+            (identical(other.success, success) || other.success == success) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.verificationToken, verificationToken) ||
                 other.verificationToken == verificationToken));
@@ -40,11 +42,12 @@ mixin _$VerifyOtpEntity {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, message, verificationToken);
+  int get hashCode =>
+      Object.hash(runtimeType, success, message, verificationToken);
 
   @override
   String toString() {
-    return 'VerifyOtpEntity(message: $message, verificationToken: $verificationToken)';
+    return 'VerifyOtpEntity(success: $success, message: $message, verificationToken: $verificationToken)';
   }
 }
 
@@ -54,7 +57,7 @@ abstract mixin class $VerifyOtpEntityCopyWith<$Res> {
           VerifyOtpEntity value, $Res Function(VerifyOtpEntity) _then) =
       _$VerifyOtpEntityCopyWithImpl;
   @useResult
-  $Res call({String message, String verificationToken});
+  $Res call({bool success, String message, String verificationToken});
 }
 
 /// @nodoc
@@ -70,10 +73,15 @@ class _$VerifyOtpEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? success = null,
     Object? message = null,
     Object? verificationToken = null,
   }) {
     return _then(_self.copyWith(
+      success: null == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: null == message
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -179,13 +187,14 @@ extension VerifyOtpEntityPatterns on VerifyOtpEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, String verificationToken)? $default, {
+    TResult Function(bool success, String message, String verificationToken)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _VerifyOtpEntity() when $default != null:
-        return $default(_that.message, _that.verificationToken);
+        return $default(_that.success, _that.message, _that.verificationToken);
       case _:
         return orElse();
     }
@@ -206,12 +215,13 @@ extension VerifyOtpEntityPatterns on VerifyOtpEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, String verificationToken) $default,
+    TResult Function(bool success, String message, String verificationToken)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _VerifyOtpEntity():
-        return $default(_that.message, _that.verificationToken);
+        return $default(_that.success, _that.message, _that.verificationToken);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -231,12 +241,13 @@ extension VerifyOtpEntityPatterns on VerifyOtpEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, String verificationToken)? $default,
+    TResult? Function(bool success, String message, String verificationToken)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _VerifyOtpEntity() when $default != null:
-        return $default(_that.message, _that.verificationToken);
+        return $default(_that.success, _that.message, _that.verificationToken);
       case _:
         return null;
     }
@@ -247,10 +258,14 @@ extension VerifyOtpEntityPatterns on VerifyOtpEntity {
 @JsonSerializable()
 class _VerifyOtpEntity implements VerifyOtpEntity {
   const _VerifyOtpEntity(
-      {required this.message, required this.verificationToken});
+      {required this.success,
+      required this.message,
+      required this.verificationToken});
   factory _VerifyOtpEntity.fromJson(Map<String, dynamic> json) =>
       _$VerifyOtpEntityFromJson(json);
 
+  @override
+  final bool success;
   @override
   final String message;
   @override
@@ -276,6 +291,7 @@ class _VerifyOtpEntity implements VerifyOtpEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _VerifyOtpEntity &&
+            (identical(other.success, success) || other.success == success) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.verificationToken, verificationToken) ||
                 other.verificationToken == verificationToken));
@@ -283,11 +299,12 @@ class _VerifyOtpEntity implements VerifyOtpEntity {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, message, verificationToken);
+  int get hashCode =>
+      Object.hash(runtimeType, success, message, verificationToken);
 
   @override
   String toString() {
-    return 'VerifyOtpEntity(message: $message, verificationToken: $verificationToken)';
+    return 'VerifyOtpEntity(success: $success, message: $message, verificationToken: $verificationToken)';
   }
 }
 
@@ -299,7 +316,7 @@ abstract mixin class _$VerifyOtpEntityCopyWith<$Res>
       __$VerifyOtpEntityCopyWithImpl;
   @override
   @useResult
-  $Res call({String message, String verificationToken});
+  $Res call({bool success, String message, String verificationToken});
 }
 
 /// @nodoc
@@ -315,10 +332,15 @@ class __$VerifyOtpEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? success = null,
     Object? message = null,
     Object? verificationToken = null,
   }) {
     return _then(_VerifyOtpEntity(
+      success: null == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: null == message
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable

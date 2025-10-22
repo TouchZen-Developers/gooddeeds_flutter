@@ -281,12 +281,15 @@ class ForgotVerifyCodeRoute extends GoRouteData with $ForgotVerifyCodeRoute {
 
 @TypedGoRoute<ResetPasswordRoute>(path: RoutePaths.resetPassword)
 class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
-  const ResetPasswordRoute();
+  const ResetPasswordRoute({required this.verificationToken});
+
+  final String verificationToken;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => getIt<ResetPasswordBloc>(),
+      create: (_) => getIt<ResetPasswordBloc>()
+        ..add(ResetPasswordEvent.verificationTokenChanged(verificationToken)),
       child: const ResetPasswordScreen(),
     );
   }
