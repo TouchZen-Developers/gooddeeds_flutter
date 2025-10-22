@@ -685,7 +685,7 @@ abstract class AppLocalizations {
   /// No description provided for @dontHaveAccount.
   ///
   /// In en, this message translates to:
-  /// **'Don’t have an account?'**
+  /// **'Don\'t have an account?'**
   String get dontHaveAccount;
 
   /// No description provided for @passwordMinChars.
@@ -841,7 +841,7 @@ abstract class AppLocalizations {
   /// No description provided for @didntReceiveCode.
   ///
   /// In en, this message translates to:
-  /// **'Don’t received code?'**
+  /// **'Don\'t received code?'**
   String get didntReceiveCode;
 
   /// No description provided for @invalidCode.
@@ -1269,6 +1269,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Done'**
   String get done;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get items;
+
+  /// No description provided for @receivingHomeHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Request the items you need today.'**
+  String get receivingHomeHeader;
+
+  /// No description provided for @requestItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Items'**
+  String get requestItems;
+
+  /// No description provided for @requestItemsHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Items you are looking for assistance'**
+  String get requestItemsHeader;
+
+  /// No description provided for @familyInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Family Information'**
+  String get familyInformation;
+
+  /// No description provided for @personal.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal'**
+  String get personal;
+
+  /// No description provided for @ordersReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders Received'**
+  String get ordersReceived;
+
+  /// No description provided for @ordersReceivedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive updates when a new order is placed for items on your list.'**
+  String get ordersReceivedDesc;
+
+  /// No description provided for @ordersDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders Delivered'**
+  String get ordersDelivered;
+
+  /// No description provided for @ordersDeliveredDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive updates when your order is delivered.'**
+  String get ordersDeliveredDesc;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Name'**
+  String get contactName;
+
+  /// No description provided for @familySize.
+  ///
+  /// In en, this message translates to:
+  /// **'Family Size'**
+  String get familySize;
+
+  /// No description provided for @fullAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Address'**
+  String get fullAddress;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @markAsReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as Received'**
+  String get markAsReceived;
+
+  /// No description provided for @sendThankYouNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Thank You Note'**
+  String get sendThankYouNote;
+
+  /// No description provided for @sendMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Message'**
+  String get sendMessage;
+
+  /// No description provided for @addedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to Cart'**
+  String get addedToCart;
+
+  /// No description provided for @report.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get report;
+
+  /// No description provided for @pleaseWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Wait...'**
+  String get pleaseWait;
+
+  /// No description provided for @processingOrdersWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing orders, wait a moment..'**
+  String get processingOrdersWaiting;
+
+  /// No description provided for @yourCartIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty '**
+  String get yourCartIsEmpty;
+
+  /// No description provided for @yourCartIsEmptyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t any donation to your cart yet.'**
+  String get yourCartIsEmptyDesc;
+
+  /// No description provided for @successOrderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order has been successfully'**
+  String get successOrderMessage;
+
+  /// No description provided for @myOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'My Order'**
+  String get myOrder;
+
+  /// No description provided for @noOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No Orders'**
+  String get noOrders;
+
+  /// No description provided for @noOrdersDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you don\'t have any orders yet'**
+  String get noOrdersDesc;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @cancelChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel changes'**
+  String get cancelChanges;
+
+  /// No description provided for @cancelEmailChangesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to cancel email changes?'**
+  String get cancelEmailChangesDesc;
+
+  /// No description provided for @successEmailChangeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your email has been successfully changed'**
+  String get successEmailChangeMessage;
+
+  /// No description provided for @emptyCardDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any cards yet'**
+  String get emptyCardDesc;
+
+  /// No description provided for @defaultText.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get defaultText;
+
+  /// No description provided for @deleteCardDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this card?'**
+  String get deleteCardDesc;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @pushNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Push Notifications'**
+  String get pushNotifications;
+
+  /// No description provided for @receiveNotificationsForMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive Notifications on the following'**
+  String get receiveNotificationsForMessage;
+
+  /// No description provided for @appUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'App Updates'**
+  String get appUpdates;
+
+  /// No description provided for @somebodyOrdersYourItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Somebody orders your item'**
+  String get somebodyOrdersYourItem;
+
+  /// No description provided for @alertsForFamiliesNeedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts for families who need help'**
+  String get alertsForFamiliesNeedHelp;
+
+  /// No description provided for @allow.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow'**
+  String get allow;
+
+  /// No description provided for @notNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get notNow;
+
+  /// No description provided for @allowLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Location'**
+  String get allowLocation;
+
+  /// No description provided for @allowYourLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow your location'**
+  String get allowYourLocation;
+
+  /// No description provided for @allowYourLocationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'We will need your location to give you better experience.'**
+  String get allowYourLocationDesc;
+
+  /// No description provided for @sureILikeThat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sure, I\'d like that'**
+  String get sureILikeThat;
+
+  /// No description provided for @congrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Congrats'**
+  String get congrats;
+
+  /// No description provided for @approveProfileMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your application has been approved, please continue to complete your account!'**
+  String get approveProfileMessage;
+
+  /// No description provided for @applicationRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Application Rejected'**
+  String get applicationRejected;
+
+  /// No description provided for @applicationRejectedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'We regret to inform you that your application has been rejected. Your statement or family photo may contain inapproproate material that is against our guidelines. Please try again later.'**
+  String get applicationRejectedDesc;
+
+  /// No description provided for @noItem.
+  ///
+  /// In en, this message translates to:
+  /// **'No Item'**
+  String get noItem;
+
+  /// No description provided for @noItemDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'It looks like you don\'t have any item requests yet'**
+  String get noItemDesc;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @exceededItemRequestMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have exceeded the amount of items you can request at a given time.'**
+  String get exceededItemRequestMessage;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get gotIt;
+
+  /// No description provided for @itemDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Item Details'**
+  String get itemDetails;
+
+  /// No description provided for @removeTheseItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove these items'**
+  String get removeTheseItems;
+
+  /// No description provided for @cost.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get cost;
+
+  /// No description provided for @removeItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Items'**
+  String get removeItems;
+
+  /// No description provided for @removeItemsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to remove this Item?'**
+  String get removeItemsDesc;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @reportOrderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the issue with the order?'**
+  String get reportOrderMessage;
+
+  /// No description provided for @enterMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter messages'**
+  String get enterMessage;
+
+  /// No description provided for @sendReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Report'**
+  String get sendReport;
 }
 
 class _AppLocalizationsDelegate

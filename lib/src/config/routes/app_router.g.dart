@@ -23,13 +23,20 @@ List<RouteBase> get $appRoutes => [
       $forgotPasswordRoute,
       $forgotVerifyCodeRoute,
       $resetPasswordRoute,
-      $appStatfulShellWithNavigationRouteData,
+      $donatingAppStatfulShellWithNavigationRouteData,
+      $receivingAppStatfulShellWithNavigationRouteData,
+      $requestItemsRoute,
       $familyDetailsRoute,
       $eventDetailsRoute,
       $orderDetailsRoute,
+      $receivingOrderDetailsRoute,
+      $myAccountRoute,
       $changeEmailRoute,
       $changePasswordRoute,
       $confirmEmailRoute,
+      $notificationPermissionRoute,
+      $locationPermissionRoute,
+      $itemDetailsRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -519,11 +526,12 @@ mixin $ResetPasswordRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $appStatfulShellWithNavigationRouteData =>
+RouteBase get $donatingAppStatfulShellWithNavigationRouteData =>
     StatefulShellRouteData.$route(
       restorationScopeId:
-          AppStatfulShellWithNavigationRouteData.$restorationScopeId,
-      factory: $AppStatfulShellWithNavigationRouteDataExtension._fromState,
+          DonatingAppStatfulShellWithNavigationRouteData.$restorationScopeId,
+      factory:
+          $DonatingAppStatfulShellWithNavigationRouteDataExtension._fromState,
       branches: [
         StatefulShellBranchData.$branch(
           navigatorKey: DonatingHomeBranch.$navigatorKey,
@@ -560,8 +568,8 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
           ],
         ),
         StatefulShellBranchData.$branch(
-          navigatorKey: OrdersBranch.$navigatorKey,
-          restorationScopeId: OrdersBranch.$restorationScopeId,
+          navigatorKey: DonatingOrdersBranch.$navigatorKey,
+          restorationScopeId: DonatingOrdersBranch.$restorationScopeId,
           routes: [
             GoRouteData.$route(
               path: '/donaiting_orders',
@@ -584,10 +592,6 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
               factory: $DonaitingMyProfileRoute._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: 'donaiting_my_account',
-                  factory: $DonatingMyAccountRoute._fromState,
-                ),
-                GoRouteData.$route(
                   path: 'donaiting_payment',
                   factory: $DonatingPaymentRoute._fromState,
                 ),
@@ -606,11 +610,11 @@ RouteBase get $appStatfulShellWithNavigationRouteData =>
       ],
     );
 
-extension $AppStatfulShellWithNavigationRouteDataExtension
-    on AppStatfulShellWithNavigationRouteData {
-  static AppStatfulShellWithNavigationRouteData _fromState(
+extension $DonatingAppStatfulShellWithNavigationRouteDataExtension
+    on DonatingAppStatfulShellWithNavigationRouteData {
+  static DonatingAppStatfulShellWithNavigationRouteData _fromState(
           GoRouterState state) =>
-      const AppStatfulShellWithNavigationRouteData();
+      const DonatingAppStatfulShellWithNavigationRouteData();
 }
 
 mixin $DonatingHomeRoute on GoRouteData {
@@ -795,29 +799,6 @@ mixin $DonaitingMyProfileRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin $DonatingMyAccountRoute on GoRouteData {
-  static DonatingMyAccountRoute _fromState(GoRouterState state) =>
-      const DonatingMyAccountRoute();
-
-  @override
-  String get location => GoRouteData.$location(
-        '/donaiting_profile/donaiting_my_account',
-      );
-
-  @override
-  void go(BuildContext context) => context.go(location);
-
-  @override
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  @override
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  @override
-  void replace(BuildContext context) => context.replace(location);
-}
-
 mixin $DonatingPaymentRoute on GoRouteData {
   static DonatingPaymentRoute _fromState(GoRouterState state) =>
       const DonatingPaymentRoute();
@@ -871,6 +852,239 @@ mixin $DonatingNotificationSettingsRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/donaiting_profile/donaiting_notification_settings',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $receivingAppStatfulShellWithNavigationRouteData =>
+    StatefulShellRouteData.$route(
+      restorationScopeId:
+          ReceivingAppStatfulShellWithNavigationRouteData.$restorationScopeId,
+      factory:
+          $ReceivingAppStatfulShellWithNavigationRouteDataExtension._fromState,
+      branches: [
+        StatefulShellBranchData.$branch(
+          navigatorKey: ReceivingItemsBranch.$navigatorKey,
+          restorationScopeId: ReceivingItemsBranch.$restorationScopeId,
+          routes: [
+            GoRouteData.$route(
+              path: '/receiving_items',
+              factory: $ReceivingItemsRoute._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: ReceivingOrdersBranch.$navigatorKey,
+          restorationScopeId: ReceivingOrdersBranch.$restorationScopeId,
+          routes: [
+            GoRouteData.$route(
+              path: '/receiving_orders',
+              factory: $ReceivingOrdersRoute._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: ReceivingNotificationsBranch.$navigatorKey,
+          restorationScopeId: ReceivingNotificationsBranch.$restorationScopeId,
+          routes: [
+            GoRouteData.$route(
+              path: '/receiving_notifications',
+              factory: $ReceivingNotificationsRoute._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: ReceivingMyProfileBranch.$navigatorKey,
+          restorationScopeId: ReceivingMyProfileBranch.$restorationScopeId,
+          routes: [
+            GoRouteData.$route(
+              path: '/receiving_my_profile',
+              factory: $ReceivingMyProfileRoute._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'receiving_notification_settings',
+                  factory: $ReceivingNotificationSettingsRoute._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'family_information',
+                  factory: $FamilyInformationRoute._fromState,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+
+extension $ReceivingAppStatfulShellWithNavigationRouteDataExtension
+    on ReceivingAppStatfulShellWithNavigationRouteData {
+  static ReceivingAppStatfulShellWithNavigationRouteData _fromState(
+          GoRouterState state) =>
+      const ReceivingAppStatfulShellWithNavigationRouteData();
+}
+
+mixin $ReceivingItemsRoute on GoRouteData {
+  static ReceivingItemsRoute _fromState(GoRouterState state) =>
+      const ReceivingItemsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_items',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ReceivingOrdersRoute on GoRouteData {
+  static ReceivingOrdersRoute _fromState(GoRouterState state) =>
+      const ReceivingOrdersRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_orders',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ReceivingNotificationsRoute on GoRouteData {
+  static ReceivingNotificationsRoute _fromState(GoRouterState state) =>
+      const ReceivingNotificationsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_notifications',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ReceivingMyProfileRoute on GoRouteData {
+  static ReceivingMyProfileRoute _fromState(GoRouterState state) =>
+      const ReceivingMyProfileRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_my_profile',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ReceivingNotificationSettingsRoute on GoRouteData {
+  static ReceivingNotificationSettingsRoute _fromState(GoRouterState state) =>
+      const ReceivingNotificationSettingsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_my_profile/receiving_notification_settings',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $FamilyInformationRoute on GoRouteData {
+  static FamilyInformationRoute _fromState(GoRouterState state) =>
+      const FamilyInformationRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_my_profile/family_information',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $requestItemsRoute => GoRouteData.$route(
+      path: '/request_items',
+      factory: $RequestItemsRoute._fromState,
+    );
+
+mixin $RequestItemsRoute on GoRouteData {
+  static RequestItemsRoute _fromState(GoRouterState state) =>
+      const RequestItemsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/request_items',
       );
 
   @override
@@ -948,18 +1162,86 @@ RouteBase get $orderDetailsRoute => GoRouteData.$route(
       factory: $OrderDetailsRoute._fromState,
     );
 
+RouteBase get $receivingOrderDetailsRoute => GoRouteData.$route(
+      path: '/receiving_order_details_dialog',
+      factory: $ReceivingOrderDetailsRoute._fromState,
+    );
+
+mixin $ReceivingOrderDetailsRoute on GoRouteData {
+  static ReceivingOrderDetailsRoute _fromState(GoRouterState state) =>
+      const ReceivingOrderDetailsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/receiving_order_details_dialog',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $myAccountRoute => GoRouteData.$route(
+      path: '/my_account',
+      factory: $MyAccountRoute._fromState,
+    );
+
+mixin $MyAccountRoute on GoRouteData {
+  static MyAccountRoute _fromState(GoRouterState state) => MyAccountRoute(
+        state.uri.queryParameters['redirect-path']!,
+      );
+
+  MyAccountRoute get _self => this as MyAccountRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/my_account',
+        queryParams: {
+          'redirect-path': _self.redirectPath,
+        },
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
 RouteBase get $changeEmailRoute => GoRouteData.$route(
       path: '/change_email',
       factory: $ChangeEmailRoute._fromState,
     );
 
 mixin $ChangeEmailRoute on GoRouteData {
-  static ChangeEmailRoute _fromState(GoRouterState state) =>
-      const ChangeEmailRoute();
+  static ChangeEmailRoute _fromState(GoRouterState state) => ChangeEmailRoute(
+        state.uri.queryParameters['redirect-path']!,
+      );
+
+  ChangeEmailRoute get _self => this as ChangeEmailRoute;
 
   @override
   String get location => GoRouteData.$location(
         '/change_email',
+        queryParams: {
+          'redirect-path': _self.redirectPath,
+        },
       );
 
   @override
@@ -983,11 +1265,18 @@ RouteBase get $changePasswordRoute => GoRouteData.$route(
 
 mixin $ChangePasswordRoute on GoRouteData {
   static ChangePasswordRoute _fromState(GoRouterState state) =>
-      const ChangePasswordRoute();
+      ChangePasswordRoute(
+        state.uri.queryParameters['redirect-path']!,
+      );
+
+  ChangePasswordRoute get _self => this as ChangePasswordRoute;
 
   @override
   String get location => GoRouteData.$location(
         '/change_password',
+        queryParams: {
+          'redirect-path': _self.redirectPath,
+        },
       );
 
   @override
@@ -1010,12 +1299,110 @@ RouteBase get $confirmEmailRoute => GoRouteData.$route(
     );
 
 mixin $ConfirmEmailRoute on GoRouteData {
-  static ConfirmEmailRoute _fromState(GoRouterState state) =>
-      const ConfirmEmailRoute();
+  static ConfirmEmailRoute _fromState(GoRouterState state) => ConfirmEmailRoute(
+        state.uri.queryParameters['redirect-path']!,
+      );
+
+  ConfirmEmailRoute get _self => this as ConfirmEmailRoute;
 
   @override
   String get location => GoRouteData.$location(
         '/confirm_email',
+        queryParams: {
+          'redirect-path': _self.redirectPath,
+        },
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $notificationPermissionRoute => GoRouteData.$route(
+      path: '/notification_permission',
+      factory: $NotificationPermissionRoute._fromState,
+    );
+
+mixin $NotificationPermissionRoute on GoRouteData {
+  static NotificationPermissionRoute _fromState(GoRouterState state) =>
+      NotificationPermissionRoute(
+        state.uri.queryParametersAll['items']?.map((e) => e).toList() ??
+            const [],
+      );
+
+  NotificationPermissionRoute get _self => this as NotificationPermissionRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/notification_permission',
+        queryParams: {
+          'items': _self.items.map((e) => e).toList(),
+        },
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $locationPermissionRoute => GoRouteData.$route(
+      path: '/location_permission',
+      factory: $LocationPermissionRoute._fromState,
+    );
+
+mixin $LocationPermissionRoute on GoRouteData {
+  static LocationPermissionRoute _fromState(GoRouterState state) =>
+      const LocationPermissionRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/location_permission',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $itemDetailsRoute => GoRouteData.$route(
+      path: '/item_details',
+      factory: $ItemDetailsRoute._fromState,
+    );
+
+mixin $ItemDetailsRoute on GoRouteData {
+  static ItemDetailsRoute _fromState(GoRouterState state) =>
+      const ItemDetailsRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/item_details',
       );
 
   @override

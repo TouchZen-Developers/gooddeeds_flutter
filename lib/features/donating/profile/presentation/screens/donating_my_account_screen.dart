@@ -6,8 +6,9 @@ import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
-class DonatingMyAccountScreen extends StatelessWidget {
-  const DonatingMyAccountScreen({super.key});
+class MyAccountScreen extends StatelessWidget {
+  const MyAccountScreen({super.key, required this.redirectPath});
+  final String redirectPath;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +25,12 @@ class DonatingMyAccountScreen extends StatelessWidget {
             children: [
               _MyAccountItem(
                 title: context.loc.emailAddress,
-                onTap: () => const ChangeEmailRoute().push(context),
+                onTap: () => ChangeEmailRoute(redirectPath).push(context),
               ),
               const Gap(16),
               _MyAccountItem(
                 title: context.loc.password,
-                onTap: () => const ChangePasswordRoute().push(context),
+                onTap: () => ChangePasswordRoute(redirectPath).push(context),
               ),
             ],
           ),

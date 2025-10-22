@@ -8,13 +8,13 @@ import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 class GDSimpleActionDialog extends StatelessWidget {
   const GDSimpleActionDialog({
     super.key,
-    required this.title,
+    this.title,
     required this.message,
     required this.actionLabel,
     required this.onAction,
   });
 
-  final String title;
+  final String? title;
   final String message;
   final String actionLabel;
   final VoidCallback onAction;
@@ -33,12 +33,14 @@ class GDSimpleActionDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            GDText(
-              title,
-              style: context.textStyle.heading4,
-              textAlign: TextAlign.center,
-            ),
-            Gap(gaps.sm),
+            if (title != null) ...[
+              GDText(
+                title!,
+                style: context.textStyle.heading4,
+                textAlign: TextAlign.center,
+              ),
+              Gap(gaps.sm),
+            ],
             GDText(
               message,
               style: text.bodyLargeRegular,

@@ -24,6 +24,7 @@ class PrimaryButton extends StatelessWidget {
     this.color,
     this.background, // manual background
     this.textStyle,
+    this.withShadow = false,
   });
 
   final String label;
@@ -44,6 +45,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? background;
 
   final TextStyle? textStyle;
+  final bool withShadow;
 
   ({EdgeInsets padding, double minHeight, double radius, TextStyle text})
       _metrics(BuildContext context) {
@@ -159,6 +161,16 @@ class PrimaryButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: bg,
           border: border,
+          boxShadow: withShadow
+              ? [
+                  BoxShadow(
+                    color: context.colors.primary.withValues(alpha: .3),
+                    blurRadius: 4,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : null,
           borderRadius: BorderRadius.circular(m.radius),
         ),
         child: Material(

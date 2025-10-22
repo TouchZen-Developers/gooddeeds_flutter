@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:gooddeeds/features/donating/family/presentation/widgets/family_details_report_modal.dart';
 import 'package:gooddeeds/features/donating/items/presentation/widgets/donating_item_selection.dart';
 import 'package:gooddeeds/features/donating/items/presentation/widgets/received_item.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
@@ -8,7 +10,9 @@ import 'package:gooddeeds/shared/design_system/components/app_app_bar.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
+import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/shared/utils/toast_message.dart';
 
 class FamilyDetailsScreen extends StatelessWidget {
   const FamilyDetailsScreen({super.key});
@@ -19,11 +23,21 @@ class FamilyDetailsScreen extends StatelessWidget {
       appBar: AppAppBar(
         title: context.loc.familyDetails,
         actions: [
-          Container(
-            width: 44,
-            height: 44,
-            padding: const EdgeInsets.all(14),
-            child: Assets.icons.report.svg(),
+          GestureDetector(
+            onTap: () {
+              showCupertinoModalPopup(
+                context: context,
+                builder: (context) {
+                  return const FamilyDetailsReportModal();
+                },
+              );
+            },
+            child: Container(
+              width: 44,
+              height: 44,
+              padding: const EdgeInsets.all(14),
+              child: Assets.icons.report.svg(),
+            ),
           ),
         ],
       ),
@@ -212,7 +226,16 @@ class FamilyDetailsScreen extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            color: context.colors.onPrimary,
+            decoration: BoxDecoration(
+              color: context.colors.onPrimary,
+              boxShadow: [
+                BoxShadow(
+                  color: context.onSurface.shade100!.withValues(alpha: .1),
+                  spreadRadius: 4,
+                  blurRadius: 10,
+                ),
+              ],
+            ),
             padding: EdgeInsets.only(
               right: 20,
               left: 20,
@@ -228,19 +251,47 @@ class FamilyDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 const Gap(16),
-                Container(
-                  width: 48,
-                  height: 48,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: context.colors.primary),
-                  ),
-                  child: Assets.icons.cart.svg(
-                    colorFilter: ColorFilter.mode(
-                      context.colors.primary,
-                      BlendMode.srcIn,
-                    ),
+                SizedBox(
+                  width: 54,
+                  height: 54,
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: context.colors.primary),
+                          ),
+                          child: Assets.icons.cart.svg(
+                            colorFilter: ColorFilter.mode(
+                              context.colors.primary,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        top: 0,
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: context.colors.primary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: GDText(
+                            '3',
+                            style: context.textStyle.bodyXSmallMedium,
+                            color: context.colors.onPrimary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -321,7 +372,13 @@ class _DesiredItemsCard extends StatelessWidget {
             fullWidth: true,
             size: ButtonSize.small,
             variant: ButtonVariant.outlined,
-            onPressed: () {},
+            onPressed: () {
+              ToastMessage.showMessage(
+                context,
+                context.loc.addedToCart,
+                iconData: Icons.check_circle_rounded,
+              );
+            },
           ),
         ],
       ),

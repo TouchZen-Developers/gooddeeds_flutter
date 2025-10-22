@@ -4,11 +4,18 @@ import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AppAppBar({super.key, required this.title, this.bottom, this.actions});
+  const AppAppBar({
+    super.key,
+    required this.title,
+    this.bottom,
+    this.actions,
+    this.onBack,
+  });
 
   final String title;
   final PreferredSizeWidget? bottom;
   final List<Widget>? actions;
+  final VoidCallback? onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 56 + 20,
       leading: context.canPop()
           ? GestureDetector(
-              onTap: () => context.pop(),
+              onTap: onBack ?? () => context.pop(),
               child: Container(
                 width: 44,
                 height: 44,

@@ -118,10 +118,11 @@ class RegisterMenuScreen extends StatelessWidget {
                             onPressed: state.isLoading
                                 ? null
                                 : () {
-                                    context.read<GoogleSignInBloc>().add(
-                                          const GoogleSignInEvent
-                                              .signInWithGoogle(),
-                                        );
+                                    const ReceivingItemsRoute().go(context);
+                                    // context.read<GoogleSignInBloc>().add(
+                                    //       const GoogleSignInEvent
+                                    //           .signInWithGoogle(),
+                                    //     );
                                   },
                           );
                         },

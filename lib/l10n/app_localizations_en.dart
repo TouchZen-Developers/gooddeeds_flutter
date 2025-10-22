@@ -309,7 +309,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginSubtitle => 'Login to continue using the app';
 
   @override
-  String get dontHaveAccount => 'Don’t have an account?';
+  String get dontHaveAccount => 'Don\'t have an account?';
 
   @override
   String get passwordMinChars => 'Use at least 6 characters';
@@ -390,7 +390,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get verify => 'Verify';
 
   @override
-  String get didntReceiveCode => 'Don’t received code?';
+  String get didntReceiveCode => 'Don\'t received code?';
 
   @override
   String get invalidCode => 'Please enter a 4-digit code';
@@ -611,4 +611,213 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get done => 'Done';
+
+  @override
+  String get items => 'Items';
+
+  @override
+  String get receivingHomeHeader => 'Request the items you need today.';
+
+  @override
+  String get requestItems => 'Request Items';
+
+  @override
+  String get requestItemsHeader =>
+      'Select Items you are looking for assistance';
+
+  @override
+  String get familyInformation => 'Family Information';
+
+  @override
+  String get personal => 'Personal';
+
+  @override
+  String get ordersReceived => 'Orders Received';
+
+  @override
+  String get ordersReceivedDesc =>
+      'Receive updates when a new order is placed for items on your list.';
+
+  @override
+  String get ordersDelivered => 'Orders Delivered';
+
+  @override
+  String get ordersDeliveredDesc =>
+      'Receive updates when your order is delivered.';
+
+  @override
+  String get contactName => 'Contact Name';
+
+  @override
+  String get familySize => 'Family Size';
+
+  @override
+  String get fullAddress => 'Full Address';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get markAsReceived => 'Mark as Received';
+
+  @override
+  String get sendThankYouNote => 'Send Thank You Note';
+
+  @override
+  String get sendMessage => 'Send Message';
+
+  @override
+  String get addedToCart => 'Added to Cart';
+
+  @override
+  String get report => 'Report';
+
+  @override
+  String get pleaseWait => 'Please Wait...';
+
+  @override
+  String get processingOrdersWaiting => 'Processing orders, wait a moment..';
+
+  @override
+  String get yourCartIsEmpty => 'Your cart is empty ';
+
+  @override
+  String get yourCartIsEmptyDesc =>
+      'Looks like you haven\'t any donation to your cart yet.';
+
+  @override
+  String get successOrderMessage => 'Your order has been successfully';
+
+  @override
+  String get myOrder => 'My Order';
+
+  @override
+  String get noOrders => 'No Orders';
+
+  @override
+  String get noOrdersDesc => 'Looks like you don\'t have any orders yet';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get cancelChanges => 'Cancel changes';
+
+  @override
+  String get cancelEmailChangesDesc => 'Do you want to cancel email changes?';
+
+  @override
+  String get successEmailChangeMessage =>
+      'Your email has been successfully changed';
+
+  @override
+  String get emptyCardDesc => 'You don\'t have any cards yet';
+
+  @override
+  String get defaultText => 'Default';
+
+  @override
+  String get deleteCardDesc => 'Are you sure you want to delete this card?';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get pushNotifications => 'Push Notifications';
+
+  @override
+  String get receiveNotificationsForMessage =>
+      'Receive Notifications on the following';
+
+  @override
+  String get appUpdates => 'App Updates';
+
+  @override
+  String get somebodyOrdersYourItem => 'Somebody orders your item';
+
+  @override
+  String get alertsForFamiliesNeedHelp => 'Alerts for families who need help';
+
+  @override
+  String get allow => 'Allow';
+
+  @override
+  String get notNow => 'Not now';
+
+  @override
+  String get allowLocation => 'Allow Location';
+
+  @override
+  String get allowYourLocation => 'Allow your location';
+
+  @override
+  String get allowYourLocationDesc =>
+      'We will need your location to give you better experience.';
+
+  @override
+  String get sureILikeThat => 'Sure, I\'d like that';
+
+  @override
+  String get congrats => 'Congrats';
+
+  @override
+  String get approveProfileMessage =>
+      'Your application has been approved, please continue to complete your account!';
+
+  @override
+  String get applicationRejected => 'Application Rejected';
+
+  @override
+  String get applicationRejectedDesc =>
+      'We regret to inform you that your application has been rejected. Your statement or family photo may contain inapproproate material that is against our guidelines. Please try again later.';
+
+  @override
+  String get noItem => 'No Item';
+
+  @override
+  String get noItemDesc =>
+      'It looks like you don\'t have any item requests yet';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get exceededItemRequestMessage =>
+      'You have exceeded the amount of items you can request at a given time.';
+
+  @override
+  String get gotIt => 'Got it';
+
+  @override
+  String get itemDetails => 'Item Details';
+
+  @override
+  String get removeTheseItems => 'Remove these items';
+
+  @override
+  String get cost => 'Cost';
+
+  @override
+  String get removeItems => 'Remove Items';
+
+  @override
+  String get removeItemsDesc => 'Are you sure you want to remove this Item?';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get reportOrderMessage => 'What is the issue with the order?';
+
+  @override
+  String get enterMessage => 'Enter messages';
+
+  @override
+  String get sendReport => 'Send Report';
 }

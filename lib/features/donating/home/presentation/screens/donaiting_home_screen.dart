@@ -10,8 +10,32 @@ import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
-class DonaitingHomeScreen extends StatelessWidget {
+class DonaitingHomeScreen extends StatefulWidget {
   const DonaitingHomeScreen({super.key});
+
+  @override
+  State<DonaitingHomeScreen> createState() => _DonaitingHomeScreenState();
+}
+
+class _DonaitingHomeScreenState extends State<DonaitingHomeScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) async {
+        await NotificationPermissionRoute([
+          context.loc.appUpdates,
+          context.loc.deliveryConfirmation,
+          context.loc.alertsForFamiliesNeedHelp,
+        ]).push(context);
+
+        if (!context.mounted) return;
+        // ignore: use_build_context_synchronously
+        const LocationPermissionRoute().push(context);
+      },
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

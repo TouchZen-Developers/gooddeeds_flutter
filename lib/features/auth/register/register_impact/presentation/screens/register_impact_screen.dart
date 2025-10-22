@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gooddeeds/features/auth/register/register_impact/presentation/widgets/affected_events_widget.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -130,41 +131,10 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                         const Gap(10),
 
                         // Field-like opener
-                        InkWell(
-                          borderRadius: BorderRadius.circular(14),
+                        AffectedEventsWidget(
                           onTap: () => _onChooseEvent(context),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 16,
-                            ),
-                            decoration: BoxDecoration(
-                              color: BrandTones.grey10,
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
-                                color: eventErr != null
-                                    ? BrandTones.red
-                                    : BrandTones.grey20,
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    state.affectedEvent ??
-                                        context.loc.chooseEvent, // 👈 loc
-                                    style: (state.affectedEvent == null
-                                            ? text.bodyMediumMedium.copyWith(
-                                                color: BrandTones.grey50,
-                                              )
-                                            : text.bodyMediumMedium)
-                                        .copyWith(color: BrandTones.grey100),
-                                  ),
-                                ),
-                                const Icon(Icons.expand_more_rounded),
-                              ],
-                            ),
-                          ),
+                          affectedEvent: state.affectedEvent,
+                          eventErr: eventErr,
                         ),
                         AnimatedSwitcher(
                           duration: const Duration(milliseconds: 160),

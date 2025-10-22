@@ -9,7 +9,7 @@ import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../../src/config/routes/app_router.dart';
 import '../../../email/presentation/components/step_header.dart';
-import '../../../pending/presentation/screens/submiting_dialog.dart';
+import '../../../../../../shared/utils/loading_dialog.dart';
 import '../bloc/register_family_photo_bloc.dart';
 import '../widgets/family_photo_card.dart';
 
@@ -32,12 +32,7 @@ class RegisterFamilyPhotoScreen extends StatelessWidget {
       return;
     }
 
-    showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black.withValues(alpha: 0.45),
-      builder: (_) => const SubmittingDialog(),
-    );
+    LoadingDialog.show(context, text: context.loc.submittingApplication);
 
     await Future<void>.delayed(const Duration(seconds: 2));
 

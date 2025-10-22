@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/app_app_bar.dart';
 import 'package:gooddeeds/shared/design_system/components/gd_simple_action_dialog.dart';
 import 'package:gooddeeds/shared/design_system/components/password_field.dart';
@@ -9,7 +10,8 @@ import 'package:gooddeeds/shared/design_system/typography/gd_text.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
-  const ChangePasswordScreen({super.key});
+  const ChangePasswordScreen({super.key, required this.redirectPath});
+  final String redirectPath;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,13 @@ class ChangePasswordScreen extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                   ),
+                ).then(
+                  (value) {
+                    if (!context.mounted) return;
+                    if (context.mounted) {
+                      context.go(redirectPath);
+                    }
+                  },
                 );
               },
             ),
