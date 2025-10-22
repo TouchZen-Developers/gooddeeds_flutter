@@ -117,22 +117,13 @@ class RegisterImpactBloc
     }
   }
 
-  bool _isValid(RegisterImpactState s) =>
-      (s.affectedEvent?.isNotEmpty ?? false) && s.statement.trim().length >= 10;
+  bool _isValid(RegisterImpactState s) => true; // All fields are optional now
 
   void _validateAndEmit(
     RegisterImpactState state,
     Emitter<RegisterImpactState> emit,
   ) {
-    final affectedEventValid = state.affectedEvent?.isNotEmpty ?? false;
-    final statementValid = state.statement.trim().length >= 10;
-
-    // Show errors immediately if any field is invalid
-    if (!affectedEventValid || !statementValid) {
-      emit(state.copyWith(showErrors: true));
-    } else {
-      // Hide errors if all fields are valid
-      emit(state.copyWith(showErrors: false));
-    }
+    // All fields are optional - no validation needed
+    emit(state.copyWith(showErrors: false));
   }
 }

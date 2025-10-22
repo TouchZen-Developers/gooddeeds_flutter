@@ -154,6 +154,7 @@ class ParentRegistrationBloc
   ValidationResult _validateAllData(ParentRegistrationState state) {
     final List<String> missingFields = [];
 
+    // Only validate required fields
     if (state.email.isEmpty) missingFields.add('Email');
     if (state.password.isEmpty) missingFields.add('Password');
     if (state.passwordConfirmation.isEmpty) {
@@ -161,17 +162,9 @@ class ParentRegistrationBloc
     }
     if (state.firstName.isEmpty) missingFields.add('First Name');
     if (state.lastName.isEmpty) missingFields.add('Last Name');
-    if (state.familySize.isEmpty) missingFields.add('Family Size');
     if (state.phoneNumber.isEmpty) missingFields.add('Phone Number');
-    if (state.address.isEmpty) missingFields.add('Address');
-    if (state.city.isEmpty) missingFields.add('City');
-    if (state.state.isEmpty) missingFields.add('State');
-    if (state.zipCode.isEmpty) missingFields.add('Zip Code');
-    if (state.affectedEvent.isEmpty) missingFields.add('Affected Event');
-    if (state.statement.isEmpty) missingFields.add('Statement');
-    if (state.familyPhotoPath == null || state.familyPhotoPath!.isEmpty) {
-      missingFields.add('Family Photo');
-    }
+
+    // Optional fields are not validated (familySize, address, city, state, zipCode, affectedEvent, statement, familyPhotoPath)
 
     if (missingFields.isEmpty) {
       return ValidationResult(isValid: true, errorMessage: '');

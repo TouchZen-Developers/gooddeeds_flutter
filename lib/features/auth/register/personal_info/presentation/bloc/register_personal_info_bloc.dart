@@ -114,8 +114,12 @@ class RegisterPersonalInfoBloc
     if (s.isDonorFlow) {
       return hasNames && s.phone.trim().isValidUSPhone;
     } else {
-      final fam = int.tryParse(s.familyCount ?? '') ?? 0;
-      return hasNames && fam > 0;
+      // Family size is optional - only validate if provided
+      if (s.familyCount?.isNotEmpty == true) {
+        final fam = int.tryParse(s.familyCount!) ?? 0;
+        return hasNames && fam > 0;
+      }
+      return hasNames; // Allow empty family size
     }
   }
 }

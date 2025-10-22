@@ -77,16 +77,24 @@ extension PasswordValidationX on String {
   /// Returns specific password validation error message or null if valid
   String? get passwordValidationError {
     final password = trim();
-    if (password.isEmpty) return 'Password is required';
-    if (password.length < 8) return 'Password must be at least 8 characters';
-    if (!_passwordUppercaseRegex.hasMatch(password))
+    if (password.isEmpty) {
+      return 'Password is required';
+    }
+    if (password.length < 8) {
+      return 'Password must be at least 8 characters';
+    }
+    if (!_passwordUppercaseRegex.hasMatch(password)) {
       return 'Password must contain uppercase letter';
-    if (!_passwordLowercaseRegex.hasMatch(password))
+    }
+    if (!_passwordLowercaseRegex.hasMatch(password)) {
       return 'Password must contain lowercase letter';
-    if (!_passwordNumberRegex.hasMatch(password))
+    }
+    if (!_passwordNumberRegex.hasMatch(password)) {
       return 'Password must contain at least one number';
-    if (!_passwordSymbolRegex.hasMatch(password))
+    }
+    if (!_passwordSymbolRegex.hasMatch(password)) {
       return 'Password must contain a symbol';
+    }
     return null;
   }
 }

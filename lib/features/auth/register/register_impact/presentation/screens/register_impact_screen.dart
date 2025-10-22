@@ -65,11 +65,9 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
               context.loc.none,
             ];
 
-  String? _eventErr(String? v) =>
-      (v == null || v.isEmpty) ? context.loc.pleaseChooseAnEvent : null;
+  String? _eventErr(String? v) => null; // Event is optional
 
-  String? _statementErr(String v) =>
-      v.trim().length < 10 ? context.loc.pleaseWriteAtLeast10Characters : null;
+  String? _statementErr(String v) => null; // Statement is optional
 
   void _onChooseEvent(BuildContext context) async {
     final bloc = context.read<RegisterImpactBloc>();
@@ -89,30 +87,7 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
     final impactBloc = context.read<RegisterImpactBloc>();
     final parentBloc = context.read<ParentRegistrationBloc>();
 
-    // Check if form is valid
-    final affectedOk = impactBloc.state.affectedEvent?.isNotEmpty ?? false;
-    final statementOk = impactBloc.state.statement.trim().length >= 10;
-
-    if (!affectedOk || !statementOk) {
-      // Show specific validation errors
-      String errorMessage = '';
-      if (!affectedOk) {
-        errorMessage += '• ${context.loc.pleaseChooseAnEvent}\n';
-      }
-      if (!statementOk) {
-        errorMessage += '• ${context.loc.pleaseWriteAtLeast10Characters}';
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(errorMessage.trim()),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 3),
-        ),
-      );
-      return;
-    }
-
+    // All fields are optional - no validation needed
     // Persist impact info to parent and go to step 5 (family photo)
     if (!parentBloc.isClosed) {
       parentBloc.add(
@@ -276,8 +251,8 @@ class _RegisterImpactScreenState extends State<RegisterImpactScreen> {
                           maxLines: 6,
                           textInputAction: TextInputAction.newline,
                           decoration: InputDecoration(
-                            hintText:
-                                context.loc.explainStatementHint, // 👈 loc
+                            hintText: context.loc.explainStatementHint,
+                            // 👈 loc
                             hintStyle: text.bodyMediumMedium
                                 .copyWith(color: BrandTones.grey50),
                             filled: true,

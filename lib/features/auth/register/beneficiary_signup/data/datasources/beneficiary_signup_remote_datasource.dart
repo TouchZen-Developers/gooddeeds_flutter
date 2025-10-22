@@ -11,7 +11,9 @@ import '../models/beneficiary_signup_dto.dart';
 abstract class BeneficiarySignupRemoteDataSource {
   /// Performs beneficiary signup API call with multipart/form-data
   Future<ApiResult<BeneficiarySignupDto>> signup(
-      Map<String, dynamic> data, String? photoPath);
+    Map<String, dynamic> data,
+    String? photoPath,
+  );
 }
 
 /// Implementation of BeneficiarySignupRemoteDataSource using Dio with FormData

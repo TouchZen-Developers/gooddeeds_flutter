@@ -26,32 +26,17 @@ class _RegisterFamilyPhotoScreenState extends State<RegisterFamilyPhotoScreen> {
     final photoBloc = context.read<RegisterFamilyPhotoBloc>();
     final parentBloc = context.read<ParentRegistrationBloc>();
 
-    final hasPhoto =
-        photoBloc.state.maybeWhen(ready: (_) => true, orElse: () => false);
-
-    if (!hasPhoto) {
-      // Check if bloc is still open before adding events
-      if (!photoBloc.isClosed) {
-        photoBloc.add(
-          RegisterFamilyPhotoEvent.needPhotoError(
-            context.loc.uploadPhotoRequired,
-          ),
-        );
-      }
-      return;
-    }
-
-    // Get photo path from photo bloc state
+    // Family photo is optional - allow continuing without photo
     String? photoPath;
     photoBloc.state.maybeWhen(
       ready: (file) => photoPath = file.path,
       orElse: () {},
     );
 
-    // Save photo path to parent bloc
-    if (photoPath != null && !parentBloc.isClosed) {
+    // Save photo path to parent bloc (can be null)
+    if (!parentBloc.isClosed) {
       parentBloc.add(
-        ParentRegistrationEvent.setFamilyPhoto(photoPath: photoPath!),
+        ParentRegistrationEvent.setFamilyPhoto(photoPath: photoPath ?? ''),
       );
     }
 

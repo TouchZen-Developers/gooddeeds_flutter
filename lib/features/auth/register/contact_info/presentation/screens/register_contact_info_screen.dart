@@ -170,22 +170,30 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                 _syncControllersWithBloc();
               });
 
-              final addrErr = state.showErrors && !state.isAddressValid
+              final addrErr = state.showErrors &&
+                      !state.isAddressValid &&
+                      state.address.trim().isNotEmpty
                   ? context.loc.addressIsRequired
                   : null;
               final phoneErr = state.showErrors && !state.isPhoneValid
                   ? context.loc.enterValidNumber
                   : null;
 
-              final cityErr = state.showErrors && !state.isCityValid
+              final cityErr = state.showErrors &&
+                      !state.isCityValid &&
+                      state.city.trim().isNotEmpty
                   ? context.loc.enterCity
                   : null;
 
-              final stErr = state.showErrors && !state.isStateValid
+              final stErr = state.showErrors &&
+                      !state.isStateValid &&
+                      state.stateName.trim().isNotEmpty
                   ? context.loc.enterState
                   : null;
 
-              final zipErr = state.showErrors && !state.isZipValid
+              final zipErr = state.showErrors &&
+                      !state.isZipValid &&
+                      state.zip.trim().isNotEmpty
                   ? context.loc.enterValidNumber
                   : null;
 

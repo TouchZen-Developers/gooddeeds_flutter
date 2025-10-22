@@ -109,8 +109,11 @@ class _RegisterPersonalInfoScreenState
   }
 
   String? _familyErrorFor(String v) {
+    // Allow empty family size (optional field)
+    if (v.isEmpty) return null;
+
+    // If provided, validate it's a valid positive number
     final n = int.tryParse(v);
-    if (v.isEmpty) return context.loc.enterFamilyMembersCount;
     if (n == null || n <= 0) return context.loc.enterValidNumber;
     return null;
   }
