@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
@@ -8,6 +9,7 @@ import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 
 import '../../../../../src/config/routes/app_router.dart';
 import '../bloc/login_bloc.dart';
+import 'social_login_button.dart';
 
 class LoginBottomBar extends StatelessWidget {
   const LoginBottomBar({super.key});
@@ -17,54 +19,108 @@ class LoginBottomBar extends StatelessWidget {
     final gaps = context.gaps;
     final text = context.textStyle;
 
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        BlocBuilder<LoginBloc, LoginState>(
+          buildWhen: (p, c) => p.isSubmitting != c.isSubmitting,
+          builder: (context, state) {
+            return PrimaryButton(
+              label: context.loc.login,
+              size: ButtonSize.large,
+              fullWidth: true,
+              loading: state.isSubmitting,
+              onPressed: state.isSubmitting
+                  ? null
+                  : () => context
+                      .read<LoginBloc>()
+                      .add(const LoginEvent.submitted()),
+            );
+          },
+        ),
+        Gap(gaps.lg),
+
+        // OR WITH divider
+        Row(
           children: [
-            BlocBuilder<LoginBloc, LoginState>(
-              buildWhen: (p, c) => p.isSubmitting != c.isSubmitting,
-              builder: (context, state) {
-                return PrimaryButton(
-                  label: context.loc.login,
-                  size: ButtonSize.large,
-                  fullWidth: true,
-                  onPressed: state.isSubmitting
-                      ? null
-                      : () => context
-                          .read<LoginBloc>()
-                          .add(const LoginEvent.submitted()),
-                );
-              },
+            const Expanded(
+              child: Divider(
+                color: BrandTones.grey30,
+                thickness: 1,
+              ),
             ),
-            Gap(gaps.md),
-            Center(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 6,
-                children: [
-                  Text(
-                    context.loc.dontHaveAccount,
-                    style: text.bodySmallRegular.copyWith(
-                      color: BrandTones.grey70,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => const RegisterEmailRoute().push(context),
-                    child: Text(
-                      context.loc.register,
-                      style: text.bodySmallMedium.copyWith(
-                        color: context.colors.secondary,
-                      ),
-                    ),
-                  ),
-                ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                context.loc.orWith,
+                style: text.bodySmallRegular.copyWith(
+                  color: BrandTones.grey100,
+                ),
+              ),
+            ),
+            const Expanded(
+              child: Divider(
+                color: BrandTones.grey20,
+                thickness: 1,
               ),
             ),
           ],
         ),
-      ),
+
+        Gap(gaps.lg),
+
+        // Social login buttons
+        Row(
+          children: [
+            Expanded(
+              child: SocialLoginButton(
+                label: context.loc.signinWithApple,
+                iconPath: Assets.icons.apple.path,
+                onPressed: () {
+                  // TODO: Implement Apple Sign In
+                },
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: SocialLoginButton(
+                label: context.loc.signinWithGoogle,
+                iconPath: Assets.icons.google.path,
+                onPressed: () {
+                  // TODO: Implement Google Sign In
+                },
+              ),
+            ),
+          ],
+        ),
+
+        Gap(gaps.md),
+
+        // Don't have account
+        Center(
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 6,
+            children: [
+              Text(
+                context.loc.dontHaveAccount,
+                style: text.bodySmallRegular.copyWith(
+                  color: BrandTones.grey60,
+                ),
+              ),
+              GestureDetector(
+                onTap: () => const RegisterEmailRoute().push(context),
+                child: Text(
+                  context.loc.register,
+                  style: text.bodySmallMedium.copyWith(
+                    color: context.colors.secondary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

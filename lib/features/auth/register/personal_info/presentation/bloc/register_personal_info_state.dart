@@ -8,10 +8,14 @@ abstract class RegisterPersonalInfoState with _$RegisterPersonalInfoState {
     @Default('') String lastName,
     String? familyCount,
     @Default('') String phone,
+    @Default('') String email,
+    @Default('') String password,
+    @Default('') String passwordConfirmation,
     @Default(false) bool isDonorFlow,
     @Default(false) bool isSubmitting,
     @Default(false) bool showErrors,
     @Default(false) bool completed,
+    bool? success,
   }) = _RegisterPersonalInfoState;
 
   factory RegisterPersonalInfoState.initial() =>

@@ -456,7 +456,9 @@ mixin _$LoginState {
   bool get showErrors;
   String? get emailError;
   String? get passwordError;
+  String? get apiError;
   bool? get success;
+  LoginResponseEntity? get loginResponse;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -483,16 +485,30 @@ mixin _$LoginState {
                 other.emailError == emailError) &&
             (identical(other.passwordError, passwordError) ||
                 other.passwordError == passwordError) &&
-            (identical(other.success, success) || other.success == success));
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.loginResponse, loginResponse) ||
+                other.loginResponse == loginResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, showPassword,
-      isSubmitting, showErrors, emailError, passwordError, success);
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      password,
+      showPassword,
+      isSubmitting,
+      showErrors,
+      emailError,
+      passwordError,
+      apiError,
+      success,
+      loginResponse);
 
   @override
   String toString() {
-    return 'LoginState(email: $email, password: $password, showPassword: $showPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, passwordError: $passwordError, success: $success)';
+    return 'LoginState(email: $email, password: $password, showPassword: $showPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, passwordError: $passwordError, apiError: $apiError, success: $success, loginResponse: $loginResponse)';
   }
 }
 
@@ -510,7 +526,11 @@ abstract mixin class $LoginStateCopyWith<$Res> {
       bool showErrors,
       String? emailError,
       String? passwordError,
-      bool? success});
+      String? apiError,
+      bool? success,
+      LoginResponseEntity? loginResponse});
+
+  $LoginResponseEntityCopyWith<$Res>? get loginResponse;
 }
 
 /// @nodoc
@@ -532,7 +552,9 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
     Object? showErrors = null,
     Object? emailError = freezed,
     Object? passwordError = freezed,
+    Object? apiError = freezed,
     Object? success = freezed,
+    Object? loginResponse = freezed,
   }) {
     return _then(_self.copyWith(
       email: null == email
@@ -563,11 +585,33 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
           ? _self.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
               as String?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
+      loginResponse: freezed == loginResponse
+          ? _self.loginResponse
+          : loginResponse // ignore: cast_nullable_to_non_nullable
+              as LoginResponseEntity?,
     ));
+  }
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginResponseEntityCopyWith<$Res>? get loginResponse {
+    if (_self.loginResponse == null) {
+      return null;
+    }
+
+    return $LoginResponseEntityCopyWith<$Res>(_self.loginResponse!, (value) {
+      return _then(_self.copyWith(loginResponse: value));
+    });
   }
 }
 
@@ -672,7 +716,9 @@ extension LoginStatePatterns on LoginState {
             bool showErrors,
             String? emailError,
             String? passwordError,
-            bool? success)?
+            String? apiError,
+            bool? success,
+            LoginResponseEntity? loginResponse)?
         $default, {
     required TResult orElse(),
   }) {
@@ -687,7 +733,9 @@ extension LoginStatePatterns on LoginState {
             _that.showErrors,
             _that.emailError,
             _that.passwordError,
-            _that.success);
+            _that.apiError,
+            _that.success,
+            _that.loginResponse);
       case _:
         return orElse();
     }
@@ -716,7 +764,9 @@ extension LoginStatePatterns on LoginState {
             bool showErrors,
             String? emailError,
             String? passwordError,
-            bool? success)
+            String? apiError,
+            bool? success,
+            LoginResponseEntity? loginResponse)
         $default,
   ) {
     final _that = this;
@@ -730,7 +780,9 @@ extension LoginStatePatterns on LoginState {
             _that.showErrors,
             _that.emailError,
             _that.passwordError,
-            _that.success);
+            _that.apiError,
+            _that.success,
+            _that.loginResponse);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -758,7 +810,9 @@ extension LoginStatePatterns on LoginState {
             bool showErrors,
             String? emailError,
             String? passwordError,
-            bool? success)?
+            String? apiError,
+            bool? success,
+            LoginResponseEntity? loginResponse)?
         $default,
   ) {
     final _that = this;
@@ -772,7 +826,9 @@ extension LoginStatePatterns on LoginState {
             _that.showErrors,
             _that.emailError,
             _that.passwordError,
-            _that.success);
+            _that.apiError,
+            _that.success,
+            _that.loginResponse);
       case _:
         return null;
     }
@@ -790,7 +846,9 @@ class _LoginState implements LoginState {
       required this.showErrors,
       this.emailError,
       this.passwordError,
-      this.success});
+      this.apiError,
+      this.success,
+      this.loginResponse});
 
   @override
   final String email;
@@ -807,7 +865,11 @@ class _LoginState implements LoginState {
   @override
   final String? passwordError;
   @override
+  final String? apiError;
+  @override
   final bool? success;
+  @override
+  final LoginResponseEntity? loginResponse;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -835,16 +897,30 @@ class _LoginState implements LoginState {
                 other.emailError == emailError) &&
             (identical(other.passwordError, passwordError) ||
                 other.passwordError == passwordError) &&
-            (identical(other.success, success) || other.success == success));
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.loginResponse, loginResponse) ||
+                other.loginResponse == loginResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, showPassword,
-      isSubmitting, showErrors, emailError, passwordError, success);
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      password,
+      showPassword,
+      isSubmitting,
+      showErrors,
+      emailError,
+      passwordError,
+      apiError,
+      success,
+      loginResponse);
 
   @override
   String toString() {
-    return 'LoginState(email: $email, password: $password, showPassword: $showPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, passwordError: $passwordError, success: $success)';
+    return 'LoginState(email: $email, password: $password, showPassword: $showPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, emailError: $emailError, passwordError: $passwordError, apiError: $apiError, success: $success, loginResponse: $loginResponse)';
   }
 }
 
@@ -864,7 +940,12 @@ abstract mixin class _$LoginStateCopyWith<$Res>
       bool showErrors,
       String? emailError,
       String? passwordError,
-      bool? success});
+      String? apiError,
+      bool? success,
+      LoginResponseEntity? loginResponse});
+
+  @override
+  $LoginResponseEntityCopyWith<$Res>? get loginResponse;
 }
 
 /// @nodoc
@@ -886,7 +967,9 @@ class __$LoginStateCopyWithImpl<$Res> implements _$LoginStateCopyWith<$Res> {
     Object? showErrors = null,
     Object? emailError = freezed,
     Object? passwordError = freezed,
+    Object? apiError = freezed,
     Object? success = freezed,
+    Object? loginResponse = freezed,
   }) {
     return _then(_LoginState(
       email: null == email
@@ -917,11 +1000,33 @@ class __$LoginStateCopyWithImpl<$Res> implements _$LoginStateCopyWith<$Res> {
           ? _self.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
               as String?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
+      loginResponse: freezed == loginResponse
+          ? _self.loginResponse
+          : loginResponse // ignore: cast_nullable_to_non_nullable
+              as LoginResponseEntity?,
     ));
+  }
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginResponseEntityCopyWith<$Res>? get loginResponse {
+    if (_self.loginResponse == null) {
+      return null;
+    }
+
+    return $LoginResponseEntityCopyWith<$Res>(_self.loginResponse!, (value) {
+      return _then(_self.copyWith(loginResponse: value));
+    });
   }
 }
 

@@ -8,6 +8,7 @@ import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/tokens/colors.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
+import 'package:gooddeeds/shared/design_system/utils/validators.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../shared/design_system/components/gd_simple_action_dialog.dart';
@@ -33,7 +34,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   String? _passwordErrorFor(String password) {
     if (password.isEmpty) return context.loc.passwordRequired;
-    if (password.length < 6) return context.loc.passwordMinChars;
+    if (!password.isValidPassword) {
+      return password.passwordValidationError;
+    }
     return null;
   }
 
@@ -45,6 +48,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   void _onSubmit(BuildContext context) {
     final bloc = context.read<ResetPasswordBloc>();
+
     bloc
       ..add(ResetPasswordEvent.newPasswordChanged(_passCtrl.text))
       ..add(ResetPasswordEvent.confirmChanged(_confirmCtrl.text))
@@ -74,10 +78,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               },
             ),
           );
-        } else if (state.success == false) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.loc.resetPasswordFailed)),
-          );
         }
       },
       child: Scaffold(
@@ -106,8 +106,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   label: loc.resetPasswordCta,
                   size: ButtonSize.large,
                   fullWidth: true,
+                  loading: state.isSubmitting,
                   onPressed: canPress ? () => _onSubmit(context) : null,
-                  // loading: state.isSubmitting,
                 );
               },
             ),
@@ -152,7 +152,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           return PasswordField(
                             controller: _passCtrl,
                             label: loc.newPasswordLabel,
-                            hint: loc.enterPassword,
+                            hint: loc.passwordHint,
                             errorText: errorText,
                             onChanged: (v) => context
                                 .read<ResetPasswordBloc>()

@@ -10,7 +10,9 @@ abstract class LoginState with _$LoginState {
     required bool showErrors,
     String? emailError,
     String? passwordError,
+    String? apiError,
     bool? success,
+    LoginResponseEntity? loginResponse,
   }) = _LoginState;
 
   factory LoginState.initial() => const LoginState(

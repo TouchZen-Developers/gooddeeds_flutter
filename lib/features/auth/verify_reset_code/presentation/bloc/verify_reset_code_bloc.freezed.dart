@@ -52,6 +52,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CodeChanged value)? codeChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_ResendPressed value)? resendPressed,
     TResult Function(_Submitted value)? submitted,
     required TResult orElse(),
@@ -60,6 +61,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged() when codeChanged != null:
         return codeChanged(_that);
+      case _EmailChanged() when emailChanged != null:
+        return emailChanged(_that);
       case _ResendPressed() when resendPressed != null:
         return resendPressed(_that);
       case _Submitted() when submitted != null:
@@ -85,6 +88,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CodeChanged value) codeChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_ResendPressed value) resendPressed,
     required TResult Function(_Submitted value) submitted,
   }) {
@@ -92,6 +96,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged():
         return codeChanged(_that);
+      case _EmailChanged():
+        return emailChanged(_that);
       case _ResendPressed():
         return resendPressed(_that);
       case _Submitted():
@@ -116,6 +122,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CodeChanged value)? codeChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_ResendPressed value)? resendPressed,
     TResult? Function(_Submitted value)? submitted,
   }) {
@@ -123,6 +130,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged() when codeChanged != null:
         return codeChanged(_that);
+      case _EmailChanged() when emailChanged != null:
+        return emailChanged(_that);
       case _ResendPressed() when resendPressed != null:
         return resendPressed(_that);
       case _Submitted() when submitted != null:
@@ -147,6 +156,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? codeChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function()? resendPressed,
     TResult Function()? submitted,
     required TResult orElse(),
@@ -155,6 +165,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged() when codeChanged != null:
         return codeChanged(_that.value);
+      case _EmailChanged() when emailChanged != null:
+        return emailChanged(_that.value);
       case _ResendPressed() when resendPressed != null:
         return resendPressed();
       case _Submitted() when submitted != null:
@@ -180,6 +192,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) codeChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function() resendPressed,
     required TResult Function() submitted,
   }) {
@@ -187,6 +200,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged():
         return codeChanged(_that.value);
+      case _EmailChanged():
+        return emailChanged(_that.value);
       case _ResendPressed():
         return resendPressed();
       case _Submitted():
@@ -211,6 +226,7 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? codeChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function()? resendPressed,
     TResult? Function()? submitted,
   }) {
@@ -218,6 +234,8 @@ extension VerifyResetCodeEventPatterns on VerifyResetCodeEvent {
     switch (_that) {
       case _CodeChanged() when codeChanged != null:
         return codeChanged(_that.value);
+      case _EmailChanged() when emailChanged != null:
+        return emailChanged(_that.value);
       case _ResendPressed() when resendPressed != null:
         return resendPressed();
       case _Submitted() when submitted != null:
@@ -293,6 +311,70 @@ class __$CodeChangedCopyWithImpl<$Res> implements _$CodeChangedCopyWith<$Res> {
 
 /// @nodoc
 
+class _EmailChanged implements VerifyResetCodeEvent {
+  const _EmailChanged(this.value);
+
+  final String value;
+
+  /// Create a copy of VerifyResetCodeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EmailChangedCopyWith<_EmailChanged> get copyWith =>
+      __$EmailChangedCopyWithImpl<_EmailChanged>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _EmailChanged &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  String toString() {
+    return 'VerifyResetCodeEvent.emailChanged(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$EmailChangedCopyWith<$Res>
+    implements $VerifyResetCodeEventCopyWith<$Res> {
+  factory _$EmailChangedCopyWith(
+          _EmailChanged value, $Res Function(_EmailChanged) _then) =
+      __$EmailChangedCopyWithImpl;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$EmailChangedCopyWithImpl<$Res>
+    implements _$EmailChangedCopyWith<$Res> {
+  __$EmailChangedCopyWithImpl(this._self, this._then);
+
+  final _EmailChanged _self;
+  final $Res Function(_EmailChanged) _then;
+
+  /// Create a copy of VerifyResetCodeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_EmailChanged(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _ResendPressed implements VerifyResetCodeEvent {
   const _ResendPressed();
 
@@ -334,9 +416,12 @@ class _Submitted implements VerifyResetCodeEvent {
 /// @nodoc
 mixin _$VerifyResetCodeState {
   String get code;
+  String get email;
   bool get isSubmitting;
   bool get isResending;
   bool get showErrors;
+  String? get apiError;
+  String? get verificationToken;
   bool? get success;
 
   /// Create a copy of VerifyResetCodeState
@@ -353,22 +438,27 @@ mixin _$VerifyResetCodeState {
         (other.runtimeType == runtimeType &&
             other is VerifyResetCodeState &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isResending, isResending) ||
                 other.isResending == isResending) &&
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
+            (identical(other.verificationToken, verificationToken) ||
+                other.verificationToken == verificationToken) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, code, isSubmitting, isResending, showErrors, success);
+  int get hashCode => Object.hash(runtimeType, code, email, isSubmitting,
+      isResending, showErrors, apiError, verificationToken, success);
 
   @override
   String toString() {
-    return 'VerifyResetCodeState(code: $code, isSubmitting: $isSubmitting, isResending: $isResending, showErrors: $showErrors, success: $success)';
+    return 'VerifyResetCodeState(code: $code, email: $email, isSubmitting: $isSubmitting, isResending: $isResending, showErrors: $showErrors, apiError: $apiError, verificationToken: $verificationToken, success: $success)';
   }
 }
 
@@ -380,9 +470,12 @@ abstract mixin class $VerifyResetCodeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String code,
+      String email,
       bool isSubmitting,
       bool isResending,
       bool showErrors,
+      String? apiError,
+      String? verificationToken,
       bool? success});
 }
 
@@ -400,15 +493,22 @@ class _$VerifyResetCodeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? email = null,
     Object? isSubmitting = null,
     Object? isResending = null,
     Object? showErrors = null,
+    Object? apiError = freezed,
+    Object? verificationToken = freezed,
     Object? success = freezed,
   }) {
     return _then(_self.copyWith(
       code: null == code
           ? _self.code
           : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
@@ -422,6 +522,14 @@ class _$VerifyResetCodeStateCopyWithImpl<$Res>
           ? _self.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verificationToken: freezed == verificationToken
+          ? _self.verificationToken
+          : verificationToken // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -523,16 +631,30 @@ extension VerifyResetCodeStatePatterns on VerifyResetCodeState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String code, bool isSubmitting, bool isResending,
-            bool showErrors, bool? success)?
+    TResult Function(
+            String code,
+            String email,
+            bool isSubmitting,
+            bool isResending,
+            bool showErrors,
+            String? apiError,
+            String? verificationToken,
+            bool? success)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _VerifyResetCodeState() when $default != null:
-        return $default(_that.code, _that.isSubmitting, _that.isResending,
-            _that.showErrors, _that.success);
+        return $default(
+            _that.code,
+            _that.email,
+            _that.isSubmitting,
+            _that.isResending,
+            _that.showErrors,
+            _that.apiError,
+            _that.verificationToken,
+            _that.success);
       case _:
         return orElse();
     }
@@ -553,15 +675,29 @@ extension VerifyResetCodeStatePatterns on VerifyResetCodeState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String code, bool isSubmitting, bool isResending,
-            bool showErrors, bool? success)
+    TResult Function(
+            String code,
+            String email,
+            bool isSubmitting,
+            bool isResending,
+            bool showErrors,
+            String? apiError,
+            String? verificationToken,
+            bool? success)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _VerifyResetCodeState():
-        return $default(_that.code, _that.isSubmitting, _that.isResending,
-            _that.showErrors, _that.success);
+        return $default(
+            _that.code,
+            _that.email,
+            _that.isSubmitting,
+            _that.isResending,
+            _that.showErrors,
+            _that.apiError,
+            _that.verificationToken,
+            _that.success);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -581,15 +717,29 @@ extension VerifyResetCodeStatePatterns on VerifyResetCodeState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String code, bool isSubmitting, bool isResending,
-            bool showErrors, bool? success)?
+    TResult? Function(
+            String code,
+            String email,
+            bool isSubmitting,
+            bool isResending,
+            bool showErrors,
+            String? apiError,
+            String? verificationToken,
+            bool? success)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _VerifyResetCodeState() when $default != null:
-        return $default(_that.code, _that.isSubmitting, _that.isResending,
-            _that.showErrors, _that.success);
+        return $default(
+            _that.code,
+            _that.email,
+            _that.isSubmitting,
+            _that.isResending,
+            _that.showErrors,
+            _that.apiError,
+            _that.verificationToken,
+            _that.success);
       case _:
         return null;
     }
@@ -601,19 +751,28 @@ extension VerifyResetCodeStatePatterns on VerifyResetCodeState {
 class _VerifyResetCodeState implements VerifyResetCodeState {
   const _VerifyResetCodeState(
       {required this.code,
+      required this.email,
       required this.isSubmitting,
       required this.isResending,
       required this.showErrors,
+      this.apiError,
+      this.verificationToken,
       this.success});
 
   @override
   final String code;
+  @override
+  final String email;
   @override
   final bool isSubmitting;
   @override
   final bool isResending;
   @override
   final bool showErrors;
+  @override
+  final String? apiError;
+  @override
+  final String? verificationToken;
   @override
   final bool? success;
 
@@ -632,22 +791,27 @@ class _VerifyResetCodeState implements VerifyResetCodeState {
         (other.runtimeType == runtimeType &&
             other is _VerifyResetCodeState &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isResending, isResending) ||
                 other.isResending == isResending) &&
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
+            (identical(other.verificationToken, verificationToken) ||
+                other.verificationToken == verificationToken) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, code, isSubmitting, isResending, showErrors, success);
+  int get hashCode => Object.hash(runtimeType, code, email, isSubmitting,
+      isResending, showErrors, apiError, verificationToken, success);
 
   @override
   String toString() {
-    return 'VerifyResetCodeState(code: $code, isSubmitting: $isSubmitting, isResending: $isResending, showErrors: $showErrors, success: $success)';
+    return 'VerifyResetCodeState(code: $code, email: $email, isSubmitting: $isSubmitting, isResending: $isResending, showErrors: $showErrors, apiError: $apiError, verificationToken: $verificationToken, success: $success)';
   }
 }
 
@@ -661,9 +825,12 @@ abstract mixin class _$VerifyResetCodeStateCopyWith<$Res>
   @useResult
   $Res call(
       {String code,
+      String email,
       bool isSubmitting,
       bool isResending,
       bool showErrors,
+      String? apiError,
+      String? verificationToken,
       bool? success});
 }
 
@@ -681,15 +848,22 @@ class __$VerifyResetCodeStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? code = null,
+    Object? email = null,
     Object? isSubmitting = null,
     Object? isResending = null,
     Object? showErrors = null,
+    Object? apiError = freezed,
+    Object? verificationToken = freezed,
     Object? success = freezed,
   }) {
     return _then(_VerifyResetCodeState(
       code: null == code
           ? _self.code
           : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
@@ -703,6 +877,14 @@ class __$VerifyResetCodeStateCopyWithImpl<$Res>
           ? _self.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verificationToken: freezed == verificationToken
+          ? _self.verificationToken
+          : verificationToken // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable

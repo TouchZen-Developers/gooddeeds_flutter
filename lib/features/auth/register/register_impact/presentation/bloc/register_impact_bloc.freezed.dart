@@ -51,17 +51,23 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadEvents value)? loadEvents,
     TResult Function(_EventChanged value)? eventChanged,
     TResult Function(_StatementChanged value)? statementChanged,
+    TResult Function(_ShowErrors value)? showErrors,
     TResult Function(_Submitted value)? submitted,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents() when loadEvents != null:
+        return loadEvents(_that);
       case _EventChanged() when eventChanged != null:
         return eventChanged(_that);
       case _StatementChanged() when statementChanged != null:
         return statementChanged(_that);
+      case _ShowErrors() when showErrors != null:
+        return showErrors(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -84,16 +90,22 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadEvents value) loadEvents,
     required TResult Function(_EventChanged value) eventChanged,
     required TResult Function(_StatementChanged value) statementChanged,
+    required TResult Function(_ShowErrors value) showErrors,
     required TResult Function(_Submitted value) submitted,
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents():
+        return loadEvents(_that);
       case _EventChanged():
         return eventChanged(_that);
       case _StatementChanged():
         return statementChanged(_that);
+      case _ShowErrors():
+        return showErrors(_that);
       case _Submitted():
         return submitted(_that);
       case _:
@@ -115,16 +127,22 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadEvents value)? loadEvents,
     TResult? Function(_EventChanged value)? eventChanged,
     TResult? Function(_StatementChanged value)? statementChanged,
+    TResult? Function(_ShowErrors value)? showErrors,
     TResult? Function(_Submitted value)? submitted,
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents() when loadEvents != null:
+        return loadEvents(_that);
       case _EventChanged() when eventChanged != null:
         return eventChanged(_that);
       case _StatementChanged() when statementChanged != null:
         return statementChanged(_that);
+      case _ShowErrors() when showErrors != null:
+        return showErrors(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -146,19 +164,50 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadEvents,
     TResult Function(String? value)? eventChanged,
     TResult Function(String value)? statementChanged,
-    TResult Function()? submitted,
+    TResult Function()? showErrors,
+    TResult Function(
+            String email,
+            String password,
+            String passwordConfirmation,
+            String firstName,
+            String lastName,
+            String familySize,
+            String phoneNumber,
+            String address,
+            String city,
+            String state,
+            String zipCode,
+            String? familyPhotoPath)?
+        submitted,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents() when loadEvents != null:
+        return loadEvents();
       case _EventChanged() when eventChanged != null:
         return eventChanged(_that.value);
       case _StatementChanged() when statementChanged != null:
         return statementChanged(_that.value);
+      case _ShowErrors() when showErrors != null:
+        return showErrors();
       case _Submitted() when submitted != null:
-        return submitted();
+        return submitted(
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.firstName,
+            _that.lastName,
+            _that.familySize,
+            _that.phoneNumber,
+            _that.address,
+            _that.city,
+            _that.state,
+            _that.zipCode,
+            _that.familyPhotoPath);
       case _:
         return orElse();
     }
@@ -179,18 +228,49 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadEvents,
     required TResult Function(String? value) eventChanged,
     required TResult Function(String value) statementChanged,
-    required TResult Function() submitted,
+    required TResult Function() showErrors,
+    required TResult Function(
+            String email,
+            String password,
+            String passwordConfirmation,
+            String firstName,
+            String lastName,
+            String familySize,
+            String phoneNumber,
+            String address,
+            String city,
+            String state,
+            String zipCode,
+            String? familyPhotoPath)
+        submitted,
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents():
+        return loadEvents();
       case _EventChanged():
         return eventChanged(_that.value);
       case _StatementChanged():
         return statementChanged(_that.value);
+      case _ShowErrors():
+        return showErrors();
       case _Submitted():
-        return submitted();
+        return submitted(
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.firstName,
+            _that.lastName,
+            _that.familySize,
+            _that.phoneNumber,
+            _that.address,
+            _that.city,
+            _that.state,
+            _that.zipCode,
+            _that.familyPhotoPath);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -210,21 +290,72 @@ extension RegisterImpactEventPatterns on RegisterImpactEvent {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadEvents,
     TResult? Function(String? value)? eventChanged,
     TResult? Function(String value)? statementChanged,
-    TResult? Function()? submitted,
+    TResult? Function()? showErrors,
+    TResult? Function(
+            String email,
+            String password,
+            String passwordConfirmation,
+            String firstName,
+            String lastName,
+            String familySize,
+            String phoneNumber,
+            String address,
+            String city,
+            String state,
+            String zipCode,
+            String? familyPhotoPath)?
+        submitted,
   }) {
     final _that = this;
     switch (_that) {
+      case _LoadEvents() when loadEvents != null:
+        return loadEvents();
       case _EventChanged() when eventChanged != null:
         return eventChanged(_that.value);
       case _StatementChanged() when statementChanged != null:
         return statementChanged(_that.value);
+      case _ShowErrors() when showErrors != null:
+        return showErrors();
       case _Submitted() when submitted != null:
-        return submitted();
+        return submitted(
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.firstName,
+            _that.lastName,
+            _that.familySize,
+            _that.phoneNumber,
+            _that.address,
+            _that.city,
+            _that.state,
+            _that.zipCode,
+            _that.familyPhotoPath);
       case _:
         return null;
     }
+  }
+}
+
+/// @nodoc
+
+class _LoadEvents implements RegisterImpactEvent {
+  const _LoadEvents();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _LoadEvents);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'RegisterImpactEvent.loadEvents()';
   }
 }
 
@@ -358,13 +489,13 @@ class __$StatementChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _Submitted implements RegisterImpactEvent {
-  const _Submitted();
+class _ShowErrors implements RegisterImpactEvent {
+  const _ShowErrors();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Submitted);
+        (other.runtimeType == runtimeType && other is _ShowErrors);
   }
 
   @override
@@ -372,7 +503,191 @@ class _Submitted implements RegisterImpactEvent {
 
   @override
   String toString() {
-    return 'RegisterImpactEvent.submitted()';
+    return 'RegisterImpactEvent.showErrors()';
+  }
+}
+
+/// @nodoc
+
+class _Submitted implements RegisterImpactEvent {
+  const _Submitted(
+      {required this.email,
+      required this.password,
+      required this.passwordConfirmation,
+      required this.firstName,
+      required this.lastName,
+      required this.familySize,
+      required this.phoneNumber,
+      required this.address,
+      required this.city,
+      required this.state,
+      required this.zipCode,
+      this.familyPhotoPath});
+
+  final String email;
+  final String password;
+  final String passwordConfirmation;
+  final String firstName;
+  final String lastName;
+  final String familySize;
+  final String phoneNumber;
+  final String address;
+  final String city;
+  final String state;
+  final String zipCode;
+  final String? familyPhotoPath;
+
+  /// Create a copy of RegisterImpactEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SubmittedCopyWith<_Submitted> get copyWith =>
+      __$SubmittedCopyWithImpl<_Submitted>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Submitted &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.familySize, familySize) ||
+                other.familySize == familySize) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.zipCode, zipCode) || other.zipCode == zipCode) &&
+            (identical(other.familyPhotoPath, familyPhotoPath) ||
+                other.familyPhotoPath == familyPhotoPath));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      password,
+      passwordConfirmation,
+      firstName,
+      lastName,
+      familySize,
+      phoneNumber,
+      address,
+      city,
+      state,
+      zipCode,
+      familyPhotoPath);
+
+  @override
+  String toString() {
+    return 'RegisterImpactEvent.submitted(email: $email, password: $password, passwordConfirmation: $passwordConfirmation, firstName: $firstName, lastName: $lastName, familySize: $familySize, phoneNumber: $phoneNumber, address: $address, city: $city, state: $state, zipCode: $zipCode, familyPhotoPath: $familyPhotoPath)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SubmittedCopyWith<$Res>
+    implements $RegisterImpactEventCopyWith<$Res> {
+  factory _$SubmittedCopyWith(
+          _Submitted value, $Res Function(_Submitted) _then) =
+      __$SubmittedCopyWithImpl;
+  @useResult
+  $Res call(
+      {String email,
+      String password,
+      String passwordConfirmation,
+      String firstName,
+      String lastName,
+      String familySize,
+      String phoneNumber,
+      String address,
+      String city,
+      String state,
+      String zipCode,
+      String? familyPhotoPath});
+}
+
+/// @nodoc
+class __$SubmittedCopyWithImpl<$Res> implements _$SubmittedCopyWith<$Res> {
+  __$SubmittedCopyWithImpl(this._self, this._then);
+
+  final _Submitted _self;
+  final $Res Function(_Submitted) _then;
+
+  /// Create a copy of RegisterImpactEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? familySize = null,
+    Object? phoneNumber = null,
+    Object? address = null,
+    Object? city = null,
+    Object? state = null,
+    Object? zipCode = null,
+    Object? familyPhotoPath = freezed,
+  }) {
+    return _then(_Submitted(
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstName: null == firstName
+          ? _self.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _self.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      familySize: null == familySize
+          ? _self.familySize
+          : familySize // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: null == city
+          ? _self.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: null == state
+          ? _self.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      zipCode: null == zipCode
+          ? _self.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      familyPhotoPath: freezed == familyPhotoPath
+          ? _self.familyPhotoPath
+          : familyPhotoPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -383,6 +698,11 @@ mixin _$RegisterImpactState {
   bool get showErrors;
   bool get isSubmitting;
   bool get completed;
+  List<String> get events;
+  bool get isLoadingEvents;
+  String? get eventsError;
+  bool? get success;
+  String? get apiError;
 
   /// Create a copy of RegisterImpactState
   /// with the given fields replaced by the non-null parameter values.
@@ -406,16 +726,34 @@ mixin _$RegisterImpactState {
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.completed, completed) ||
-                other.completed == completed));
+                other.completed == completed) &&
+            const DeepCollectionEquality().equals(other.events, events) &&
+            (identical(other.isLoadingEvents, isLoadingEvents) ||
+                other.isLoadingEvents == isLoadingEvents) &&
+            (identical(other.eventsError, eventsError) ||
+                other.eventsError == eventsError) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, affectedEvent, statement,
-      showErrors, isSubmitting, completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      affectedEvent,
+      statement,
+      showErrors,
+      isSubmitting,
+      completed,
+      const DeepCollectionEquality().hash(events),
+      isLoadingEvents,
+      eventsError,
+      success,
+      apiError);
 
   @override
   String toString() {
-    return 'RegisterImpactState(affectedEvent: $affectedEvent, statement: $statement, showErrors: $showErrors, isSubmitting: $isSubmitting, completed: $completed)';
+    return 'RegisterImpactState(affectedEvent: $affectedEvent, statement: $statement, showErrors: $showErrors, isSubmitting: $isSubmitting, completed: $completed, events: $events, isLoadingEvents: $isLoadingEvents, eventsError: $eventsError, success: $success, apiError: $apiError)';
   }
 }
 
@@ -430,7 +768,12 @@ abstract mixin class $RegisterImpactStateCopyWith<$Res> {
       String statement,
       bool showErrors,
       bool isSubmitting,
-      bool completed});
+      bool completed,
+      List<String> events,
+      bool isLoadingEvents,
+      String? eventsError,
+      bool? success,
+      String? apiError});
 }
 
 /// @nodoc
@@ -451,6 +794,11 @@ class _$RegisterImpactStateCopyWithImpl<$Res>
     Object? showErrors = null,
     Object? isSubmitting = null,
     Object? completed = null,
+    Object? events = null,
+    Object? isLoadingEvents = null,
+    Object? eventsError = freezed,
+    Object? success = freezed,
+    Object? apiError = freezed,
   }) {
     return _then(_self.copyWith(
       affectedEvent: freezed == affectedEvent
@@ -473,6 +821,26 @@ class _$RegisterImpactStateCopyWithImpl<$Res>
           ? _self.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
+      events: null == events
+          ? _self.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isLoadingEvents: null == isLoadingEvents
+          ? _self.isLoadingEvents
+          : isLoadingEvents // ignore: cast_nullable_to_non_nullable
+              as bool,
+      eventsError: freezed == eventsError
+          ? _self.eventsError
+          : eventsError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      success: freezed == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -570,16 +938,34 @@ extension RegisterImpactStatePatterns on RegisterImpactState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? affectedEvent, String statement, bool showErrors,
-            bool isSubmitting, bool completed)?
+    TResult Function(
+            String? affectedEvent,
+            String statement,
+            bool showErrors,
+            bool isSubmitting,
+            bool completed,
+            List<String> events,
+            bool isLoadingEvents,
+            String? eventsError,
+            bool? success,
+            String? apiError)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _RegisterImpactState() when $default != null:
-        return $default(_that.affectedEvent, _that.statement, _that.showErrors,
-            _that.isSubmitting, _that.completed);
+        return $default(
+            _that.affectedEvent,
+            _that.statement,
+            _that.showErrors,
+            _that.isSubmitting,
+            _that.completed,
+            _that.events,
+            _that.isLoadingEvents,
+            _that.eventsError,
+            _that.success,
+            _that.apiError);
       case _:
         return orElse();
     }
@@ -600,15 +986,33 @@ extension RegisterImpactStatePatterns on RegisterImpactState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? affectedEvent, String statement, bool showErrors,
-            bool isSubmitting, bool completed)
+    TResult Function(
+            String? affectedEvent,
+            String statement,
+            bool showErrors,
+            bool isSubmitting,
+            bool completed,
+            List<String> events,
+            bool isLoadingEvents,
+            String? eventsError,
+            bool? success,
+            String? apiError)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _RegisterImpactState():
-        return $default(_that.affectedEvent, _that.statement, _that.showErrors,
-            _that.isSubmitting, _that.completed);
+        return $default(
+            _that.affectedEvent,
+            _that.statement,
+            _that.showErrors,
+            _that.isSubmitting,
+            _that.completed,
+            _that.events,
+            _that.isLoadingEvents,
+            _that.eventsError,
+            _that.success,
+            _that.apiError);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -628,15 +1032,33 @@ extension RegisterImpactStatePatterns on RegisterImpactState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? affectedEvent, String statement, bool showErrors,
-            bool isSubmitting, bool completed)?
+    TResult? Function(
+            String? affectedEvent,
+            String statement,
+            bool showErrors,
+            bool isSubmitting,
+            bool completed,
+            List<String> events,
+            bool isLoadingEvents,
+            String? eventsError,
+            bool? success,
+            String? apiError)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _RegisterImpactState() when $default != null:
-        return $default(_that.affectedEvent, _that.statement, _that.showErrors,
-            _that.isSubmitting, _that.completed);
+        return $default(
+            _that.affectedEvent,
+            _that.statement,
+            _that.showErrors,
+            _that.isSubmitting,
+            _that.completed,
+            _that.events,
+            _that.isLoadingEvents,
+            _that.eventsError,
+            _that.success,
+            _that.apiError);
       case _:
         return null;
     }
@@ -651,7 +1073,13 @@ class _RegisterImpactState implements RegisterImpactState {
       this.statement = '',
       this.showErrors = false,
       this.isSubmitting = false,
-      this.completed = false});
+      this.completed = false,
+      final List<String> events = const <String>[],
+      this.isLoadingEvents = false,
+      this.eventsError,
+      this.success,
+      this.apiError})
+      : _events = events;
 
   @override
   final String? affectedEvent;
@@ -667,6 +1095,24 @@ class _RegisterImpactState implements RegisterImpactState {
   @override
   @JsonKey()
   final bool completed;
+  final List<String> _events;
+  @override
+  @JsonKey()
+  List<String> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
+
+  @override
+  @JsonKey()
+  final bool isLoadingEvents;
+  @override
+  final String? eventsError;
+  @override
+  final bool? success;
+  @override
+  final String? apiError;
 
   /// Create a copy of RegisterImpactState
   /// with the given fields replaced by the non-null parameter values.
@@ -691,16 +1137,34 @@ class _RegisterImpactState implements RegisterImpactState {
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.completed, completed) ||
-                other.completed == completed));
+                other.completed == completed) &&
+            const DeepCollectionEquality().equals(other._events, _events) &&
+            (identical(other.isLoadingEvents, isLoadingEvents) ||
+                other.isLoadingEvents == isLoadingEvents) &&
+            (identical(other.eventsError, eventsError) ||
+                other.eventsError == eventsError) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, affectedEvent, statement,
-      showErrors, isSubmitting, completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      affectedEvent,
+      statement,
+      showErrors,
+      isSubmitting,
+      completed,
+      const DeepCollectionEquality().hash(_events),
+      isLoadingEvents,
+      eventsError,
+      success,
+      apiError);
 
   @override
   String toString() {
-    return 'RegisterImpactState(affectedEvent: $affectedEvent, statement: $statement, showErrors: $showErrors, isSubmitting: $isSubmitting, completed: $completed)';
+    return 'RegisterImpactState(affectedEvent: $affectedEvent, statement: $statement, showErrors: $showErrors, isSubmitting: $isSubmitting, completed: $completed, events: $events, isLoadingEvents: $isLoadingEvents, eventsError: $eventsError, success: $success, apiError: $apiError)';
   }
 }
 
@@ -717,7 +1181,12 @@ abstract mixin class _$RegisterImpactStateCopyWith<$Res>
       String statement,
       bool showErrors,
       bool isSubmitting,
-      bool completed});
+      bool completed,
+      List<String> events,
+      bool isLoadingEvents,
+      String? eventsError,
+      bool? success,
+      String? apiError});
 }
 
 /// @nodoc
@@ -738,6 +1207,11 @@ class __$RegisterImpactStateCopyWithImpl<$Res>
     Object? showErrors = null,
     Object? isSubmitting = null,
     Object? completed = null,
+    Object? events = null,
+    Object? isLoadingEvents = null,
+    Object? eventsError = freezed,
+    Object? success = freezed,
+    Object? apiError = freezed,
   }) {
     return _then(_RegisterImpactState(
       affectedEvent: freezed == affectedEvent
@@ -760,6 +1234,26 @@ class __$RegisterImpactStateCopyWithImpl<$Res>
           ? _self.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
+      events: null == events
+          ? _self._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isLoadingEvents: null == isLoadingEvents
+          ? _self.isLoadingEvents
+          : isLoadingEvents // ignore: cast_nullable_to_non_nullable
+              as bool,
+      eventsError: freezed == eventsError
+          ? _self.eventsError
+          : eventsError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      success: freezed == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

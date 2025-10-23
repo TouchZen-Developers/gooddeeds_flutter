@@ -154,6 +154,7 @@ class PrimaryButton extends StatelessWidget {
         width: fullWidth ? double.infinity : null,
         constraints: BoxConstraints(
           minHeight: m.minHeight,
+          maxHeight: m.minHeight,
           minWidth: fullWidth ? 0 : (minWidth ?? 0),
         ),
         decoration: BoxDecoration(

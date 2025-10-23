@@ -33,7 +33,7 @@ class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
       final confirm = state.confirmPassword;
 
       final emailValid = email.isValidEmail;
-      final passwordValid = password.trim().length >= 6;
+      final passwordValid = _isPasswordValid(password);
       final confirmValid = confirm == password && confirm.isNotEmpty;
 
       if (!emailValid || !passwordValid || !confirmValid) {
@@ -53,5 +53,13 @@ class RegisterEmailBloc extends Bloc<RegisterEmailEvent, RegisterEmailState> {
         emit(state.copyWith(isSubmitting: false));
       }
     });
+  }
+
+  bool _isPasswordValid(String password) {
+    if (password.length < 8) return false;
+    if (!password.contains(RegExp(r'[A-Z]'))) return false;
+    if (!password.contains(RegExp(r'[a-z]'))) return false;
+    if (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) return false;
+    return true;
   }
 }

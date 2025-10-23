@@ -10,6 +10,7 @@ import 'package:gooddeeds/src/config/routes/app_router.dart';
 
 import '../../../../../../shared/design_system/components/gd_textfield.dart';
 import '../../../email/presentation/components/step_header.dart';
+import '../../../parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../bloc/register_contact_info_bloc.dart';
 
 class RegisterContactInfoScreen extends StatefulWidget {
@@ -28,6 +29,34 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
   final _zipCtrl = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    // Sync controllers with bloc state
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _syncControllersWithBloc();
+    });
+  }
+
+  void _syncControllersWithBloc() {
+    final bloc = context.read<RegisterContactInfoBloc>();
+    if (_addressCtrl.text != bloc.state.address) {
+      _addressCtrl.text = bloc.state.address;
+    }
+    if (_phoneCtrl.text != bloc.state.phone) {
+      _phoneCtrl.text = bloc.state.phone;
+    }
+    if (_cityCtrl.text != bloc.state.city) {
+      _cityCtrl.text = bloc.state.city;
+    }
+    if (_stateCtrl.text != bloc.state.stateName) {
+      _stateCtrl.text = bloc.state.stateName;
+    }
+    if (_zipCtrl.text != bloc.state.zip) {
+      _zipCtrl.text = bloc.state.zip;
+    }
+  }
+
+  @override
   void dispose() {
     _addressCtrl.dispose();
     _phoneCtrl.dispose();
@@ -43,7 +72,24 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
 
     return BlocListener<RegisterContactInfoBloc, RegisterContactInfoState>(
       listenWhen: (p, c) => p.completed != c.completed && c.completed,
-      listener: (_, __) {
+      listener: (context, state) {
+        // Check if the widget is still mounted before adding events
+        if (!mounted) return;
+
+        // Save contact info to parent bloc and navigate to family photo screen
+        final parentBloc = context.read<ParentRegistrationBloc>();
+        if (!parentBloc.isClosed) {
+          parentBloc.add(
+            ParentRegistrationEvent.setContactInfo(
+              phoneNumber: state.phone,
+              address: state.address,
+              city: state.city,
+              state: state.stateName,
+              zipCode: state.zip,
+            ),
+          );
+        }
+
         const RegisterImpactRoute().push(context);
       },
       child: Scaffold(
@@ -60,35 +106,55 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                   onPressed: state.isSubmitting
                       ? null
                       : () {
-                          context.read<RegisterContactInfoBloc>()
-                            ..add(
-                              RegisterContactInfoEvent.addressChanged(
-                                _addressCtrl.text,
-                              ),
-                            )
-                            ..add(
-                              RegisterContactInfoEvent.phoneChanged(
-                                _phoneCtrl.text,
-                              ),
-                            )
-                            ..add(
-                              RegisterContactInfoEvent.cityChanged(
-                                _cityCtrl.text,
-                              ),
-                            )
-                            ..add(
-                              RegisterContactInfoEvent.stateChanged(
-                                _stateCtrl.text,
-                              ),
-                            )
-                            ..add(
-                              RegisterContactInfoEvent.zipChanged(
-                                _zipCtrl.text,
-                              ),
-                            )
-                            ..add(const RegisterContactInfoEvent.submitted());
+                          final bloc = context.read<RegisterContactInfoBloc>();
+
+                          // Check if bloc is still open before adding events
+                          if (!bloc.isClosed) {
+                            bloc
+                              ..add(
+                                RegisterContactInfoEvent.addressChanged(
+                                  _addressCtrl.text,
+                                ),
+                              )
+                              ..add(
+                                RegisterContactInfoEvent.phoneChanged(
+                                  _phoneCtrl.text,
+                                ),
+                              )
+                              ..add(
+                                RegisterContactInfoEvent.cityChanged(
+                                  _cityCtrl.text,
+                                ),
+                              )
+                              ..add(
+                                RegisterContactInfoEvent.stateChanged(
+                                  _stateCtrl.text,
+                                ),
+                              )
+                              ..add(
+                                RegisterContactInfoEvent.zipChanged(
+                                  _zipCtrl.text,
+                                ),
+                              )
+                              ..add(const RegisterContactInfoEvent.submitted());
+                          } else {
+                            // If bloc is closed, save to parent bloc and navigate directly
+                            final parentBloc =
+                                context.read<ParentRegistrationBloc>();
+                            if (!parentBloc.isClosed) {
+                              parentBloc.add(
+                                ParentRegistrationEvent.setContactInfo(
+                                  phoneNumber: _phoneCtrl.text,
+                                  address: _addressCtrl.text,
+                                  city: _cityCtrl.text,
+                                  state: _stateCtrl.text,
+                                  zipCode: _zipCtrl.text,
+                                ),
+                              );
+                            }
+                            const RegisterImpactRoute().push(context);
+                          }
                         },
-                  // loading: state.isSubmitting,
                 );
               },
             ),
@@ -99,22 +165,35 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
             builder: (context, state) {
               final bloc = context.read<RegisterContactInfoBloc>();
 
-              final addrErr = state.showErrors && !state.isAddressValid
+              // Sync controllers with bloc state on every build
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _syncControllersWithBloc();
+              });
+
+              final addrErr = state.showErrors &&
+                      !state.isAddressValid &&
+                      state.address.trim().isNotEmpty
                   ? context.loc.addressIsRequired
                   : null;
               final phoneErr = state.showErrors && !state.isPhoneValid
                   ? context.loc.enterValidNumber
                   : null;
 
-              final cityErr = state.showErrors && !state.isCityValid
+              final cityErr = state.showErrors &&
+                      !state.isCityValid &&
+                      state.city.trim().isNotEmpty
                   ? context.loc.enterCity
                   : null;
 
-              final stErr = state.showErrors && !state.isStateValid
+              final stErr = state.showErrors &&
+                      !state.isStateValid &&
+                      state.stateName.trim().isNotEmpty
                   ? context.loc.enterState
                   : null;
 
-              final zipErr = state.showErrors && !state.isZipValid
+              final zipErr = state.showErrors &&
+                      !state.isZipValid &&
+                      state.zip.trim().isNotEmpty
                   ? context.loc.enterValidNumber
                   : null;
 
@@ -146,9 +225,13 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                             label: context.loc.address,
                             hint: context.loc.enterAddress,
                             errorText: addrErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterContactInfoEvent.addressChanged(v),
-                            ),
+                            onChanged: (v) {
+                              if (!bloc.isClosed) {
+                                bloc.add(
+                                  RegisterContactInfoEvent.addressChanged(v),
+                                );
+                              }
+                            },
                           ),
                           Gap(gaps.lg),
 
@@ -206,9 +289,13 @@ class _RegisterContactInfoScreenState extends State<RegisterContactInfoScreen> {
                             label: context.loc.state,
                             hint: context.loc.enterState,
                             errorText: stErr,
-                            onChanged: (v) => bloc.add(
-                              RegisterContactInfoEvent.stateChanged(v),
-                            ),
+                            onChanged: (v) {
+                              if (!bloc.isClosed) {
+                                bloc.add(
+                                  RegisterContactInfoEvent.stateChanged(v),
+                                );
+                              }
+                            },
                           ),
                           Gap(gaps.lg),
 

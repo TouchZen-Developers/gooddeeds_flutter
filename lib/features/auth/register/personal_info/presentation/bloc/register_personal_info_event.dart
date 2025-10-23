@@ -17,5 +17,11 @@ abstract class RegisterPersonalInfoEvent with _$RegisterPersonalInfoEvent {
   const factory RegisterPersonalInfoEvent.modeChanged(bool isDonor) =
       _ModeChanged;
 
+  const factory RegisterPersonalInfoEvent.emailDataSet({
+    required String email,
+    required String password,
+    required String passwordConfirmation,
+  }) = _EmailDataSet;
+
   const factory RegisterPersonalInfoEvent.submitted() = _Submitted;
 }

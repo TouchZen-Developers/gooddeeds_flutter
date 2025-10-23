@@ -27,6 +27,15 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
   final _pinCtrl = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    // Set email in bloc when screen initializes
+    context.read<VerifyResetCodeBloc>().add(
+          VerifyResetCodeEvent.emailChanged(widget.email),
+        );
+  }
+
+  @override
   void dispose() {
     _pinCtrl.dispose();
     super.dispose();
@@ -39,15 +48,14 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
     final loc = context.loc;
 
     return BlocListener<VerifyResetCodeBloc, VerifyResetCodeState>(
-      listenWhen: (p, c) => p.success != c.success,
+      listenWhen: (p, c) => p.success != c.success && c.success != null,
       listener: (context, state) {
-        if (state.success == true) {
-          const ResetPasswordRoute().go(context);
-        } else if (state.success == false) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(loc.failedToSendCode)),
-          );
+        if (state.success == true && state.verificationToken != null) {
+          // Pass verification token to ResetPasswordRoute
+          ResetPasswordRoute(verificationToken: state.verificationToken!)
+              .go(context);
         }
+        // Error snackbar is shown automatically by ErrorInterceptor
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -67,12 +75,12 @@ class _VerifyResetCodeScreenState extends State<VerifyResetCodeScreen> {
                     label: loc.verify,
                     size: ButtonSize.large,
                     fullWidth: true,
+                    loading: state.isSubmitting,
                     onPressed: canContinue
                         ? () => context
                             .read<VerifyResetCodeBloc>()
                             .add(const VerifyResetCodeEvent.submitted())
                         : null,
-                    // loading: state.isSubmitting,
                   ),
                   Gap(gaps.md),
                   Center(

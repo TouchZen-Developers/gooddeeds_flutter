@@ -36,29 +36,27 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     final loc = context.loc;
 
     return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
-      listenWhen: (p, c) => p.success != c.success,
+      listenWhen: (p, c) => p.success != c.success && c.success != null,
       listener: (context, state) {
         if (state.success == true) {
           ForgotVerifyCodeRoute(email: state.email).push(context);
-        } else if (state.success == false) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(loc.failedToSendCode)),
-          );
         }
+        // Error snackbar is shown automatically by ErrorInterceptor
       },
       child: Scaffold(
         bottomNavigationBar: SafeArea(
           child: Padding(
             padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
             child: BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+              buildWhen: (p, c) => p.isSubmitting != c.isSubmitting,
               builder: (context, state) {
-                final canPress = !state.isSubmitting;
                 return PrimaryButton(
                   label: loc.sendCode,
                   size: ButtonSize.large,
                   fullWidth: true,
-                  onPressed: canPress ? () => _onContinue(context) : null,
-                  // loading: state.isSubmitting,
+                  loading: state.isSubmitting,
+                  onPressed:
+                      state.isSubmitting ? null : () => _onContinue(context),
                 );
               },
             ),

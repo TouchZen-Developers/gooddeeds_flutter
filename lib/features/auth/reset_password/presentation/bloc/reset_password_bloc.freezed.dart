@@ -53,6 +53,7 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NewPasswordChanged value)? newPasswordChanged,
     TResult Function(_ConfirmChanged value)? confirmChanged,
+    TResult Function(_VerificationTokenChanged value)? verificationTokenChanged,
     TResult Function(_MarkShowErrors value)? markShowErrors,
     TResult Function(_Submitted value)? submitted,
     required TResult orElse(),
@@ -63,6 +64,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that);
       case _ConfirmChanged() when confirmChanged != null:
         return confirmChanged(_that);
+      case _VerificationTokenChanged() when verificationTokenChanged != null:
+        return verificationTokenChanged(_that);
       case _MarkShowErrors() when markShowErrors != null:
         return markShowErrors(_that);
       case _Submitted() when submitted != null:
@@ -89,6 +92,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_NewPasswordChanged value) newPasswordChanged,
     required TResult Function(_ConfirmChanged value) confirmChanged,
+    required TResult Function(_VerificationTokenChanged value)
+        verificationTokenChanged,
     required TResult Function(_MarkShowErrors value) markShowErrors,
     required TResult Function(_Submitted value) submitted,
   }) {
@@ -98,6 +103,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that);
       case _ConfirmChanged():
         return confirmChanged(_that);
+      case _VerificationTokenChanged():
+        return verificationTokenChanged(_that);
       case _MarkShowErrors():
         return markShowErrors(_that);
       case _Submitted():
@@ -123,6 +130,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NewPasswordChanged value)? newPasswordChanged,
     TResult? Function(_ConfirmChanged value)? confirmChanged,
+    TResult? Function(_VerificationTokenChanged value)?
+        verificationTokenChanged,
     TResult? Function(_MarkShowErrors value)? markShowErrors,
     TResult? Function(_Submitted value)? submitted,
   }) {
@@ -132,6 +141,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that);
       case _ConfirmChanged() when confirmChanged != null:
         return confirmChanged(_that);
+      case _VerificationTokenChanged() when verificationTokenChanged != null:
+        return verificationTokenChanged(_that);
       case _MarkShowErrors() when markShowErrors != null:
         return markShowErrors(_that);
       case _Submitted() when submitted != null:
@@ -157,6 +168,7 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? newPasswordChanged,
     TResult Function(String value)? confirmChanged,
+    TResult Function(String value)? verificationTokenChanged,
     TResult Function()? markShowErrors,
     TResult Function()? submitted,
     required TResult orElse(),
@@ -167,6 +179,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that.value);
       case _ConfirmChanged() when confirmChanged != null:
         return confirmChanged(_that.value);
+      case _VerificationTokenChanged() when verificationTokenChanged != null:
+        return verificationTokenChanged(_that.value);
       case _MarkShowErrors() when markShowErrors != null:
         return markShowErrors();
       case _Submitted() when submitted != null:
@@ -193,6 +207,7 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String value) newPasswordChanged,
     required TResult Function(String value) confirmChanged,
+    required TResult Function(String value) verificationTokenChanged,
     required TResult Function() markShowErrors,
     required TResult Function() submitted,
   }) {
@@ -202,6 +217,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that.value);
       case _ConfirmChanged():
         return confirmChanged(_that.value);
+      case _VerificationTokenChanged():
+        return verificationTokenChanged(_that.value);
       case _MarkShowErrors():
         return markShowErrors();
       case _Submitted():
@@ -227,6 +244,7 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? newPasswordChanged,
     TResult? Function(String value)? confirmChanged,
+    TResult? Function(String value)? verificationTokenChanged,
     TResult? Function()? markShowErrors,
     TResult? Function()? submitted,
   }) {
@@ -236,6 +254,8 @@ extension ResetPasswordEventPatterns on ResetPasswordEvent {
         return newPasswordChanged(_that.value);
       case _ConfirmChanged() when confirmChanged != null:
         return confirmChanged(_that.value);
+      case _VerificationTokenChanged() when verificationTokenChanged != null:
+        return verificationTokenChanged(_that.value);
       case _MarkShowErrors() when markShowErrors != null:
         return markShowErrors();
       case _Submitted() when submitted != null:
@@ -376,6 +396,71 @@ class __$ConfirmChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
+class _VerificationTokenChanged implements ResetPasswordEvent {
+  const _VerificationTokenChanged(this.value);
+
+  final String value;
+
+  /// Create a copy of ResetPasswordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$VerificationTokenChangedCopyWith<_VerificationTokenChanged> get copyWith =>
+      __$VerificationTokenChangedCopyWithImpl<_VerificationTokenChanged>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _VerificationTokenChanged &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  String toString() {
+    return 'ResetPasswordEvent.verificationTokenChanged(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$VerificationTokenChangedCopyWith<$Res>
+    implements $ResetPasswordEventCopyWith<$Res> {
+  factory _$VerificationTokenChangedCopyWith(_VerificationTokenChanged value,
+          $Res Function(_VerificationTokenChanged) _then) =
+      __$VerificationTokenChangedCopyWithImpl;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$VerificationTokenChangedCopyWithImpl<$Res>
+    implements _$VerificationTokenChangedCopyWith<$Res> {
+  __$VerificationTokenChangedCopyWithImpl(this._self, this._then);
+
+  final _VerificationTokenChanged _self;
+  final $Res Function(_VerificationTokenChanged) _then;
+
+  /// Create a copy of ResetPasswordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_VerificationTokenChanged(
+      null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _MarkShowErrors implements ResetPasswordEvent {
   const _MarkShowErrors();
 
@@ -418,8 +503,10 @@ class _Submitted implements ResetPasswordEvent {
 mixin _$ResetPasswordState {
   String get newPassword;
   String get confirmPassword;
+  String get verificationToken;
   bool get isSubmitting;
   bool get showErrors;
+  String? get apiError;
   bool? get success;
 
   /// Create a copy of ResetPasswordState
@@ -439,20 +526,24 @@ mixin _$ResetPasswordState {
                 other.newPassword == newPassword) &&
             (identical(other.confirmPassword, confirmPassword) ||
                 other.confirmPassword == confirmPassword) &&
+            (identical(other.verificationToken, verificationToken) ||
+                other.verificationToken == verificationToken) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, newPassword, confirmPassword,
-      isSubmitting, showErrors, success);
+      verificationToken, isSubmitting, showErrors, apiError, success);
 
   @override
   String toString() {
-    return 'ResetPasswordState(newPassword: $newPassword, confirmPassword: $confirmPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, success: $success)';
+    return 'ResetPasswordState(newPassword: $newPassword, confirmPassword: $confirmPassword, verificationToken: $verificationToken, isSubmitting: $isSubmitting, showErrors: $showErrors, apiError: $apiError, success: $success)';
   }
 }
 
@@ -465,8 +556,10 @@ abstract mixin class $ResetPasswordStateCopyWith<$Res> {
   $Res call(
       {String newPassword,
       String confirmPassword,
+      String verificationToken,
       bool isSubmitting,
       bool showErrors,
+      String? apiError,
       bool? success});
 }
 
@@ -485,8 +578,10 @@ class _$ResetPasswordStateCopyWithImpl<$Res>
   $Res call({
     Object? newPassword = null,
     Object? confirmPassword = null,
+    Object? verificationToken = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
+    Object? apiError = freezed,
     Object? success = freezed,
   }) {
     return _then(_self.copyWith(
@@ -498,6 +593,10 @@ class _$ResetPasswordStateCopyWithImpl<$Res>
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
+      verificationToken: null == verificationToken
+          ? _self.verificationToken
+          : verificationToken // ignore: cast_nullable_to_non_nullable
+              as String,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -506,6 +605,10 @@ class _$ResetPasswordStateCopyWithImpl<$Res>
           ? _self.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -607,16 +710,28 @@ extension ResetPasswordStatePatterns on ResetPasswordState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String newPassword, String confirmPassword,
-            bool isSubmitting, bool showErrors, bool? success)?
+    TResult Function(
+            String newPassword,
+            String confirmPassword,
+            String verificationToken,
+            bool isSubmitting,
+            bool showErrors,
+            String? apiError,
+            bool? success)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ResetPasswordState() when $default != null:
-        return $default(_that.newPassword, _that.confirmPassword,
-            _that.isSubmitting, _that.showErrors, _that.success);
+        return $default(
+            _that.newPassword,
+            _that.confirmPassword,
+            _that.verificationToken,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.apiError,
+            _that.success);
       case _:
         return orElse();
     }
@@ -637,15 +752,27 @@ extension ResetPasswordStatePatterns on ResetPasswordState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String newPassword, String confirmPassword,
-            bool isSubmitting, bool showErrors, bool? success)
+    TResult Function(
+            String newPassword,
+            String confirmPassword,
+            String verificationToken,
+            bool isSubmitting,
+            bool showErrors,
+            String? apiError,
+            bool? success)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ResetPasswordState():
-        return $default(_that.newPassword, _that.confirmPassword,
-            _that.isSubmitting, _that.showErrors, _that.success);
+        return $default(
+            _that.newPassword,
+            _that.confirmPassword,
+            _that.verificationToken,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.apiError,
+            _that.success);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -665,15 +792,27 @@ extension ResetPasswordStatePatterns on ResetPasswordState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String newPassword, String confirmPassword,
-            bool isSubmitting, bool showErrors, bool? success)?
+    TResult? Function(
+            String newPassword,
+            String confirmPassword,
+            String verificationToken,
+            bool isSubmitting,
+            bool showErrors,
+            String? apiError,
+            bool? success)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ResetPasswordState() when $default != null:
-        return $default(_that.newPassword, _that.confirmPassword,
-            _that.isSubmitting, _that.showErrors, _that.success);
+        return $default(
+            _that.newPassword,
+            _that.confirmPassword,
+            _that.verificationToken,
+            _that.isSubmitting,
+            _that.showErrors,
+            _that.apiError,
+            _that.success);
       case _:
         return null;
     }
@@ -686,8 +825,10 @@ class _ResetPasswordState implements ResetPasswordState {
   const _ResetPasswordState(
       {required this.newPassword,
       required this.confirmPassword,
+      required this.verificationToken,
       required this.isSubmitting,
       required this.showErrors,
+      this.apiError,
       this.success});
 
   @override
@@ -695,9 +836,13 @@ class _ResetPasswordState implements ResetPasswordState {
   @override
   final String confirmPassword;
   @override
+  final String verificationToken;
+  @override
   final bool isSubmitting;
   @override
   final bool showErrors;
+  @override
+  final String? apiError;
   @override
   final bool? success;
 
@@ -718,20 +863,24 @@ class _ResetPasswordState implements ResetPasswordState {
                 other.newPassword == newPassword) &&
             (identical(other.confirmPassword, confirmPassword) ||
                 other.confirmPassword == confirmPassword) &&
+            (identical(other.verificationToken, verificationToken) ||
+                other.verificationToken == verificationToken) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
+            (identical(other.apiError, apiError) ||
+                other.apiError == apiError) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, newPassword, confirmPassword,
-      isSubmitting, showErrors, success);
+      verificationToken, isSubmitting, showErrors, apiError, success);
 
   @override
   String toString() {
-    return 'ResetPasswordState(newPassword: $newPassword, confirmPassword: $confirmPassword, isSubmitting: $isSubmitting, showErrors: $showErrors, success: $success)';
+    return 'ResetPasswordState(newPassword: $newPassword, confirmPassword: $confirmPassword, verificationToken: $verificationToken, isSubmitting: $isSubmitting, showErrors: $showErrors, apiError: $apiError, success: $success)';
   }
 }
 
@@ -746,8 +895,10 @@ abstract mixin class _$ResetPasswordStateCopyWith<$Res>
   $Res call(
       {String newPassword,
       String confirmPassword,
+      String verificationToken,
       bool isSubmitting,
       bool showErrors,
+      String? apiError,
       bool? success});
 }
 
@@ -766,8 +917,10 @@ class __$ResetPasswordStateCopyWithImpl<$Res>
   $Res call({
     Object? newPassword = null,
     Object? confirmPassword = null,
+    Object? verificationToken = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
+    Object? apiError = freezed,
     Object? success = freezed,
   }) {
     return _then(_ResetPasswordState(
@@ -779,6 +932,10 @@ class __$ResetPasswordStateCopyWithImpl<$Res>
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
+      verificationToken: null == verificationToken
+          ? _self.verificationToken
+          : verificationToken // ignore: cast_nullable_to_non_nullable
+              as String,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -787,6 +944,10 @@ class __$ResetPasswordStateCopyWithImpl<$Res>
           ? _self.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      apiError: freezed == apiError
+          ? _self.apiError
+          : apiError // ignore: cast_nullable_to_non_nullable
+              as String?,
       success: freezed == success
           ? _self.success
           : success // ignore: cast_nullable_to_non_nullable

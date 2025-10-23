@@ -33,9 +33,11 @@ import '../../../features/auth/login/presentation/screens/login_screen.dart';
 import '../../../features/auth/register/contact_info/presentation/bloc/register_contact_info_bloc.dart';
 import '../../../features/auth/register/contact_info/presentation/screens/register_contact_info_screen.dart';
 import '../../../features/auth/register/email/presentation/bloc/register_email_bloc.dart';
+import '../../../features/auth/register/email/verify/presentation/bloc/verify_email_bloc.dart';
 import '../../../features/auth/register/email/verify/presentation/screens/verify_email_screen.dart';
 import '../../../features/auth/register/family_photo/presentation/bloc/register_family_photo_bloc.dart';
 import '../../../features/auth/register/family_photo/presentation/screen/family_photo_screen.dart';
+import '../../../features/auth/register/parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../../../features/auth/register/personal_info/presentation/bloc/register_personal_info_bloc.dart';
 import '../../../features/auth/register/personal_info/presentation/screens/register_personal_info_screen.dart';
 import '../../../features/auth/register/register_impact/presentation/bloc/register_impact_bloc.dart';
@@ -52,7 +54,9 @@ import 'route_paths.dart';
 
 part 'app_router.g.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
+// Get the rootNavigatorKey from DI so it's shared with interceptors
+final _rootNavigatorKey =
+    getIt<GlobalKey<NavigatorState>>(instanceName: 'rootNavigatorKey');
 final _shellDonaitingNavigatorKey = GlobalKey<NavigatorState>();
 final _shellDonaitingHomeNavigatorKey = GlobalKey<NavigatorState>();
 final _shellMyCartNavigatorKey = GlobalKey<NavigatorState>();
@@ -120,8 +124,11 @@ class RegisterEmailRoute extends GoRouteData with $RegisterEmailRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => getIt<RegisterEmailBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ParentRegistrationBloc>()),
+        BlocProvider(create: (_) => getIt<RegisterEmailBloc>()),
+      ],
       child: const RegisterEmailScreen(),
     );
   }
@@ -134,20 +141,38 @@ class VerifyEmailRoute extends GoRouteData with $VerifyEmailRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return VerifyEmailScreen(email: email);
+    return BlocProvider(
+      create: (_) => getIt<VerifyEmailBloc>(),
+      child: VerifyEmailScreen(email: email),
+    );
   }
 }
 
 @TypedGoRoute<RegisterPersonalInfoRoute>(path: RoutePaths.registerPersonalInfo)
 class RegisterPersonalInfoRoute extends GoRouteData
     with $RegisterPersonalInfoRoute {
-  const RegisterPersonalInfoRoute();
+  const RegisterPersonalInfoRoute({
+    this.email,
+    this.password,
+    this.passwordConfirmation,
+  });
+
+  final String? email;
+  final String? password;
+  final String? passwordConfirmation;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => getIt<RegisterPersonalInfoBloc>(),
-      child: const RegisterPersonalInfoScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ParentRegistrationBloc>()),
+        BlocProvider(create: (_) => getIt<RegisterPersonalInfoBloc>()),
+      ],
+      child: RegisterPersonalInfoScreen(
+        email: email ?? '',
+        password: password ?? '',
+        passwordConfirmation: passwordConfirmation ?? '',
+      ),
     );
   }
 }
@@ -159,8 +184,11 @@ class RegisterContactInfoRoute extends GoRouteData
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => getIt<RegisterContactInfoBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ParentRegistrationBloc>()),
+        BlocProvider(create: (_) => getIt<RegisterContactInfoBloc>()),
+      ],
       child: const RegisterContactInfoScreen(),
     );
   }
@@ -172,8 +200,11 @@ class RegisterImpactRoute extends GoRouteData with $RegisterImpactRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => getIt<RegisterImpactBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ParentRegistrationBloc>()),
+        BlocProvider(create: (_) => getIt<RegisterImpactBloc>()),
+      ],
       child: const RegisterImpactScreen(),
     );
   }
@@ -186,8 +217,11 @@ class RegisterFamilyPhotoRoute extends GoRouteData
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => getIt<RegisterFamilyPhotoBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ParentRegistrationBloc>()),
+        BlocProvider(create: (_) => getIt<RegisterFamilyPhotoBloc>()),
+      ],
       child: const RegisterFamilyPhotoScreen(),
     );
   }
@@ -248,12 +282,15 @@ class ForgotVerifyCodeRoute extends GoRouteData with $ForgotVerifyCodeRoute {
 
 @TypedGoRoute<ResetPasswordRoute>(path: RoutePaths.resetPassword)
 class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
-  const ResetPasswordRoute();
+  const ResetPasswordRoute({required this.verificationToken});
+
+  final String verificationToken;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => getIt<ResetPasswordBloc>(),
+      create: (_) => getIt<ResetPasswordBloc>()
+        ..add(ResetPasswordEvent.verificationTokenChanged(verificationToken)),
       child: const ResetPasswordScreen(),
     );
   }

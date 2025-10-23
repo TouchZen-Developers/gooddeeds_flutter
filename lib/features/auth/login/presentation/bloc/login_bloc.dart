@@ -1,7 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gooddeeds/shared/design_system/utils/validators.dart';
+import 'package:gooddeeds/shared/domain/failure.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../domain/entities/login_response_entity.dart';
+import '../../domain/usecases/login_usecase.dart';
 
 part 'login_bloc.freezed.dart';
 part 'login_event.dart';
@@ -9,7 +13,7 @@ part 'login_state.dart';
 
 @Injectable()
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState.initial()) {
+  LoginBloc(this._loginUseCase) : super(LoginState.initial()) {
     on<_EmailChanged>((e, emit) {
       emit(state.copyWith(email: e.value, emailError: null));
     });
@@ -18,6 +22,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
     on<_Submitted>(_onSubmitted);
   }
+
+  final LoginUseCase _loginUseCase;
 
   Future<void> _onSubmitted(_Submitted e, Emitter<LoginState> emit) async {
     final emailOk = state.isEmailValid;
@@ -33,10 +39,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         isSubmitting: true,
         emailError: null,
         passwordError: null,
+        apiError: null,
       ),
     );
 
-    emit(state.copyWith(isSubmitting: false, success: true));
+    final result = await _loginUseCase(
+      email: state.email,
+      password: state.password,
+    );
+
+    result.fold(
+      (Failure failure) => emit(
+        state.copyWith(
+          isSubmitting: false,
+          success: false,
+          apiError: failure.message,
+        ),
+      ),
+      (data) => emit(
+        state.copyWith(
+          isSubmitting: false,
+          success: true,
+          loginResponse: data,
+        ),
+      ),
+    );
   }
 }
 

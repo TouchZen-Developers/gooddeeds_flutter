@@ -57,6 +57,7 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult Function(_FamilyCountChanged value)? familyCountChanged,
     TResult Function(_PhoneChanged value)? phoneChanged,
     TResult Function(_ModeChanged value)? modeChanged,
+    TResult Function(_EmailDataSet value)? emailDataSet,
     TResult Function(_Submitted value)? submitted,
     required TResult orElse(),
   }) {
@@ -72,6 +73,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that);
       case _ModeChanged() when modeChanged != null:
         return modeChanged(_that);
+      case _EmailDataSet() when emailDataSet != null:
+        return emailDataSet(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -99,6 +102,7 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     required TResult Function(_FamilyCountChanged value) familyCountChanged,
     required TResult Function(_PhoneChanged value) phoneChanged,
     required TResult Function(_ModeChanged value) modeChanged,
+    required TResult Function(_EmailDataSet value) emailDataSet,
     required TResult Function(_Submitted value) submitted,
   }) {
     final _that = this;
@@ -113,6 +117,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that);
       case _ModeChanged():
         return modeChanged(_that);
+      case _EmailDataSet():
+        return emailDataSet(_that);
       case _Submitted():
         return submitted(_that);
       case _:
@@ -139,6 +145,7 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult? Function(_FamilyCountChanged value)? familyCountChanged,
     TResult? Function(_PhoneChanged value)? phoneChanged,
     TResult? Function(_ModeChanged value)? modeChanged,
+    TResult? Function(_EmailDataSet value)? emailDataSet,
     TResult? Function(_Submitted value)? submitted,
   }) {
     final _that = this;
@@ -153,6 +160,8 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that);
       case _ModeChanged() when modeChanged != null:
         return modeChanged(_that);
+      case _EmailDataSet() when emailDataSet != null:
+        return emailDataSet(_that);
       case _Submitted() when submitted != null:
         return submitted(_that);
       case _:
@@ -179,6 +188,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult Function(String value)? familyCountChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(bool isDonor)? modeChanged,
+    TResult Function(
+            String email, String password, String passwordConfirmation)?
+        emailDataSet,
     TResult Function()? submitted,
     required TResult orElse(),
   }) {
@@ -194,6 +206,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that.value);
       case _ModeChanged() when modeChanged != null:
         return modeChanged(_that.isDonor);
+      case _EmailDataSet() when emailDataSet != null:
+        return emailDataSet(
+            _that.email, _that.password, _that.passwordConfirmation);
       case _Submitted() when submitted != null:
         return submitted();
       case _:
@@ -221,6 +236,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     required TResult Function(String value) familyCountChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(bool isDonor) modeChanged,
+    required TResult Function(
+            String email, String password, String passwordConfirmation)
+        emailDataSet,
     required TResult Function() submitted,
   }) {
     final _that = this;
@@ -235,6 +253,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that.value);
       case _ModeChanged():
         return modeChanged(_that.isDonor);
+      case _EmailDataSet():
+        return emailDataSet(
+            _that.email, _that.password, _that.passwordConfirmation);
       case _Submitted():
         return submitted();
       case _:
@@ -261,6 +282,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
     TResult? Function(String value)? familyCountChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(bool isDonor)? modeChanged,
+    TResult? Function(
+            String email, String password, String passwordConfirmation)?
+        emailDataSet,
     TResult? Function()? submitted,
   }) {
     final _that = this;
@@ -275,6 +299,9 @@ extension RegisterPersonalInfoEventPatterns on RegisterPersonalInfoEvent {
         return phoneChanged(_that.value);
       case _ModeChanged() when modeChanged != null:
         return modeChanged(_that.isDonor);
+      case _EmailDataSet() when emailDataSet != null:
+        return emailDataSet(
+            _that.email, _that.password, _that.passwordConfirmation);
       case _Submitted() when submitted != null:
         return submitted();
       case _:
@@ -604,6 +631,90 @@ class __$ModeChangedCopyWithImpl<$Res> implements _$ModeChangedCopyWith<$Res> {
 
 /// @nodoc
 
+class _EmailDataSet implements RegisterPersonalInfoEvent {
+  const _EmailDataSet(
+      {required this.email,
+      required this.password,
+      required this.passwordConfirmation});
+
+  final String email;
+  final String password;
+  final String passwordConfirmation;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EmailDataSetCopyWith<_EmailDataSet> get copyWith =>
+      __$EmailDataSetCopyWithImpl<_EmailDataSet>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _EmailDataSet &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, passwordConfirmation);
+
+  @override
+  String toString() {
+    return 'RegisterPersonalInfoEvent.emailDataSet(email: $email, password: $password, passwordConfirmation: $passwordConfirmation)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$EmailDataSetCopyWith<$Res>
+    implements $RegisterPersonalInfoEventCopyWith<$Res> {
+  factory _$EmailDataSetCopyWith(
+          _EmailDataSet value, $Res Function(_EmailDataSet) _then) =
+      __$EmailDataSetCopyWithImpl;
+  @useResult
+  $Res call({String email, String password, String passwordConfirmation});
+}
+
+/// @nodoc
+class __$EmailDataSetCopyWithImpl<$Res>
+    implements _$EmailDataSetCopyWith<$Res> {
+  __$EmailDataSetCopyWithImpl(this._self, this._then);
+
+  final _EmailDataSet _self;
+  final $Res Function(_EmailDataSet) _then;
+
+  /// Create a copy of RegisterPersonalInfoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+  }) {
+    return _then(_EmailDataSet(
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _Submitted implements RegisterPersonalInfoEvent {
   const _Submitted();
 
@@ -628,10 +739,14 @@ mixin _$RegisterPersonalInfoState {
   String get lastName;
   String? get familyCount;
   String get phone;
+  String get email;
+  String get password;
+  String get passwordConfirmation;
   bool get isDonorFlow;
   bool get isSubmitting;
   bool get showErrors;
   bool get completed;
+  bool? get success;
 
   /// Create a copy of RegisterPersonalInfoState
   /// with the given fields replaced by the non-null parameter values.
@@ -653,6 +768,11 @@ mixin _$RegisterPersonalInfoState {
             (identical(other.familyCount, familyCount) ||
                 other.familyCount == familyCount) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
             (identical(other.isDonorFlow, isDonorFlow) ||
                 other.isDonorFlow == isDonorFlow) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -660,16 +780,29 @@ mixin _$RegisterPersonalInfoState {
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
             (identical(other.completed, completed) ||
-                other.completed == completed));
+                other.completed == completed) &&
+            (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, familyCount,
-      phone, isDonorFlow, isSubmitting, showErrors, completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      lastName,
+      familyCount,
+      phone,
+      email,
+      password,
+      passwordConfirmation,
+      isDonorFlow,
+      isSubmitting,
+      showErrors,
+      completed,
+      success);
 
   @override
   String toString() {
-    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
+    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed, success: $success)';
   }
 }
 
@@ -684,10 +817,14 @@ abstract mixin class $RegisterPersonalInfoStateCopyWith<$Res> {
       String lastName,
       String? familyCount,
       String phone,
+      String email,
+      String password,
+      String passwordConfirmation,
       bool isDonorFlow,
       bool isSubmitting,
       bool showErrors,
-      bool completed});
+      bool completed,
+      bool? success});
 }
 
 /// @nodoc
@@ -707,10 +844,14 @@ class _$RegisterPersonalInfoStateCopyWithImpl<$Res>
     Object? lastName = null,
     Object? familyCount = freezed,
     Object? phone = null,
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
     Object? isDonorFlow = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? completed = null,
+    Object? success = freezed,
   }) {
     return _then(_self.copyWith(
       firstName: null == firstName
@@ -729,6 +870,18 @@ class _$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
       isDonorFlow: null == isDonorFlow
           ? _self.isDonorFlow
           : isDonorFlow // ignore: cast_nullable_to_non_nullable
@@ -745,6 +898,10 @@ class _$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
+      success: freezed == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -847,10 +1004,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             String lastName,
             String? familyCount,
             String phone,
+            String email,
+            String password,
+            String passwordConfirmation,
             bool isDonorFlow,
             bool isSubmitting,
             bool showErrors,
-            bool completed)?
+            bool completed,
+            bool? success)?
         $default, {
     required TResult orElse(),
   }) {
@@ -862,10 +1023,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             _that.lastName,
             _that.familyCount,
             _that.phone,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
             _that.isDonorFlow,
             _that.isSubmitting,
             _that.showErrors,
-            _that.completed);
+            _that.completed,
+            _that.success);
       case _:
         return orElse();
     }
@@ -891,10 +1056,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             String lastName,
             String? familyCount,
             String phone,
+            String email,
+            String password,
+            String passwordConfirmation,
             bool isDonorFlow,
             bool isSubmitting,
             bool showErrors,
-            bool completed)
+            bool completed,
+            bool? success)
         $default,
   ) {
     final _that = this;
@@ -905,10 +1074,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             _that.lastName,
             _that.familyCount,
             _that.phone,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
             _that.isDonorFlow,
             _that.isSubmitting,
             _that.showErrors,
-            _that.completed);
+            _that.completed,
+            _that.success);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -933,10 +1106,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             String lastName,
             String? familyCount,
             String phone,
+            String email,
+            String password,
+            String passwordConfirmation,
             bool isDonorFlow,
             bool isSubmitting,
             bool showErrors,
-            bool completed)?
+            bool completed,
+            bool? success)?
         $default,
   ) {
     final _that = this;
@@ -947,10 +1124,14 @@ extension RegisterPersonalInfoStatePatterns on RegisterPersonalInfoState {
             _that.lastName,
             _that.familyCount,
             _that.phone,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
             _that.isDonorFlow,
             _that.isSubmitting,
             _that.showErrors,
-            _that.completed);
+            _that.completed,
+            _that.success);
       case _:
         return null;
     }
@@ -965,10 +1146,14 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
       this.lastName = '',
       this.familyCount,
       this.phone = '',
+      this.email = '',
+      this.password = '',
+      this.passwordConfirmation = '',
       this.isDonorFlow = false,
       this.isSubmitting = false,
       this.showErrors = false,
-      this.completed = false});
+      this.completed = false,
+      this.success});
 
   @override
   @JsonKey()
@@ -983,6 +1168,15 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
   final String phone;
   @override
   @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String password;
+  @override
+  @JsonKey()
+  final String passwordConfirmation;
+  @override
+  @JsonKey()
   final bool isDonorFlow;
   @override
   @JsonKey()
@@ -993,6 +1187,8 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
   @override
   @JsonKey()
   final bool completed;
+  @override
+  final bool? success;
 
   /// Create a copy of RegisterPersonalInfoState
   /// with the given fields replaced by the non-null parameter values.
@@ -1016,6 +1212,11 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
             (identical(other.familyCount, familyCount) ||
                 other.familyCount == familyCount) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
             (identical(other.isDonorFlow, isDonorFlow) ||
                 other.isDonorFlow == isDonorFlow) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -1023,16 +1224,29 @@ class _RegisterPersonalInfoState implements RegisterPersonalInfoState {
             (identical(other.showErrors, showErrors) ||
                 other.showErrors == showErrors) &&
             (identical(other.completed, completed) ||
-                other.completed == completed));
+                other.completed == completed) &&
+            (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, familyCount,
-      phone, isDonorFlow, isSubmitting, showErrors, completed);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      lastName,
+      familyCount,
+      phone,
+      email,
+      password,
+      passwordConfirmation,
+      isDonorFlow,
+      isSubmitting,
+      showErrors,
+      completed,
+      success);
 
   @override
   String toString() {
-    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed)';
+    return 'RegisterPersonalInfoState(firstName: $firstName, lastName: $lastName, familyCount: $familyCount, phone: $phone, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, isDonorFlow: $isDonorFlow, isSubmitting: $isSubmitting, showErrors: $showErrors, completed: $completed, success: $success)';
   }
 }
 
@@ -1049,10 +1263,14 @@ abstract mixin class _$RegisterPersonalInfoStateCopyWith<$Res>
       String lastName,
       String? familyCount,
       String phone,
+      String email,
+      String password,
+      String passwordConfirmation,
       bool isDonorFlow,
       bool isSubmitting,
       bool showErrors,
-      bool completed});
+      bool completed,
+      bool? success});
 }
 
 /// @nodoc
@@ -1072,10 +1290,14 @@ class __$RegisterPersonalInfoStateCopyWithImpl<$Res>
     Object? lastName = null,
     Object? familyCount = freezed,
     Object? phone = null,
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
     Object? isDonorFlow = null,
     Object? isSubmitting = null,
     Object? showErrors = null,
     Object? completed = null,
+    Object? success = freezed,
   }) {
     return _then(_RegisterPersonalInfoState(
       firstName: null == firstName
@@ -1094,6 +1316,18 @@ class __$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
       isDonorFlow: null == isDonorFlow
           ? _self.isDonorFlow
           : isDonorFlow // ignore: cast_nullable_to_non_nullable
@@ -1110,6 +1344,10 @@ class __$RegisterPersonalInfoStateCopyWithImpl<$Res>
           ? _self.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
+      success: freezed == success
+          ? _self.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }

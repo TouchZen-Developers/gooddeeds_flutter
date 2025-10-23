@@ -7,7 +7,7 @@ part 'register_contact_info_bloc.freezed.dart';
 part 'register_contact_info_event.dart';
 part 'register_contact_info_state.dart';
 
-@Injectable()
+@Singleton()
 class RegisterContactInfoBloc
     extends Bloc<RegisterContactInfoEvent, RegisterContactInfoState> {
   RegisterContactInfoBloc() : super(RegisterContactInfoState.initial()) {
@@ -40,15 +40,17 @@ class RegisterContactInfoBloc
 }
 
 extension RegisterContactInfoStateX on RegisterContactInfoState {
-  bool get isAddressValid => address.trim().isNotEmpty;
+  bool get isAddressValid =>
+      address.trim().isEmpty || address.trim().isNotEmpty;
 
-  bool get isCityValid => city.trim().isNotEmpty;
+  bool get isCityValid => city.trim().isEmpty || city.trim().isNotEmpty;
 
-  bool get isStateValid => stateName.trim().isNotEmpty;
+  bool get isStateValid =>
+      stateName.trim().isEmpty || stateName.trim().isNotEmpty;
 
   bool get isPhoneValid => phone.trim().isValidUSPhone;
 
-  bool get isZipValid => zip.trim().isValidUSZip;
+  bool get isZipValid => zip.trim().isEmpty || zip.trim().isValidUSZip;
 
   bool get isFormValid =>
       isAddressValid &&

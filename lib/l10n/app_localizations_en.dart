@@ -130,6 +130,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCode => 'Resend code';
 
   @override
+  String get sendingCode => 'Sending code...';
+
+  @override
   String get confirmation => 'Confirmation';
 
   @override
@@ -187,6 +190,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signupWithApple => 'Sign up with Apple';
+
+  @override
+  String get signinWithGoogle => 'Google';
+
+  @override
+  String get signinWithApple => 'Apple';
+
+  @override
+  String get orWith => 'OR WITH';
 
   @override
   String get firstNameIsRequired => 'First name is required';
@@ -312,7 +324,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dontHaveAccount => 'Don’t have an account?';
 
   @override
-  String get passwordMinChars => 'Use at least 6 characters';
+  String get passwordMinChars => 'Password must be at least 8 characters';
+
+  @override
+  String get passwordUppercase =>
+      'Password must contain at least one uppercase letter';
+
+  @override
+  String get passwordLowercase =>
+      'Password must contain at least one lowercase letter';
+
+  @override
+  String get passwordNumber => 'Password must contain at least one number';
+
+  @override
+  String get passwordSymbol => 'Password must contain at least one symbol';
+
+  @override
+  String get passwordHint =>
+      'At least 8 characters, uppercase, lowercase, number, and symbol';
 
   @override
   String get confirmPasswordRequired => 'Please re-enter password';

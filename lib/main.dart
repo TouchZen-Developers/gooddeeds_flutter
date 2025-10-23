@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gooddeeds/src/config/di/injector.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
+
 import 'src/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+  await configureDependencies();
 
   final router = createRouter();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
