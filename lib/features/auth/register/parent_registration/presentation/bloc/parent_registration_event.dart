@@ -36,3 +36,7 @@ abstract class ParentRegistrationEvent with _$ParentRegistrationEvent {
 
   const factory ParentRegistrationEvent.clearData() = _ClearData;
 }
+
+
+
+

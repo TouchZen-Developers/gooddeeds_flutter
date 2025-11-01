@@ -567,7 +567,10 @@ class ConfirmEmailRoute extends GoRouteData with $ConfirmEmailRoute {
 }
 
 GoRouter createRouter() => GoRouter(
+      // Force initial route to our splash, ignoring OS-provided deep link path
       initialLocation: RoutePaths.splash,
       routes: $appRoutes,
       navigatorKey: _rootNavigatorKey,
+      // Fallback UI for unknown routes (prevents "Page not found")
+      errorBuilder: (context, state) => const SplashScreen(),
     );

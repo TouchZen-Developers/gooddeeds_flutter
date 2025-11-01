@@ -22,12 +22,12 @@ class RegisterChoiceBloc
   ) async {
     await event.map(
       needDonationsPressed: (_) async {
-        await _prefs.setString(kPrefUserRole, UserRole.needDonations.asString);
+        await _prefs.setString(kPrefUserRole, UserRole.beneficiary.asString);
         emit(RegisterChoiceState.navigate(RegisterMenuRoute().location));
         emit(const RegisterChoiceState.idle());
       },
       helpFamiliesPressed: (_) async {
-        await _prefs.setString(kPrefUserRole, UserRole.helpFamilies.asString);
+        await _prefs.setString(kPrefUserRole, UserRole.donor.asString);
         emit(RegisterChoiceState.navigate(RegisterMenuRoute().location));
         emit(const RegisterChoiceState.idle());
       },

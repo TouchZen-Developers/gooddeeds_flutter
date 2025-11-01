@@ -12,6 +12,7 @@ import '../models/mappers.dart';
 @Injectable(as: BeneficiarySignupRepository)
 class BeneficiarySignupRepositoryImpl implements BeneficiarySignupRepository {
   BeneficiarySignupRepositoryImpl(this._remoteDataSource);
+
   final BeneficiarySignupRemoteDataSource _remoteDataSource;
 
   @override

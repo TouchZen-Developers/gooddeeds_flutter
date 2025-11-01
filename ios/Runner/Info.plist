@@ -59,6 +59,16 @@
 				<string>com.googleusercontent.apps.206460911963-1mtn94u561r9jtssnp639h211j3qjtet</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.gooddeeds.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gooddeeds</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

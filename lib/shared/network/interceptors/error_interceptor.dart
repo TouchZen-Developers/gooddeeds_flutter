@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/src/config/routes/route_paths.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gooddeeds/shared/services/secure_storage_service.dart';
 
-import '../api_config.dart';
 import '../error_handler.dart';
 import '../models/api_error.dart';
 
@@ -20,17 +19,17 @@ import '../models/api_error.dart';
 class ErrorInterceptor extends Interceptor {
   /// Creates an ErrorInterceptor instance
   ///
-  /// [prefs] - SharedPreferences instance for storing/retrieving tokens
+  /// [secureStorageService] - SecureStorageService instance for managing auth tokens
   /// [navigatorKey] - Global navigator key for navigation operations
   /// [errorHandler] - ErrorHandler for displaying errors to user
   ErrorInterceptor(
-    this._prefs,
+    this._secureStorageService,
     @Named('rootNavigatorKey') this._navigatorKey,
     this._errorHandler,
   );
 
-  /// SharedPreferences instance for managing local storage
-  final SharedPreferences _prefs;
+  /// SecureStorageService instance for managing auth tokens
+  final SecureStorageService _secureStorageService;
 
   /// Global navigator key for handling navigation
   final GlobalKey<NavigatorState> _navigatorKey;
@@ -159,11 +158,11 @@ class ErrorInterceptor extends Interceptor {
   /// Handles 401 Unauthorized responses by clearing stored tokens and redirecting to login
   ///
   /// This method:
-  /// - Removes the authentication token from SharedPreferences
+  /// - Removes the authentication token from SecureStorage
   /// - Navigates the user back to the login screen
   void _handleUnauthorized() {
-    // Clear token
-    _prefs.remove(ApiConfig.tokenKey);
+    // Clear auth data
+    _secureStorageService.clearAuthData();
 
     // Navigate to login
     WidgetsBinding.instance.addPostFrameCallback((_) {

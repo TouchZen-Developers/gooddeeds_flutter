@@ -4,16 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
+import 'package:gooddeeds/shared/design_system/components/custom_snack_bar.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/app_local_ext.dart';
 import 'package:gooddeeds/shared/design_system/utils/validators.dart';
 import 'package:gooddeeds/src/config/routes/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../../../../shared/data/user_role.dart';
 import '../../../../../../shared/design_system/components/gd_textfield.dart';
 import '../../../../../../shared/design_system/tokens/colors.dart';
+import '../../../../../../shared/services/secure_storage_service.dart';
 import '../../../../../../src/config/di/injector.dart';
+import '../../../../social/domain/entities/complete_profile_entity.dart';
+import '../../../../social/presentation/bloc/social_auth_bloc.dart';
 import '../../../email/presentation/components/step_header.dart';
 import '../../../parent_registration/presentation/bloc/parent_registration_bloc.dart';
 import '../bloc/register_personal_info_bloc.dart';
@@ -58,7 +63,7 @@ class _RegisterPersonalInfoScreenState
     super.initState();
     final prefs = getIt<SharedPreferences>();
     final role = UserRoleX.fromString(prefs.getString(kPrefUserRole));
-    _isDonor = role == UserRole.helpFamilies;
+    _isDonor = role == UserRole.donor;
 
     final personalInfoBloc = context.read<RegisterPersonalInfoBloc>();
 
@@ -124,11 +129,31 @@ class _RegisterPersonalInfoScreenState
     return null;
   }
 
-  void _onContinue(BuildContext context) {
+  Future<void> _onContinue(BuildContext context) async {
     final bloc = context.read<RegisterPersonalInfoBloc>();
     final parentBloc = context.read<ParentRegistrationBloc>();
+    final secure = getIt<SecureStorageService>();
 
-    // Check if bloc is still open before adding events
+    // Check if user came from Google login (has token but no email/password from form)
+    final isGoogleLogin = await secure.isLoggedIn() && 
+        (widget.email.isEmpty || widget.password.isEmpty);
+    
+    if (!context.mounted) return;
+    
+    // For donor flow + Google login, complete profile via social endpoint here
+    if (_isDonor && isGoogleLogin) {
+      final req = CompleteProfileRequestEntity(
+        firstName: _firstCtrl.text,
+        lastName: _lastCtrl.text,
+        phoneNumber: _phoneCtrl.text,
+      );
+      context
+          .read<SocialAuthBloc>()
+          .add(SocialAuthEvent.completeProfile(profileData: req));
+      return;
+    }
+
+    // Check if bloc is still open before adding events (email flow)
     if (!bloc.isClosed) {
       bloc
         ..add(RegisterPersonalInfoEvent.firstNameChanged(_firstCtrl.text))
@@ -153,6 +178,7 @@ class _RegisterPersonalInfoScreenState
       bloc.add(const RegisterPersonalInfoEvent.submitted());
     } else {
       // If bloc is closed, navigate directly
+      if (!context.mounted) return;
       if (_isDonor) {
         // Navigate to OTP verification screen after successful signup
         VerifyEmailRoute(email: widget.email).push(context);
@@ -167,34 +193,90 @@ class _RegisterPersonalInfoScreenState
   Widget build(BuildContext context) {
     final gaps = context.gaps;
 
-    return BlocListener<RegisterPersonalInfoBloc, RegisterPersonalInfoState>(
-      listenWhen: (p, c) => p.completed != c.completed && c.completed,
-      listener: (context, state) {
-        // Check if the widget is still mounted before navigating
-        if (!mounted) return;
+    return BlocProvider.value(
+      value: getIt<SocialAuthBloc>(),
+      child: MultiBlocListener(
+      listeners: [
+        BlocListener<RegisterPersonalInfoBloc, RegisterPersonalInfoState>(
+          listenWhen: (p, c) => p.completed != c.completed && c.completed,
+          listener: (context, state) {
+            // Check if the widget is still mounted before navigating
+            if (!mounted) return;
 
-        if (state.isDonorFlow) {
-          // Navigate to OTP verification screen after successful signup
-          VerifyEmailRoute(email: state.email).push(context);
-        } else {
-          // Navigate to contact info screen for beneficiary flow
-          const RegisterContactInfoRoute().push(context);
-        }
-      },
+            if (state.isDonorFlow) {
+              // Navigate to OTP verification screen after successful signup
+              VerifyEmailRoute(email: state.email).push(context);
+            } else {
+              // Navigate to contact info screen for beneficiary flow
+              const RegisterContactInfoRoute().push(context);
+            }
+          },
+        ),
+        BlocListener<SocialAuthBloc, SocialAuthState>(
+          listener: (context, s) {
+            s.when(
+              initial: () {},
+              awaitingCallback: () {},
+              loading: () {},
+              needsProfileCompletion: (_) {},
+              needsRoleBasedNavigation: (role) {},
+              success: () async {
+                // Show success message in top snackbar
+                final prefs = getIt<SharedPreferences>();
+                final successMessage = prefs.getString('pending_success_message');
+                
+                if (successMessage != null && successMessage.isNotEmpty) {
+                  // Clear the flag
+                  await prefs.remove('pending_success_message');
+                  
+                  // Show success snackbar
+                  if (mounted && context.mounted) {
+                    final overlay = Overlay.of(context, rootOverlay: true);
+                    showTopSnackBar(
+                      overlay,
+                      CustomSnackBar.success(message: successMessage),
+                    );
+                  }
+                }
+                
+                // Navigate to home for dashboard
+                if (mounted && context.mounted) {
+                  const DonatingHomeRoute().go(context);
+                }
+              },
+              failure: (m) {
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(SnackBar(content: Text(m)));
+              },
+            );
+          },
+        ),
+      ],
       child: Scaffold(
         bottomNavigationBar: SafeArea(
           child: Padding(
             padding: EdgeInsets.fromLTRB(gaps.xl, 0, gaps.xl, gaps.lg),
             child: BlocBuilder<RegisterPersonalInfoBloc,
                 RegisterPersonalInfoState>(
-              builder: (context, state) {
-                return PrimaryButton(
-                  label: context.loc.continueText,
-                  size: ButtonSize.large,
-                  fullWidth: true,
-                  loading: state.isSubmitting,
-                  onPressed:
-                      state.isSubmitting ? null : () => _onContinue(context),
+              builder: (context, personalInfoState) {
+                return BlocBuilder<SocialAuthBloc, SocialAuthState>(
+                  builder: (context, socialAuthState) {
+                    // Show loading if either bloc is loading
+                    final isLoading = personalInfoState.isSubmitting || 
+                        socialAuthState.maybeWhen(
+                          loading: () => true,
+                          orElse: () => false,
+                        );
+                    
+                    return PrimaryButton(
+                      label: context.loc.continueText,
+                      size: ButtonSize.large,
+                      fullWidth: true,
+                      loading: isLoading,
+                      onPressed: isLoading ? null : () => _onContinue(context),
+                    );
+                  },
                 );
               },
             ),
@@ -350,6 +432,7 @@ class _RegisterPersonalInfoScreenState
             },
           ),
         ),
+      ),
       ),
     );
   }

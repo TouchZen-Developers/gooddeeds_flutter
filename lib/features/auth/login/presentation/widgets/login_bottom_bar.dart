@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:gooddeeds/features/auth/social/presentation/bloc/social_auth_bloc.dart';
 import 'package:gooddeeds/gen/assets.gen.dart';
 import 'package:gooddeeds/shared/design_system/components/primary_button.dart';
 import 'package:gooddeeds/shared/design_system/theme/context_ext.dart';
@@ -83,11 +84,25 @@ class LoginBottomBar extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: SocialLoginButton(
-                label: context.loc.signinWithGoogle,
-                iconPath: Assets.icons.google.path,
-                onPressed: () {
-                  // TODO: Implement Google Sign In
+              child: BlocBuilder<SocialAuthBloc, SocialAuthState>(
+                builder: (context, state) {
+                  final isLoading = state.maybeWhen(
+                    awaitingCallback: () => true,
+                    loading: () => true,
+                    orElse: () => false,
+                  );
+
+                  return SocialLoginButton(
+                    label: context.loc.signinWithGoogle,
+                    iconPath: Assets.icons.google.path,
+                    onPressed: isLoading
+                        ? null
+                        : () {
+                            context.read<SocialAuthBloc>().add(
+                                  const SocialAuthEvent.initiateGoogleAuth(),
+                                );
+                          },
+                  );
                 },
               ),
             ),

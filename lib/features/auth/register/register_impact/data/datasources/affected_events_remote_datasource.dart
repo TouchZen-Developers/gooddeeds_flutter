@@ -20,7 +20,6 @@ class AffectedEventsRemoteDataSourceImpl
     return _httpClient.safeGet<List<String>>(
       'affected-events',
       (json) {
-        // json is expected to be a List<dynamic> of {id,name}
         final list = (json as List)
             .map((e) => (e as Map<String, dynamic>)['name'] as String)
             .toList();

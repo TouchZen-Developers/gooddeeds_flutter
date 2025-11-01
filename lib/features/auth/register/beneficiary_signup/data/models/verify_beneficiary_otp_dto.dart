@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'beneficiary_dto.dart';
 import 'user_dto.dart';
 
@@ -16,3 +17,7 @@ abstract class VerifyBeneficiaryOtpDto with _$VerifyBeneficiaryOtpDto {
   factory VerifyBeneficiaryOtpDto.fromJson(Map<String, dynamic> json) =>
       _$VerifyBeneficiaryOtpDtoFromJson(json);
 }
+
+
+
+

@@ -8,6 +8,7 @@ import '../repositories/verify_beneficiary_otp_repository.dart';
 @injectable
 class VerifyBeneficiaryOtpUseCase {
   VerifyBeneficiaryOtpUseCase(this._repository);
+
   final VerifyBeneficiaryOtpRepository _repository;
 
   Future<Either<Failure, VerifyBeneficiaryOtpEntity>> call({
@@ -17,3 +18,7 @@ class VerifyBeneficiaryOtpUseCase {
     return _repository.verifyOtp(email: email.trim(), otp: otp.trim());
   }
 }
+
+
+
+

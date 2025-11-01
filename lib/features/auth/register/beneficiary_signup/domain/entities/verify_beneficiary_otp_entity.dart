@@ -16,3 +16,7 @@ abstract class VerifyBeneficiaryOtpEntity with _$VerifyBeneficiaryOtpEntity {
   factory VerifyBeneficiaryOtpEntity.fromJson(Map<String, dynamic> json) =>
       _$VerifyBeneficiaryOtpEntityFromJson(json);
 }
+
+
+
+

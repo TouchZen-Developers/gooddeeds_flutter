@@ -10,6 +10,7 @@ import '../datasources/affected_events_remote_datasource.dart';
 @Injectable(as: AffectedEventsRepository)
 class AffectedEventsRepositoryImpl implements AffectedEventsRepository {
   AffectedEventsRepositoryImpl(this._remote);
+
   final AffectedEventsRemoteDataSource _remote;
 
   @override

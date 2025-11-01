@@ -12,7 +12,4 @@ class ApiConfig {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   };
-
-  // Token key for SharedPreferences
-  static const String tokenKey = 'auth_token';
 }

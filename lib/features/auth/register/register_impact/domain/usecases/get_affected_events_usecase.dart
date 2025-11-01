@@ -7,6 +7,7 @@ import '../repositories/affected_events_repository.dart';
 @injectable
 class GetAffectedEventsUseCase {
   GetAffectedEventsUseCase(this._repository);
+
   final AffectedEventsRepository _repository;
 
   Future<Either<domain.Failure, List<String>>> call() =>

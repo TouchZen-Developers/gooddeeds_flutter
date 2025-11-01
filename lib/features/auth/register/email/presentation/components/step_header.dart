@@ -29,7 +29,7 @@ class StepHeader extends StatelessWidget {
     final prefs = getIt<SharedPreferences>();
     final role = UserRoleX.fromString(prefs.getString(kPrefUserRole));
 
-    final showSteps = role != UserRole.helpFamilies;
+    final showSteps = role != UserRole.donor;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
