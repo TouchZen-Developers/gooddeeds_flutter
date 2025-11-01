@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gooddeeds/shared/data/user_role.dart';
-import 'package:gooddeeds/shared/services/google_signin_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @singleton
 class SecureStorageService {
   SecureStorageService(
-      this._secureStorage, this._prefs, this._googleSignInService,);
+    this._secureStorage,
+    this._prefs,
+  );
 
   final FlutterSecureStorage _secureStorage;
   final SharedPreferences _prefs;
-  final GoogleSignInService _googleSignInService;
 
   // Keys for storage
   static const String _tokenKey = 'auth_token';
@@ -56,7 +56,11 @@ class SecureStorageService {
       deleteToken(),
       deleteUserData(),
       _prefs.remove(kPrefUserRole),
-      _googleSignInService.signOut(), // Also sign out from Google
+      _prefs.remove(kPrefBeneficiaryStatusDialogShown),
+      _prefs.remove(kPrefFirstTimeAfterLogin),
+      _prefs.remove(kPrefPendingNextStep),
+      _prefs.remove(kPrefPendingDeepLinkError),
+      _prefs.remove('pending_success_message'),
     ]);
   }
 

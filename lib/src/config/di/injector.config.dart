@@ -26,8 +26,6 @@ import '../../../features/auth/forget_password/domain/usecases/send_otp_usecase.
     as _i924;
 import '../../../features/auth/forget_password/presentation/bloc/forgot_password_bloc.dart'
     as _i828;
-import '../../../features/auth/google_signin/presentation/bloc/google_signin_bloc.dart'
-    as _i834;
 import '../../../features/auth/login/data/datasources/login_remote_datasource.dart'
     as _i1056;
 import '../../../features/auth/login/data/repositories/login_repository_impl.dart'
@@ -165,7 +163,6 @@ import '../../../shared/network/interceptors/logging_interceptor.dart' as _i776;
 import '../../../shared/services/beneficiary_status_dialog_service.dart'
     as _i903;
 import '../../../shared/services/deep_link_service.dart' as _i713;
-import '../../../shared/services/google_signin_service.dart' as _i255;
 import '../../../shared/services/secure_storage_service.dart' as _i763;
 import 'modules/network_module.dart' as _i851;
 import 'modules/prefs_module.dart' as _i12;
@@ -200,7 +197,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i543.RegisterFamilyPhotoBloc.create());
     gh.singleton<_i834.ApiConfig>(() => _i834.ApiConfig());
     gh.singleton<_i713.DeepLinkService>(() => _i713.DeepLinkService());
-    gh.singleton<_i255.GoogleSignInService>(() => _i255.GoogleSignInService());
     gh.singleton<_i558.FlutterSecureStorage>(
         () => storageModule.flutterSecureStorage);
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
@@ -211,12 +207,9 @@ extension GetItInjectableX on _i174.GetIt {
         _i903.BeneficiaryStatusDialogService(gh<_i460.SharedPreferences>()));
     gh.factory<_i515.RegisterChoiceBloc>(
         () => _i515.RegisterChoiceBloc(gh<_i460.SharedPreferences>()));
-    gh.factory<_i834.GoogleSignInBloc>(
-        () => _i834.GoogleSignInBloc(gh<_i255.GoogleSignInService>()));
     gh.singleton<_i763.SecureStorageService>(() => _i763.SecureStorageService(
           gh<_i558.FlutterSecureStorage>(),
           gh<_i460.SharedPreferences>(),
-          gh<_i255.GoogleSignInService>(),
         ));
     gh.factory<_i136.ErrorHandler>(() => _i136.ErrorHandler(
         gh<_i409.GlobalKey<_i409.NavigatorState>>(

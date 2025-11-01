@@ -51,13 +51,30 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     // When app comes back from background (e.g., from browser)
     if (state == AppLifecycleState.resumed) {
       developer.log('📱 App resumed - checking for deep link...');
-      _checkInitialLink();
+      // Only check initial link if we're actually awaiting a callback
+      final socialAuthBloc = getIt<SocialAuthBloc>();
+      final isAwaiting = socialAuthBloc.state.maybeWhen(
+        awaitingCallback: () => true,
+        orElse: () => false,
+      );
+      if (isAwaiting) {
+        _checkInitialLink();
+      }
     }
   }
 
   Future<void> _checkInitialLink() async {
     final initialUri = await _deepLinkService.getInitialLink();
     if (initialUri != null) {
+      // If we already have a pending next_step, a stream deep link is being handled
+      // Skip handling the initial link to avoid duplicate processing with different tokens
+      final prefs = getIt<SharedPreferences>();
+      final pendingNextStep = prefs.getString(kPrefPendingNextStep);
+      if (pendingNextStep != null && pendingNextStep.isNotEmpty) {
+        developer.log(
+            '⏭️ Skipping initial link because a deep link is already pending');
+        return;
+      }
       _handleDeepLink(initialUri);
     } else {
       // If user backed out from browser and no deep link arrived, reset awaiting state

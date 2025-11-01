@@ -43,7 +43,8 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         pendingNextStep != null && pendingNextStep.isNotEmpty;
 
     developer.log(
-        'Splash: Handling deep link callback: $isHandlingDeepLink (next_step: $pendingNextStep)');
+      'Splash: Handling deep link callback: $isHandlingDeepLink (next_step: $pendingNextStep)',
+    );
 
     // Check if user has token
     developer.log('Splash: Checking if user is logged in');
@@ -85,11 +86,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       emit(const SplashState.authenticated());
     } else if (!hasToken) {
       developer.log(
-          'Splash: User is not authenticated, emitting unauthenticated state');
+        'Splash: User is not authenticated, emitting unauthenticated state',
+      );
       emit(const SplashState.unauthenticated());
     } else {
       developer.log(
-          'Splash: Handling deep link callback, waiting for SocialAuthBloc');
+        'Splash: Handling deep link callback, waiting for SocialAuthBloc',
+      );
       // Don't emit any state - let SocialAuthBloc handle navigation
     }
   }
