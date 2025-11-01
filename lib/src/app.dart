@@ -72,7 +72,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       final pendingNextStep = prefs.getString(kPrefPendingNextStep);
       if (pendingNextStep != null && pendingNextStep.isNotEmpty) {
         developer.log(
-            '⏭️ Skipping initial link because a deep link is already pending');
+          '⏭️ Skipping initial link because a deep link is already pending',
+        );
         return;
       }
       _handleDeepLink(initialUri);
